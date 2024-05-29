@@ -14,7 +14,7 @@ const CardHeader = ({
 
   return (
     <div
-      className={`space-x-uui-xl px-uui-3xl border-b-uui-1 border-b-uui-border-secondary py-uui-2xl flex justify-between w-full ${className} `}
+      className={`space-x-uui-xl px-uui-3xl border-b-uui-1 border-b-uui-border-secondary py-uui-2xl flex flex-col sm:flex-row sm:items-center sm:justify-between w-full ${className} `}
       {...rest}
     >
       <div className="space-y-uui-xs flex flex-col">
