@@ -1,5 +1,5 @@
 import type { Config } from "tailwindcss";
-import { getPreset } from "@frontline-hq/uui-tailwind";
+import { preset } from "@lilypad/uui-tailwind-styles";
 
 const config: Config = {
 	content: [
@@ -17,6 +17,6 @@ const config: Config = {
 		},
 	},
 	plugins: [],
-	presets: [getPreset()],
+	presets: [preset],
 };
 export default config;

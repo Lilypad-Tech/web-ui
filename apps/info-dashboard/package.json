@@ -1,6 +1,6 @@
 {
 	"name": "info-dashboard",
-	"version": "0.1.0",
+	"version": "0.0.1",
 	"private": true,
 	"scripts": {
 		"dev": "next dev",
@@ -15,7 +15,7 @@
 		"react-dom": "^18"
 	},
 	"devDependencies": {
-		"@frontline-hq/uui-tailwind": "^4.0.1",
+		"@lilypad/uui-tailwind-styles": "workspace:~",
 		"@types/node": "^20",
 		"@types/react": "^18",
 		"@types/react-dom": "^18",
