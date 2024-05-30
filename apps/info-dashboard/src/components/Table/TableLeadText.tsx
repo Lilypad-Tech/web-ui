@@ -12,7 +12,7 @@ const TableLeadText = ({ children, ...props }: TableLeadTextProps) => {
   const { className = "", ...rest } = props;
   return (
     <div
-      className={`${className} px-uui-3xl py-uui-xl flex items-center justify-start`}
+      className={`${className} bg-uui-bg-secondary px-uui-3xl py-uui-xl flex items-center justify-start`}
       {...rest}
     >
       {children?.title ? (
