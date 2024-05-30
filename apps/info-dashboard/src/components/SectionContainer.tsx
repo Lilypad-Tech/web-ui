@@ -5,7 +5,7 @@ const SectionContainer = ({ children, ...props }: SectionContainerProps) => {
   return (
     <div
       {...rest}
-      className={` ${className} sm:px-uui-container-padding-desktop mx-auto px-uui-container-padding-mobile w-full max-w-uui-container-max-width-desktop`}
+      className={`  ${className} sm:px-uui-container-padding-desktop mx-auto px-uui-container-padding-mobile w-full max-w-uui-container-max-width-desktop`}
     >
       {children}
     </div>
