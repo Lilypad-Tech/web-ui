@@ -23,7 +23,7 @@ const Table: React.FC<TableProps> = ({ children, ...props }) => {
       {children?.cardHeader}
 
       <div
-        className={` no-scrollbar w-full overflow-auto h-full max-h-[25rem] ${className}`}
+        className={` no-scrollbar w-full overflow-auto h-full max-h-[65.75rem] ${className}`}
       >
         {children?.tableSubstitute ? (
           children.tableSubstitute
@@ -31,7 +31,7 @@ const Table: React.FC<TableProps> = ({ children, ...props }) => {
           <table
             {...rest}
             className={`
-    relative  
+    relative antialiased
     text-uui-text-tertiary-600 bg-uui-bg-primary text-left
     w-full border-none h-full [&_th]:min-w-fit [&_th]:whitespace-nowrap [&_td]:min-w-fit [&_tc]:max-h-fit [&_tr]:max-h-fit 
     [&_th]:font-uui-text-xs [&_th]:text-uui-text-xs [&_th]:px-uui-3xl [&_th]:py-uui-xl 
