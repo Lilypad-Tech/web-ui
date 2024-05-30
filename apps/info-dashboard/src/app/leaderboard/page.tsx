@@ -7,6 +7,7 @@ import {
   generalLoading01,
   alertAndFeedbackAlertCircle,
   generalSearchLg,
+  generalSearchMd,
 } from "@frontline-hq/untitledui-icons";
 import CardHeader from "@/components/CardHeader";
 import InputField from "@/components/InputField/Inputfield";
@@ -15,6 +16,7 @@ import TableLeadText from "@/components/Table/TableLeadText";
 import TableHeaderCell from "@/components/Table/TableHeaderCell";
 import { useSearchParams } from "next/navigation";
 import HeadingSection from "@/components/HeadingSection";
+import SocialIcon from "@/components/SocialIcon";
 
 const Leaderboard: NextPage = () => {
   const ths = [
@@ -81,14 +83,14 @@ const Leaderboard: NextPage = () => {
   }, [twitterUrl]);
 
   return (
-    <div className=" w-full items-center justify-center py-uui-4xl">
+    <div className=" ">
       <HeadingSection
         className="pt-uui-6xl"
         title={"Lilypad Leaderboard"}
         subtitle={"Compete and Compare: Showcase Your Node's Performance"}
       />
       <SectionContainer className="sm:pt-uui-container-padding-desktop mx-auto pt-uui-container-padding-mobile">
-        {/* Set max height to make table scrollable */}
+        {/* Set max height & min height to make table scrollable & minimize layout shifts on state changes */}
         <Table className="max-h-[70vh] min-h-[70vh]">
           {{
             cardHeader: (
@@ -102,6 +104,7 @@ const Leaderboard: NextPage = () => {
                       value={walletAddress}
                       onChange={(e) => setWalletAddress(e.target.value)}
                       placeholder="Enter wallet address"
+                      iconUrl={generalSearchMd}
                     />
                   </div>
                 }
@@ -177,11 +180,9 @@ const Leaderboard: NextPage = () => {
                                       rel="noopener noreferrer"
                                     >
                                       {/* TODO replace with button/social icon component */}
-                                      <img
-                                        width={16}
-                                        height={16}
-                                        src="x-social-icon.svg"
-                                        alt=""
+                                      <SocialIcon
+                                        className="[&&]:h-uui-xl [&&]:w-uui-xl"
+                                        iconUrl="/x.svg"
                                       />
                                     </a>
                                   ),
