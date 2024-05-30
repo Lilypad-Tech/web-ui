@@ -1,12 +1,14 @@
 import React from "react";
 import InputWrapper from "./InputWrapper";
 import InputAtom from "./InputAtom";
+import InputIconAtom from "./InputIconAtom";
 
 interface InputFieldProps extends React.HTMLProps<HTMLInputElement> {
   value?: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   inputSize?: "sm";
   destructive?: boolean;
+  iconUrl?: string;
 }
 
 const InputField: React.FC<InputFieldProps> = ({
@@ -14,14 +16,13 @@ const InputField: React.FC<InputFieldProps> = ({
   onChange,
   size = "sm",
   destructive = false,
+  iconUrl,
   ...props
 }) => {
-
-    
   return (
     <InputWrapper destructive={destructive}>
       {{
-        leadingInner: "a",
+        leadingInner: iconUrl ? <InputIconAtom iconUrl={iconUrl} /> : undefined,
         input: <InputAtom {...props} value={value} onChange={onChange} />,
       }}
     </InputWrapper>
