@@ -1,5 +1,5 @@
 import type { Config } from "tailwindcss";
-import { preset } from "@lilypad/uui-tailwind-styles";
+import { preset } from "@lilypad/uui-tailwind-styles/js";
 
 const config: Config = {
 	content: [
@@ -7,15 +7,7 @@ const config: Config = {
 		"./src/components/**/*.{js,ts,jsx,tsx,mdx}",
 		"./src/app/**/*.{js,ts,jsx,tsx,mdx}",
 	],
-	theme: {
-		extend: {
-			backgroundImage: {
-				"gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-				"gradient-conic":
-					"conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-			},
-		},
-	},
+	theme: {},
 	plugins: [],
 	presets: [preset],
 };
