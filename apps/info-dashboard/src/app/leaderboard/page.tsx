@@ -9,6 +9,7 @@ import {
   generalSearchLg,
 } from "@frontline-hq/untitledui-icons";
 import CardHeader from "@/components/CardHeader";
+import InputField from "@/components/Inputfield";
 
 const Leaderboard: NextPage = () => {
   const ths = [
@@ -18,17 +19,22 @@ const Leaderboard: NextPage = () => {
     "Reward Points",
   ];
 
-  const [tableValues, setTableValues] = useState(
-    Array(10)
+  const [originalTableValues, setOriginalTableValues] = useState(
+    Array(200)
       .fill()
       .map((_, i) => ({
         Rank: `#${i + 1}`,
-        "Wallet ID": `0x8b01991078a3124a56b15381f76341991780163c`,
+        "Wallet ID":
+          i === 199
+            ? `0x8b01991078a3124a36b15381f76341991780163c`
+            : `0x8b01991078a3124a56b15381f76341991780163c`,
         "Energy Provided (TFLOPS*s)": `${1310 / (i * 0.01 + 0.5)}`,
         "Reward Points": `${10991 / (i * 0.01 + 0.5)}`,
         Share: "share",
       }))
   );
+
+  const [tableValues, setTableValues] = useState(originalTableValues);
 
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -40,23 +46,37 @@ const Leaderboard: NextPage = () => {
   // useEffect(() => {
   //   setTableValues([]);
   // }, []);
+  const [walletAddress, setwalletAddress] = useState(null);
+
+  useEffect(() => {
+    if (walletAddress) {
+      const filteredTableValues = originalTableValues.filter((item) =>
+        item["Wallet ID"].startsWith(walletAddress)
+      );
+      setTableValues(filteredTableValues);
+    } else {
+      setTableValues(originalTableValues);
+    }
+  }, [walletAddress]);
 
   return (
-    <div className="min-h-screen flex w-full items-center justify-center">
-      <div className="w-full bg-primary mx-auto max-w-[76rem] pl-uui-xl">
+    <div className="min-h-screen flex w-full items-center justify-center py-uui-4xl">
+      <div className="w-full bg-primary mx-auto max-w-[76rem] pl-uui-xl py-uui-4xl">
         <Table>
           {{
             cardHeader: (
               <CardHeader
-                className="sticky bg-uui-bg-primary left-0 right-0 top-0    z-10"
+                className="sticky bg-uui-bg-primary left-0 right-0 top-0 z-10"
                 headerTitle="Node Provider Leaderbord"
                 subtitle="Enter your wallet address to see where you rank among the top Node providers."
-                inputField={
-                  <input
-                    type="text"
-                    placeholder="sasdasdass"
-                    className="placeholder:text-red-500"
-                  />
+                trailingField={
+                  <div className="w-full md:w-[26.188rem] ">
+                    <InputField
+                      onChange={(e) => setwalletAddress(e.target.value)}
+                      placeholder="Enter wallet address"
+                      className=""
+                    />
+                  </div>
                 }
               />
             ),
