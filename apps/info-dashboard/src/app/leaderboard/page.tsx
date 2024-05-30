@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import Table from "@/components/Table";
+import Table from "@/components/Table/Table";
 import FeaturedIcon from "@/components/FeaturedIcon";
 import { NextPage } from "next";
 import {
@@ -9,7 +9,12 @@ import {
   generalSearchLg,
 } from "@frontline-hq/untitledui-icons";
 import CardHeader from "@/components/CardHeader";
-import InputField from "@/components/Inputfield";
+import InputField from "@/components/InputField/Inputfield";
+import SectionContainer from "@/components/SectionContainer";
+import TableLeadText from "@/components/Table/TableLeadText";
+import TableHeaderCell from "@/components/Table/TableHeaderCell";
+import { useSearchParams } from "next/navigation";
+import HeadingSection from "@/components/HeadingSection";
 
 const Leaderboard: NextPage = () => {
   const ths = [
@@ -17,6 +22,7 @@ const Leaderboard: NextPage = () => {
     "Wallet ID",
     "Energy Provided (TFLOPS*s)",
     "Reward Points",
+    "Share",
   ];
 
   const [originalTableValues, setOriginalTableValues] = useState(
@@ -25,7 +31,7 @@ const Leaderboard: NextPage = () => {
       .map((_, i) => ({
         Rank: `#${i + 1}`,
         "Wallet ID":
-          i === 199
+          i === 0
             ? `0x8b01991078a3124a36b15381f76341991780163c`
             : `0x8b01991078a3124a56b15381f76341991780163c`,
         "Energy Provided (TFLOPS*s)": `${1310 / (i * 0.01 + 0.5)}`,
@@ -33,20 +39,18 @@ const Leaderboard: NextPage = () => {
         Share: "share",
       }))
   );
-
+  // If a wallet address is found within the search params, filter the table values
+  const searchParams = useSearchParams();
+  const walletParams = searchParams.get("wallet_id");
+  const [walletAddress, setWalletAddress] = useState(walletParams ?? undefined);
   const [tableValues, setTableValues] = useState(originalTableValues);
 
+  // states for loading, error and empty table
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [isEmpty, setIsEmpty] = useState(
     tableValues.length === 0 ? true : false
   );
-
-  // Uncomment below to see the empty error state
-  // useEffect(() => {
-  //   setTableValues([]);
-  // }, []);
-  const [walletAddress, setwalletAddress] = useState(null);
 
   useEffect(() => {
     if (walletAddress) {
@@ -59,10 +63,33 @@ const Leaderboard: NextPage = () => {
     }
   }, [walletAddress]);
 
+  const normalShareText = encodeURIComponent(
+    "I'm running a node on the Lilypad network, check out my rank on the leaderboard!"
+  );
+
+  const [twitterUrl, setTwitterUrl] = useState("");
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const currentUrl = encodeURIComponent(
+        window.location.origin + window.location.pathname
+      );
+      setTwitterUrl(
+        `https://twitter.com/intent/tweet?text=${normalShareText}&url=${currentUrl}`
+      );
+    }
+  }, [twitterUrl]);
+
   return (
-    <div className="min-h-screen flex w-full items-center justify-center py-uui-4xl">
-      <div className="w-full bg-primary mx-auto max-w-[76rem] pl-uui-xl py-uui-4xl">
-        <Table>
+    <div className=" w-full items-center justify-center py-uui-4xl">
+      <HeadingSection
+        className="pt-uui-6xl"
+        title={"Lilypad Leaderboard"}
+        subtitle={"Compete and Compare: Showcase Your Node's Performance"}
+      />
+      <SectionContainer className="sm:pt-uui-container-padding-desktop mx-auto pt-uui-container-padding-mobile">
+        {/* Set max height to make table scrollable */}
+        <Table className="max-h-[70vh] min-h-[70vh]">
           {{
             cardHeader: (
               <CardHeader
@@ -72,9 +99,9 @@ const Leaderboard: NextPage = () => {
                 trailingField={
                   <div className="w-full md:w-[26.188rem] ">
                     <InputField
-                      onChange={(e) => setwalletAddress(e.target.value)}
+                      value={walletAddress}
+                      onChange={(e) => setWalletAddress(e.target.value)}
                       placeholder="Enter wallet address"
-                      className=""
                     />
                   </div>
                 }
@@ -82,7 +109,7 @@ const Leaderboard: NextPage = () => {
             ),
             tableSubstitute:
               isLoading || isError || tableValues.length === 0 ? (
-                <div className="w-full h-[25rem] flex items-center flex-col justify-center space-y-uui-lg">
+                <div className="w-full h-[70vh] flex items-center flex-col justify-center space-y-uui-lg">
                   <div className="max-w-uui-width-xxs h-full px-uui-xs md:max-w-uui-width-xs flex flex-col items-center justify-center">
                     <FeaturedIcon
                       spinIcon={isLoading}
@@ -121,7 +148,7 @@ const Leaderboard: NextPage = () => {
                         className="z-10 overflow-hidden first-of-type:rounded-tl-uui-xl last-of-type:rounded-tr-uui-xl"
                         colSpan={i === ths.length - 1 ? 2 : 1}
                       >
-                        {header}
+                        <TableHeaderCell>{{ title: header }}</TableHeaderCell>
                       </th>
                     ))}
                   </tr>
@@ -129,18 +156,44 @@ const Leaderboard: NextPage = () => {
                 <tbody>
                   {tableValues.map((row, rowIndex) => (
                     <tr key={rowIndex}>
-                      <td>{row["Rank"]}</td>
+                      <td>
+                        <TableLeadText>{{ title: row["Rank"] }}</TableLeadText>
+                      </td>
                       {Object.entries(row)
                         .slice(1)
                         .map(([key, value], i) => (
                           <td key={i}>
                             {i === Object.entries(row).length - 2 ? (
-                              <button>{value}</button>
+                              <TableLeadText>
+                                {{
+                                  title: (
+                                    <a
+                                      href={
+                                        `${twitterUrl}` +
+                                        "?wallet_id=" +
+                                        row["Wallet ID"]
+                                      }
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                    >
+                                      {/* TODO replace with button/social icon component */}
+                                      <img
+                                        width={16}
+                                        height={16}
+                                        src="x-social-icon.svg"
+                                        alt=""
+                                      />
+                                    </a>
+                                  ),
+                                }}
+                              </TableLeadText>
                             ) : key === "Energy Provided (TFLOPS*s)" ||
                               key === "Reward Points" ? (
-                              Number(value).toFixed(0)
+                              <TableLeadText>
+                                {{ title: Number(value).toFixed(0) }}
+                              </TableLeadText>
                             ) : (
-                              value
+                              <TableLeadText>{{ title: value }}</TableLeadText>
                             )}
                           </td>
                         ))}
@@ -150,7 +203,7 @@ const Leaderboard: NextPage = () => {
               </>
             ),
             pagination: (
-              <div className="sticky bg-uui-bg-primary left-0 right-0 bottom-0 flex justify-between items-center z-10">
+              <div className=" sticky bg-uui-bg-primary left-0 right-0 bottom-0 flex justify-between items-center z-10">
                 <button>Left</button>
                 <h1>Header</h1>
                 <button>Right</button>
@@ -158,7 +211,7 @@ const Leaderboard: NextPage = () => {
             ),
           }}
         </Table>
-      </div>
+      </SectionContainer>
     </div>
   );
 };
