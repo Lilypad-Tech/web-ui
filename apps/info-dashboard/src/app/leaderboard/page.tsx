@@ -30,18 +30,16 @@ const Leaderboard: NextPage = () => {
   ];
 
   const [originalTableValues, setOriginalTableValues] = useState(
-    Array(200)
-      .fill()
-      .map((_, i) => ({
-        Rank: `#${i + 1}`,
-        "Wallet ID":
-          i === 0
-            ? `0x8b01991078a3124a36b15381f76341991780163c`
-            : `0x8b01991078a3124a56b15381f76341991780163c`,
-        "Energy Provided (TFLOPS*s)": `${1310 / (i * 0.01 + 0.5)}`,
-        "Reward Points": `${10991 / (i * 0.01 + 0.5)}`,
-        Share: "share",
-      }))
+    Array.from({ length: 150 }, (_, i) => ({
+      Rank: `#${i + 1}`,
+      "Wallet ID":
+        i === 0
+          ? `0x8b01991078a3124a36b15381f76341991780163c`
+          : `0x8b01991078a3124a56b15381f76341991780163c`,
+      "Energy Provided (TFLOPS*s)": `${1310 / (i * 0.01 + 0.5)}`,
+      "Reward Points": `${10991 / (i * 0.01 + 0.5)}`,
+      Share: "share",
+    }))
   );
   // If a wallet address is found within the search params, filter the table values
   const searchParams = useSearchParams();
