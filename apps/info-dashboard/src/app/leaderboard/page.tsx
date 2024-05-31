@@ -80,7 +80,7 @@ const Leaderboard: NextPage = () => {
         `https://twitter.com/intent/tweet?text=${normalShareText}&url=${currentUrl}`
       );
     }
-  }, [twitterUrl]);
+  }, [normalShareText]);
 
   return (
     <div className=" ">

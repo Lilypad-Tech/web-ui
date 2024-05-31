@@ -8,7 +8,7 @@ const InputIconAtom = ({ iconUrl, ...props }: InputIconAtomProps) => {
     <span
       {...rest}
       style={{ "--icon-url": `url(${iconUrl})` }}
-      class="w-uui-2xl h-uui-2xl flex-shrink-0'
+      className="w-uui-2xl h-uui-2xl flex-shrink-0'
       bg-uui-fg-quarterary-500
       [mask-position:center]
       [mask-size:contain]
