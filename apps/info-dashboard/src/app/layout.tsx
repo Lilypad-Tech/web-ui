@@ -15,26 +15,27 @@ export const metadata: Metadata = {
 };
 
 /* TODO check if the telegram is correct */
+
 const socialLinks = [
-  { href: m.leaderboard_footer_socialLinks_x_href(), iconUrl: "/x.svg" },
+  { href: "https://twitter.com/lilypad_tech", iconUrl: "/x.svg" },
   {
-    href: m.leaderboard_footer_socialLinks_discord_href(),
+    href: "https://discord.gg/zWYTNZqB",
     iconUrl: "/discord.svg",
   },
   {
-    href: m.leaderboard_footer_socialLinks_telegram_href(),
+    href: "https://t.me/lilypadnetwork",
     iconUrl: "/telegram.svg",
   },
   {
-    href: m.leaderboard_footer_socialLinks_github_href(),
+    href: "https://github.com/Lilypad-Tech",
     iconUrl: "/github.svg",
   },
   {
-    href: m.leaderboard_footer_socialLinks_linkedin_href(),
+    href: "https://www.linkedin.com/company/lilypad-network/",
     iconUrl: "/linkedin.svg",
   },
   {
-    href: m.leaderboard_footer_socialLinks_youtube_href(),
+    href: "https://www.youtube.com/@LilypadNetwork/featured",
     iconUrl: "/youtube.svg",
   },
 ];
