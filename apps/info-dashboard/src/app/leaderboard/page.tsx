@@ -60,7 +60,7 @@ const Leaderboard: NextPage = () => {
     } else {
       setTableValues(originalTableValues);
     }
-  }, [walletAddress]);
+  }, [walletAddress, originalTableValues]);
 
   const normalShareText = encodeURIComponent(
     m.leaderboard_node_provider_table_share_x_tweet_shareText()

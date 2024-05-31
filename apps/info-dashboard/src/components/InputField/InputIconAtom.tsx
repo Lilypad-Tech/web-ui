@@ -1,13 +1,18 @@
+import { CustomCSSProperties } from "@/types";
+
 interface InputIconAtomProps extends React.HTMLProps<HTMLSpanElement> {
   iconUrl?: string | undefined;
 }
 
 const InputIconAtom = ({ iconUrl, ...props }: InputIconAtomProps) => {
   const { className = "", ...rest } = props;
+  const spanStyle: CustomCSSProperties = {
+    "--icon-url": `url(${iconUrl})`,
+  };
   return (
     <span
       {...rest}
-      style={{ "--icon-url": `url(${iconUrl})` }}
+      style={spanStyle}
       className="w-uui-2xl h-uui-2xl flex-shrink-0'
       bg-uui-fg-quarterary-500
       [mask-position:center]

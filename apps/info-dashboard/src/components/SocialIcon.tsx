@@ -1,3 +1,5 @@
+import { CustomCSSProperties } from "@/types";
+
 interface SocialIconProps extends React.HTMLProps<HTMLSpanElement> {
   iconUrl: string;
   iconStyle?: "brand" | "gray";
@@ -8,11 +10,16 @@ const SocialIcon = ({
   iconStyle = "gray",
   ...props
 }: SocialIconProps) => {
+  const spanStyle: CustomCSSProperties = {
+    "--icon-url": `url(${iconUrl})`,
+  };
+
   const { className = "", ...rest } = props;
+
   return (
     <span
       {...rest}
-      style={{ "--icon-url": `url(${iconUrl})` }}
+      style={spanStyle}
       className={` ${className} h-uui-3xl w-uui-3xl block
       ${
         iconStyle === "gray"
