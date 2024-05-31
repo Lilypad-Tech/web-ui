@@ -7,7 +7,7 @@ const NavBar = () => {
         id="#top"
         className="z-40  w-full bg-uui-bg-primary fixed flex top-0 border-b-uui-1 border-b-uui-border-secondary py-uui-2xl "
       >
-        {/* Remove the mr-auto and ml-uui-none to place the navbar logo in line with the other sections */}
+        {/* Add mr-auto and ml-uui-none to the sectionContainer className with double ampersend to place the navbar logo on the left side */}
         <SectionContainer>
           <a href="/leaderboard">
             <Image

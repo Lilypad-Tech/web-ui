@@ -17,8 +17,10 @@ import TableHeaderCell from "@/components/Table/TableHeaderCell";
 import { useSearchParams } from "next/navigation";
 import HeadingSection from "@/components/HeadingSection";
 import SocialIcon from "@/components/SocialIcon";
+import * as m from "@/paraglide/messages.js";
 
 const Leaderboard: NextPage = () => {
+  // TODO add inlang to the values returned from the API after we receive the API
   const ths = [
     "Rank",
     "Wallet ID",
@@ -47,12 +49,9 @@ const Leaderboard: NextPage = () => {
   const [walletAddress, setWalletAddress] = useState(walletParams ?? undefined);
   const [tableValues, setTableValues] = useState(originalTableValues);
 
-  // states for loading, error and empty table
+  // Todo update temporary states for loading, error and empty table after receiving the API
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
-  const [isEmpty, setIsEmpty] = useState(
-    tableValues.length === 0 ? true : false
-  );
 
   useEffect(() => {
     if (walletAddress) {
@@ -66,7 +65,7 @@ const Leaderboard: NextPage = () => {
   }, [walletAddress]);
 
   const normalShareText = encodeURIComponent(
-    "I'm running a node on the Lilypad network, check out my rank on the leaderboard!"
+    m.leaderboard_node_provider_table_share_x_tweet_shareText()
   );
 
   const [twitterUrl, setTwitterUrl] = useState("");
@@ -86,8 +85,8 @@ const Leaderboard: NextPage = () => {
     <div className=" ">
       <HeadingSection
         className="pt-uui-6xl"
-        title={"Lilypad Leaderboard"}
-        subtitle={"Compete and Compare: Showcase Your Node's Performance"}
+        title={m.leaderboard_heading_title()}
+        subtitle={m.leaderboard_heading_subtitle()}
       />
       <SectionContainer className="sm:pt-uui-container-padding-desktop mx-auto pt-uui-container-padding-mobile">
         {/* Set max height & min height to make table scrollable & minimize layout shifts on state changes */}
@@ -96,14 +95,14 @@ const Leaderboard: NextPage = () => {
             cardHeader: (
               <CardHeader
                 className="sticky bg-uui-bg-primary left-0 right-0 top-0 z-10"
-                headerTitle="Node Provider Leaderbord"
-                subtitle="Enter your wallet address to see where you rank among the top Node providers."
+                headerTitle={m.leaderboard_node_provider_table_cardHeader_headerTitle()}
+                subtitle={m.leaderboard_node_provider_table_cardHeader_subtitle()}
                 trailingField={
                   <div className="w-full md:w-[26.188rem] ">
                     <InputField
                       value={walletAddress}
                       onChange={(e) => setWalletAddress(e.target.value)}
-                      placeholder="Enter wallet address"
+                      placeholder={m.leaderboard_node_provider_table_inputField_placeholder()}
                       iconUrl={generalSearchMd}
                     />
                   </div>
@@ -126,17 +125,17 @@ const Leaderboard: NextPage = () => {
                     />
                     <span className="mt-uui-md text-uui-text-md font-semibold text-center text-uui-text-primary-900">
                       {isLoading
-                        ? "Loading entries ..."
+                        ? m.leaderboard_node_provider_table_loadingState_loadingText()
                         : isError
-                        ? "404 Error"
-                        : "No entries found"}
+                        ? m.leaderboard_node_provider_table_errorState_errorText()
+                        : m.leaderboard_node_provider_table_emptyState_emptyText()}
                     </span>
                     <span className="text-uui-text-sm font-regular text-uui-text-tertiary-600 text-center">
                       {isLoading
-                        ? "This might take a moment!"
+                        ? m.leaderboard_node_provider_table_loadingState_loadingHint()
                         : isError
-                        ? "Something went wrong - try reloading the page!"
-                        : "You can either come back later, reload the page or clear your searchbar."}
+                        ? m.leaderboard_node_provider_table_errorState_errorHint()
+                        : m.leaderboard_node_provider_table_emptyState_emptyHint()}
                     </span>
                   </div>
                 </div>
@@ -204,13 +203,14 @@ const Leaderboard: NextPage = () => {
                 </tbody>
               </>
             ),
-            pagination: (
-              <div className=" sticky bg-uui-bg-primary left-0 right-0 bottom-0 flex justify-between items-center z-10">
-                <button>Left</button>
-                <h1>Header</h1>
-                <button>Right</button>
-              </div>
-            ),
+            // Todo add in pagination after we receive the paginated API
+            // pagination: (
+            //   <div className=" sticky bg-uui-bg-primary left-0 right-0 bottom-0 flex justify-between items-center z-10">
+            //     <button>Left</button>
+            //     <h1>Header</h1>
+            //     <button>Right</button>
+            //   </div>
+            // ),
           }}
         </Table>
       </SectionContainer>

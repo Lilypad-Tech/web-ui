@@ -7,6 +7,8 @@ interface FooterProps extends React.HTMLProps<HTMLDivElement> {
   footerIcon: { src: string; alt: string; href: string };
 }
 
+// TODO add footer values as props/children
+
 const Footer = ({ socialLinks, footerIcon }: FooterProps) => {
   return (
     <div className="pt-uui-9xl">
