@@ -144,11 +144,12 @@ const Leaderboard: NextPage = () => {
             tableRows: (
               <>
                 <thead>
-                  <tr className="sticky box-border top-0 bg-uui-bg-primary z-20 w-full after:w-full after:absolute after:inset-x-0 after:bottom-0 after:translate-y-1/2 after:border-t-uui-1 after:border-t-uui-border-secondary">
+                  {/* Translate -translate-y-[0.063rem] to close the 1px padding gap when sticky */}
+                  <tr className="sticky top-0 -translate-y-[0.063rem] bg-uui-bg-secondary z-20 w-full after:w-full after:absolute after:inset-x-0 after:bottom-0 after:translate-y-1/2 after:border-t-uui-1 after:border-t-uui-border-secondary">
                     {ths.map((header, i) => (
                       <th
                         key={header}
-                        className="z-10 overflow-hidden first-of-type:rounded-tl-uui-xl last-of-type:rounded-tr-uui-xl"
+                        className=""
                         colSpan={i === ths.length - 1 ? 2 : 1}
                       >
                         <TableHeaderCell>{{ title: header }}</TableHeaderCell>
