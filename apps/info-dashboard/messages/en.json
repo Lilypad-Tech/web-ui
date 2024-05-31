@@ -11,5 +11,11 @@
     "leaderboard_node_provider_table_errorState_errorText": "404 Error",
     "leaderboard_node_provider_table_errorState_errorHint": "Something went wrong - try reloading the page!",
     "leaderboard_node_provider_table_emptyState_emptyHint": "You can either come back later, reload the page or clear your searchbar.",
-    "leaderboard_node_provider_table_emptyState_emptyText": "No entries found"
+    "leaderboard_node_provider_table_emptyState_emptyText": "No entries found",
+    "leaderboard_footer_socialLinks_x_href": "https://twitter.com/lilypad_tech",
+    "leaderboard_footer_socialLinks_discord_href": "https://discord.gg/zWYTNZqB",
+    "leaderboard_footer_socialLinks_telegram_href": "https://t.me/lilypadnetwork",
+    "leaderboard_footer_socialLinks_github_href": "https://github.com/Lilypad-Tech",
+    "leaderboard_footer_socialLinks_linkedin_href": "https://www.linkedin.com/company/lilypad-network/",
+    "leaderboard_footer_socialLinks_youtube_href": " \"https://www.youtube.com/@LilypadNetwork/featured\""
 }

@@ -1,10 +1,11 @@
-import { LanguageProvider } from "@inlang/paraglide-js-adapter-next"
-import { languageTag } from "@/paraglide/runtime.js"
+import { LanguageProvider } from "@inlang/paraglide-js-adapter-next";
+import { languageTag } from "@/paraglide/runtime.js";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
+import * as m from "@/paraglide/messages.js";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,16 +16,25 @@ export const metadata: Metadata = {
 
 /* TODO check if the telegram is correct */
 const socialLinks = [
-  { href: "https://twitter.com/lilypad_tech", iconUrl: "/x.svg" },
-  { href: "https://discord.gg/zWYTNZqB", iconUrl: "/discord.svg" },
-  { href: "https://t.me/lilypadnetwork", iconUrl: "/telegram.svg" },
-  { href: "https://github.com/Lilypad-Tech", iconUrl: "/github.svg" },
+  { href: m.leaderboard_footer_socialLinks_x_href(), iconUrl: "/x.svg" },
   {
-    href: "https://www.linkedin.com/company/lilypad-network/",
+    href: m.leaderboard_footer_socialLinks_discord_href(),
+    iconUrl: "/discord.svg",
+  },
+  {
+    href: m.leaderboard_footer_socialLinks_telegram_href(),
+    iconUrl: "/telegram.svg",
+  },
+  {
+    href: m.leaderboard_footer_socialLinks_github_href(),
+    iconUrl: "/github.svg",
+  },
+  {
+    href: m.leaderboard_footer_socialLinks_linkedin_href(),
     iconUrl: "/linkedin.svg",
   },
   {
-    href: "https://www.youtube.com/@LilypadNetwork/featured",
+    href: m.leaderboard_footer_socialLinks_youtube_href(),
     iconUrl: "/youtube.svg",
   },
 ];
@@ -36,20 +46,20 @@ export default function RootLayout({
 }>) {
   return (
     <LanguageProvider>
-   <html className="uui-dark" lang={languageTag()}>
-      <body className={inter.className}>
-        <NavBar />
-        {children}
-        <Footer
-          footerIcon={{
-            src: "lilypad-logo.svg",
-            alt: "Lilypad logo",
-            href: "#top",
-          }}
-          socialLinks={socialLinks}
-        />
-      </body>
-    </html>
- </LanguageProvider>
+      <html className="uui-dark" lang={languageTag()}>
+        <body className={inter.className}>
+          <NavBar />
+          {children}
+          <Footer
+            footerIcon={{
+              src: "lilypad-logo.svg",
+              alt: "Lilypad logo",
+              href: "#top",
+            }}
+            socialLinks={socialLinks}
+          />
+        </body>
+      </html>
+    </LanguageProvider>
   );
 }
