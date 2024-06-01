@@ -2,9 +2,6 @@
 
 interface TableProps
   extends Omit<React.HTMLProps<HTMLTableElement>, "children"> {
-  isLoading?: boolean;
-  isError?: boolean;
-  isEmpty?: boolean;
   children?: TableChildren;
 }
 
