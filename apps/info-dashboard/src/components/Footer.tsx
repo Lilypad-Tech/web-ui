@@ -13,7 +13,7 @@ const Footer = ({ socialLinks, footerIcon }: FooterProps) => {
       <div className=" py-uui-6xl">
         <SectionContainer className="w-full flex flex-col lg:flex-row lg:space-y-uui-none space-y-uui-6xl md:justify-between items-center text-white">
           <div className="flex space-x-uui-3xl">
-            {socialLinks.map((link) => (
+            {socialLinks?.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
