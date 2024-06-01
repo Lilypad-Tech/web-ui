@@ -9,7 +9,7 @@ interface FooterProps extends React.HTMLProps<HTMLDivElement> {
 
 const Footer = ({ socialLinks, footerIcon }: FooterProps) => {
   return (
-    <div className="pt-uui-9xl">
+    <div className="pt-uui-9xl ">
       <div className=" py-uui-6xl">
         <SectionContainer className="w-full flex flex-col lg:flex-row lg:space-y-uui-none space-y-uui-6xl md:justify-between items-center text-white">
           <div className="flex space-x-uui-3xl">
