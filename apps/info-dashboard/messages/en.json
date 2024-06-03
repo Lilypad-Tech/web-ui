@@ -1,6 +1,6 @@
 {
     "$schema": "https://inlang.com/schema/inlang-message-format",
-    "leaderboard_heading_title": "Lilypad Leaderboard",
+    "leaderboard_heading_title": "Lilypad Leaderboard test",
     "leaderboard_heading_subtitle": "Compete and Compare: Showcase Your Node's Performance",
     "leaderboard_node_provider_table_cardHeader_headerTitle": "Node Provider Leaderbord",
     "leaderboard_node_provider_table_cardHeader_subtitle": "Enter your wallet address to see where you rank among the top Node providers.",
@@ -12,8 +12,6 @@
     "leaderboard_node_provider_table_errorState_errorHint": "Something went wrong - try reloading the page!",
     "leaderboard_node_provider_table_emptyState_emptyHint": "You can either come back later, reload the page or clear your searchbar.",
     "leaderboard_node_provider_table_emptyState_emptyText": "No entries found",
-	"not_found_message": "Oops, something went wrong! return",
+    "not_found_message": "Oops, something went wrong! return",
     "not_found_home": "home"
-
 }
-  
