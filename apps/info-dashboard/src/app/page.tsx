@@ -112,7 +112,7 @@ export default function Home() {
         />
         <meta name="robots" content="index, follow" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="canonical" href="https://yourwebsite.com/leaderboard" />
+        <link rel="canonical" href="/" />
         <meta
           property="og:title"
           content="Node Provider Leaderboard - Become the Top Node Provider!"
@@ -121,7 +121,7 @@ export default function Home() {
           property="og:description"
           content="Check out the leaderboard for decentralized compute network node providers. Compare your rank, see your reward points, and aim to be the best!"
         />
-        <meta property="og:url" content="https://yourwebsite.com/leaderboard" />
+        <meta property="og:url" content="/" />
         <meta property="og:type" content="website" />
         <script
           type="application/ld+json"
