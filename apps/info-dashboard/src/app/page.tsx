@@ -13,7 +13,6 @@ import InputField from "@/components/InputField/Inputfield";
 import SectionContainer from "@/components/SectionContainer";
 import TableLeadText from "@/components/Table/TableLeadText";
 import TableHeaderCell from "@/components/Table/TableHeaderCell";
-import Footer from "@/components/Footer";
 import { useSearchParams } from "next/navigation";
 import HeadingSection from "@/components/HeadingSection";
 import SocialIcon from "@/components/SocialIcon";
