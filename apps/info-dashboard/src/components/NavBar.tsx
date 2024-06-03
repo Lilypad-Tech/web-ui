@@ -11,7 +11,7 @@ const NavBar = () => {
         {/* Add mr-auto and ml-uui-none to the sectionContainer className with double ampersend to place the navbar logo on the left side */}
         <SectionContainer>
           {/* TODO update this href to go to the lilypad homepage in the future */}
-          <a href="/leaderboard">
+          <a href="/">
             <Image
               src="lilypad-logo.svg"
               width={155}
