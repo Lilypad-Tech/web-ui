@@ -21,7 +21,7 @@ npm run boot
 Use the following command to execute a local server to serve and hot-reload the given app:
 
 ```
-pnpm --filter <app-name> dev
+npm run dev <app-name>
 ```
 
 This will run the Next.js app located at `./apps/<app-name>`.
@@ -33,6 +33,6 @@ This is a monorepo utilizing nx and pnpm workspaces. That implies:
 - Run stuff here using pnpm (not npm).
 - The equivalent of `npx` is `pnpm dlx`.
 
-Ensure that the `app-name` property in the `package.json` matches the name you use in the command to run the application. For instance, if the `app-name` property in `package.json` is `info-dashboard`, you should use `info-dashboard` in the command as well (`pnpm --filter info-dashboard dev`).
+Ensure that the `app-name` property in the `package.json` matches the name you use in the command to run the application. For instance, if the `app-name` property in `package.json` is `info-dashboard`, you should use `info-dashboard` in the command as well (`npm run dev info-dashboard`).
 
 A good read to understand nx and pnpm workspaces and the capabilities: [https://dev.to/nx/setup-a-monorepo-with-pnpm-workspaces-and-speed-it-up-with-nx-1eem#installing-nx](https://dev.to/nx/setup-a-monorepo-with-pnpm-workspaces-and-speed-it-up-with-nx-1eem)

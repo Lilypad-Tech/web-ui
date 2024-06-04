@@ -18,28 +18,42 @@ import HeadingSection from "@/components/HeadingSection";
 import SocialIcon from "@/components/SocialIcon";
 import * as m from "@/paraglide/messages.js";
 import Head from "next/head";
-export default function Home() {
-  // TODO add inlang to the values returned from the API after we receive the API
-  const ths = [
-    "Rank",
-    "Wallet ID",
-    "Energy Provided (TFLOPS*s)",
-    "Reward Points",
-    "Share",
-  ];
 
-  const [originalTableValues, setOriginalTableValues] = useState(
-    Array.from({ length: 150 }, (_, i) => ({
-      Rank: `#${i + 1}`,
-      "Wallet ID":
-        i === 0
-          ? `0x8b01991078a3124a36b15381f76341991780163c`
-          : `0x8b01991078a3124a56b15381f76341991780163c`,
-      "Energy Provided (TFLOPS*s)": `${1310 / (i * 0.01 + 0.5)}`,
-      "Reward Points": `${10991 / (i * 0.01 + 0.5)}`,
-      Share: "share",
-    }))
-  );
+// TODO add inlang to the values returned from the API after we receive the API
+const TABLE_HEADERS = [
+  "Rank",
+  "Wallet ID",
+  "Energy Provided (TFLOPS*s)",
+  "Reward Points",
+  "Share",
+];
+const API_HOST=process.env.NEXT_PUBLIC_API_HOST
+const LEADERBOARD_URL=`${API_HOST}metrics-dashboard/leaderboard`
+
+export default function Home() {
+  const [originalTableValues, setOriginalTableValues]=useState([])
+
+  // TODO
+  // use react-query
+  useEffect(()=>{
+    if (!API_HOST) {return}
+    const run=async()=>{
+      const raw=await fetch(LEADERBOARD_URL)
+      const res=await raw.json()
+      const mapped=res
+        .sort((a, b) => Number(b.Points) - Number(a.Points))
+        .map(({ Rank, Wallet, Energy, Points }) => ({
+          Rank,
+          Wallet,
+          "Energy Provided":Energy,
+          "Reward Points":Points,
+          Share:"share",
+        }))
+      setOriginalTableValues(mapped)
+    }
+    run()
+  },[])
+
   // If a wallet address is found within the search params, filter the table values
   const searchParams = useSearchParams();
   const walletParams = searchParams.get("wallet_id");
@@ -102,6 +116,7 @@ export default function Home() {
       })),
     },
   };
+
   return (
     <>
       <Head>
@@ -191,11 +206,11 @@ export default function Home() {
                   <thead>
                     {/* Translate -translate-y-[0.063rem] to close the 1px padding gap when sticky */}
                     <tr className="sticky top-0 -translate-y-[0.063rem] bg-uui-bg-secondary z-20 w-full after:w-full after:absolute after:inset-x-0 after:bottom-0 after:translate-y-1/2 after:border-t-uui-1 after:border-t-uui-border-secondary">
-                      {ths.map((header, i) => (
+                      {TABLE_HEADERS.map((header, i) => (
                         <th
                           key={header}
                           className=""
-                          colSpan={i === ths.length - 1 ? 2 : 1}
+                          colSpan={i === TABLE_HEADERS.length - 1 ? 2 : 1}
                         >
                           <TableHeaderCell>{{ title: header }}</TableHeaderCell>
                         </th>

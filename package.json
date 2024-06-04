@@ -6,7 +6,8 @@
 	"main": "index.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"boot": "doppler run --command=\"pnpm i && pnpm -r build\""
+		"boot": "doppler run --command=\"pnpm i && pnpm -r build\"",
+		"dev": "fun() { doppler run -- pnpm --filter $@ dev; }; fun"
 	},
 	"keywords": [],
 	"author": "",
