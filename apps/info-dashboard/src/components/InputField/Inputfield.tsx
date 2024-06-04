@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import InputWrapper from "./InputWrapper";
 import InputAtom from "./InputAtom";
 import InputIconAtom from "./InputIconAtom";
-import { SearchParamsContext } from "../SearchParamsContext/SearchParamsContext";
 
 export interface InputFieldProps extends React.HTMLProps<HTMLInputElement> {
 	value?: string;

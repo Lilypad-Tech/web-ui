@@ -1,5 +1,6 @@
 "use client";
-import React, { Suspense, useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import Table from "@/components/Table/Table";
 import FeaturedIcon from "@/components/FeaturedIcon";
 import {
@@ -9,9 +10,7 @@ import {
 	generalSearchMd,
 } from "@frontline-hq/untitledui-icons";
 import CardHeader from "@/components/CardHeader";
-import InputField, {
-	InputFieldProps,
-} from "@/components/InputField/Inputfield";
+import InputField from "@/components/InputField/Inputfield";
 import SectionContainer from "@/components/SectionContainer";
 import TableLeadText from "@/components/Table/TableLeadText";
 import TableHeaderCell from "@/components/Table/TableHeaderCell";
@@ -19,6 +18,7 @@ import HeadingSection from "@/components/HeadingSection";
 import SocialIcon from "@/components/SocialIcon";
 import * as m from "@/paraglide/messages.js";
 import Head from "next/head";
+import { fetchLeaderboard } from "@/lib/fetchers/leaderboard";
 
 // TODO add inlang to the values returned from the API after we receive the API
 const TABLE_HEADERS = [
@@ -28,55 +28,16 @@ const TABLE_HEADERS = [
 	"Reward Points",
 	"Share",
 ];
-const API_HOST = process.env.NEXT_PUBLIC_API_HOST;
-// `${API_HOST}metrics-dashboard/metrics` is the endpoint for
-const LEADERBOARD_URL = `${API_HOST}metrics-dashboard/leaderboard`;
+// `${API_HOST}metrics-dashboard/metrics` is the endpoint for the metrics dashboard
 
 export default function Home() {
-	const [originalTableValues, setOriginalTableValues] = useState([]);
-
-	// TODO
-	// use react-query
-	useEffect(() => {
-		if (!API_HOST) {
-			return;
-		}
-		const run = async () => {
-			const raw = await fetch(LEADERBOARD_URL);
-			const res = await raw.json();
-			const mapped = res
-				.sort((a, b) => Number(b.Points) - Number(a.Points))
-				.map(({ Rank, Wallet, Energy, Points }) => ({
-					Rank,
-					Wallet,
-					"Energy Provided": Energy,
-					"Reward Points": Points,
-					Share: "share",
-				}));
-			setOriginalTableValues(mapped);
-		};
-		run();
-	}, []);
+	const [walletAddress, setWalletAddress] = useState("");
+	const { data, isLoading, isError } = useQuery({
+		queryFn: fetchLeaderboard,
+		queryKey: ["leaderboard"], //Array according to Documentation
+	});
 
 	// If a wallet address is found within the search params, filter the table values
-
-	const [walletAddress, setWalletAddress] = useState(undefined);
-	const [tableValues, setTableValues] = useState(originalTableValues);
-
-	// Todo update temporary states for loading, error and empty table after receiving the API
-	const [isLoading, setIsLoading] = useState(false);
-	const [isError, setIsError] = useState(false);
-
-	useEffect(() => {
-		if (walletAddress) {
-			const filteredTableValues = originalTableValues.filter((item) =>
-				item["Wallet ID"].startsWith(walletAddress)
-			);
-			setTableValues(filteredTableValues);
-		} else {
-			setTableValues(originalTableValues);
-		}
-	}, [walletAddress, originalTableValues]);
 
 	const normalShareText = encodeURIComponent(
 		m.leaderboard_node_provider_table_share_x_tweet_shareText()
@@ -89,36 +50,14 @@ export default function Home() {
 			const currentUrl = encodeURIComponent(
 				window.location.origin + window.location.pathname
 			);
+			let searchParams = new URLSearchParams(window.location.search);
+			const walletId = searchParams.get("wallet_id");
+			if (walletId) setWalletAddress(walletId);
 			setTwitterUrl(
 				`https://twitter.com/intent/tweet?text=${normalShareText}&url=${currentUrl}`
 			);
 		}
 	}, [normalShareText]);
-	const jsonLd = {
-		"@context": "https://schema.org",
-		"@type": "WebPage",
-		name: "Leaderboard - Become the Top Node Provider!",
-		description:
-			"Check out the leaderboard for decentralized compute network node providers. Compare your rank, see your reward points, and aim to be the best!",
-		url: "https://leaderboard.lilypad.tech",
-		mainEntity: {
-			"@type": "ItemList",
-			name: "Node Provider Leaderboard",
-			description:
-				"Ranking of top-performing node providers. Join the competition and climb to the top!",
-			numberOfItems: tableValues.length,
-			itemListElement: tableValues.map((item, index) => ({
-				"@type": "ListItem",
-				position: index + 1,
-				item: {
-					"@type": "Organization",
-					name: item["Wallet ID"],
-					description: `Rank: ${item["Rank"]}, Energy Provided: ${item["Energy Provided (TFLOPS*s)"]} TFLOPS*s, Reward Points: ${item["Reward Points"]} points`,
-					identifier: item["Wallet ID"],
-				},
-			})),
-		},
-	};
 
 	return (
 		<>
@@ -146,11 +85,12 @@ export default function Home() {
 				/>
 				<meta property="og:url" content="/" />
 				<meta property="og:type" content="website" />
-				<script
-					type="application/ld+json"
-					dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-				/>
 			</Head>
+			{/* <Helmet encodeSpecialCharacters={true}>
+				<script type="application/ld+json">
+					{JSON.stringify(jsonLd)}
+				</script>
+			</Helmet> */}
 			<div className=" ">
 				<HeadingSection
 					className="pt-uui-6xl"
@@ -185,7 +125,11 @@ export default function Home() {
 							tableSubstitute:
 								isLoading ||
 								isError ||
-								tableValues.length === 0 ? (
+								data?.filter((d) =>
+									walletAddress
+										? d.Wallet.includes(walletAddress)
+										: true
+								).length === 0 ? (
 									<div className="w-full h-[70vh] flex items-center flex-col justify-center space-y-uui-lg">
 										<div className="max-w-uui-width-xxs h-full px-uui-xs md:max-w-uui-width-xs flex flex-col items-center justify-center">
 											<FeaturedIcon
@@ -239,68 +183,86 @@ export default function Home() {
 										</tr>
 									</thead>
 									<tbody>
-										{tableValues.map((row, rowIndex) => (
-											<tr key={rowIndex}>
-												<td>
-													<TableLeadText>
-														{{ title: row["Rank"] }}
-													</TableLeadText>
-												</td>
-												{Object.entries(row)
-													.slice(1)
-													.map(([key, value], i) => (
-														<td key={i}>
-															{i ===
-															Object.entries(row)
-																.length -
-																2 ? (
-																<TableLeadText>
-																	{{
-																		title: (
-																			<a
-																				href={
-																					`${twitterUrl}` +
-																					"?wallet_id=" +
-																					row[
-																						"Wallet ID"
-																					]
-																				}
-																				target="_blank"
-																				rel="noopener noreferrer"
-																			>
-																				{/* TODO replace with button/social icon component */}
-																				<SocialIcon
-																					className="[&&]:h-uui-xl [&&]:w-uui-xl"
-																					iconUrl="/x.svg"
-																				/>
-																			</a>
-																		),
-																	}}
-																</TableLeadText>
-															) : key ===
-																	"Energy Provided (TFLOPS*s)" ||
-															  key ===
-																	"Reward Points" ? (
-																<TableLeadText>
-																	{{
-																		title: Number(
-																			value
-																		).toFixed(
-																			0
-																		),
-																	}}
-																</TableLeadText>
-															) : (
-																<TableLeadText>
-																	{{
-																		title: value,
-																	}}
-																</TableLeadText>
-															)}
-														</td>
-													))}
-											</tr>
-										))}
+										{data
+											?.filter((d) =>
+												walletAddress
+													? d.Wallet.includes(
+															walletAddress
+													  )
+													: true
+											)
+											.map((row, rowIndex) => (
+												<tr key={rowIndex}>
+													<td>
+														<TableLeadText>
+															{{
+																title: row[
+																	"Rank"
+																],
+															}}
+														</TableLeadText>
+													</td>
+													{Object.entries(row)
+														.slice(1)
+														.map(
+															(
+																[key, value],
+																i
+															) => (
+																<td key={i}>
+																	{i ===
+																	Object.entries(
+																		row
+																	).length -
+																		2 ? (
+																		<TableLeadText>
+																			{{
+																				title: (
+																					<a
+																						href={
+																							`${twitterUrl}` +
+																							"?wallet_id=" +
+																							row[
+																								"Wallet"
+																							]
+																						}
+																						target="_blank"
+																						rel="noopener noreferrer"
+																					>
+																						{/* TODO replace with button/social icon component */}
+																						<SocialIcon
+																							className="[&&]:h-uui-xl [&&]:w-uui-xl"
+																							iconUrl="/x.svg"
+																						/>
+																					</a>
+																				),
+																			}}
+																		</TableLeadText>
+																	) : key ===
+																			"Energy Provided" ||
+																	  key ===
+																			"Reward Points" ? (
+																		<TableLeadText>
+																			{{
+																				title: Number(
+																					value
+																				).toFixed(
+																					0
+																				),
+																			}}
+																		</TableLeadText>
+																	) : (
+																		<TableLeadText>
+																			{{
+																				title: value,
+																			}}
+																		</TableLeadText>
+																	)}
+																</td>
+															)
+														)}
+												</tr>
+											))}
 									</tbody>
 								</>
 							),

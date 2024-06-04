@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
+import ReactQueryProvider from "@/components/ReactQueryProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -46,16 +47,18 @@ export default function RootLayout({
 	return (
 		<html className="uui-dark" lang={languageTag()}>
 			<body className={inter.className}>
-				<NavBar />
-				{children}
-				<Footer
-					footerIcon={{
-						src: "lilypad-logo.svg",
-						alt: "Lilypad logo",
-						href: "#top",
-					}}
-					socialLinks={socialLinks}
-				/>
+				<ReactQueryProvider>
+					<NavBar />
+					{children}
+					<Footer
+						footerIcon={{
+							src: "lilypad-logo.svg",
+							alt: "Lilypad logo",
+							href: "#top",
+						}}
+						socialLinks={socialLinks}
+					/>
+				</ReactQueryProvider>
 			</body>
 		</html>
 	);
