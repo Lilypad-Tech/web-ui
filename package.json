@@ -5,6 +5,7 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
+		"prebuild": "curl -Ls https://cli.doppler.com/install.sh | sh",
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"boot": "doppler run --preserve-env --command=\"pnpm i && pnpm -r build\"",
 		"dev": "fun() { doppler run --preserve-env -- pnpm --filter $@ dev; }; fun"
