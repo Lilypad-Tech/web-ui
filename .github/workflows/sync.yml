@@ -1,0 +1,44 @@
+name: Deploy to Cloudflare Pages
+
+on:
+  push:
+    branches:
+      - main  # or the branch you want to deploy from
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '20'  # Use the Node.js version compatible with your project
+
+    - name: Install Doppler CLI
+      run: |
+        curl -Ls https://cli.doppler.com/install.sh | sh
+
+    - name: Set up Doppler
+      run: doppler setup --token ${{ secrets.DOPPLER_TOKEN }} --project <doppler_project> --config <doppler_config>
+
+    - name: Fetch secrets from Doppler and boot
+      run: doppler run -- npm run boot
+      env:
+        DOPPLER_TOKEN: ${{ secrets.DOPPLER_TOKEN }}
+
+    - name: Build project
+      run: doppler run -- npm run build
+      env:
+        DOPPLER_TOKEN: ${{ secrets.DOPPLER_TOKEN }}
+
+    - name: Deploy to Cloudflare Pages
+      env:
+        CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        CLOUDFLARE_PROJECT_NAME: ${{ secrets.CLOUDFLARE_PROJECT_NAME }}
+      run: |
+        npx wrangler pages publish ./out --project-name=$CLOUDFLARE_PROJECT_NAME --branch=main
