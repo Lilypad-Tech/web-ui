@@ -8,6 +8,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment: devbuild
 
     steps:
     - name: Checkout repository
@@ -27,11 +28,6 @@ jobs:
 
     - name: Fetch secrets from Doppler and boot
       run: doppler run -- npm run boot
-      env:
-        DOPPLER_TOKEN: ${{ secrets.DOPPLER_TOKEN }}
-
-    - name: Build project
-      run: doppler run -- npm run build
       env:
         DOPPLER_TOKEN: ${{ secrets.DOPPLER_TOKEN }}
 
