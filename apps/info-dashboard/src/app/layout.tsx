@@ -6,9 +6,9 @@ import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import ReactQueryProvider from "@/components/ReactQueryProvider";
 
-const inter = Inter({ subsets: ["latin"] });
+const INTER = Inter({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
+export const METADATA: Metadata = {
   title: "Lilypad Network ",
   description:
     "Track your progress and strive for the top spot on the Lilypad Network Leaderboard. ",
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 
 /* TODO check if the telegram is correct */
 
-const socialLinks = [
+const SOCIALLINKS = [
   { href: "https://twitter.com/lilypad_tech", iconUrl: "/x.svg" },
   {
     href: "https://discord.gg/zWYTNZqB",
@@ -47,7 +47,7 @@ export default function RootLayout({
 }>) {
   return (
     <html className="uui-dark" lang={languageTag()}>
-      <body className={inter.className}>
+      <body className={INTER.className}>
         <ReactQueryProvider>
           <NavBar />
           {children}
@@ -57,7 +57,7 @@ export default function RootLayout({
               alt: "Lilypad logo",
               href: "#top",
             }}
-            socialLinks={socialLinks}
+            socialLinks={SOCIALLINKS}
           />
         </ReactQueryProvider>
       </body>
