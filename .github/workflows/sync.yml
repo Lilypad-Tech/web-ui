@@ -19,6 +19,9 @@ jobs:
       with:
         node-version: '20'  # Use the Node.js version compatible with your project
 
+    - name: Install pnpm
+      run: npm install -g pnpm
+
     - name: Install Doppler CLI
       run: |
         (curl -Ls --tlsv1.2 --proto "=https" --retry 3 https://cli.doppler.com/install.sh || wget -t 3 -qO- https://cli.doppler.com/install.sh) | sudo sh
