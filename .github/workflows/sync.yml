@@ -34,6 +34,11 @@ jobs:
       env:
         DOPPLER_TOKEN: ${{ secrets.DOPPLER_TOKEN }}
 
+    - name: Clean up build output
+      working-directory: ./apps/info-dashboard/.next
+      run: |
+        rm -rf cache
+
     - name: Deploy to Cloudflare Pages
       env:
         CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
