@@ -9,7 +9,7 @@ import ReactQueryProvider from "@/components/ReactQueryProvider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Lilypad Network Leaderboard",
+  title: "Lilypad Network ",
   description:
     "Track your progress and strive for the top spot on the Lilypad Network Leaderboard. ",
 };
