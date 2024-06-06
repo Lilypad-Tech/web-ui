@@ -20,10 +20,10 @@ jobs:
 
     - name: Install Doppler CLI
       run: |
-        curl -Ls https://cli.doppler.com/install.sh | sudo sh
+        (curl -Ls --tlsv1.2 --proto "=https" --retry 3 https://cli.doppler.com/install.sh || wget -t 3 -qO- https://cli.doppler.com/install.sh) | sudo sh
 
     - name: Set up Doppler
-      run: doppler setup --token ${{ secrets.DOPPLER_TOKEN }} --project 'web-ui' --config 'dev'
+      run: doppler configure set token ${{ secrets.DOPPLER_TOKEN }}
 
     - name: Fetch secrets from Doppler and boot
       run: doppler run -- npm run boot
