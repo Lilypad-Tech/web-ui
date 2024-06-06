@@ -40,4 +40,4 @@ jobs:
         CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         CLOUDFLARE_PROJECT_NAME: ${{ secrets.CLOUDFLARE_PROJECT_NAME }}
       run: |
-        npx wrangler pages publish ./out --project-name=$CLOUDFLARE_PROJECT_NAME --branch=main
+        npx wrangler pages deploy ./apps/info-dashboard/ --project-name=$CLOUDFLARE_PROJECT_NAME --branch=main
