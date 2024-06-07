@@ -8,7 +8,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    environment: devbuild
+    environment: testnet
 
     steps:
     - name: Checkout repository
