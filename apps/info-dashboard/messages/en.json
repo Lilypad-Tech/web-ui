@@ -12,6 +12,10 @@
     "leaderboard_node_provider_table_errorState_errorHint": "Something went wrong - try reloading the page!",
     "leaderboard_node_provider_table_emptyState_emptyHint": "You can either come back later, reload the page or clear your searchbar.",
     "leaderboard_node_provider_table_emptyState_emptyText": "No entries found",
+    "leaderboard_node_provider_table_first_status": "Lily Titan",
+    "leaderboard_node_provider_table_second_status": "Lily Legend",
+    "leaderboard_node_provider_table_third_status": "Lily Wizard",
+    "leaderboard_node_provider_table_last_status": "Lily Machine",
     "not_found_message": "Oops, something went wrong! return",
     "not_found_home": "home"
 }

@@ -8,6 +8,10 @@ import {
   alertAndFeedbackAlertCircle,
   generalSearchLg,
   generalSearchMd,
+  weatherLightning02,
+  financeAndEcommerceDiamond01,
+  editorMagicWand02,
+  developmentCpuChip02,
 } from "@frontline-hq/untitledui-icons";
 import CardHeader from "@/components/CardHeader";
 import InputField from "@/components/InputField/Inputfield";
@@ -19,10 +23,12 @@ import SocialIcon from "@/components/SocialIcon";
 import * as m from "@/paraglide/messages.js";
 import Head from "next/head";
 import { fetchLeaderboard } from "@/lib/fetchers/leaderboard";
+import Badge from "@/components/Badge/Badge";
 
 // TODO add inlang to the values returned from the API after we receive the API
 const TABLE_HEADERS = [
   "Rank",
+  "Status",
   "Wallet ID",
   "Energy Provided (TFLOPS*s)",
   "Reward Points",
@@ -37,9 +43,7 @@ export default function Home() {
     queryKey: ["leaderboard"], //Array according to Documentation
   });
 
-  // If a wallet address is found within the search params, filter the table values
-
-  const normaleShareText = encodeURIComponent(
+  const normalShareText = encodeURIComponent(
     m.leaderboard_node_provider_table_share_x_tweet_shareText()
   );
 
@@ -54,10 +58,10 @@ export default function Home() {
       const walletId = searchParams.get("wallet_id");
       if (walletId) setWalletAddress(walletId);
       setTwitterUrl(
-        `https://twitter.com/intent/tweet?text=${normaleShareText}&url=${currentUrl}`
+        `https://twitter.com/intent/tweet?text=${normalShareText}&url=${currentUrl}`
       );
     }
-  }, [normaleShareText]);
+  }, [normalShareText]);
 
   return (
     <>
@@ -178,6 +182,46 @@ export default function Home() {
                               }}
                             </TableLeadText>
                           </td>
+                          <td>
+                            <TableLeadText>
+                              {{
+                                title: (
+                                  <Badge
+                                    badgeType="Pill outline"
+                                    color={
+                                      rowIndex < 5
+                                        ? "warning"
+                                        : rowIndex < 15
+                                        ? "pink"
+                                        : rowIndex < 35
+                                        ? "brand"
+                                        : "gray"
+                                    }
+                                    size="sm"
+                                    icon={{
+                                      type: "icon",
+                                      leading:
+                                        rowIndex < 5
+                                          ? weatherLightning02
+                                          : rowIndex < 15
+                                          ? financeAndEcommerceDiamond01
+                                          : rowIndex < 35
+                                          ? editorMagicWand02
+                                          : developmentCpuChip02,
+                                    }}
+                                  >
+                                    {rowIndex < 5
+                                      ? m.leaderboard_node_provider_table_first_status()
+                                      : rowIndex < 15
+                                      ? m.leaderboard_node_provider_table_second_status()
+                                      : rowIndex < 35
+                                      ? m.leaderboard_node_provider_table_third_status()
+                                      : m.leaderboard_node_provider_table_last_status()}
+                                  </Badge>
+                                ),
+                              }}
+                            </TableLeadText>
+                          </td>
                           {Object.entries(row)
                             .slice(1)
                             .map(([key, value], i) => (
@@ -195,7 +239,6 @@ export default function Home() {
                                           target="_blank"
                                           rel="noopener noreferrer"
                                         >
-                                          {/* TODO replace with button/social icon component */}
                                           <SocialIcon
                                             className="[&&]:h-uui-xl [&&]:w-uui-xl"
                                             iconUrl="/x.svg"
