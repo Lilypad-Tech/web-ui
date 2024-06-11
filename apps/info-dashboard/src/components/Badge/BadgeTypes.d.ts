@@ -1,17 +1,14 @@
-export type BadgeStyleLayers = {
-  "Pill outline": {
-    gray: string;
-    brand: string;
-    warning: string;
-    pink: string;
-  };
-};
+export type BadgeColor =
+  | "gray"
+  | "brand"
+  | "warning"
+  | "pink"
+  | "error"
+  | "success";
 
-export type BadgeColor = "gray" | "brand" | "warning" | "pink";
+export type BadgeType = "Pill outline" | "Pill color";
 
-export type BadgeType = "Pill outline";
-
-export type BadgeSize = "sm";
+export type BadgeSize = "sm" | "md";
 
 export type BadgeIcon = {
   type: "icon";
