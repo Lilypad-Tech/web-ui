@@ -1,4 +1,3 @@
-import { BadgeStyleLayers } from "./BadgeTypes";
 import type { BadgeColor, BadgeSize, BadgeType } from "./BadgeTypes";
 
 interface BadgeWrapperProps
@@ -19,19 +18,41 @@ const BadgeWrapper = ({
   const layer1 =
     "group flex justify-center items-center focus-visible:outline-none focus:outline-none";
 
-  const backgroundLayer: BadgeStyleLayers = {
+  const backgroundLayer = {
     "Pill outline": {
       gray: "text-uui-utility-gray-600 ring-uui-utility-gray-700 ring-[0.09375rem] rounded-full",
       brand:
         "text-uui-utility-brand-600 ring-uui-utility-brand-700 ring-[0.09375rem] rounded-full",
+      error:
+        "text-uui-utility-error-600 ring-uui-utility-error-700 ring-[0.09375rem] rounded-full",
       warning:
         "text-uui-utility-warning-600 ring-uui-utility-warning-700 ring-[0.09375rem] rounded-full",
+      success:
+        "text-uui-utility-success-600 ring-uui-utility-success-700 ring-[0.09375rem] rounded-full",
       pink: "text-uui-utility-pink-600 ring-uui-utility-pink-700 ring-[0.09375rem] rounded-full",
+    },
+    "Pill color": {
+      gray: "bg-uui-utility-gray-50 text-uui-utility-gray-700 ring-uui-utility-gray-200 ring-[0.063rem] rounded-full",
+      brand:
+        "bg-uui-utility-brand-50 text-uui-utility-brand-700 ring-uui-utility-brand-200 ring-[0.063rem] rounded-full",
+      error:
+        "bg-uui-utility-error-50 text-uui-utility-error-700 ring-uui-utility-error-200 ring-[0.063rem] rounded-full",
+      warning:
+        "bg-uui-utility-warning-50 text-uui-utility-warning-700 ring-uui-utility-warning-200 ring-[0.063rem] rounded-full",
+      success:
+        "bg-uui-utility-success-50 text-uui-utility-success-700 ring-uui-utility-success-200 ring-[0.063rem] rounded-full",
+      "gray-blue":
+        "bg-uui-utility-gray-blue-50 text-uui-utility-gray-blue-600 ring-uui-utility-gray-blue-200 ring-[0.063rem] rounded-full",
+      "blue-light":
+        "bg-uui-utility-blue-light-50 text-uui-utility-blue-light-600 ring-uui-utility-blue-light-200 ring-[0.063rem] rounded-full",
+
+      pink: "bg-uui-utility-pink-50 text-uui-utility-pink-700 ring-uui-utility-pink-200 ring-[0.063rem] rounded-full",
     },
   };
 
   const sizes = {
     sm: "px-uui-md py-uui-xxs gap-uui-sm ",
+    md: "px-[var(--uui-spacing-2-5)] py-uui-xxs gap-uui-md",
   };
 
   const onClickClasses = "pointer-events-auto";
