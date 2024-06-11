@@ -7,7 +7,7 @@ type BadgeTextAtomProps = {
 
 const BadgeTextAtom = ({ children, size }: BadgeTextAtomProps) => {
   const layer1 = "antialiased font-medium";
-  const sizes = { sm: "uui-text-xs" };
+  const sizes = { sm: "uui-text-xs", md: "uui-text-sm" };
 
   const classes = `${layer1} ${sizes[size]}`;
 
