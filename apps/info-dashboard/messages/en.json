@@ -16,8 +16,12 @@
 	"leaderboard_node_provider_table_second_status": "Lily Legend",
 	"leaderboard_node_provider_table_third_status": "Lily Wizard",
     "leaderboard_node_provider_table_last_status": "Lily Machine",
-
-
+     
+    "metrics_heading_title": "Metrics Dashboard",
+	"metrics_heading_subtitle": "Decentralized Computing: Performance Insights.",
+	"metrics_card_1_title": "Total jobs completed",
+	"metrics_card_2_title": "Active nodes",
+	"metrics_card_3_title": "Total Hash-rate",
 
     "not_found_message": "Oops, something went wrong! return",
     "not_found_home": "home"
