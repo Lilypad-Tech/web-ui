@@ -1,17 +1,16 @@
 interface MetricsCardProps
 	extends Omit<React.HTMLAttributes<HTMLDivElement>, "children"> {
 	title: string;
-	header: string;
 	children?: MetricsCardChildrenProps;
 }
 
 interface MetricsCardChildrenProps {
 	badge?: React.ReactNode;
+	header?: React.ReactNode;
 }
 
 const MetricsCard: React.FC<MetricsCardProps> = ({
 	title,
-	header,
 	children,
 	...props
 }) => {
@@ -27,7 +26,7 @@ const MetricsCard: React.FC<MetricsCardProps> = ({
 				<div className="flex items-end justify-between space-x-uui-xl">
 					<div>
 						<h2 className=" uui-display-md text-uui-text-primary-900 font-semibold">
-							{header}
+							{children?.header}
 						</h2>
 					</div>
 					<div className="pb-uui-md">{children?.badge}</div>

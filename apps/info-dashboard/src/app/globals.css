@@ -4,15 +4,31 @@
 @tailwind utilities;
 
 @layer components {
-  .no-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
+	.no-scrollbar {
+		-ms-overflow-style: none;
+		scrollbar-width: none;
+	}
+	.no-scrollbar::-webkit-scrollbar {
+		display: none;
+	}
 }
 
 html {
-  scroll-behavior: smooth;
+	scroll-behavior: smooth;
+}
+
+.recharts-cartesian-axis-tick-value {
+	@apply uui-text-xs font-regular fill-uui-text-tertiary-600;
+}
+.recharts-cartesian-axis-line {
+	@apply stroke-none;
+}
+.recharts-cartesian-axis-tick-line {
+	@apply stroke-none;
+}
+.recharts-cartesian-grid-horizontal line {
+	@apply stroke-uui-border-secondary stroke-1;
+}
+.recharts-curve.recharts-area-curve {
+	@apply stroke-2 stroke-uui-utility-brand-600;
 }
