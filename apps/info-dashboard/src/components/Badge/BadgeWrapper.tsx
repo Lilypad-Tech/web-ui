@@ -16,7 +16,7 @@ const BadgeWrapper = ({
   ...props
 }: BadgeWrapperProps) => {
   const layer1 =
-    "group flex justify-center items-center focus-visible:outline-none focus:outline-none";
+    "group flex justify-center items-center focus-visible:outline-none focus:outline-none whitespace-nowrap";
 
   const backgroundLayer = {
     "Pill outline": {
