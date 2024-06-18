@@ -39,7 +39,6 @@ export default function Home() {
 		Nodes: toChartData(data?.Nodes ?? []),
 		JobsCompleted: toChartData(data?.JobsCompleted ?? []),
 	};
-	console.log(data);
 	return (
 		<>
 			<Head>
