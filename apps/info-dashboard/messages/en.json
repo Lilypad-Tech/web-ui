@@ -1,7 +1,7 @@
 {
     "$schema": "https://inlang.com/schema/inlang-message-format",
     "leaderboard_heading_title": "Lilypad Leaderboard",
-    "leaderboard_heading_subtitle": "Compete and Compare: Showcase Your Node's Performance. To learn more about running your own node <a href='https://lilypad.tech' target='_blank'>check out the docs</a>",
+    "leaderboard_heading_subtitle": "Compete and Compare: Showcase Your Node's Performance. ",
     "leaderboard_node_provider_table_cardHeader_headerTitle": "Node Provider Leaderbord",
     "leaderboard_node_provider_table_cardHeader_subtitle": "Enter your wallet address to see where you rank among the top Node providers.",
     "leaderboard_node_provider_table_inputField_placeholder": "Enter wallet address",
