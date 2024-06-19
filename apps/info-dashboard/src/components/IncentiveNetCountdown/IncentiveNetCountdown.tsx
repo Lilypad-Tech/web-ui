@@ -36,6 +36,7 @@ export default function IncentiveNetCountdown() {
 				? m.incentivenet_launch_countdown_before_launch({
 						time: durationToIncentivenet.toHuman({
 							maximumFractionDigits: 0,
+							unitDisplay: "narrow",
 						}),
 				  })
 				: durationToIncentivenet.days > -1
