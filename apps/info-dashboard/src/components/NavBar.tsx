@@ -44,7 +44,7 @@ export default function NavBar({
 		>
 			<div
 				id="#top"
-				className="z-40 w-full bg-uui-bg-primary sticky flex top-0 border-b-uui-1 border-b-uui-border-secondary uui-desktop:py-uui-2xl py-uui-xl"
+				className="w-full bg-uui-bg-primary flex border-b-uui-1 border-b-uui-border-secondary uui-desktop:py-uui-2xl py-uui-xl"
 			>
 				{/* Add mr-auto and ml-uui-none to the sectionContainer className with double ampersend to place the navbar logo on the left side */}
 				<SectionContainer>
@@ -65,7 +65,7 @@ export default function NavBar({
 			</div>
 			<div
 				className={twMerge(
-					"flex flex-col uui-desktop:hidden items-center justify-between p-uui-5xl fixed inset-0 z-50 bg-uui-bg-primary",
+					"flex flex-col uui-desktop:hidden items-center justify-between p-uui-5xl fixed inset-0 z-10 bg-uui-bg-primary",
 					(openedState ? openedState.opened : menuOpened)
 						? ""
 						: "hidden"

@@ -42,5 +42,13 @@
 	"metrics_footer_social_link_youtube": "https://www.youtube.com/@LilypadNetwork/featured",
 	"metrics_navbar_lilypad_logo_alt": "Lilypad logo",
 	"info_dashboard_page_meta_title": "Lilypad Network",
-	"info_dashboard_page_meta_description": "Track your progress and strive for the top spot on the Lilypad Network Leaderboard. "
+	"info_dashboard_page_meta_description": "Track your progress and strive for the top spot on the Lilypad Network Leaderboard. ",
+	"incentivenet_banner_text": "IncentiveNet",
+	"incentivenet_banner_dismiss_text": "Dismiss",
+	"incentivenet_banner_learn_more_text": "Learn more",
+	"incentivenet_banner_learn_more_link": "https://blog.lilypad.tech/incentivenet",
+	"incentivenet_launch_timestamptz": "2024-06-24T00:00:00.000Z",
+	"incentivenet_launch_countdown_before_launch": "Lilypad Incentivised Testnet Program launches in {time}!",
+	"incentivenet_launch_countdown_at_launch": "Join us on today's launch of Lilypad Incentivised Testnet Program!",
+	"incentivenet_launch_countdown_after_launch": "Lilypad Incentivised Testnet Program launched on {time}."
 }
