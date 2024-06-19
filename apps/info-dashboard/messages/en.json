@@ -1,7 +1,7 @@
 {
     "$schema": "https://inlang.com/schema/inlang-message-format",
     "leaderboard_heading_title": "Lilypad Leaderboard",
-    "leaderboard_heading_subtitle": "Compete and Compare: Showcase Your Node's Performance",
+    "leaderboard_heading_subtitle": "Compete and Compare: Showcase Your Node's Performance. To learn more about running your own node <a href='https://lilypad.tech' target='_blank'>check out the docs</a>",
     "leaderboard_node_provider_table_cardHeader_headerTitle": "Node Provider Leaderbord",
     "leaderboard_node_provider_table_cardHeader_subtitle": "Enter your wallet address to see where you rank among the top Node providers.",
     "leaderboard_node_provider_table_inputField_placeholder": "Enter wallet address",
@@ -12,7 +12,7 @@
     "leaderboard_node_provider_table_errorState_errorHint": "Something went wrong - try reloading the page!",
     "leaderboard_node_provider_table_emptyState_emptyHint": "You can either come back later, reload the page or clear your searchbar.",
     "leaderboard_node_provider_table_emptyState_emptyText": "No entries found",
-    "leaderboard_node_provider_table_first_status": "Lily title test",
+    "leaderboard_node_provider_table_first_status": "Lily Titan",
     "leaderboard_node_provider_table_second_status": "Lily Legend",
     "leaderboard_node_provider_table_third_status": "Lily Wizard",
     "leaderboard_node_provider_table_last_status": "Lily Machine",
