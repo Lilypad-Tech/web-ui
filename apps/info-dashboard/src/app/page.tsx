@@ -14,7 +14,7 @@ import {
 	generalLoading01,
 	generalSearchLg,
 } from "@frontline-hq/untitledui-icons";
-import ChartCard from "@/components/ChartCard/ChartCard";
+import CardWithBorder from "@/components/CardWithBorder/CardWithBorder";
 import {
 	Area,
 	AreaChart,
@@ -140,7 +140,7 @@ export default function Home() {
 				<SectionContainer className="mx-auto pt-uui-4xl w-full justify-between flex uui-desktop:gap-uui-3xl gap-uui-2xl sm:flex-row flex-col  snap-x overflow-x-auto no-scrollbar">
 					{(["Nodes", "JobsCompleted"] as const).map((key, id) => {
 						return (
-							<ChartCard
+							<CardWithBorder
 								key={id}
 								title={
 									key === "Nodes"
@@ -273,7 +273,7 @@ export default function Home() {
 										</>
 									)}
 								</div>
-							</ChartCard>
+							</CardWithBorder>
 						);
 					})}
 				</SectionContainer>
