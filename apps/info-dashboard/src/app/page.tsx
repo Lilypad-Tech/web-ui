@@ -29,6 +29,7 @@ import RandomHexSpan from "@/components/Random/RandomHexSpan";
 import FeaturedIcon from "@/components/FeaturedIcon";
 import { DateTime } from "luxon";
 import EmptyState from "@/components/EmptyState/EmptyState";
+import ActiveNodesWorldMap from "@/components/ActiveNodesWorldMap/ActiveNodesWorldMap";
 
 export default function Home() {
 	const { data, isLoading, isError } = useQuery({
@@ -276,6 +277,18 @@ export default function Home() {
 							</CardWithBorder>
 						);
 					})}
+				</SectionContainer>
+				<SectionContainer className=" mx-auto pt-uui-4xl w-full justify-between flex uui-desktop:gap-uui-3xl gap-uui-2xl sm:flex-row flex-col  snap-x overflow-x-auto no-scrollbar">
+					<CardWithBorder
+						title={m.metrics_active_nodes_world_map_title()}
+					>
+						<ActiveNodesWorldMap
+							protomapsApiKey={
+								process.env
+									.NEXT_PUBLIC_PROTOMAPS_API_KEY as string
+							}
+						/>
+					</CardWithBorder>
 				</SectionContainer>
 			</div>
 		</>

@@ -50,5 +50,6 @@
 	"incentivenet_launch_timestamptz": "2024-06-24T00:00:00.000Z",
 	"incentivenet_launch_countdown_before_launch": "Lilypad Incentivised Testnet Program launches in {time}!",
 	"incentivenet_launch_countdown_at_launch": "Join us on today's launch of Lilypad Incentivised Testnet Program!",
-	"incentivenet_launch_countdown_after_launch": "Lilypad Incentivised Testnet Program launched on {time}."
+	"incentivenet_launch_countdown_after_launch": "Lilypad Incentivised Testnet Program launched on {time}.",
+	"metrics_active_nodes_world_map_title": "Active nodes world distribution"
 }
