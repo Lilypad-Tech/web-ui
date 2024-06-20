@@ -31,6 +31,8 @@ export default function ActiveNodesWorldMap({
 					overflow: "hidden",
 				}}
 				mapStyle={getStyle(protomapsApiKey)}
+				cooperativeGestures={true}
+				cursor="pointer"
 			>
 				<Source type="geojson" data={geojson}>
 					<Layer
