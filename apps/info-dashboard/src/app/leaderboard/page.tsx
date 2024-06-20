@@ -22,7 +22,7 @@ import HeadingSection from "@/components/HeadingSection";
 import SocialIcon from "@/components/SocialIcon";
 import * as m from "@/paraglide/messages.js";
 import Head from "next/head";
-import { fetchLeaderboard } from "@/lib/fetchers/leaderboard";
+import { fetchLeaderboard, toTableData } from "@/lib/fetchers/leaderboard";
 import Badge from "@/components/Badge/Badge";
 import EmptyState from "@/components/EmptyState/EmptyState";
 
@@ -187,8 +187,8 @@ export default function Leaderboard() {
 										</tr>
 									</thead>
 									<tbody>
-										{data
-											?.filter((d) =>
+										{toTableData(data ?? [])
+											.filter((d) =>
 												walletAddress
 													? d.Wallet.includes(
 															walletAddress
