@@ -8,7 +8,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    environment: devdeploy
+    environment: testnet
 
     steps:
     - name: Checkout repository
@@ -43,6 +43,6 @@ jobs:
       env:
         CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
         CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-        CLOUDFLARE_PROJECT_NAME: ${{ secrets.CLOUDFLARE_PROJECT_NAME }}
+        CLOUDFLARE_PROJECT_NAME: "devwebui"
       run: |
         npx wrangler pages deploy ./apps/info-dashboard/out --project-name=$CLOUDFLARE_PROJECT_NAME --branch=main
