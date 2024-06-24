@@ -3,12 +3,12 @@ name: Deploy to Cloudflare Pages
 on:
   push:
     branches:
-      - main  # or the branch you want to deploy from
+      - nadiem/feat-add-metrics-page  # or the branch you want to deploy from
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    environment: testnet
+    environment: devdeploy
 
     steps:
     - name: Checkout repository
@@ -27,12 +27,12 @@ jobs:
         (curl -Ls --tlsv1.2 --proto "=https" --retry 3 https://cli.doppler.com/install.sh || wget -t 3 -qO- https://cli.doppler.com/install.sh) | sudo sh
 
     - name: Set up Doppler
-      run: doppler configure set token ${{ secrets.TESTNET_DOPPLER_TOKEN }}
+      run: doppler configure set token ${{ secrets.DEVDEPLOY_DOPPLER_TOKEN }}
 
     - name: Fetch secrets from Doppler and boot
       run: doppler run -- npm run boot
       env:
-        DOPPLER_TOKEN: ${{ secrets.TESTNET_DOPPLER_TOKEN }}
+        DOPPLER_TOKEN: ${{ secrets.DEVDEPLOY_DOPPLER_TOKEN }}
 
     - name: Clean up build output
       working-directory: ./apps/info-dashboard/.next
@@ -41,8 +41,8 @@ jobs:
 
     - name: Deploy to Cloudflare Pages
       env:
-        CLOUDFLARE_API_TOKEN: ${{ secrets.TESTNET_CLOUDFLARE_API_TOKEN }}
-        CLOUDFLARE_ACCOUNT_ID: ${{ secrets.TESTNET_CLOUDFLARE_ACCOUNT_ID }}
-        CLOUDFLARE_PROJECT_NAME: ${{ secrets.TESTNET_CLOUDFLARE_PROJECT_NAME }}
+        CLOUDFLARE_API_TOKEN: ${{ secrets.DEVDEPLOY_CLOUDFLARE_API_TOKEN }}
+        CLOUDFLARE_ACCOUNT_ID: ${{ secrets.DEVDEPLOY_CLOUDFLARE_ACCOUNT_ID }}
+        CLOUDFLARE_PROJECT_NAME: ${{ secrets.DEVDEPLOY_CLOUDFLARE_PROJECT_NAME }}
       run: |
         npx wrangler pages deploy ./apps/info-dashboard/out --project-name=$CLOUDFLARE_PROJECT_NAME --branch=main
