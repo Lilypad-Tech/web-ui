@@ -1,26 +1,29 @@
+import { PropsWithChildren, ReactNode } from "react";
+
 interface TableHeaderCellChildren {
-  title?: React.ReactNode;
+	title?: React.ReactNode;
 }
 
 interface TableHeaderCellProps
-  extends Omit<React.HTMLProps<HTMLDivElement>, "children"> {
-  children?: TableHeaderCellChildren;
-}
+	extends PropsWithChildren<{ className?: string; title?: ReactNode }> {}
 
-const TableHeaderCell = ({ children, ...props }: TableHeaderCellProps) => {
-  const { className = "", ...rest } = props;
-  return (
-    <div
-      className={`${className} bg-uui-bg-secondary px-uui-3xl py-uui-xl flex items-center justify-start`}
-      {...rest}
-    >
-      {children?.title ? (
-        <span className="text-uui-text-xs antialiased text-uui-text-tertiary-600 font-medium text-left ">
-          {children.title}
-        </span>
-      ) : null}
-    </div>
-  );
+const TableHeaderCell = ({
+	children,
+	title,
+	...props
+}: TableHeaderCellProps) => {
+	const { className = "", ...rest } = props;
+	return (
+		<div
+			className={`${className} bg-uui-bg-secondary px-uui-3xl py-uui-xl flex items-center justify-start gap-uui-sm`}
+			{...rest}
+		>
+			<span className="uui-text-xs text-uui-text-tertiary-600 font-medium text-left ">
+				{title}
+			</span>
+			{children}
+		</div>
+	);
 };
 
 export default TableHeaderCell;
