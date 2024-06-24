@@ -1,11 +1,16 @@
 import type { BadgeColor, BadgeSize, BadgeType } from "./BadgeTypes";
 
 interface BadgeWrapperProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "children"> {
   color: BadgeColor;
   badgeType: BadgeType;
-  children: React.ReactNode;
+  children: BadgeWrapperChildrenProps;
   size: BadgeSize;
+}
+
+interface BadgeWrapperChildrenProps {
+  iconLeading?: React.ReactNode;
+  default?: React.ReactNode;
 }
 
 const BadgeWrapper = ({
@@ -48,6 +53,18 @@ const BadgeWrapper = ({
 
       pink: "bg-uui-utility-pink-50 text-uui-utility-pink-700 ring-uui-utility-pink-200 ring-[0.063rem] rounded-full",
     },
+    "Badge modern": {
+      gray: "bg-uui-utility-white text-uui-utility-gray-700 ring-uui-utility-gray-300 ring-[0.063rem] rounded-lg shadow-uui-utility-xs",
+      brand:
+        "bg-uui-utility-white text-uui-utility-gray-700 ring-uui-utility-gray-300 ring-[0.063rem] rounded-lg shadow-uui-utility-xs",
+      error:
+        "bg-uui-utility-white text-uui-utility-gray-700 ring-uui-utility-gray-300 ring-[0.063rem] rounded-lg shadow-uui-utility-xs",
+      warning:
+        "bg-uui-utility-white text-uui-utility-gray-700 ring-uui-utility-gray-300 ring-[0.063rem] rounded-lg shadow-uui-utility-xs",
+      success:
+        "bg-uui-utility-white text-uui-utility-gray-700 ring-uui-utility-gray-300 ring-[0.063rem] rounded-lg shadow-uui-utility-xs",
+      pink: "bg-uui-utility-white text-uui-utility-gray-700 ring-uui-utility-gray-300 ring-[0.063rem] rounded-lg shadow-uui-utility-xs",
+    },
   };
 
   const sizes = {
@@ -64,7 +81,8 @@ const BadgeWrapper = ({
 
   return (
     <button {...props} className={classes + " " + props.className}>
-      {children}
+      {children.iconLeading}
+      {children.default}
     </button>
   );
 };

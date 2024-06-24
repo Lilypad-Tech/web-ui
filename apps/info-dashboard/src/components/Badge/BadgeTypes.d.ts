@@ -6,11 +6,11 @@ export type BadgeColor =
   | "error"
   | "success";
 
-export type BadgeType = "Pill outline" | "Pill color";
+export type BadgeType = "Pill outline" | "Pill color" | "Badge modern";
 
 export type BadgeSize = "sm" | "md";
 
 export type BadgeIcon = {
-  type: "icon";
+  type: "icon" | "dot";
   leading?: string;
 } & React.HTMLAttributes<HTMLSpanElement>;
