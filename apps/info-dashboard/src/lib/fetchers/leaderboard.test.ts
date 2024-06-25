@@ -3,41 +3,41 @@ import { LeaderboardReturnType, toTableData } from "./leaderboard";
 import { NodesEndpointReturnType } from "./nodes";
 
 describe("toTableData", () => {
-  test("sort", () => {
-    const leaderboardData = [
-      { Points: "300", Energy: "500", Rank: "2", Wallet: "a" },
-      { Points: "500", Energy: "700", Rank: "1", Wallet: "b" },
-    ] as LeaderboardReturnType;
-    const nodesData = [
-      {
-        ID: "a",
-        CPU: 0,
-        GPU: 0,
-        RAM: 0,
-        Online: true,
-        ConnectedSince: 0,
-        CountryCode: "AU",
-        Region: "Region",
-        City: "City",
-        Latitude: 0,
-        Longitude: 0,
-      },
-      {
-        ID: "b",
-        CPU: 0,
-        GPU: 0,
-        RAM: 0,
-        Online: false,
-        ConnectedSince: 0,
-        CountryCode: "AU",
-        Region: "Region",
-        City: "City",
-        Latitude: 0,
-        Longitude: 0,
-      },
-    ] as NodesEndpointReturnType;
-    const result = toTableData({ leaderboardData, nodesData });
-    expect(result).toMatchInlineSnapshot(`
+	test("sort", () => {
+		const leaderboardData = [
+			{ Points: "300", Energy: "500", Rank: "2", Wallet: "a" },
+			{ Points: "500", Energy: "700", Rank: "1", Wallet: "b" },
+		] as LeaderboardReturnType;
+		const nodesData = [
+			{
+				ID: "a",
+				CPU: 0,
+				GPU: 0,
+				RAM: 0,
+				Online: true,
+				ConnectedSince: 0,
+				CountryCode: "AU",
+				Region: "Region",
+				City: "City",
+				Latitude: 0,
+				Longitude: 0,
+			},
+			{
+				ID: "b",
+				CPU: 0,
+				GPU: 0,
+				RAM: 0,
+				Online: false,
+				ConnectedSince: 0,
+				CountryCode: "AU",
+				Region: "Region",
+				City: "City",
+				Latitude: 0,
+				Longitude: 0,
+			},
+		] as NodesEndpointReturnType;
+		const result = toTableData({ leaderboardData, nodesData });
+		expect(result).toMatchInlineSnapshot(`
 			[
 			  {
 			    "Hashrate": "700",
@@ -81,5 +81,5 @@ describe("toTableData", () => {
 			  },
 			]
 		`);
-  });
+	});
 });
