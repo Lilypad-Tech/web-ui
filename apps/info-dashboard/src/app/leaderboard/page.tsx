@@ -276,7 +276,7 @@ export default function Leaderboard() {
 														<TableLeadText
 															title={
 																row[
-																	"Energy Provided"
+																	"Hashrate"
 																]
 															}
 														/>

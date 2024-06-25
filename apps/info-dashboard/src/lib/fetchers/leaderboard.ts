@@ -62,7 +62,7 @@ export function toTableData({
 					  } as const);
 			return result;
 		})(),
-		"Energy Provided": Energy,
+		Hashrate: Energy,
 		"Reward Points": "n.a.",
 		Status: (() => {
 			const online = nodesData.find(
@@ -134,7 +134,7 @@ export function getHeaderData() {
 			tooltip: undefined,
 		},
 		{
-			name: "Energy Provided",
+			name: "Hashrate",
 			translation: m.leaderboard_header_titles_energy_provided(),
 			tooltip: {
 				title: m.leaderboard_header_tooltip_title_energy_provided(),
