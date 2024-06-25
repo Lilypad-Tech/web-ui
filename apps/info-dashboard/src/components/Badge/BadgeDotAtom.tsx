@@ -16,7 +16,7 @@ const BadgeDotAtom = ({
   size,
   ...props
 }: BadgeDotAtomProps) => {
-  const layer1 = " {tdc.styles.layer1.join(' ')}  ";
+  const layer1 = "  [&&]:h-[0.5rem] [&&]:w-[0.5rem] ";
   return (
     <BadgeIconAtom
       {...props}
