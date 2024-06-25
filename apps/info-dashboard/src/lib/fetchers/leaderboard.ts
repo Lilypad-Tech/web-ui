@@ -154,7 +154,10 @@ export function getHeaderData() {
 		{
 			name: "Status",
 			translation: m.leaderboard_header_titles_status(),
-			tooltip: undefined,
+			tooltip: {
+				title: m.leaderboard_header_tooltip_title_status(),
+				description: m.leaderboard_header_tooltip_description_status(),
+			},
 		},
 		{
 			name: "Share",
