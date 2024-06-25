@@ -56,8 +56,25 @@ export function toTableData(data: LeaderboardReturnType) {
 			})(),
 			"Energy Provided": Energy,
 			"Reward Points": Points,
-			Status: Math.random() > 0.5 ? true : false,
-			Share: "share",
+			Status: (() => {
+				const online = Math.random() > 0.5 ? true : false;
+				return {
+					online,
+					color: online ? "success" : "error",
+					translation: online
+						? m.leaderboard_node_provider_table_online_status()
+						: m.leaderboard_node_provider_table_offline_status(),
+				} as const;
+			})(),
+			Share: {
+				translation: "share",
+				getUrl: ({ currentUrl }: { currentUrl: string }) => {
+					const normalShareText = encodeURIComponent(
+						m.leaderboard_node_provider_table_share_x_tweet_shareText()
+					);
+					return `https://twitter.com/intent/tweet?text=${normalShareText}&url=${currentUrl}?wallet_id=${Wallet}`;
+				},
+			},
 		})
 	);
 }
