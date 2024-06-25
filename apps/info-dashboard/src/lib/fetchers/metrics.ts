@@ -21,7 +21,8 @@ export type MetricsEndpointReturnType = {
 };
 
 export async function fetchMetrics() {
-	const API_HOST = process.env.NEXT_PUBLIC_API_HOST;
+	//const api_host = process.env.NEXT_PUBLIC_API_HOST;
+	const API_HOST = "https://api-testnet.lilypad.tech/";
 	const METRICS_URL = `${API_HOST}metrics-dashboard/metrics`;
 	const raw = await fetch(METRICS_URL);
 	const res = (await raw.json()) as MetricsEndpointReturnType;
