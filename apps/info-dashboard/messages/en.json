@@ -67,5 +67,10 @@
 	"leaderboard_node_provider_table_share_x_tweet_shareText2": "– I'm a ",
 	"leaderboard_node_provider_table_no_data_status": "No data",
 	"leaderboard_header_tooltip_title_status": "Node online status",
-	"leaderboard_header_tooltip_description_status": "Data is refreshed every 5 minutes - reload for real-time results."
+	"leaderboard_header_tooltip_description_status": "Data is refreshed every 5 minutes - reload for real-time results.",
+	"leaderboard_incentive_program_total_title": "Total",
+	"leaderboard_incentive_program_week_title": "This week",
+	"leaderboard_incentive_program_title": "Incentive program: Lilybit_rewards earned",
+	"leaderboard_get_started_node_provider_button_link": "https://lilypad.tech/incentivenet",
+	"leaderboard_get_started_node_provider_button_text": "Get started"
 }
