@@ -3,20 +3,10 @@ import type { FeatureCollection } from "geojson";
 import { getStyle } from "./protomaps/style";
 import { PropsWithChildren } from "react";
 
-const geojson: FeatureCollection = {
-	type: "FeatureCollection",
-	features: [
-		{
-			type: "Feature",
-			properties: [],
-			geometry: { type: "Point", coordinates: [-122.4, 37.8] },
-		},
-	],
-};
-
 export default function ActiveNodesWorldMap({
 	protomapsApiKey,
-}: PropsWithChildren<{ protomapsApiKey: string }>) {
+	geojson,
+}: PropsWithChildren<{ protomapsApiKey: string; geojson: FeatureCollection }>) {
 	return (
 		<div className="relative h-[60vh] w-full">
 			<Map
