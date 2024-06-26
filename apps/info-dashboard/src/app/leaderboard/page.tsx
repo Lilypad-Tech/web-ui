@@ -27,6 +27,8 @@ import Badge from "@/components/Badge/Badge";
 import EmptyState from "@/components/EmptyState/EmptyState";
 import Tooltip from "@/components/Tooltip/Tooltip";
 import { fetchNodes } from "@/lib/fetchers/nodes";
+import CardWithBorder from "@/components/CardWithBorder/CardWithBorder";
+import Anchor from "@/components/Anchor/Anchor";
 
 // `${API_HOST}metrics-dashboard/metrics` is the endpoint for the metrics dashboard
 
@@ -104,6 +106,50 @@ export default function Leaderboard() {
 				/>
 				<SectionContainer className="sm:pt-uui-container-padding-desktop mx-auto pt-uui-container-padding-mobile">
 					{/* Set max height & min height to make table scrollable & minimize layout shifts on state changes */}
+					<div className="flex flex-col mb-uui-xl md:mb-uui-4xl space-y-uui-xl md:space-y-uui-none md:flex-row md:space-x-uui-3xl">
+						<CardWithBorder
+							title={m.leaderboard_incentive_program_title()}
+						>
+							<div className="flex space-x-uui-5xl">
+								<div className="flex-col flex space-y-uui-xs">
+									<span className="uui-text-sm font-medium text-uui-text-tertiary-600">
+										{m.leaderboard_incentive_program_total_title()}
+									</span>
+									<span className="text-uui-text-primary-900 uui-display-sm font-semibold">
+										{/* Todo add api cumalative Lilybit_rewards earned */}
+										n.a.
+									</span>
+								</div>
+								<div className="flex-col flex space-y-uui-xs">
+									<span className="uui-text-sm font-medium text-uui-text-tertiary-600">
+										{m.leaderboard_incentive_program_week_title()}
+									</span>
+									<span className="text-uui-text-primary-900 uui-display-sm font-semibold">
+										{/* Todo add api total Lilybit_rewards earned */}
+										n.a.
+									</span>
+								</div>
+							</div>
+						</CardWithBorder>
+						<CardWithBorder
+							className="gap-uui-3xl"
+							title="Get started as a node provider today"
+							subtitle="Check out our instructions and run a node!"
+						>
+							<Anchor
+								href={m.leaderboard_get_started_node_provider_button_link()}
+								target="_blank"
+								color="color"
+								destructive={false}
+								hierarchy="primary"
+								size="md"
+								className="w-fit "
+							>
+								{m.leaderboard_get_started_node_provider_button_text()}
+							</Anchor>
+						</CardWithBorder>
+					</div>
+
 					<Table className="max-h-[70vh] min-h-[70vh] relative">
 						{{
 							cardHeader: (
@@ -275,9 +321,7 @@ export default function Leaderboard() {
 													<td>
 														<TableLeadText
 															title={
-																row[
-																	"Hashrate"
-																]
+																row["Hashrate"]
 															}
 														/>
 													</td>
