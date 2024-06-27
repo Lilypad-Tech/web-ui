@@ -50,8 +50,8 @@ export function toTableData({
 		"Available ETH": "2",
 		"Available LP": "2",
 		Chain: "Arbitrum Sepolia",
-		"Connected since": new Date(),
-		"Last POW submitted": new Date(),
+		"Connected since": new Date().toLocaleDateString(),
+		"Last POW submitted": new Date().toLocaleDateString(),
 	}));
 }
 

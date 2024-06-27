@@ -284,16 +284,20 @@ export default function NodeStatus() {
 													</td>
 													<td>
 														<TableLeadText
-															title={row[
-																"Connected since"
-															].toLocaleDateString()}
+															title={
+																row[
+																	"Connected since"
+																]
+															}
 														/>
 													</td>
 													<td>
 														<TableLeadText
-															title={row[
-																"Last POW submitted"
-															].toLocaleDateString()}
+															title={
+																row[
+																	"Last POW submitted"
+																]
+															}
 														/>
 													</td>
 												</tr>
