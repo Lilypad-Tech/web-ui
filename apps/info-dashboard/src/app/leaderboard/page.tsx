@@ -29,6 +29,7 @@ import Tooltip from "@/components/Tooltip/Tooltip";
 import { fetchNodes } from "@/lib/fetchers/nodes";
 import CardWithBorder from "@/components/CardWithBorder/CardWithBorder";
 import Anchor from "@/components/Anchor/Anchor";
+import RandomHexSpan from "@/components/Random/RandomHexSpan";
 
 // `${API_HOST}metrics-dashboard/metrics` is the endpoint for the metrics dashboard
 
@@ -107,6 +108,53 @@ export default function Leaderboard() {
 				<SectionContainer className="sm:pt-uui-container-padding-desktop mx-auto pt-uui-container-padding-mobile">
 					{/* Set max height & min height to make table scrollable & minimize layout shifts on state changes */}
 					<div className="flex flex-col mb-uui-xl md:mb-uui-4xl space-y-uui-xl md:space-y-uui-none md:flex-row md:space-x-uui-3xl">
+						<CardWithBorder
+							className="md:[&&]:w-1/2 "
+							title={m.leaderboard_node_count_card_title()}
+						>
+							<div className="flex space-x-uui-5xl">
+								<div className="flex-col flex space-y-uui-xs">
+									<span className="uui-text-sm font-medium text-uui-text-tertiary-600">
+										{m.leaderboard_node_count_total_title()}
+									</span>
+									<span className="text-uui-text-primary-900 uui-display-sm font-semibold">
+										{nodesIsLoading ? (
+											<RandomHexSpan
+												length={4}
+											></RandomHexSpan>
+										) : nodesIsError ? (
+											<span>!err</span>
+										) : (
+											<span>{nodesData?.length}</span>
+										)}
+									</span>
+								</div>
+								<div className="flex-col flex space-y-uui-xs">
+									<span className="uui-text-sm font-medium text-uui-text-tertiary-600">
+										{m.leaderboard_node_count_online_title()}
+									</span>
+									<span className="text-uui-text-primary-900 uui-display-sm font-semibold">
+										{/* Todo add api total Lilybit_rewards earned */}
+
+										{nodesIsLoading ? (
+											<RandomHexSpan
+												length={2}
+											></RandomHexSpan>
+										) : nodesIsError ? (
+											<span>!err</span>
+										) : (
+											<span>
+												{
+													nodesData?.filter(
+														(node) => node.Online
+													).length
+												}
+											</span>
+										)}
+									</span>
+								</div>
+							</div>
+						</CardWithBorder>
 						<CardWithBorder
 							title={m.leaderboard_incentive_program_title()}
 						>
