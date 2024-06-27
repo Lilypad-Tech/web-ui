@@ -72,5 +72,8 @@
 	"leaderboard_incentive_program_week_title": "This week",
 	"leaderboard_incentive_program_title": "Incentive program: Lilybit_rewards earned",
 	"leaderboard_get_started_node_provider_button_link": "https://lilypad.tech/incentivenet",
-	"leaderboard_get_started_node_provider_button_text": "Get started"
+	"leaderboard_get_started_node_provider_button_text": "Get started",
+	"leaderboard_node_count_total_title": "Total",
+	"leaderboard_node_count_online_title": "Online",
+	"leaderboard_node_count_card_title": "Node count"
 }
