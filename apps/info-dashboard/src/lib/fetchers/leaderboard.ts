@@ -70,12 +70,7 @@ export function toTableData({
 			)?.Online;
 			return {
 				online,
-				color:
-					online === undefined
-						? "gray"
-						: online
-						? "success"
-						: "error",
+				color: online ? "success" : "gray",
 				translation:
 					online === undefined
 						? m.leaderboard_node_provider_table_no_data_status()
