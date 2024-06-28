@@ -12,7 +12,7 @@ export type NodeStatusReturnType = {
 import * as m from "../../paraglide/messages";
 
 import { NodesEndpointReturnType } from "./nodes";
-import { Balances } from "./node-balances";
+import { Balances } from "./node-chain-data";
 import { DateTime } from "luxon";
 import { getTimeDiff } from "../time/time";
 

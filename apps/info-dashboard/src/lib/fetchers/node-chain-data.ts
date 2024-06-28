@@ -29,3 +29,20 @@ export type Balances = {
 	address: string;
 	balance: string;
 }[];
+
+export async function getNodesPowSubmissions(addresses: string[]) {
+	try {
+		const nodesSubmissions = await Promise.all(
+			addresses.map((address) =>
+				contract.read.getMinerPowSubmissions([address])
+			)
+		);
+		return addresses.map((address, index) => ({
+			address,
+			submissions: nodesSubmissions[index],
+		}));
+	} catch (error) {
+		console.log(error);
+		throw error;
+	}
+}

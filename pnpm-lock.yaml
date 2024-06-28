@@ -25,6 +25,9 @@ importers:
       d3:
         specifier: ^7.9.0
         version: 7.9.0
+      lodash.merge:
+        specifier: ^4.6.2
+        version: 4.6.2
       luxon:
         specifier: ^3.4.4
         version: 3.4.4
@@ -68,6 +71,9 @@ importers:
       '@types/geojson':
         specifier: ^7946.0.14
         version: 7946.0.14
+      '@types/lodash.merge':
+        specifier: ^4.6.9
+        version: 4.6.9
       '@types/luxon':
         specifier: ^3.4.2
         version: 3.4.2

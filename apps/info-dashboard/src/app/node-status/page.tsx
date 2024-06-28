@@ -31,7 +31,8 @@ import {
 import {
 	getNodeEthBalances,
 	getNodeLPBalances,
-} from "@/lib/fetchers/node-balances";
+	getNodesPowSubmissions,
+} from "@/lib/fetchers/node-chain-data";
 
 export default function NodeStatus() {
 	const [walletAddress, setWalletAddress] = useState("");
@@ -69,6 +70,17 @@ export default function NodeStatus() {
 		queryFn: async () =>
 			getNodeEthBalances(nodesData?.map((n) => n.ID) ?? []),
 		queryKey: ["nodesEthBalances", nodesData?.map((n) => n.ID)], //Array according to Documentation
+		enabled: !!nodesData,
+	});
+	const {
+		data: nodesPowSubmissionsData,
+		isLoading: nodesPowSubmissionsIsLoading,
+		isError: nodesPowSubmissionsIsError,
+		error,
+	} = useQuery({
+		queryFn: async () =>
+			getNodesPowSubmissions(nodesData?.map((n) => n.ID) ?? []),
+		queryKey: ["nodesPowSubmissions", nodesData?.map((n) => n.ID)], //Array according to Documentation
 		enabled: !!nodesData,
 	});
 
