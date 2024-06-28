@@ -28,6 +28,10 @@ import {
 	getHeaderData,
 	toTableData,
 } from "@/lib/fetchers/node-status";
+import {
+	getNodeEthBalances,
+	getNodeLPBalances,
+} from "@/lib/fetchers/node-balances";
 
 export default function NodeStatus() {
 	const [walletAddress, setWalletAddress] = useState("");
@@ -46,6 +50,26 @@ export default function NodeStatus() {
 	} = useQuery({
 		queryFn: fetchNodes,
 		queryKey: ["nodes"], //Array according to Documentation
+	});
+	const {
+		data: nodesLPBalancesData,
+		isLoading: nodesLPBalancesIsLoading,
+		isError: nodesLPBalancesIsError,
+	} = useQuery({
+		queryFn: async () =>
+			getNodeLPBalances(nodesData?.map((n) => n.ID) ?? []),
+		queryKey: ["nodesLPBalances", nodesData?.map((n) => n.ID)], //Array according to Documentation
+		enabled: !!nodesData,
+	});
+	const {
+		data: nodesEthBalancesData,
+		isLoading: nodesEthBalancesIsLoading,
+		isError: nodesEthBalancesIsError,
+	} = useQuery({
+		queryFn: async () =>
+			getNodeEthBalances(nodesData?.map((n) => n.ID) ?? []),
+		queryKey: ["nodesEthBalances", nodesData?.map((n) => n.ID)], //Array according to Documentation
+		enabled: !!nodesData,
 	});
 
 	const [currentUrl, setCurrentUrl] = useState("");
@@ -123,8 +147,12 @@ export default function NodeStatus() {
 							tableSubstitute:
 								nodeStatusIsloading ||
 								nodesIsLoading ||
+								nodesEthBalancesIsLoading ||
+								nodesLPBalancesIsLoading ||
 								nodeStatusIsError ||
 								nodesIsError ||
+								nodesEthBalancesIsError ||
+								nodesLPBalancesIsError ||
 								nodeStatusData?.filter((d) =>
 									walletAddress
 										? d.Wallet.includes(walletAddress)
@@ -133,19 +161,27 @@ export default function NodeStatus() {
 									<EmptyState
 										header={
 											nodeStatusIsloading ||
-											nodesIsLoading
+											nodesIsLoading ||
+											nodesEthBalancesIsLoading ||
+											nodesLPBalancesIsLoading
 												? m.node_status_node_overview_table_loadingState_loadingText()
 												: nodeStatusIsError ||
-												  nodesIsError
+												  nodesIsError ||
+												  nodesEthBalancesIsError ||
+												  nodesLPBalancesIsError
 												? m.node_status_node_overview_table_errorState_errorText()
 												: m.node_status_node_overview_table_emptyState_emptyText()
 										}
 										description={
 											nodeStatusIsloading ||
-											nodesIsLoading
+											nodesIsLoading ||
+											nodesEthBalancesIsLoading ||
+											nodesLPBalancesIsLoading
 												? m.node_status_node_overview_table_loadingState_loadingHint()
 												: nodeStatusIsError ||
-												  nodesIsError
+												  nodesIsError ||
+												  nodesEthBalancesIsError ||
+												  nodesLPBalancesIsError
 												? m.node_status_node_overview_table_errorState_errorHint()
 												: m.node_status_node_overview_table_emptyState_emptyHint()
 										}
@@ -153,14 +189,20 @@ export default function NodeStatus() {
 										<FeaturedIcon
 											spinIcon={
 												nodeStatusIsloading ||
-												nodesIsLoading
+												nodesIsLoading ||
+												nodesEthBalancesIsLoading ||
+												nodesLPBalancesIsLoading
 											}
 											iconUrl={
 												nodeStatusIsloading ||
-												nodesIsLoading
+												nodesIsLoading ||
+												nodesEthBalancesIsLoading ||
+												nodesLPBalancesIsLoading
 													? generalLoading01
 													: nodeStatusIsError ||
-													  nodesIsError
+													  nodesIsError ||
+													  nodesEthBalancesIsError ||
+													  nodesLPBalancesIsError
 													? alertAndFeedbackAlertCircle
 													: generalSearchLg
 											}
@@ -215,6 +257,10 @@ export default function NodeStatus() {
 											nodeStatusData:
 												nodeStatusData ?? [],
 											nodesData: nodesData ?? [],
+											lpBalances:
+												nodesLPBalancesData ?? [],
+											ethBalances:
+												nodesEthBalancesData ?? [],
 										})
 											.filter((d) =>
 												walletAddress
@@ -291,7 +337,7 @@ export default function NodeStatus() {
 															}
 														/>
 													</td>
-													<td>
+													{/* <td>
 														<TableLeadText
 															title={
 																row[
@@ -299,7 +345,7 @@ export default function NodeStatus() {
 																]
 															}
 														/>
-													</td>
+													</td> */}
 												</tr>
 											))}
 									</tbody>

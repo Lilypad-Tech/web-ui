@@ -12,6 +12,8 @@ export type NodeStatusReturnType = {
 import * as m from "../../paraglide/messages";
 
 import { NodesEndpointReturnType } from "./nodes";
+import { Balances } from "./node-balances";
+import { DateTime } from "luxon";
 
 export async function fetchNodeStatus() {
 	//const api_host = process.env.NEXT_PUBLIC_API_HOST;
@@ -24,35 +26,46 @@ export async function fetchNodeStatus() {
 export function toTableData({
 	nodeStatusData,
 	nodesData,
+	lpBalances,
+	ethBalances,
 }: {
 	nodeStatusData: NodeStatusReturnType;
 	nodesData: NodesEndpointReturnType;
+	lpBalances: Balances;
+	ethBalances: Balances;
 }) {
 	return sort(nodeStatusData, (a, b) =>
 		ascending(Number(a.Wallet), Number(b.Wallet))
-	).map(({ Wallet }) => ({
-		Wallet,
-		Status: (() => {
-			const online = nodesData.find(
-				(nodeData) => nodeData.ID === Wallet
-			)?.Online;
-			return {
-				online,
-				color: online ? "success" : "gray",
-				translation:
-					online === undefined
-						? m.node_status_node_overview_table_no_data_status()
-						: online
-						? m.node_status_node_overview_table_online_status()
-						: m.node_status_node_overview_table_offline_status(),
-			} as const;
-		})(),
-		"Available ETH": "2",
-		"Available LP": "2",
-		Chain: "Arbitrum Sepolia",
-		"Connected since": new Date().toLocaleDateString(),
-		"Last POW submitted": new Date().toLocaleDateString(),
-	}));
+	).map(({ Wallet }) => {
+		const nodes = nodesData.find((nodeData) => nodeData.ID === Wallet);
+		const online = nodes?.Online;
+		const connectedSince = nodes?.ConnectedSince;
+		return {
+			Wallet,
+			Status: (() => {
+				return {
+					online,
+					color: online ? "success" : "gray",
+					translation:
+						online === undefined
+							? m.node_status_node_overview_table_no_data_status()
+							: online
+							? m.node_status_node_overview_table_online_status()
+							: m.node_status_node_overview_table_offline_status(),
+				} as const;
+			})(),
+			"Available ETH": ethBalances.find(
+				(balance) => balance.address === Wallet
+			)?.balance,
+			"Available LP": lpBalances.find(
+				(balance) => balance.address === Wallet
+			)?.balance,
+			Chain: "Arbitrum Sepolia",
+			"Connected since": connectedSince
+				? DateTime.fromMillis(connectedSince).toISO()
+				: "n.a.",
+		};
+	});
 }
 
 export function getHeaderData() {
@@ -105,7 +118,7 @@ export function getHeaderData() {
 					m.node_status_header_tooltip_description_connected_since(),
 			},
 		},
-		{
+		/* {
 			name: "Last POW submitted",
 			translation: m.node_status_header_titles_last_pow_submitted(),
 			tooltip: {
@@ -113,6 +126,6 @@ export function getHeaderData() {
 				description:
 					m.node_status_header_tooltip_description_last_pow_submitted(),
 			},
-		},
+		}, */
 	] as const;
 }
