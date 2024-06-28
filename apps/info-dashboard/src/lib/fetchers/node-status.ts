@@ -14,6 +14,7 @@ import * as m from "../../paraglide/messages";
 import { NodesEndpointReturnType } from "./nodes";
 import { Balances } from "./node-balances";
 import { DateTime } from "luxon";
+import { getTimeDiff } from "../time/time";
 
 export async function fetchNodeStatus() {
 	//const api_host = process.env.NEXT_PUBLIC_API_HOST;
@@ -62,7 +63,14 @@ export function toTableData({
 			)?.balance,
 			Chain: "Arbitrum Sepolia",
 			"Connected since": connectedSince
-				? DateTime.fromMillis(connectedSince).toISO()
+				? getTimeDiff(
+						DateTime.fromMillis(connectedSince),
+						DateTime.now(),
+						["days", "hours", "minutes", "seconds"]
+				  ).toHuman({
+						maximumFractionDigits: 0,
+						unitDisplay: "narrow",
+				  })
 				: "n.a.",
 		};
 	});
