@@ -60,7 +60,6 @@ export default function NodeStatus() {
 			getNodeLPBalances(nodesData?.map((n) => n.ID) ?? []),
 		queryKey: ["nodesLPBalances", nodesData?.map((n) => n.ID)], //Array according to Documentation
 		enabled: !!nodesData,
-		retry: false,
 	});
 	const {
 		data: nodesEthBalancesData,
@@ -71,8 +70,6 @@ export default function NodeStatus() {
 			getNodeEthBalances(nodesData?.map((n) => n.ID) ?? []),
 		queryKey: ["nodesEthBalances", nodesData?.map((n) => n.ID)], //Array according to Documentation
 		enabled: !!nodesData,
-
-		retry: false,
 	});
 
 	const [currentUrl, setCurrentUrl] = useState("");
