@@ -109,7 +109,7 @@ export function getHeaderData() {
 			name: "Last POW submitted",
 			translation: m.node_status_header_titles_last_pow_submitted(),
 			tooltip: {
-				title: m.node_status_header_tooltip_title_law_pow_submitted(),
+				title: m.node_status_header_tooltip_title_last_pow_submitted(),
 				description:
 					m.node_status_header_tooltip_description_last_pow_submitted(),
 			},
