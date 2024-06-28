@@ -141,6 +141,18 @@ export default function RootLayout({
 									{m.metrics_nav_item_leaderboard()}
 								</_NavItemBase>
 							</Link>
+							<Link
+								href="/node-status"
+								onClick={() => {
+									setMenuOpened(() => false);
+								}}
+							>
+								<_NavItemBase
+									current={pathname === "/node-status"}
+								>
+									{m.metrics_nav_item_node_status()}
+								</_NavItemBase>
+							</Link>
 						</NavBarUntitled>
 					</div>
 
