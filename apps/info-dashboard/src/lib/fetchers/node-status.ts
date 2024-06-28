@@ -1,4 +1,18 @@
 import { ascending, sort } from "d3";
+import {Web3} from "web3";
+
+const web3 = new Web3({
+	provider: 'https://sepolia-rollup.arbitrum.io/rpc',
+	config: {
+	  defaultTransactionType: '0x0',
+	},
+  });
+
+// export async function fetchEthBalance() {
+// 	const address = "0x230115404c551Fcd0B6d447DE1DaD3afca230E07";
+// }
+
+// const account  = web3.eth.accounts.
 
 export type NodeStatusReturnType = {
 	Wallet: string;
@@ -18,7 +32,7 @@ export async function fetchNodeStatus() {
 	const API_HOST = "https://api-testnet.lilypad.tech/";
 	const leaderboard_url = `${API_HOST}metrics-dashboard/leaderboard`;
 	const raw = await fetch(leaderboard_url);
-	return (await raw.json()) as NodeStatusReturnType;
+	return (await raw.json()) as NodeStatusReturnType; 
 }
 
 export function toTableData({
@@ -116,3 +130,4 @@ export function getHeaderData() {
 		},
 	] as const;
 }
+

@@ -29,6 +29,8 @@ import {
 	toTableData,
 } from "@/lib/fetchers/node-status";
 
+import {getBalance, getBalances, getBatchBalances, getTokenBalance, getPowSubmissions, fetchMinerPOWSubmissions} from "../../utils/walletCalls";
+
 export default function NodeStatus() {
 	const [walletAddress, setWalletAddress] = useState("");
 	const {
@@ -49,6 +51,16 @@ export default function NodeStatus() {
 	});
 
 	const [currentUrl, setCurrentUrl] = useState("");
+
+	useEffect(() => {
+		getBalance("0x230115404c551Fcd0B6d447DE1DaD3afca230E07").then(bal => console.log("bala", bal));
+		getBalances(['0xc7653D426F2EC8Bc33cdDE08b15F535E2EB2F523',"0x230115404c551Fcd0B6d447DE1DaD3afca230E07"]).then(bals => console.log("balances", bals));
+		getBatchBalances(['0xc7653D426F2EC8Bc33cdDE08b15F535E2EB2F523',"0x230115404c551Fcd0B6d447DE1DaD3afca230E07"]).then(bals => console.log("batchances", bals));
+		getTokenBalance("0x230115404c551Fcd0B6d447DE1DaD3afca230E07").then(bal => console.log("LP bal", bal));
+		getPowSubmissions("0xbf8443ef0d056d10cd213a11f64c4d4f71f75052").then(pow => console.log('pow', pow));
+		fetchMinerPOWSubmissions("0xbf8443ef0d056d10cd213a11f64c4d4f71f75052").then(pow => console.log('Newpow', pow));
+		// console.log("bal", bal);
+	})
 
 	useEffect(() => {
 		if (typeof window !== "undefined") {

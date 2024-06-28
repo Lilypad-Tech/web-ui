@@ -1,0 +1,324 @@
+{
+	"contractName": "LpToken",
+	"abi": [
+	  {
+		"inputs": [
+		  {
+			"internalType": "string",
+			"name": "_name",
+			"type": "string"
+		  },
+		  {
+			"internalType": "string",
+			"name": "_symbol",
+			"type": "string"
+		  },
+		  {
+			"internalType": "uint256",
+			"name": "initialSupply",
+			"type": "uint256"
+		  }
+		],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	  },
+	  {
+		"anonymous": false,
+		"inputs": [
+		  {
+			"indexed": true,
+			"internalType": "address",
+			"name": "owner",
+			"type": "address"
+		  },
+		  {
+			"indexed": true,
+			"internalType": "address",
+			"name": "spender",
+			"type": "address"
+		  },
+		  {
+			"indexed": false,
+			"internalType": "uint256",
+			"name": "value",
+			"type": "uint256"
+		  }
+		],
+		"name": "Approval",
+		"type": "event"
+	  },
+	  {
+		"anonymous": false,
+		"inputs": [
+		  {
+			"indexed": true,
+			"internalType": "address",
+			"name": "previousOwner",
+			"type": "address"
+		  },
+		  {
+			"indexed": true,
+			"internalType": "address",
+			"name": "newOwner",
+			"type": "address"
+		  }
+		],
+		"name": "OwnershipTransferred",
+		"type": "event"
+	  },
+	  {
+		"anonymous": false,
+		"inputs": [
+		  {
+			"indexed": false,
+			"internalType": "address",
+			"name": "account",
+			"type": "address"
+		  }
+		],
+		"name": "Paused",
+		"type": "event"
+	  },
+	  {
+		"anonymous": false,
+		"inputs": [
+		  {
+			"indexed": true,
+			"internalType": "address",
+			"name": "from",
+			"type": "address"
+		  },
+		  {
+			"indexed": true,
+			"internalType": "address",
+			"name": "to",
+			"type": "address"
+		  },
+		  {
+			"indexed": false,
+			"internalType": "uint256",
+			"name": "value",
+			"type": "uint256"
+		  }
+		],
+		"name": "Transfer",
+		"type": "event"
+	  },
+	  {
+		"anonymous": false,
+		"inputs": [
+		  {
+			"indexed": false,
+			"internalType": "address",
+			"name": "account",
+			"type": "address"
+		  }
+		],
+		"name": "Unpaused",
+		"type": "event"
+	  },
+	  {
+		"inputs": [
+		  {
+			"internalType": "address",
+			"name": "spender",
+			"type": "address"
+		  },
+		  {
+			"internalType": "uint256",
+			"name": "amount",
+			"type": "uint256"
+		  }
+		],
+		"name": "approve",
+		"outputs": [
+		  {
+			"internalType": "bool",
+			"name": "",
+			"type": "bool"
+		  }
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	  },
+	  {
+		"inputs": [],
+		"name": "balanceOf",
+		"outputs": [
+		  {
+			"internalType": "uint256",
+			"name": "",
+			"type": "uint256"
+		  }
+		],
+		"stateMutability": "view",
+		"type": "function"
+	  },
+	  {
+		"inputs": [
+		  {
+			"internalType": "address",
+			"name": "spender",
+			"type": "address"
+		  },
+		  {
+			"internalType": "uint256",
+			"name": "subtractedValue",
+			"type": "uint256"
+		  }
+		],
+		"name": "decreaseAllowance",
+		"outputs": [
+		  {
+			"internalType": "bool",
+			"name": "",
+			"type": "bool"
+		  }
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	  },
+	  {
+		"inputs": [],
+		"name": "decimals",
+		"outputs": [
+		  {
+			"internalType": "uint8",
+			"name": "",
+			"type": "uint8"
+		  }
+		],
+		"stateMutability": "view",
+		"type": "function"
+	  },
+	  {
+		"inputs": [
+		  {
+			"internalType": "address",
+			"name": "spender",
+			"type": "address"
+		  },
+		  {
+			"internalType": "uint256",
+			"name": "addedValue",
+			"type": "uint256"
+		  }
+		],
+		"name": "increaseAllowance",
+		"outputs": [
+		  {
+			"internalType": "bool",
+			"name": "",
+			"type": "bool"
+		  }
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	  },
+	  {
+		"inputs": [],
+		"name": "name",
+		"outputs": [
+		  {
+			"internalType": "string",
+			"name": "",
+			"type": "string"
+		  }
+		],
+		"stateMutability": "view",
+		"type": "function"
+	  },
+	  {
+		"inputs": [],
+		"name": "owner",
+		"outputs": [
+		  {
+			"internalType": "address",
+			"name": "",
+			"type": "address"
+		  }
+		],
+		"stateMutability": "view",
+		"type": "function"
+	  },
+	  {
+		"inputs": [],
+		"name": "pause",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	  },
+	  {
+		"inputs": [],
+		"name": "paused",
+		"outputs": [
+		  {
+			"internalType": "bool",
+			"name": "",
+			"type": "bool"
+		  }
+		],
+		"stateMutability": "view",
+		"type": "function"
+	  },
+	  {
+		"inputs": [],
+		"name": "renounceOwnership",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	  },
+	  {
+		"inputs": [],
+		"name": "symbol",
+		"outputs": [
+		  {
+			"internalType": "string",
+			"name": "",
+			"type": "string"
+		  }
+		],
+		"stateMutability": "view",
+		"type": "function"
+	  },
+	  {
+		"inputs": [],
+		"name": "totalSupply",
+		"outputs": [
+		  {
+			"internalType": "uint256",
+			"name": "",
+			"type": "uint256"
+		  }
+		],
+		"stateMutability": "view",
+		"type": "function"
+	  },
+	  {
+		"inputs": [
+		  {
+			"internalType": "address",
+			"name": "newOwner",
+			"type": "address"
+		  }
+		],
+		"name": "transferOwnership",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	  },
+	  {
+		"inputs": [],
+		"name": "unpause",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	  }
+	],
+	"bytecode": "0x",
+	"deployedBytecode": "0x608060405234801561001057600080fd5b5061015d806100206000396000f3fe6080604052348015600f57600080fd5b5060043610604b576000357c010000000000000000000000000000000000000000000000000000000090048063096a428114604f57806318160ddd146081575b600080fd5b606760048036036020811015604b57600080fd5b8101908080359060200190640100000000811115606557600080fd5b820183602082011115606e57600080fd5b80359060200191846020830284011164010000000083111715608857600080fd5b91908080601f0160208091040260200160405190810160405280939291908181526020018383808284378201915050505050509190505060a0565b005b6060600480505060b2565b6040518082815260200191505060405180910390f35b60606040518060400160405280601b81526020017f4f776e61626c653a2063616c6c6572206973206e6f7420746865206f776e6572000000000000815250604482015290519081900360200190a15b50565b600060208284031215606857600080fd5b600061069a8383604051806040016040528060200180602001848152602001838103835286818151815260200191508051906020019080838360005b83811015606f5780820151818401526020810190506058565b50505050905090810190601f168015609c5780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b806000819055507f9287b80b8c291e7c37ab6d9de0eaa6c35e40122cfa2b1266a0e79b6a4b2d41d460405180905060a0565b919050565b600081905091905056fea2646970667358221220695a7b3761f83d44c4a26ddc6ac10b52b77b93f617fda3b0b00e3b31b88baf8364736f6c63430008040033",
+	"sourceMap": "",
+	"deployedSourceMap": "",
+	"source": "pragma solidity ^0.8.0;\n\ncontract LpToken {\n    string public name;\n    string public symbol;\n    uint256 public totalSupply;\n    uint8 public decimals;\n\n    mapping(address => uint256) public balanceOf;\n    mapping(address => mapping(address => uint256)) public allowance;\n\n    address public owner;\n    address public controllerAddress;\n    bool public paused;\n\n    event Approval(address indexed owner, address indexed spender, uint256 value);\n    event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);\n    event Paused(address indexed account);\n    event Transfer(address indexed from, address indexed to, uint256 value);\n    event Unpaused(address indexed account);\n\n    modifier onlyOwner() {\n        require(msg.sender == owner, \"Ownable: caller is not the owner\");\n        _;\n    }\n\n    constructor(string memory _name, string memory _symbol, uint256 initialSupply) {\n        name = _name;\n        symbol = _symbol;\n        totalSupply = initialSupply;\n        decimals = 18; // Assuming 18 decimals for ERC20 tokens\n        owner = msg.sender;\n        balanceOf[msg.sender] = initialSupply;\n        paused = false;\n        emit Transfer(address(0), msg.sender, initialSupply);\n    }\n\n    function approve(address spender, uint256 amount) external returns (bool) {\n        allowance[msg.sender][spender] = amount;\n        emit Approval(msg.sender, spender, amount);\n        return true;\n    }\n\n    function transfer(address to, uint256 amount) external returns (bool) {\n        _transfer(msg.sender, to, amount);\n        return true;\n    }\n\n    function transferFrom(address from, address to, uint256 amount) external returns (bool) {\n        require(allowance[from][msg.sender] >= amount, \"ERC20: transfer amount exceeds allowance\");\n        allowance[from][msg.sender] -= amount;\n        _transfer(from, to, amount);\n        return true;\n    }\n\n    function _transfer(address from, address to, uint256 amount) internal {\n        require(from != address(0), \"ERC20: transfer from the zero address\");\n        require(to != address(0), \"ERC20: transfer to the zero address\");\n        require(balanceOf[from] >= amount, \"ERC20: transfer amount exceeds balance\");\n        balanceOf[from] -= amount;\n        balanceOf[to] += amount;\n        emit Transfer(from, to, amount);\n    }\n\n    function increaseAllowance(address spender, uint256 addedValue) external returns (bool) {\n        uint256 newAllowance = allowance[msg.sender][spender] + addedValue;\n        allowance[msg.sender][spender] = newAllowance;\n        emit Approval(msg.sender, spender, newAllowance);\n        return true;\n    }\n\n    function decreaseAllowance(address spender, uint256 subtractedValue) external returns (bool) {\n        uint256 currentAllowance = allowance[msg.sender][spender];\n        require(currentAllowance >= subtractedValue, \"ERC20: decreased allowance below zero\");\n        uint256 newAllowance = currentAllowance - subtractedValue;\n        allowance[msg.sender][spender] = newAllowance;\n        emit Approval(msg.sender, spender, newAllowance);\n        return true;\n    }\n\n    function pause() external onlyOwner {\n        paused = true;\n        emit Paused(msg.sender);\n    }\n\n    function unpause() external onlyOwner {\n        paused = false;\n        emit Unpaused(msg.sender);\n    }\n\n    function renounceOwnership() external onlyOwner {\n        own"
+  }
+  
