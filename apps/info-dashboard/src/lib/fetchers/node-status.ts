@@ -12,7 +12,7 @@ export type NodeStatusReturnType = {
 import * as m from "../../paraglide/messages";
 
 import { NodesEndpointReturnType } from "./nodes";
-import { Balances } from "./node-chain-data";
+import { Balances, PowSubmissions } from "./node-chain-data";
 import { DateTime } from "luxon";
 import { getTimeDiff } from "../time/time";
 
@@ -29,11 +29,13 @@ export function toTableData({
 	nodesData,
 	lpBalances,
 	ethBalances,
+	powSubmissions,
 }: {
 	nodeStatusData: NodeStatusReturnType;
 	nodesData: NodesEndpointReturnType;
 	lpBalances: Balances;
 	ethBalances: Balances;
+	powSubmissions: PowSubmissions;
 }) {
 	return sort(nodeStatusData, (a, b) =>
 		ascending(Number(a.Wallet), Number(b.Wallet))
@@ -41,6 +43,11 @@ export function toTableData({
 		const nodes = nodesData.find((nodeData) => nodeData.ID === Wallet);
 		const online = nodes?.Online;
 		const connectedSince = nodes?.ConnectedSince;
+		const lastSubmissionComplete = powSubmissions.find(
+			(s) => s.address === Wallet
+		)?.lastSubmission.complete_timestamp;
+
+		console.log(lastSubmissionComplete);
 		return {
 			Wallet,
 			Status: (() => {
@@ -65,6 +72,16 @@ export function toTableData({
 			"Connected since": connectedSince
 				? getTimeDiff(
 						DateTime.fromMillis(connectedSince),
+						DateTime.now(),
+						["days", "hours", "minutes", "seconds"]
+				  ).toHuman({
+						maximumFractionDigits: 0,
+						unitDisplay: "narrow",
+				  })
+				: "n.a.",
+			"Last POW submitted": lastSubmissionComplete
+				? getTimeDiff(
+						DateTime.fromSeconds(lastSubmissionComplete),
 						DateTime.now(),
 						["days", "hours", "minutes", "seconds"]
 				  ).toHuman({
@@ -126,7 +143,7 @@ export function getHeaderData() {
 					m.node_status_header_tooltip_description_connected_since(),
 			},
 		},
-		/* {
+		{
 			name: "Last POW submitted",
 			translation: m.node_status_header_titles_last_pow_submitted(),
 			tooltip: {
@@ -134,6 +151,6 @@ export function getHeaderData() {
 				description:
 					m.node_status_header_tooltip_description_last_pow_submitted(),
 			},
-		}, */
+		},
 	] as const;
 }

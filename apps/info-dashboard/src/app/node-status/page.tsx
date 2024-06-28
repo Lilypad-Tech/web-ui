@@ -161,10 +161,12 @@ export default function NodeStatus() {
 								nodesIsLoading ||
 								nodesEthBalancesIsLoading ||
 								nodesLPBalancesIsLoading ||
+								nodesPowSubmissionsIsLoading ||
 								nodeStatusIsError ||
 								nodesIsError ||
 								nodesEthBalancesIsError ||
 								nodesLPBalancesIsError ||
+								nodesPowSubmissionsIsError ||
 								nodeStatusData?.filter((d) =>
 									walletAddress
 										? d.Wallet.includes(walletAddress)
@@ -175,12 +177,14 @@ export default function NodeStatus() {
 											nodeStatusIsloading ||
 											nodesIsLoading ||
 											nodesEthBalancesIsLoading ||
-											nodesLPBalancesIsLoading
+											nodesLPBalancesIsLoading ||
+											nodesPowSubmissionsIsLoading
 												? m.node_status_node_overview_table_loadingState_loadingText()
 												: nodeStatusIsError ||
 												  nodesIsError ||
 												  nodesEthBalancesIsError ||
-												  nodesLPBalancesIsError
+												  nodesLPBalancesIsError ||
+												  nodesPowSubmissionsIsError
 												? m.node_status_node_overview_table_errorState_errorText()
 												: m.node_status_node_overview_table_emptyState_emptyText()
 										}
@@ -188,12 +192,14 @@ export default function NodeStatus() {
 											nodeStatusIsloading ||
 											nodesIsLoading ||
 											nodesEthBalancesIsLoading ||
-											nodesLPBalancesIsLoading
+											nodesLPBalancesIsLoading ||
+											nodesPowSubmissionsIsLoading
 												? m.node_status_node_overview_table_loadingState_loadingHint()
 												: nodeStatusIsError ||
 												  nodesIsError ||
 												  nodesEthBalancesIsError ||
-												  nodesLPBalancesIsError
+												  nodesLPBalancesIsError ||
+												  nodesPowSubmissionsIsError
 												? m.node_status_node_overview_table_errorState_errorHint()
 												: m.node_status_node_overview_table_emptyState_emptyHint()
 										}
@@ -203,18 +209,21 @@ export default function NodeStatus() {
 												nodeStatusIsloading ||
 												nodesIsLoading ||
 												nodesEthBalancesIsLoading ||
-												nodesLPBalancesIsLoading
+												nodesLPBalancesIsLoading ||
+												nodesPowSubmissionsIsLoading
 											}
 											iconUrl={
 												nodeStatusIsloading ||
 												nodesIsLoading ||
 												nodesEthBalancesIsLoading ||
-												nodesLPBalancesIsLoading
+												nodesLPBalancesIsLoading ||
+												nodesPowSubmissionsIsLoading
 													? generalLoading01
 													: nodeStatusIsError ||
 													  nodesIsError ||
 													  nodesEthBalancesIsError ||
-													  nodesLPBalancesIsError
+													  nodesLPBalancesIsError ||
+													  nodesPowSubmissionsIsError
 													? alertAndFeedbackAlertCircle
 													: generalSearchLg
 											}
@@ -273,6 +282,8 @@ export default function NodeStatus() {
 												nodesLPBalancesData ?? [],
 											ethBalances:
 												nodesEthBalancesData ?? [],
+											powSubmissions:
+												nodesPowSubmissionsData ?? [],
 										})
 											.filter((d) =>
 												walletAddress
@@ -349,7 +360,7 @@ export default function NodeStatus() {
 															}
 														/>
 													</td>
-													{/* <td>
+													<td>
 														<TableLeadText
 															title={
 																row[
@@ -357,7 +368,7 @@ export default function NodeStatus() {
 																]
 															}
 														/>
-													</td> */}
+													</td>
 												</tr>
 											))}
 									</tbody>
