@@ -24,7 +24,11 @@ import {
 	YAxis,
 } from "recharts";
 import { useQuery } from "@tanstack/react-query";
-import { fetchMetrics, toChartData } from "@/lib/fetchers/metrics";
+import {
+	fetchMetrics,
+	toChartData,
+	toFrontendData,
+} from "@/lib/fetchers/metrics";
 import RandomHexSpan from "@/components/Random/RandomHexSpan";
 import FeaturedIcon from "@/components/FeaturedIcon";
 import { DateTime } from "luxon";
@@ -49,10 +53,7 @@ export default function Home() {
 		queryFn: fetchNodes,
 		queryKey: ["nodes"],
 	});
-	const timeData = {
-		Nodes: toChartData(metricsData?.Nodes ?? []),
-		JobsCompleted: toChartData(metricsData?.JobsCompleted ?? []),
-	};
+	const metricsTransformedData = toFrontendData(metricsData);
 	return (
 		<>
 			<Head>
@@ -92,68 +93,69 @@ export default function Home() {
 					title={m.metrics_heading_title()}
 					subtitle={m.metrics_heading_subtitle()}
 				/>
-				{/* <SectionContainer className=" mx-auto pt-uui-4xl w-full justify-between flex uui-desktop:gap-uui-3xl gap-uui-2xl sm:flex-row flex-col  snap-x overflow-x-auto no-scrollbar">
-					{(["TotalJobs", "TotalNodes", "TotalModules"] as const).map(
-						(key, index) => {
-							const percentage =
-								metricsIsLoading || metricsIsError ? 0 : 100;
-
-							return (
-								<MetricsCard
-									key={index}
-									title={
-										key === "TotalJobs"
-											? m.metrics_card_1_title()
-											: key === "TotalNodes"
-											? m.metrics_card_2_title()
-											: m.metrics_card_3_title()
-									}
-								>
-									{{
-										badge: (
-											<Badge
-												icon={{
-													type: "icon",
-													leading:
-														percentage > 0
-															? arrowsArrowUp
-															: percentage === 0
-															? arrowsSwitchVertical01
-															: arrowsArrowDown,
-												}}
-												badgeType="Pill color"
-												color={
-													percentage > 0
-														? "success"
-														: percentage === 0
-														? "gray"
-														: "error"
-												}
-												size="md"
-											>
-												{metricsIsLoading
-													? "0"
-													: metricsIsError
-													? "err"
-													: percentage}
-											</Badge>
-										),
-										header: metricsIsLoading ? (
-											<RandomHexSpan
-												length={4}
-											></RandomHexSpan>
-										) : metricsIsError ? (
-											<span>!err</span>
-										) : (
-											<span>{metricsData?.[key]}</span>
-										),
-									}}
-								</MetricsCard>
-							);
-						}
-					)}
+				<SectionContainer className=" mx-auto pt-uui-4xl w-full justify-between flex uui-desktop:gap-uui-3xl gap-uui-2xl sm:flex-row flex-col  snap-x overflow-x-auto no-scrollbar">
+					{(
+						[
+							metricsTransformedData.jobsCompletedScalar,
+							metricsTransformedData.nodesScalar,
+							metricsTransformedData.totalHashrateScalar,
+						] as const
+					).map((scalar, index) => {
+						return (
+							<MetricsCard key={index} title={scalar.title}>
+								{{
+									badge: (
+										<Badge
+											icon={{
+												type: "icon",
+												leading:
+													scalar.change === undefined
+														? alertAndFeedbackAlertCircle
+														: scalar.change > 0
+														? arrowsArrowUp
+														: scalar.change === 0
+														? arrowsSwitchVertical01
+														: arrowsArrowDown,
+											}}
+											badgeType="Pill color"
+											color={
+												scalar.change === undefined
+													? "gray"
+													: scalar.change > 0
+													? "success"
+													: scalar.change === 0
+													? "gray"
+													: "error"
+											}
+											size="md"
+										>
+											{metricsIsLoading
+												? "0"
+												: metricsIsError
+												? "err"
+												: scalar.change === undefined
+												? "n.a."
+												: scalar.change}
+										</Badge>
+									),
+									header: metricsIsLoading ? (
+										<RandomHexSpan
+											length={4}
+										></RandomHexSpan>
+									) : metricsIsError ? (
+										<span>!err</span>
+									) : (
+										<span>
+											{scalar.Count ??
+												m.coming_soon_metrics_card()}
+										</span>
+									),
+								}}
+							</MetricsCard>
+						);
+					})}
 				</SectionContainer>
-				<SectionContainer className="mx-auto pt-uui-4xl w-full justify-between flex uui-desktop:gap-uui-3xl gap-uui-2xl sm:flex-row flex-col  snap-x overflow-x-auto no-scrollbar">
+				{/* <SectionContainer className="mx-auto pt-uui-4xl w-full justify-between flex uui-desktop:gap-uui-3xl gap-uui-2xl sm:flex-row flex-col  snap-x overflow-x-auto no-scrollbar">
 					{(["Nodes", "JobsCompleted"] as const).map((key, id) => {
 						return (
 							<CardWithBorder
@@ -210,7 +212,7 @@ export default function Home() {
 													height="100%"
 												>
 													<AreaChart
-														data={timeData[key]}
+														data={metricsTransformedData[key]}
 														margin={{
 															top: 0,
 															right: 0,

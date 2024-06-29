@@ -47,7 +47,6 @@ export function toTableData({
 			(s) => s.address === Wallet
 		)?.lastSubmission.complete_timestamp;
 
-		console.log(lastSubmissionComplete);
 		return {
 			Wallet,
 			Status: (() => {
