@@ -22,7 +22,7 @@ import FeaturedIcon from "@/components/FeaturedIcon";
 import TableHeaderCell from "@/components/Table/TableHeaderCell";
 import Tooltip from "@/components/Tooltip/Tooltip";
 import TableLeadText from "@/components/Table/TableLeadText";
-import Badge from "@/components/Badge/Badge";
+import { Badge } from "@lilypad/shared-components";
 import {
 	fetchNodeStatus,
 	getHeaderData,

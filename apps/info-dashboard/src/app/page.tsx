@@ -2,7 +2,7 @@
 import React from "react";
 import * as m from "@/paraglide/messages.js";
 import Head from "next/head";
-import Badge from "@/components/Badge/Badge";
+import { Badge } from "@lilypad/shared-components";
 import MetricsCard from "@/components/MetricsCard/MetricsCard";
 import HeadingSection from "@/components/HeadingSection";
 import SectionContainer from "@/components/SectionContainer";

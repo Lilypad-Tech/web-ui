@@ -23,13 +23,13 @@ import {
 	getHeaderData,
 	toTableData,
 } from "@/lib/fetchers/leaderboard";
-import Badge from "@/components/Badge/Badge";
 import EmptyState from "@/components/EmptyState/EmptyState";
 import Tooltip from "@/components/Tooltip/Tooltip";
 import { fetchNodes } from "@/lib/fetchers/nodes";
 import CardWithBorder from "@/components/CardWithBorder/CardWithBorder";
 import Anchor from "@/components/Anchor/Anchor";
 import RandomHexSpan from "@/components/Random/RandomHexSpan";
+import { Badge } from "@lilypad/shared-components";
 
 // `${API_HOST}metrics-dashboard/metrics` is the endpoint for the metrics dashboard
 
