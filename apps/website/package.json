@@ -13,7 +13,8 @@
   "dependencies": {
     "next": "14.2.4",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+	"@lilypad/shared-components": "workspace:~"
   },
   "devDependencies": {
 	"@lilypad/uui-tailwind-styles": "workspace:~",
