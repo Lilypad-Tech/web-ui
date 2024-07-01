@@ -46,7 +46,7 @@ const BadgeIconAtom = ({
 			gray: "bg-uui-utility-gray-500",
 			brand: "bg-uui-utility-brand-500",
 			error: "bg-uui-utility-error-500",
-			warning: "bg-uui-utility-gray-500",
+			warning: "bg-uui-utility-warning-500",
 			success: "bg-uui-utility-success-500",
 			pink: "bg-uui-utility-pink-500",
 		},
