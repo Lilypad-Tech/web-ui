@@ -5,7 +5,7 @@ import Head from "next/head";
 import { Badge } from "@lilypad/shared-components";
 import MetricsCard from "@/components/MetricsCard/MetricsCard";
 import HeadingSection from "@/components/HeadingSection";
-import SectionContainer from "@/components/SectionContainer";
+import { SectionContainer } from "@lilypad/shared-components";
 import {
 	alertAndFeedbackAlertCircle,
 	arrowsArrowDown,

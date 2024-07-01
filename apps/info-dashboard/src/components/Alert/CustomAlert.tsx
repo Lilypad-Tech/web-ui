@@ -5,7 +5,7 @@ import {
 	ReactNode,
 	SetStateAction,
 } from "react";
-import SectionContainer from "../SectionContainer";
+import { SectionContainer } from "@lilypad/shared-components";
 import { mapsAndTravelRocket01 } from "@frontline-hq/untitledui-icons";
 import { twMerge } from "tailwind-merge";
 

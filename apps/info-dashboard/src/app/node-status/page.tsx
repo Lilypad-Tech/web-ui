@@ -1,13 +1,12 @@
 "use client";
 
 import HeadingSection from "@/components/HeadingSection";
-
 import { fetchNodes } from "@/lib/fetchers/nodes";
 import { useQuery } from "@tanstack/react-query";
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import * as m from "@/paraglide/messages";
-import SectionContainer from "@/components/SectionContainer";
+import { SectionContainer } from "@lilypad/shared-components";
 import Table from "@/components/Table/Table";
 import CardHeader from "@/components/CardHeader";
 import InputField from "@/components/InputField/Inputfield";

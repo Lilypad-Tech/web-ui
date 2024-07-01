@@ -5,7 +5,7 @@ import {
 	SetStateAction,
 	useState,
 } from "react";
-import SectionContainer from "./SectionContainer";
+import { SectionContainer } from "@lilypad/shared-components";
 import { createContext } from "react";
 import { twMerge } from "tailwind-merge";
 

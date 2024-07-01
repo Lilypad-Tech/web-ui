@@ -11,7 +11,7 @@ import {
 } from "@frontline-hq/untitledui-icons";
 import CardHeader from "@/components/CardHeader";
 import InputField from "@/components/InputField/Inputfield";
-import SectionContainer from "@/components/SectionContainer";
+import { SectionContainer } from "@lilypad/shared-components";
 import TableLeadText from "@/components/Table/TableLeadText";
 import TableHeaderCell from "@/components/Table/TableHeaderCell";
 import HeadingSection from "@/components/HeadingSection";
@@ -27,9 +27,8 @@ import EmptyState from "@/components/EmptyState/EmptyState";
 import Tooltip from "@/components/Tooltip/Tooltip";
 import { fetchNodes } from "@/lib/fetchers/nodes";
 import CardWithBorder from "@/components/CardWithBorder/CardWithBorder";
-import Anchor from "@/components/Anchor/Anchor";
 import RandomHexSpan from "@/components/Random/RandomHexSpan";
-import { Badge } from "@lilypad/shared-components";
+import { Badge, Anchor } from "@lilypad/shared-components";
 
 // `${API_HOST}metrics-dashboard/metrics` is the endpoint for the metrics dashboard
 
