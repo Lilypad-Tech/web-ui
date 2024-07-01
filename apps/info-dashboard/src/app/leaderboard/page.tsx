@@ -365,13 +365,7 @@ export default function Leaderboard() {
 															}
 														/>
 													</td>
-													<td>
-														<TableLeadText
-															title={
-																row["Hashrate"]
-															}
-														/>
-													</td>
+
 													<td>
 														<TableLeadText
 															title={
@@ -403,6 +397,15 @@ export default function Leaderboard() {
 																			.translation
 																	}
 																</Badge>
+															}
+														/>
+													</td>
+													<td>
+														<TableLeadText
+															title={
+																row[
+																	"Connected since"
+																]
 															}
 														/>
 													</td>
