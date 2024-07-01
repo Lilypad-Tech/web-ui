@@ -6,5 +6,5 @@ export const publicClient = createPublicClient({
 	batch: {
 		multicall: true,
 	},
-	transport: http(),
+	transport: http(process.env.NEXT_PUBLIC_RPC_URL, { batch: true }),
 });
