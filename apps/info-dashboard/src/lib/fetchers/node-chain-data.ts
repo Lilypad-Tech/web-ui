@@ -42,18 +42,17 @@ export type PowSubmissions = {
 export async function getNodesPowSubmissions(addresses: string[]) {
 	const nodesSubmissionCounts = await Promise.all(
 		addresses.map((address) =>
-			powContract.read.minerSubmissionCount([address])
+			powContract.read.getMinerPowSubmissionCount([address])
 		)
 	);
 	const nodesSubmissions = (await Promise.all(
 		addresses.map((address, index) => {
-			//powContract.read.getMinerPowSubmissions([address])
 			const lastSubmissionIndex =
 				Number(nodesSubmissionCounts[index]) - 1;
 
 			return lastSubmissionIndex < 0
 				? new Promise((resolve) => resolve(undefined))
-				: powContract.read.powSubmissions([
+				: powContract.read.getMinerPowSubmissions([
 						address,
 						Number(nodesSubmissionCounts[index]) - 1,
 				  ]);
