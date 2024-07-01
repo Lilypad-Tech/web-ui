@@ -46,6 +46,38 @@ export function toTableData({
 			(s) => s.address === Wallet
 		)?.lastSubmission.complete_timestamp;
 
+		const lastSubmissionComleteIsoDate = lastSubmissionComplete
+			? DateTime.fromSeconds(lastSubmissionComplete)
+					.toUTC()
+					.set({ second: 0, millisecond: 0 })
+			: undefined;
+
+		const connectedSinceIsoDate = connectedSince
+			? DateTime.fromMillis(connectedSince)
+					.toUTC()
+					.set({ second: 0, millisecond: 0 })
+			: undefined;
+
+		const lastPowSubmittedTime = lastSubmissionComleteIsoDate
+			? `${lastSubmissionComleteIsoDate.toISODate()} ${lastSubmissionComleteIsoDate.toISOTime(
+					{
+						suppressMilliseconds: true,
+						suppressSeconds: true,
+						includeOffset: false,
+					}
+			  )}`
+			: "n.a.";
+
+		const connectedSinceTime = connectedSinceIsoDate
+			? `${connectedSinceIsoDate.toISODate()} ${connectedSinceIsoDate.toISOTime(
+					{
+						suppressMilliseconds: true,
+						suppressSeconds: true,
+						includeOffset: false,
+					}
+			  )}`
+			: "n.a.";
+
 		return {
 			Wallet,
 			Status: (() => {
@@ -72,15 +104,8 @@ export function toTableData({
 			"Available LP": lpBalances.find(
 				(balance) => balance.address === Wallet
 			)?.balance,
-			"Last POW submitted": lastSubmissionComplete
-				? DateTime.fromSeconds(lastSubmissionComplete).toFormat(
-						"MM/dd/yyyy"
-				  )
-				: "n.a.",
-			"Connected since": connectedSince
-				? DateTime.fromMillis(connectedSince).toFormat("MM/dd/yyyy ")
-				: "n.a.",
-
+			"Last POW submitted": lastPowSubmittedTime,
+			"Connected since": connectedSinceTime,
 			Chain: "Arbitrum Sepolia",
 		};
 	});

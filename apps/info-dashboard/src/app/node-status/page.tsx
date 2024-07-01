@@ -432,6 +432,7 @@ export default function NodeStatus() {
 													</td>
 													<td>
 														<TableLeadText
+															className="whitespace-nowrap"
 															title={
 																row[
 																	"Last POW submitted"
@@ -441,6 +442,7 @@ export default function NodeStatus() {
 													</td>
 													<td>
 														<TableLeadText
+															className="whitespace-nowrap"
 															title={
 																row[
 																	"Connected since"
