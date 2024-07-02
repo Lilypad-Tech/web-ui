@@ -93,7 +93,7 @@ export default function Home() {
 					title={m.metrics_heading_title()}
 					subtitle={m.metrics_heading_subtitle()}
 				/>
-				<SectionContainer className=" mx-auto pt-uui-4xl w-full justify-between flex uui-desktop:gap-uui-3xl gap-uui-2xl sm:flex-row flex-col  snap-x overflow-x-auto no-scrollbar">
+				{/* <SectionContainer className=" mx-auto pt-uui-4xl w-full justify-between flex uui-desktop:gap-uui-3xl gap-uui-2xl sm:flex-row flex-col  snap-x overflow-x-auto no-scrollbar">
 					{(
 						[
 							metricsTransformedData.jobsCompletedScalar,
@@ -154,7 +154,7 @@ export default function Home() {
 							</MetricsCard>
 						);
 					})}
-				</SectionContainer>
+				</SectionContainer> */}
 				{/* <SectionContainer className="mx-auto pt-uui-4xl w-full justify-between flex uui-desktop:gap-uui-3xl gap-uui-2xl sm:flex-row flex-col  snap-x overflow-x-auto no-scrollbar">
 					{(["Nodes", "JobsCompleted"] as const).map((key, id) => {
 						return (
