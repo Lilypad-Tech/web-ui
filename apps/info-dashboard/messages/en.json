@@ -118,5 +118,7 @@
 	"node_status_fix_status_node_provider_card_title": "Fix your node status now",
 	"node_status_fix_status_node_provider_card_subtitle": "A not-earning node status means your node is online, but not submitting work proofs and doesn’t compete for rewards.",
 	"node_status_node_overview_table_warning_status": "Not-earning",
-	"coming_soon_metrics_card": "Coming soon"
+	"coming_soon_metrics_card": "Coming soon",
+	"leaderboard_node_provider_table_wallet_id_copy_text": "Copy",
+	"node_status_node_overview_table_wallet_id_copy_text": "Copy"
 }

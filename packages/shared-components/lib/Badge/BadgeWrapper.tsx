@@ -11,6 +11,7 @@ interface BadgeWrapperProps
 
 interface BadgeWrapperChildrenProps {
 	iconLeading?: ReactNode;
+	iconTrailing?: ReactNode;
 	default?: ReactNode;
 }
 
@@ -51,14 +52,14 @@ const BadgeWrapper = ({
 			pink: "bg-uui-utility-pink-50 text-uui-utility-pink-700 ring-uui-utility-pink-200 ring-[0.063rem] rounded-full",
 		},
 		"Badge modern": {
-			gray: "bg-uui-utility-white text-uui-utility-gray-700 ring-uui-utility-gray-300 ring-[0.063rem] rounded-lg shadow-uui-utility-xs",
-			brand: "bg-uui-utility-white text-uui-utility-gray-700 ring-uui-utility-gray-300 ring-[0.063rem] rounded-lg shadow-uui-utility-xs",
-			error: "bg-uui-utility-white text-uui-utility-gray-700 ring-uui-utility-gray-300 ring-[0.063rem] rounded-lg shadow-uui-utility-xs",
+			gray: "bg-uui-utility-white text-uui-utility-gray-700 ring-uui-border-primary ring-[0.063rem] rounded-lg shadow-uui-utility-xs",
+			brand: " bg-uui-utility-white text-uui-utility-gray-700 ring-uui-border-primary ring-[0.063rem] rounded-lg shadow-uui-utility-xs",
+			error: "bg-uui-utility-white text-uui-utility-gray-700 ring-uui-border-primary ring-[0.063rem] rounded-lg shadow-uui-utility-xs",
 			warning:
-				"bg-uui-utility-white text-uui-utility-gray-700 ring-uui-utility-gray-300 ring-[0.063rem] rounded-lg shadow-uui-utility-xs",
+				"bg-uui-utility-white text-uui-utility-gray-700 ring-uui-border-primary ring-[0.063rem] rounded-lg shadow-uui-utility-xs",
 			success:
-				"bg-uui-utility-white text-uui-utility-gray-700 ring-uui-utility-gray-300 ring-[0.063rem] rounded-lg shadow-uui-utility-xs",
-			pink: "bg-uui-utility-white text-uui-utility-gray-700 ring-uui-utility-gray-300 ring-[0.063rem] rounded-lg shadow-uui-utility-xs",
+				"bg-uui-utility-white text-uui-utility-gray-700 ring-uui-border-primary ring-[0.063rem] rounded-lg shadow-uui-utility-xs",
+			pink: "bg-uui-utility-white text-uui-utility-gray-700 ring-uui-border-primary ring-[0.063rem] rounded-lg shadow-uui-utility-xs",
 		},
 	};
 
@@ -78,6 +79,7 @@ const BadgeWrapper = ({
 		<button {...props} className={classes + " " + props.className}>
 			{children.iconLeading}
 			{children.default}
+			{children.iconTrailing}
 		</button>
 	);
 };

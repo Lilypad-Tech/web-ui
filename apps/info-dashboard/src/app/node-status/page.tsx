@@ -12,6 +12,9 @@ import CardHeader from "@/components/CardHeader";
 import InputField from "@/components/InputField/Inputfield";
 import {
 	alertAndFeedbackAlertCircle,
+	generalCheck,
+	generalCopy07,
+	generalLinkExternal02,
 	generalLoading01,
 	generalSearchLg,
 	generalSearchMd,
@@ -86,6 +89,15 @@ export default function NodeStatus() {
 	});
 
 	const [currentUrl, setCurrentUrl] = useState("");
+
+	// Array to manage the copy badges
+	const [copiedArray, setCopiedArray] = useState<
+		| {
+				walletId: string;
+				timeoutId: ReturnType<typeof setTimeout>;
+		  }[]
+		| []
+	>([]);
 
 	useEffect(() => {
 		if (typeof window !== "undefined") {
@@ -382,7 +394,154 @@ export default function NodeStatus() {
 													<td>
 														<TableLeadText
 															title={
-																row["Wallet"]
+																<div className="flex space-x-uui-md">
+																	<Badge
+																		onClick={() => {
+																			const url =
+																				"https://sepolia.arbiscan.io/address/" +
+																				row[
+																					"Wallet"
+																				];
+																			window.open(
+																				url,
+																				"_blank"
+																			);
+																		}}
+																		badgeType="Badge modern"
+																		color={
+																			"brand"
+																		}
+																		size="sm"
+																		icon={{
+																			type: "icon",
+																			trailing:
+																				generalLinkExternal02,
+																		}}
+																	>
+																		{`${row[
+																			"Wallet"
+																		].slice(
+																			0,
+																			6
+																		)}...${row[
+																			"Wallet"
+																		].slice(
+																			-4
+																		)}`}
+																	</Badge>
+																	<Badge
+																		badgeType="Badge modern"
+																		color="brand"
+																		size="sm"
+																		icon={{
+																			type: "icon",
+																			trailing:
+																				copiedArray.find(
+																					(
+																						item
+																					) =>
+																						item.walletId ===
+																						row[
+																							"Wallet"
+																						]
+																				)
+																					? generalCheck
+																					: generalCopy07,
+																		}}
+																		onClick={() => {
+																			setCopiedArray(
+																				(
+																					copiedArray
+																				) => {
+																					const existingItem =
+																						copiedArray.find(
+																							(
+																								item
+																							) =>
+																								item.walletId ===
+																								row[
+																									"Wallet"
+																								]
+																						);
+
+																					if (
+																						existingItem
+																					) {
+																						// Cancel the previous timeout if it exists
+																						clearTimeout(
+																							existingItem.timeoutId
+																						);
+																					}
+
+																					// Create a new timeout to remove the wallet ID after 2 seconds
+																					const timeoutId =
+																						setTimeout(
+																							() => {
+																								setCopiedArray(
+																									(
+																										copiedArray
+																									) =>
+																										copiedArray.filter(
+																											(
+																												item
+																											) =>
+																												item.walletId !==
+																												row[
+																													"Wallet"
+																												]
+																										)
+																								);
+																							},
+																							2000
+																						);
+
+																					// Return the updated array
+																					if (
+																						existingItem
+																					) {
+																						// Replace the existing item with the new timeoutId
+																						return copiedArray.map(
+																							(
+																								item
+																							) =>
+																								item.walletId ===
+																								row[
+																									"Wallet"
+																								]
+																									? {
+																											walletId:
+																												row[
+																													"Wallet"
+																												],
+																											timeoutId,
+																									  }
+																									: item
+																						);
+																					} else {
+																						// Add the new item to the array
+																						return [
+																							...copiedArray,
+																							{
+																								walletId:
+																									row[
+																										"Wallet"
+																									],
+																								timeoutId,
+																							},
+																						];
+																					}
+																				}
+																			);
+																			navigator.clipboard.writeText(
+																				row[
+																					"Wallet"
+																				]
+																			);
+																		}}
+																	>
+																		{m.node_status_node_overview_table_wallet_id_copy_text()}
+																	</Badge>
+																</div>
 															}
 														/>
 													</td>
