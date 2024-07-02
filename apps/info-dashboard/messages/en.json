@@ -117,5 +117,6 @@
 	"node_status_fix_status_node_provider_button_link": "https://docs.lilypad.tech/lilypad/hardware-providers/troubleshooting",
 	"node_status_fix_status_node_provider_card_title": "Fix your impaired node status now",
 	"node_status_fix_status_node_provider_card_subtitle": "An impaired node status means your node is online, but not submitting work proofs and doesn’t compete for rewards.",
-	"node_status_node_overview_table_warning_status": "Impaired"
+	"node_status_node_overview_table_warning_status": "Impaired",
+	"coming_soon_metrics_card": "Coming soon"
 }

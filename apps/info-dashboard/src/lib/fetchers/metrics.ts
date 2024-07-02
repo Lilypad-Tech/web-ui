@@ -1,5 +1,6 @@
 import { ascending, sort } from "d3";
 import { DateTime } from "luxon";
+import * as m from "@/paraglide/messages.js";
 
 type TimeSeriesCount = {
 	Year: string;
@@ -29,6 +30,43 @@ export async function fetchMetrics() {
 	return res;
 }
 
+export function addValueChange(enrichedTs: TimeSeriesCountEnriched[]) {
+	return sort(enrichedTs, (a, b) =>
+		ascending(a.epochMillis, b.epochMillis)
+	).map((val, index, arr) => {
+		const change =
+			index > 0 ? arr[index].Count - arr[index - 1].Count : val.Count;
+		return { ...val, change };
+	});
+}
+
+export function toFrontendData(data?: MetricsEndpointReturnType) {
+	const withChangeCalculated = {
+		nodes: addValueChange(enrichMetricsTimeSeriesData(data?.Nodes ?? [])),
+		jobsCompleted: addValueChange(
+			enrichMetricsTimeSeriesData(data?.JobsCompleted ?? [])
+		),
+	};
+
+	return {
+		nodesScalar: {
+			...withChangeCalculated.nodes.slice(-1)[0],
+			title: m.metrics_card_2_title(),
+		},
+		jobsCompletedScalar: {
+			...withChangeCalculated.jobsCompleted.slice(-1)[0],
+			title: m.metrics_card_1_title(),
+		},
+		totalHashrateScalar: {
+			change: undefined,
+			Count: undefined,
+			title: m.metrics_card_3_title(),
+		},
+		Nodes: withChangeCalculated.nodes,
+		JobsCompleted: withChangeCalculated.jobsCompleted,
+	};
+}
+
 // Takes "August" as month
 export function parseUtcYearAndMonth({
 	Year,
@@ -37,9 +75,12 @@ export function parseUtcYearAndMonth({
 	Year: string;
 	Month: string;
 }) {
-	return DateTime.fromFormat(`${Month} ${Year}`, "LLLL yyyy", {
-		zone: "utc",
-	});
+	return DateTime.fromObject(
+		{ month: Number(Month), year: Number(Year) },
+		{
+			zone: "utc",
+		}
+	);
 }
 
 export function enrichMetricsTimeSeriesData(ts: TimeSeriesCount[]) {
