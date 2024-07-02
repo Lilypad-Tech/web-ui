@@ -1,4 +1,5 @@
 import { PropsWithChildren, ReactNode } from "react";
+import { twMerge } from "tailwind-merge";
 
 interface TableLeadTextChildren {
 	title?: React.ReactNode;
@@ -14,7 +15,10 @@ const TableLeadText = ({ title, subtitle, ...props }: TableLeadTextProps) => {
 	const { className = "", ...rest } = props;
 	return (
 		<div
-			className={`${className} bg-uui-bg-secondary rounded-uui-nonenone px-uui-3xl py-uui-xl flex items-center justify-start`}
+			className={twMerge(
+				className,
+				"bg-uui-bg-secondary rounded-uui-nonenone px-uui-3xl py-uui-xl flex items-center justify-start"
+			)}
 			{...rest}
 		>
 			{title && (

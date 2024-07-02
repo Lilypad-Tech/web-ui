@@ -4,4 +4,4 @@ export type color = "color";
 
 export type hierarchy = "primary";
 
-export type size = "md";
+export type size = "md" | "xl" | "2xl";

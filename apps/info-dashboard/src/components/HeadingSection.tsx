@@ -1,4 +1,4 @@
-import SectionContainer from "./SectionContainer";
+import { SectionContainer } from "@lilypad/shared-components";
 
 interface HeadingSectionProps extends React.HTMLProps<HTMLDivElement> {
 	title: string;

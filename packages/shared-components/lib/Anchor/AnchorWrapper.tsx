@@ -1,5 +1,5 @@
-import { HTMLAttributes } from "react";
-import { color, destructive, hierarchy, size } from "./AnchorTypes";
+import type { HTMLAttributes } from "react";
+import type { color, destructive, hierarchy, size } from "./AnchorTypes";
 
 interface AnchorWrapperProps extends HTMLAttributes<HTMLAnchorElement> {
 	size: size;
@@ -29,7 +29,9 @@ export const AnchorWrapper = ({
 	const shadow = " shadow-uui-xs ";
 
 	const wrapperSizes = {
-		md: " p-[var(--uui-spacing-2-5)] px-[var(--uui-spacing-3-5)] ",
+		md: " p-[var(--uui-spacing-2-5)] gap-uui-xs px-[var(--uui-spacing-3-5)] ",
+		xl: " py-uui-lg px-[var(--uui-spacing-4-5)] gap-uui-sm p-[var(--uui-spacing-2-5)] ",
+		"2xl": " px-[var(--uui-spacing-5-5)] gap-[var(--uui-spacing-2-5)] p-uui-xl",
 	};
 
 	const coloring = {

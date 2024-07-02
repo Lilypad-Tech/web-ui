@@ -1,0 +1,8 @@
+@import "@lilypad/uui-tailwind-styles";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+	scroll-behavior: smooth;
+}

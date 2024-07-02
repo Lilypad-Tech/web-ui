@@ -1,5 +1,5 @@
-import { AnchorHTMLAttributes, HTMLAttributes } from "react";
-import { color, destructive, hierarchy, size } from "./AnchorTypes";
+import type { AnchorHTMLAttributes, HTMLAttributes } from "react";
+import type { color, destructive, hierarchy, size } from "./AnchorTypes";
 import AnchorWrapper from "./AnchorWrapper";
 import AnchorTextAtom from "./AnchorTextAtom";
 

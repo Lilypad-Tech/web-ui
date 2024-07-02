@@ -14,7 +14,6 @@ import * as m from "../../paraglide/messages";
 import { NodesEndpointReturnType } from "./nodes";
 import { Balances, PowSubmissions } from "./node-chain-data";
 import { DateTime } from "luxon";
-import { getTimeDiff } from "../time/time";
 
 export async function fetchNodeStatus() {
 	//const api_host = process.env.NEXT_PUBLIC_API_HOST;
@@ -47,17 +46,55 @@ export function toTableData({
 			(s) => s.address === Wallet
 		)?.lastSubmission.complete_timestamp;
 
+		const lastSubmissionComleteIsoDate = lastSubmissionComplete
+			? DateTime.fromSeconds(lastSubmissionComplete)
+					.toUTC()
+					.set({ second: 0, millisecond: 0 })
+			: undefined;
+
+		const connectedSinceIsoDate = connectedSince
+			? DateTime.fromMillis(connectedSince)
+					.toUTC()
+					.set({ second: 0, millisecond: 0 })
+			: undefined;
+
+		const lastPowSubmittedTime = lastSubmissionComleteIsoDate
+			? `${lastSubmissionComleteIsoDate.toISODate()} ${lastSubmissionComleteIsoDate.toISOTime(
+					{
+						suppressMilliseconds: true,
+						suppressSeconds: true,
+						includeOffset: false,
+					}
+			  )}`
+			: "n.a.";
+
+		const connectedSinceTime = connectedSinceIsoDate
+			? `${connectedSinceIsoDate.toISODate()} ${connectedSinceIsoDate.toISOTime(
+					{
+						suppressMilliseconds: true,
+						suppressSeconds: true,
+						includeOffset: false,
+					}
+			  )}`
+			: "n.a.";
+
 		return {
 			Wallet,
 			Status: (() => {
 				return {
 					online,
-					color: online ? "success" : "gray",
+					color: online
+						? lastSubmissionComplete
+							? "success"
+							: "warning"
+						: "gray",
 					translation:
 						online === undefined
 							? m.node_status_node_overview_table_no_data_status()
 							: online
-							? m.node_status_node_overview_table_online_status()
+							? lastSubmissionComplete
+								? m.node_status_node_overview_table_online_status()
+								: m.node_status_node_overview_table_warning_status()
 							: m.node_status_node_overview_table_offline_status(),
 				} as const;
 			})(),
@@ -67,27 +104,9 @@ export function toTableData({
 			"Available LP": lpBalances.find(
 				(balance) => balance.address === Wallet
 			)?.balance,
+			"Last POW submitted": lastPowSubmittedTime,
+			"Connected since": connectedSinceTime,
 			Chain: "Arbitrum Sepolia",
-			"Connected since": connectedSince
-				? getTimeDiff(
-						DateTime.fromMillis(connectedSince),
-						DateTime.now(),
-						["days", "hours", "minutes", "seconds"]
-				  ).toHuman({
-						maximumFractionDigits: 0,
-						unitDisplay: "narrow",
-				  })
-				: "n.a.",
-			"Last POW submitted": lastSubmissionComplete
-				? getTimeDiff(
-						DateTime.fromSeconds(lastSubmissionComplete),
-						DateTime.now(),
-						["days", "hours", "minutes", "seconds"]
-				  ).toHuman({
-						maximumFractionDigits: 0,
-						unitDisplay: "narrow",
-				  })
-				: "n.a.",
 		};
 	});
 }
@@ -126,11 +145,12 @@ export function getHeaderData() {
 			},
 		},
 		{
-			name: "Chain",
-			translation: m.node_status_header_titles_chain(),
+			name: "Last POW submitted",
+			translation: m.node_status_header_titles_last_pow_submitted(),
 			tooltip: {
-				title: m.node_status_header_tooltip_title_chain(),
-				description: m.node_status_header_tooltip_description_chain(),
+				title: m.node_status_header_tooltip_title_last_pow_submitted(),
+				description:
+					m.node_status_header_tooltip_description_last_pow_submitted(),
 			},
 		},
 		{
@@ -142,13 +162,13 @@ export function getHeaderData() {
 					m.node_status_header_tooltip_description_connected_since(),
 			},
 		},
+
 		{
-			name: "Last POW submitted",
-			translation: m.node_status_header_titles_last_pow_submitted(),
+			name: "Chain",
+			translation: m.node_status_header_titles_chain(),
 			tooltip: {
-				title: m.node_status_header_tooltip_title_last_pow_submitted(),
-				description:
-					m.node_status_header_tooltip_description_last_pow_submitted(),
+				title: m.node_status_header_tooltip_title_chain(),
+				description: m.node_status_header_tooltip_description_chain(),
 			},
 		},
 	] as const;

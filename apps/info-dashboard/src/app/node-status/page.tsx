@@ -1,13 +1,12 @@
 "use client";
 
 import HeadingSection from "@/components/HeadingSection";
-
 import { fetchNodes } from "@/lib/fetchers/nodes";
 import { useQuery } from "@tanstack/react-query";
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import * as m from "@/paraglide/messages";
-import SectionContainer from "@/components/SectionContainer";
+import { Anchor, SectionContainer } from "@lilypad/shared-components";
 import Table from "@/components/Table/Table";
 import CardHeader from "@/components/CardHeader";
 import InputField from "@/components/InputField/Inputfield";
@@ -22,7 +21,7 @@ import FeaturedIcon from "@/components/FeaturedIcon";
 import TableHeaderCell from "@/components/Table/TableHeaderCell";
 import Tooltip from "@/components/Tooltip/Tooltip";
 import TableLeadText from "@/components/Table/TableLeadText";
-import Badge from "@/components/Badge/Badge";
+import { Badge } from "@lilypad/shared-components";
 import {
 	fetchNodeStatus,
 	getHeaderData,
@@ -33,6 +32,8 @@ import {
 	getNodeLPBalances,
 	getNodesPowSubmissions,
 } from "@/lib/fetchers/node-chain-data";
+import CardWithBorder from "@/components/CardWithBorder/CardWithBorder";
+import RandomHexSpan from "@/components/Random/RandomHexSpan";
 
 export default function NodeStatus() {
 	const [walletAddress, setWalletAddress] = useState("");
@@ -133,6 +134,90 @@ export default function NodeStatus() {
 					subtitle={m.node_status_heading_subtitle()}
 				/>
 				<SectionContainer className="sm:pt-uui-container-padding-desktop mx-auto pt-uui-container-padding-mobile">
+					<div className="flex flex-col mb-uui-xl md:mb-uui-4xl space-y-uui-xl md:space-y-uui-none md:flex-row md:space-x-uui-3xl">
+						<CardWithBorder
+							className="md:[&&]:w-1/2 "
+							title={m.leaderboard_node_count_card_title()}
+						>
+							<div className="flex space-x-uui-5xl">
+								<div className="flex-col flex space-y-uui-xs">
+									<span className="uui-text-sm font-medium text-uui-text-tertiary-600">
+										{m.leaderboard_node_count_total_title()}
+									</span>
+									<span className="text-uui-text-primary-900 uui-display-sm font-semibold">
+										{nodesIsLoading ? (
+											<RandomHexSpan
+												length={4}
+											></RandomHexSpan>
+										) : nodesIsError ? (
+											<span>!err</span>
+										) : (
+											<span>{nodesData?.length}</span>
+										)}
+									</span>
+								</div>
+								<div className="flex-col flex space-y-uui-xs">
+									<span className="uui-text-sm font-medium text-uui-text-tertiary-600">
+										{m.leaderboard_node_count_online_title()}
+									</span>
+									<span className="text-uui-text-primary-900 uui-display-sm font-semibold">
+										{/* Todo add api total Lilybit_rewards earned */}
+
+										{nodesIsLoading ? (
+											<RandomHexSpan
+												length={2}
+											></RandomHexSpan>
+										) : nodesIsError ? (
+											<span>!err</span>
+										) : (
+											<span>
+												{
+													nodesData?.filter(
+														(node) => node.Online
+													).length
+												}
+											</span>
+										)}
+									</span>
+								</div>
+							</div>
+						</CardWithBorder>
+						<CardWithBorder
+							className="gap-uui-3xl"
+							title={m.node_status_fix_status_node_provider_card_title()}
+							subtitle={m.node_status_fix_status_node_provider_card_subtitle()}
+						>
+							<Anchor
+								href={m.node_status_fix_status_node_provider_button_link()}
+								target="_blank"
+								color="color"
+								destructive={false}
+								hierarchy="primary"
+								size="md"
+								className="w-fit "
+							>
+								{m.node_status_fix_status_node_provider_button_text()}
+							</Anchor>
+						</CardWithBorder>
+						<CardWithBorder
+							className="gap-uui-3xl"
+							title={m.node_status_get_started_node_provider_card_title()}
+							subtitle={m.node_status_get_started_node_provider_card_subtitle()}
+						>
+							<Anchor
+								href={m.node_status_get_started_node_provider_button_link()}
+								target="_blank"
+								color="color"
+								destructive={false}
+								hierarchy="primary"
+								size="md"
+								className="w-fit "
+							>
+								{m.node_status_get_started_node_provider_button_text()}
+							</Anchor>
+						</CardWithBorder>
+					</div>
+
 					<Table className="max-h-[70vh] min-h-[70vh] relative">
 						{{
 							cardHeader: (
@@ -348,11 +433,16 @@ export default function NodeStatus() {
 													<td>
 														<TableLeadText
 															className="whitespace-nowrap"
-															title={row["Chain"]}
+															title={
+																row[
+																	"Last POW submitted"
+																]
+															}
 														/>
 													</td>
 													<td>
 														<TableLeadText
+															className="whitespace-nowrap"
 															title={
 																row[
 																	"Connected since"
@@ -362,11 +452,8 @@ export default function NodeStatus() {
 													</td>
 													<td>
 														<TableLeadText
-															title={
-																row[
-																	"Last POW submitted"
-																]
-															}
+															className="whitespace-nowrap"
+															title={row["Chain"]}
 														/>
 													</td>
 												</tr>

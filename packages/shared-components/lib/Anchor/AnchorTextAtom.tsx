@@ -1,5 +1,5 @@
-import { HTMLAttributes } from "react";
-import { size } from "./AnchorTypes";
+import type { HTMLAttributes } from "react";
+import type { size } from "./AnchorTypes";
 
 interface AnchorTextAtomProps extends HTMLAttributes<HTMLSpanElement> {
 	size: size;
@@ -8,6 +8,8 @@ interface AnchorTextAtomProps extends HTMLAttributes<HTMLSpanElement> {
 const AnchorTextAtom = ({ size, children, ...props }: AnchorTextAtomProps) => {
 	const textSizes = {
 		md: " uui-text-sm ",
+		xl: " uui-text-md ",
+		"2xl": " uui-text-lg ",
 	};
 
 	const layer1 =
