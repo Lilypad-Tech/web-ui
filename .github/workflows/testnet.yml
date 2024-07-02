@@ -1,48 +1,51 @@
 name: Deploy to Cloudflare Pages
 
 on:
-  push:
-    branches:
-      - main  # or the branch you want to deploy from
+    push:
+        branches:
+            - main # or the branch you want to deploy from
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    environment: testnet
+    build:
+        runs-on: ubuntu-latest
+        environment: testnet
 
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v2
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '20'  # Use the Node.js version compatible with your project
+            - name: Install bun
+              uses: oven-sh/setup-bun@v1
 
-    - name: Install pnpm
-      run: npm install -g pnpm
+            - name: Set up Node.js
+              uses: actions/setup-node@v2
+              with:
+                  node-version: "20" # Use the Node.js version compatible with your project
 
-    - name: Install Doppler CLI
-      run: |
-        (curl -Ls --tlsv1.2 --proto "=https" --retry 3 https://cli.doppler.com/install.sh || wget -t 3 -qO- https://cli.doppler.com/install.sh) | sudo sh
+            - name: Install pnpm
+              run: npm install -g pnpm
 
-    - name: Set up Doppler
-      run: doppler configure set token ${{ secrets.TESTNET_DOPPLER_TOKEN }}
+            - name: Install Doppler CLI
+              run: |
+                  (curl -Ls --tlsv1.2 --proto "=https" --retry 3 https://cli.doppler.com/install.sh || wget -t 3 -qO- https://cli.doppler.com/install.sh) | sudo sh
 
-    - name: Fetch secrets from Doppler and boot
-      run: doppler run -- npm run boot
-      env:
-        DOPPLER_TOKEN: ${{ secrets.TESTNET_DOPPLER_TOKEN }}
+            - name: Set up Doppler
+              run: doppler configure set token ${{ secrets.TESTNET_DOPPLER_TOKEN }}
 
-    - name: Clean up build output
-      working-directory: ./apps/info-dashboard/.next
-      run: |
-        rm -rf cache
+            - name: Fetch secrets from Doppler and boot
+              run: doppler run -- npm run boot
+              env:
+                  DOPPLER_TOKEN: ${{ secrets.TESTNET_DOPPLER_TOKEN }}
 
-    - name: Deploy to Cloudflare Pages
-      env:
-        CLOUDFLARE_API_TOKEN: ${{ secrets.TESTNET_CLOUDFLARE_API_TOKEN }}
-        CLOUDFLARE_ACCOUNT_ID: ${{ secrets.TESTNET_CLOUDFLARE_ACCOUNT_ID }}
-        CLOUDFLARE_PROJECT_NAME: ${{ secrets.TESTNET_CLOUDFLARE_PROJECT_NAME }}
-      run: |
-        npx wrangler pages deploy ./apps/info-dashboard/out --project-name=$CLOUDFLARE_PROJECT_NAME --branch=main
+            - name: Clean up build output
+              working-directory: ./apps/info-dashboard/.next
+              run: |
+                  rm -rf cache
+
+            - name: Deploy to Cloudflare Pages
+              env:
+                  CLOUDFLARE_API_TOKEN: ${{ secrets.TESTNET_CLOUDFLARE_API_TOKEN }}
+                  CLOUDFLARE_ACCOUNT_ID: ${{ secrets.TESTNET_CLOUDFLARE_ACCOUNT_ID }}
+                  CLOUDFLARE_PROJECT_NAME: ${{ secrets.TESTNET_CLOUDFLARE_PROJECT_NAME }}
+              run: |
+                  npx wrangler pages deploy ./apps/info-dashboard/out --project-name=$CLOUDFLARE_PROJECT_NAME --branch=main
