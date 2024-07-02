@@ -51,6 +51,19 @@ const Badge = ({
 					</>
 				),
 				default: <BadgeTextAtom size={size}>{children}</BadgeTextAtom>,
+				iconTrailing: (
+					<>
+						{icon && icon.type === "icon" && icon.trailing && (
+							<BadgeIconAtom
+								className={icon.className}
+								iconUrl={icon.trailing}
+								badgeType={badgeType}
+								color={color}
+								size={size}
+							/>
+						)}
+					</>
+				),
 			}}
 		</BadgeWrapper>
 	);
