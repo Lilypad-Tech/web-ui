@@ -518,7 +518,7 @@ export default function Leaderboard() {
 																			);
 																		}}
 																	>
-																		Copy
+																		{m.leaderboard_node_provider_table_wallet_id_copy_text()}
 																	</Badge>
 																</div>
 															}

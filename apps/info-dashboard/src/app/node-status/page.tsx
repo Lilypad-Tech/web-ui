@@ -539,7 +539,7 @@ export default function NodeStatus() {
 																			);
 																		}}
 																	>
-																		Copy
+																		{m.node_status_node_overview_table_wallet_id_copy_text()}
 																	</Badge>
 																</div>
 															}
