@@ -3,7 +3,11 @@ import GroupBadge from "@/components/GroupBadge/GroupBadge";
 import ProductCard from "@/components/ProductCard/ProductCard";
 import { Anchor, Badge, SectionContainer } from "@lilypad/shared-components";
 import { SocialIcon } from "@lilypad/shared-components";
+import { arrowsArrowRight } from "@frontline-hq/untitledui-icons";
+
 import Image from "next/image";
+import { useEffect, useState } from "react";
+import CenterHeadingSection from "@/components/CenterHeadingSection/CenterHeadingSection";
 
 export default function Home() {
 	const socialLinks = [
@@ -45,86 +49,138 @@ export default function Home() {
 		},
 	];
 
+	function getScreenSize() {
+		const width = window.innerWidth;
+		if (width >= 1536) {
+			return "2xl";
+		} else if (width >= 1280) {
+			return "xl";
+		} else if (width >= 1024) {
+			return "lg";
+		} else if (width >= 768) {
+			return "md";
+		} else if (width >= 640) {
+			return "sm";
+		} else {
+			return "xs";
+		}
+	}
+
+	const [screenSize, setScreenSize] = useState(getScreenSize);
+
+	useEffect(() => {
+		function handleResize() {
+			setScreenSize(getScreenSize());
+		}
+
+		window.addEventListener("resize", handleResize);
+		handleResize(); // Call once to set initial size
+
+		return () => window.removeEventListener("resize", handleResize);
+	}, []);
+
 	return (
-		<main className=" ">
+		<main className="overflow-hidden ">
 			<SectionContainer>
-				<div className="bg-uui-bg-primary flex mx-auto justify-between items-center  space-x-uui-7xl px-uui-4xl">
-					<div className="items-start flex flex-col">
+				<div className="bg-uui-bg-primary flex flex-col lg:flex-row justify-between items-end px-uui-sm space-y-uui-7xl lg:space-y-uui-none lg:gap-uui-9xl lg:pl-uui-4xl pt-uui-7xl lg:pb-uui-9xl ">
+					<div className="items-start w-full lg:w-fit justify-start flex flex-col lg:flex-grow mr-auto">
 						<GroupBadge
+							onClick={() =>
+								window.open(
+									"https://lilypadnetwork.notion.site/Welcome-to-Lilypad-s-IncentiveNet-9e9b12936d4340ad9417d92dab8bd9d1",
+									"_blank"
+								)
+							}
 							badge="leading"
-							color="error"
-							message="Whats up"
-							text="badge text"
-							size="lg"
+							icon={{
+								url: arrowsArrowRight,
+							}}
+							color="brand"
+							message="We've recently launched IncentiveNet"
+							text="News"
+							size={
+								screenSize === "xl" || screenSize === "2xl"
+									? "lg"
+									: "md"
+							}
 							theme="modern"
-						>
-							yea
-						</GroupBadge>
-						<Badge
-							badgeType="Badge modern"
-							color="success"
-							size="md"
-							icon={{ type: "dot" }}
-						>
-							Whats new
-						</Badge>
-						<div className="pt-uui-xl pb-uui-3xl flex space-x-uui-xl uui-display-xl font-semibold text-uui-text-primary-900 ">
-							<h1>AI that’s</h1>
+						/>
+						<div className="pt-uui-xl antialiased pb-uui-xl md:pb-uui-3xl flex flex-wrap gap-uui-md lg:flex-nowrap md:gap-uui-xl uui-display-md md:uui-display-xl font-semibold text-uui-text-primary-900 ">
+							<h1 className="sm:whitespace-nowrap">AI that's</h1>
 							<h1 className="text-uui-text-quarterary-500">
 								truly
 							</h1>
 							<h1>open</h1>
 						</div>
-						<h5 className="pb-uui-6xl uui-text-xl font-regular text-uui-text-tertiary-600">
+						<h5 className="pb-uui-4xl md:pb-uui-6xl uui-text-lg md:uui-text-xl font-regular text-uui-text-tertiary-600">
 							Serverless Distributed Compute for AI
 						</h5>
 						<Anchor
-							className="[&&]:rounded-full"
+							target="_blank"
+							href="https://lilypadnetwork.notion.site/Leap-into-Lilypad-s-IncentiveNet-9e9b12936d4340ad9417d92dab8bd9d1"
+							className="[&&]:rounded-full w-full md:w-fit"
 							color="color"
 							destructive={false}
 							hierarchy="primary"
-							size="2xl"
+							size={
+								screenSize === "xl" || screenSize === "2xl"
+									? "2xl"
+									: "xl"
+							}
 						>
 							Get started
 						</Anchor>
-						<div className="pt-uui-9xl">ddsd</div>
+						<div className="flex space-x-uui-xl pt-uui-7xl lg:pt-uui-9xl">
+							{socialLinks.map((link) => (
+								<a
+									key={link.href}
+									href={link.href}
+									target="_blank"
+									rel="noopener noreferrer"
+								>
+									<SocialIcon
+										className="w-[2rem] h-[2rem]"
+										iconUrl={link.iconUrl}
+									/>
+								</a>
+							))}
+						</div>
 					</div>
-					<Image
-						objectFit="contain"
-						height={400}
-						width={400}
-						alt="Lilypad Header"
-						src="/lilypad-placeholder.png"
-					/>
+					<div className="relative w-full lg:w-1/2 lg:h-full max-w-2xl mr-auto">
+						<Image
+							className="mr-auto lg:mx-auto lg:mr-0 lg:ml-auto object-cover w-full h-full"
+							layout="responsive"
+							width={500}
+							height={500}
+							alt="Lilypad Header"
+							src="/lilypad-fill.png"
+						/>
+					</div>
 				</div>
-				<div className=" bg-uui-bg-secondary py-uui-9xl ">
+
+				<div className=" bg-uui-bg-secondary  py-uui-7xl lg:py-uui-9xl  ">
 					<div
 						className="text-center mx-auto  max-w-uui-width-2xl
 					"
 					>
-						<h5 className="text-uui-text-brand-secondary-700 font-semibold antialiased uui-text-md">
+						<h5 className="text-uui-text-brand-secondary-700 font-semibold antialiased uui-text-sm md:uui-text-md">
 							Mission Statement
 						</h5>
-						<h2 className="text-uui-text-primary-900 pb-uui-2xl pt-uui-lg uui-display-lg font-semibold">
+						<h2 className="text-uui-text-primary-900 pt-uui-lg uui-display-xs md:uui-display-lg font-semibold">
 							We create an AI-driven decentralized network that
 							uses underutilized resources to make efficient,
 							sustainable technology accessible to everyone.
 						</h2>
 					</div>
 				</div>
-				<div className=" py-uui-9xl">
-					<div className="text-center mx-auto mb-uui-7xl">
-						<h5 className="text-uui-text-brand-secondary-700 font-semibold antialiased uui-text-md">
-							Innovate. Build. Compute.
-						</h5>
-						<h2 className="text-uui-text-primary-900 pb-uui-2xl pt-uui-lg uui-display-md font-semibold">
-							Use the LilyPad network
-						</h2>
-						<span className="text-uui-text-tertiary-600 uui-text-xl font-regular">
-							We offer three paths of interaction with LilyPad.
-						</span>
-					</div>
-					<div className="flex flex-col lg:flex-row space-y-uui-4xl lg:space-y-uui-none lg:space-x-uui-4xl">
+
+				<CenterHeadingSection
+					className="[&&]:bg-uui-bg-primary"
+					title="Use the LilyPad network"
+					subtitle="We offer three paths of interaction with LilyPad."
+					header="Innovate. Build. Compute."
+				>
+					<div className="flex mt-uui-7xl  flex-col lg:flex-row space-y-uui-4xl lg:space-y-uui-none lg:space-x-uui-4xl">
 						{productCardsData.map((card, index) => (
 							<ProductCard
 								key={index}
@@ -145,43 +201,34 @@ export default function Home() {
 							</ProductCard>
 						))}
 					</div>
-				</div>
-				<div className=" bg-uui-bg-secondary py-uui-9xl ">
-					<div
-						className="text-center mx-auto  max-w-uui-width-xl
-					"
-					>
-						<h5 className="text-uui-text-brand-secondary-700 font-semibold antialiased uui-text-md">
-							Coming in Q4 2024
-						</h5>
-						<h2 className="text-uui-text-primary-900 pb-uui-2xl pt-uui-lg uui-display-md font-semibold">
-							Introducing Lilypad Token: Power your projects and
-							fuel innovation with the currency of decentralized
-							computing.
-						</h2>
-						<span className="text-uui-text-tertiary-600 uui-text-xl font-regular">
-							Be the first to know about the token release, join
-							our socials
-						</span>
-						<div className="pt-uui-4xl flex items-center justify-center w-full">
-							<div className="flex space-x-uui-xl">
-								{socialLinks.map((link) => (
-									<a
-										key={link.href}
-										href={link.href}
-										target="_blank"
-										rel="noopener noreferrer"
-									>
-										<SocialIcon
-											className="w-[2rem] h-[2rem]"
-											iconUrl={link.iconUrl}
-										></SocialIcon>
-									</a>
-								))}
-							</div>
+				</CenterHeadingSection>
+
+				<CenterHeadingSection
+					title="Introducing Lilypad Token: Power your projects and
+					fuel innovation with the currency of decentralized
+					computing."
+					subtitle="Be the first to know about the token release, join
+					our socials"
+					header="Coming in Q4 2024"
+				>
+					<div className="pt-uui-4xl flex items-center justify-center w-full">
+						<div className="flex space-x-uui-xl">
+							{socialLinks.map((link) => (
+								<a
+									key={link.href}
+									href={link.href}
+									target="_blank"
+									rel="noopener noreferrer"
+								>
+									<SocialIcon
+										className="w-[2rem] h-[2rem]"
+										iconUrl={link.iconUrl}
+									></SocialIcon>
+								</a>
+							))}
 						</div>
 					</div>
-				</div>
+				</CenterHeadingSection>
 			</SectionContainer>
 		</main>
 	);
