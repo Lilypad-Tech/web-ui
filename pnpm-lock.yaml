@@ -153,6 +153,9 @@ importers:
 
   apps/website:
     dependencies:
+      '@frontline-hq/untitledui-icons':
+        specifier: ^0.0.4
+        version: 0.0.4
       '@lilypad/shared-components':
         specifier: workspace:~
         version: link:../../packages/shared-components
