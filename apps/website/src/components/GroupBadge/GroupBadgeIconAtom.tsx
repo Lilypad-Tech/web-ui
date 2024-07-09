@@ -57,8 +57,6 @@ const GroupBadgeIconAtom = ({
 		lg: "-mr-uui-xs",
 	};
 
-	console.log("styles", styles[theme][color].iconStyle);
-
 	return (
 		<span
 			style={spanStyle}
