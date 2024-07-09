@@ -23,7 +23,7 @@ const BadgeWrapper = ({
 	...props
 }: BadgeWrapperProps) => {
 	const layer1 =
-		"group flex justify-center items-center focus-visible:outline-none focus:outline-none whitespace-nowrap";
+		"group w-fit flex justify-center items-center focus-visible:outline-none focus:outline-none whitespace-nowrap";
 
 	const backgroundLayer = {
 		"Pill outline": {
@@ -68,19 +68,25 @@ const BadgeWrapper = ({
 		md: "px-[var(--uui-spacing-2-5)] py-uui-xxs gap-uui-md",
 	};
 
-	const onClickClasses = "pointer-events-auto";
-	const noOnClickClasses = "pointer-events-auto cursor-default";
+	const onClickClasses = "pointer-events-auto cursor-pointer ";
+	const noOnClickClasses = "pointer-events-none cursor-default";
 
 	const classes = `${layer1} ${sizes[size]} ${
 		backgroundLayer[badgeType][color]
 	} ${props.onClick ? onClickClasses : noOnClickClasses}`;
 
-	return (
+	return props.onClick ? (
 		<button {...props} className={classes + " " + props.className}>
 			{children.iconLeading}
 			{children.default}
 			{children.iconTrailing}
 		</button>
+	) : (
+		<div className={classes + "  " + props.className}>
+			{children.iconLeading}
+			{children.default}
+			{children.iconTrailing}
+		</div>
 	);
 };
 

@@ -14,7 +14,7 @@ export type BadgeSize = "sm" | "md";
 
 export type BadgeIcon =
 	| ({
-			type: "icon" | "dot";
+			type: "icon" | "dot" | "dot-outline";
 			leading?: string;
 			trailing?: never;
 	  } & HTMLAttributes<HTMLSpanElement>)

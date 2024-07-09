@@ -8,6 +8,7 @@ interface BadgeDotAtomProps extends HTMLAttributes<HTMLSpanElement> {
 	color: BadgeColor;
 	badgeType: BadgeType;
 	size: BadgeSize;
+	type?: "dot" | "dot-outline";
 }
 
 const BadgeDotAtom = ({
@@ -15,14 +16,21 @@ const BadgeDotAtom = ({
 	color,
 	badgeType,
 	size,
+	type = "dot",
 	...props
 }: BadgeDotAtomProps) => {
 	const layer1 = "  [&&]:h-[0.5rem] [&&]:w-[0.5rem] ";
-	return (
+	console.log(type, "type ");
+	return type === "dot-outline" ? (
+		<div
+			{...props}
+			className={`${props.className} [&&]:h-[0.375rem] [&&]:w-[0.3755rem]  rounded-full ring-uui-3  `}
+		></div>
+	) : (
 		<BadgeIconAtom
 			{...props}
 			iconUrl={dotUrl}
-			className={`${layer1}  `}
+			className={`${layer1} ${props.className}  `}
 			color={color}
 			badgeType={badgeType}
 			size={size}
