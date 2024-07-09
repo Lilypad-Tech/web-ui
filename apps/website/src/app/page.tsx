@@ -50,19 +50,21 @@ export default function Home() {
 	];
 
 	function getScreenSize() {
-		const width = window.innerWidth;
-		if (width >= 1536) {
-			return "2xl";
-		} else if (width >= 1280) {
-			return "xl";
-		} else if (width >= 1024) {
-			return "lg";
-		} else if (width >= 768) {
-			return "md";
-		} else if (width >= 640) {
-			return "sm";
-		} else {
-			return "xs";
+		if (typeof window !== "undefined") {
+			const width = window.innerWidth;
+			if (width >= 1536) {
+				return "2xl";
+			} else if (width >= 1280) {
+				return "xl";
+			} else if (width >= 1024) {
+				return "lg";
+			} else if (width >= 768) {
+				return "md";
+			} else if (width >= 640) {
+				return "sm";
+			} else {
+				return "xs";
+			}
 		}
 	}
 
@@ -73,10 +75,12 @@ export default function Home() {
 			setScreenSize(getScreenSize());
 		}
 
-		window.addEventListener("resize", handleResize);
-		handleResize(); // Call once to set initial size
+		if (typeof window !== "undefined") {
+			window.addEventListener("resize", handleResize);
+			handleResize(); // Call once to set initial size
 
-		return () => window.removeEventListener("resize", handleResize);
+			return () => window.removeEventListener("resize", handleResize);
+		}
 	}, []);
 
 	return (
@@ -106,7 +110,9 @@ export default function Home() {
 							theme="modern"
 						/>
 						<div className="pt-uui-xl antialiased pb-uui-xl md:pb-uui-3xl flex flex-wrap gap-uui-md lg:flex-nowrap md:gap-uui-xl uui-display-md md:uui-display-xl font-semibold text-uui-text-primary-900 ">
-							<h1 className="sm:whitespace-nowrap">AI that's</h1>
+							<h1 className="sm:whitespace-nowrap">
+								AI that&apos;s
+							</h1>
 							<h1 className="text-uui-text-quarterary-500">
 								truly
 							</h1>
@@ -159,10 +165,7 @@ export default function Home() {
 				</div>
 
 				<div className=" bg-uui-bg-secondary  py-uui-7xl lg:py-uui-9xl  ">
-					<div
-						className="text-center mx-auto  max-w-uui-width-2xl
-					"
-					>
+					<div className="text-center mx-auto  max-w-uui-width-2xl">
 						<h5 className="text-uui-text-brand-secondary-700 font-semibold antialiased uui-text-sm md:uui-text-md">
 							Mission Statement
 						</h5>
@@ -173,7 +176,6 @@ export default function Home() {
 						</h2>
 					</div>
 				</div>
-
 				<CenterHeadingSection
 					className="[&&]:bg-uui-bg-primary"
 					title="Use the LilyPad network"
