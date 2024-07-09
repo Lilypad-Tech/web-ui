@@ -23,40 +23,35 @@ const GroupBadgeWrapper = ({
 				outerBadgeStyle: {
 					default: `bg-uui-bg-primary text-uui-text-secondary-700 ring-uui-border-primary ${
 						onClick ? "uui-hover-all:bg-uui-bg-secondary" : ""
-					} ring-[0.063rem] rounded-lg`,
-					hover: "uui-hover-all:bg-uui-bg-secondary",
+					} ring-[0.063rem] rounded-uui-lg`,
 				},
 			},
 			gray: {
 				outerBadgeStyle: {
 					default: `bg-uui-bg-primary text-uui-text-secondary-700 ring-uui-border-primary ${
 						onClick ? "uui-hover-all:bg-uui-bg-secondary" : ""
-					} ring-[0.063rem] rounded-lg`,
-					hover: "uui-hover-all:bg-uui-bg-secondary",
+					} ring-[0.063rem] rounded-uui-lg`,
 				},
 			},
 			success: {
 				outerBadgeStyle: {
 					default: `bg-uui-bg-primary text-uui-text-secondary-700 ring-uui-border-primary ${
 						onClick ? "uui-hover-all:bg-uui-bg-secondary" : ""
-					} ring-[0.063rem] rounded-lg`,
-					hover: "uui-hover-all:bg-uui-bg-secondary",
+					} ring-[0.063rem] rounded-uui-lg`,
 				},
 			},
 			error: {
 				outerBadgeStyle: {
 					default: `bg-uui-bg-primary text-uui-text-secondary-700 ring-uui-border-primary ${
 						onClick ? "uui-hover-all:bg-uui-bg-secondary" : ""
-					} ring-[0.063rem] rounded-lg`,
-					hover: "uui-hover-all:bg-uui-bg-secondary",
+					} ring-[0.063rem] rounded-uui-lg`,
 				},
 			},
 			warning: {
 				outerBadgeStyle: {
 					default: `bg-uui-bg-primary text-uui-text-secondary-700 ring-uui-border-primary ${
 						onClick ? "uui-hover-all:bg-uui-bg-secondary" : ""
-					} ring-[0.063rem] rounded-lg`,
-					hover: "uui-hover-all:bg-uui-bg-secondary ",
+					} ring-[0.063rem] rounded-uui-lg`,
 				},
 			},
 		},
