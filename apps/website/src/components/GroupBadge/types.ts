@@ -1,6 +1,6 @@
 import { HTMLAttributes } from "react";
 
-export type GroupBadgeSizes = "lg";
+export type GroupBadgeSizes = "md" | "lg";
 
 export type GroupBadgeColor =
 	| "brand"
@@ -11,7 +11,7 @@ export type GroupBadgeColor =
 
 export type GroupBadgeTheme = "modern";
 
-export type GroupBadgeBadge = "leading" | "trailing";
+export type GroupBadgeBadge = "leading";
 
 export type GroupBadgeIcon = {
 	url?: string;
