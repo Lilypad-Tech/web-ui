@@ -9,7 +9,7 @@ import * as m from "@/paraglide/messages";
 import { Anchor, SectionContainer } from "@lilypad/shared-components";
 import Table from "@/components/Table/Table";
 import CardHeader from "@/components/CardHeader";
-import InputField from "@/components/InputField/Inputfield";
+import { InputField } from "@lilypad/shared-components";
 import {
 	alertAndFeedbackAlertCircle,
 	generalCheck,
@@ -246,6 +246,7 @@ export default function NodeStatus() {
 														e.target.value
 													)
 												}
+												inputSize="sm"
 												placeholder={m.node_status_node_overview_table_inputField_placeholder()}
 												iconUrl={generalSearchMd}
 											/>
