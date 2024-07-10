@@ -1,7 +1,6 @@
 import { SectionContainer } from "@lilypad/shared-components";
 import Image from "next/image";
-import SocialIcon from "./SocialIcon";
-
+import { SocialIcon } from "@lilypad/shared-components";
 interface FooterProps extends React.HTMLProps<HTMLDivElement> {
 	socialLinks: { href: string; iconUrl: string }[];
 	footerIcon: { src: string; alt: string; href: string };
