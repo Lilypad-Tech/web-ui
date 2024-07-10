@@ -60,7 +60,7 @@ const GroupBadgeIconAtom = ({
 	return (
 		<span
 			style={spanStyle}
-			className={`  ${layer1} ${styles[theme][color].iconStyle} ${props.className} ${iconSizes[size]}`}
+			className={`${props.className}  ${layer1} ${styles[theme][color].iconStyle} ${iconSizes[size]}`}
 		/>
 	);
 };

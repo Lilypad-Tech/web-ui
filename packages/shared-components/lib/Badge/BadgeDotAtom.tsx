@@ -20,7 +20,6 @@ const BadgeDotAtom = ({
 	...props
 }: BadgeDotAtomProps) => {
 	const layer1 = "  [&&]:h-[0.5rem] [&&]:w-[0.5rem] ";
-	console.log(type, "type ");
 	return type === "dot-outline" ? (
 		<div
 			{...props}
