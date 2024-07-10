@@ -1,14 +1,27 @@
 "use client";
 import GroupBadge from "@/components/GroupBadge/GroupBadge";
 import ProductCard from "@/components/ProductCard/ProductCard";
-import { Anchor, SectionContainer } from "@lilypad/shared-components";
+import {
+	Anchor,
+	Button,
+	InputField,
+	SectionContainer,
+} from "@lilypad/shared-components";
 import { SocialIcon } from "@lilypad/shared-components";
-import { arrowsArrowRight } from "@frontline-hq/untitledui-icons";
+import {
+	arrowsArrowRight,
+	educationBookOpen01,
+	generalCheck,
+	generalCopy01,
+	generalCopy02,
+	generalCopy06,
+} from "@frontline-hq/untitledui-icons";
 import Head from "next/head";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import CenterHeadingSection from "@/components/CenterHeadingSection/CenterHeadingSection";
 import SocialProofSection from "@/components/SocialProofSection/SocialProofSection";
+import IconAtom from "@/components/IconAtom/IconAtom";
 
 export default function Home() {
 	const socialLinks = [
@@ -93,6 +106,36 @@ export default function Home() {
 		{ src: "/bacalhau.svg", alt: "Spheron" },
 		{ src: "/bacalhau.svg", alt: "Swan" },
 	];
+
+	const copyEmail = "hello@lilypad.tech";
+
+	const [copyState, setCopyState] = useState({
+		iconUrl: generalCopy06,
+		timeoutId: null,
+	});
+
+	const handleCopyClick = async () => {
+		// Copy text to clipboard
+		await navigator.clipboard.writeText(copyEmail);
+		setCopyState((prevState) => ({
+			...prevState,
+			iconUrl: generalCheck,
+		}));
+
+		// Clear any existing timeout
+		if (copyState.timeoutId) {
+			clearTimeout(copyState.timeoutId);
+		}
+
+		// Set timeout to reset the icon
+		const newTimeoutId = setTimeout(() => {
+			setCopyState((prevState) => ({
+				...prevState,
+				iconUrl: generalCopy06,
+				timeoutId: null,
+			}));
+		}, 2000);
+	};
 
 	return (
 		<>
@@ -202,25 +245,25 @@ export default function Home() {
 							/>
 						</div>
 					</div>
-
 					<SocialProofSection
 						trustedByArray={trustedByArray}
 						title="Trusted by"
 					></SocialProofSection>
+				</SectionContainer>
 
-					<div className=" bg-uui-bg-secondary  py-uui-7xl lg:py-uui-9xl  ">
-						<div className="text-center mx-auto  max-w-uui-width-2xl">
-							<h5 className="text-uui-text-brand-secondary-700 font-semibold antialiased uui-text-sm md:uui-text-md">
-								Mission Statement
-							</h5>
-							<h2 className="text-uui-text-primary-900 pt-uui-lg uui-display-xs md:uui-display-lg font-semibold">
-								We create an AI-driven decentralized network
-								that uses underutilized resources to make
-								efficient, sustainable technology accessible to
-								everyone.
-							</h2>
-						</div>
+				<div className=" bg-uui-bg-secondary  py-uui-7xl lg:py-uui-9xl  ">
+					<div className="text-center mx-auto  max-w-uui-width-2xl">
+						<h5 className="text-uui-text-brand-secondary-700 font-semibold antialiased uui-text-sm md:uui-text-md">
+							Mission Statement
+						</h5>
+						<h2 className="text-uui-text-primary-900 pt-uui-lg uui-display-xs md:uui-display-lg font-semibold">
+							We create an AI-driven decentralized network that
+							uses underutilized resources to make efficient,
+							sustainable technology accessible to everyone.
+						</h2>
 					</div>
+				</div>
+				<SectionContainer>
 					<CenterHeadingSection
 						className="[&&]:bg-uui-bg-primary"
 						title="Use the LilyPad network"
@@ -249,33 +292,126 @@ export default function Home() {
 							))}
 						</div>
 					</CenterHeadingSection>
+				</SectionContainer>
 
-					<CenterHeadingSection
-						title="Introducing Lilypad Token: Power your projects and
+				<CenterHeadingSection
+					title="Introducing Lilypad Token: Power your projects and
 					fuel innovation with the currency of decentralized
 					computing."
-						subtitle="Be the first to know about the token release, join
+					subtitle="Be the first to know about the token release, join
 					our socials"
-						header="Coming in Q4 2024"
-					>
-						<div className="pt-uui-4xl flex items-center justify-center w-full">
-							<div className="flex space-x-uui-xl">
-								{socialLinks.map((link) => (
-									<a
-										key={link.href}
-										href={link.href}
-										target="_blank"
-										rel="noopener noreferrer"
-									>
-										<SocialIcon
-											className="w-[2rem] h-[2rem]"
-											iconUrl={link.iconUrl}
-										></SocialIcon>
-									</a>
-								))}
-							</div>
+					header="Coming in Q4 2024"
+				>
+					<div className="pt-uui-4xl flex items-center justify-center w-full">
+						<div className="flex space-x-uui-xl">
+							{socialLinks.map((link) => (
+								<a
+									key={link.href}
+									href={link.href}
+									target="_blank"
+									rel="noopener noreferrer"
+								>
+									<SocialIcon
+										className="w-[2rem] h-[2rem]"
+										iconUrl={link.iconUrl}
+									></SocialIcon>
+								</a>
+							))}
 						</div>
-					</CenterHeadingSection>
+					</div>
+				</CenterHeadingSection>
+				<SectionContainer>
+					<div className="grid grid-cols-1 lg:grid-cols-2 py-uui-9xl gap-uui-3xl">
+						<button
+							onClick={handleCopyClick}
+							className="group relative hover:bg-uui-bg-secondary_hover mb-uui-xl h-full text-left rounded-2xl bg-uui-bg-secondary p-uui-6xl lg:p-uui-7xl flex flex-col items-start justify-between"
+						>
+							<h3 className=" text-uui-text-primary-900 uui-display-xs md:uui-display-sm font-semibold antialiased">
+								Reach Out
+							</h3>
+							<div className="text-uui-text-tertiary-600 gap-uui-xs flex flex-wrap antialiased font-regular text-uui-lg md:uui-text-xl">
+								<span>Get in touch with us at</span>
+								<span className="font-regular underline underline-offset-4 ">
+									{copyEmail}
+								</span>
+							</div>
+							<div className="rounded-full m-uui-3xl w-fit bg-uui-bg-tertiary p-uui-lg absolute right-0 top-0 cursor-pointer">
+								<IconAtom
+									iconUrl={copyState.iconUrl}
+								></IconAtom>
+							</div>
+						</button>
+
+						<button className="group relative hover:bg-uui-bg-secondary_hover mb-uui-xl h-full text-left rounded-2xl bg-uui-bg-secondary p-uui-6xl lg:p-uui-7xl flex flex-col items-start justify-between">
+							<h3 className=" text-uui-text-primary-900 uui-display-xs md:uui-display-sm font-semibold antialiased">
+								Read our blog
+							</h3>
+							<div className="text-uui-text-tertiary-600 flex flex-col antialiased font-regular text-uui-lg md:uui-text-xl">
+								<span>
+									Check out our latest news on the Lilypad
+									blog!
+								</span>
+								<span className="font-regular underline underline-offset-4 ">
+									Read more -{">"}
+								</span>
+							</div>
+							<div className="rounded-full m-uui-3xl w-fit bg-uui-bg-tertiary p-uui-lg absolute right-0 top-0">
+								<IconAtom
+									iconUrl={educationBookOpen01}
+								></IconAtom>
+							</div>
+						</button>
+						<div className="lg:col-span-2 mb-uui-xl h-full text-left rounded-2xl bg-uui-bg-secondary gap-uui-2xl lg:gap-uui-4xl p-uui-6xl lg:p-uui-7xl flex flex-col lg:flex-row  items-start justify-start">
+							<div className="lg:w-1/2">
+								<h3 className="text-uui-text-primary-900 mb-uui-xl uui-display-xs md:uui-display-sm font-semibold antialiased">
+									Be the first to know
+								</h3>
+								<div className=" text-uui-text-tertiary-600 flex flex-col antialiased font-regular text-uui-lg md:uui-text-xl">
+									<span>
+										Stay in the loop with everything you
+										need to know.
+									</span>
+								</div>
+							</div>
+							<form className="lg:w-1/2 flex space-x-uui-xl w-full">
+								<InputField
+									inputSize="md"
+									destructive={false}
+									placeholder="Enter your e-mail"
+									className="flex-1"
+								>
+									{{
+										hint: (
+											<span className="">
+												We care about your data in our{" "}
+												<a
+													href="/privacy"
+													target="_blank"
+													className="underline underline-offset-4"
+												>
+													privacy policy.
+												</a>
+											</span>
+										),
+									}}
+								</InputField>
+								<Button
+									type="submit"
+									color="color"
+									destructive={false}
+									hierarchy="primary"
+									size="md"
+									className="[&&]:rounded-full [&&]:h-fit"
+									onClick={(e) => {
+										e.preventDefault();
+										console.log("click");
+									}}
+								>
+									Subscribe
+								</Button>
+							</form>
+						</div>
+					</div>
 				</SectionContainer>
 			</main>
 		</>
