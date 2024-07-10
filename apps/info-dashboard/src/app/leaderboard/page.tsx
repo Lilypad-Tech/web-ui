@@ -13,12 +13,12 @@ import {
 	generalCheck,
 } from "@frontline-hq/untitledui-icons";
 import CardHeader from "@/components/CardHeader";
-import InputField from "@/components/InputField/Inputfield";
+import { InputField } from "@lilypad/shared-components";
 import { SectionContainer } from "@lilypad/shared-components";
 import TableLeadText from "@/components/Table/TableLeadText";
 import TableHeaderCell from "@/components/Table/TableHeaderCell";
 import HeadingSection from "@/components/HeadingSection";
-import SocialIcon from "@/components/SocialIcon";
+import { SocialIcon } from "@lilypad/shared-components";
 import * as m from "@/paraglide/messages.js";
 import Head from "next/head";
 import {
@@ -234,6 +234,7 @@ export default function Leaderboard() {
 														e.target.value
 													)
 												}
+												inputSize="sm"
 												placeholder={m.leaderboard_node_provider_table_inputField_placeholder()}
 												iconUrl={generalSearchMd}
 											/>
