@@ -1,4 +1,4 @@
-import { PropsWithChildren, ReactNode } from "react";
+import { PropsWithChildren } from "react";
 import { twMerge } from "tailwind-merge";
 
 export default function _NavItemBase({
