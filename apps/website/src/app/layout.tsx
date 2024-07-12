@@ -1,9 +1,11 @@
-import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { Metadata } from "next";
+import ClientLayout from "./clientLayout";
 
 const INTER = Inter({ subsets: ["latin"] });
 
+// metadata isn't allowed on a client layout
 export const metadata: Metadata = {
 	title: "Lilypad Network",
 	description:
@@ -12,12 +14,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
 	children,
-}: Readonly<{
+}: {
 	children: React.ReactNode;
-}>) {
-	return (
-		<html lang="en" className="uui-dark">
-			<body className={INTER.className}>{children}</body>
-		</html>
-	);
+}) {
+	return <ClientLayout>{children}</ClientLayout>;
 }
