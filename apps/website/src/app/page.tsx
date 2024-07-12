@@ -27,7 +27,7 @@ export default function Home() {
 	const socialLinks = [
 		{ href: "https://twitter.com/lilypad_tech", iconUrl: "/x.svg" },
 		{
-			href: "https://discord.gg/zWYTNZqB",
+			href: "https://discord.gg/lilypad-network",
 			iconUrl: "/discord.svg",
 		},
 		{
@@ -263,7 +263,7 @@ export default function Home() {
 						</h2>
 					</div>
 				</div>
-				<SectionContainer>
+				<SectionContainer id="products">
 					<CenterHeadingSection
 						className="[&&]:bg-uui-bg-primary"
 						title="Use the LilyPad network"
