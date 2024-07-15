@@ -30,8 +30,8 @@ That's it! The Docker instance will help you get up and running quickly while al
 
 To run Payload in production, you need to build and serve the Admin panel. To do so, follow these steps:
 
-1. First invoke the `payload build` script by running `yarn build` or `npm run build` in your project root. This creates a `./build` directory with a production-ready admin bundle.
-1. Then run `yarn serve` or `npm run serve` to run Node in production and serve Payload from the `./build` directory.
+1. First invoke the `payload build` script by running `pnpm build` or `npm run build` in your project root. This creates a `./build` directory with a production-ready admin bundle.
+1. Then run `pnpm serve` or `npm run serve` to run Node in production and serve Payload from the `./build` directory.
 
 ### Deployment
 
