@@ -29,21 +29,27 @@ export async function fetchMetrics() {
 	return res;
 }
 
-export function addValueChange(enrichedTs: TimeSeriesCountEnriched[]) {
+export function addValueChange(
+	enrichedTs: TimeSeriesCountEnriched[],
+	totalAmount?: number
+) {
 	return sort(enrichedTs, (a, b) =>
 		ascending(a.epochMillis, b.epochMillis)
 	).map((val, index, arr) => {
-		const change =
-			index > 0 ? arr[index].Count - arr[index - 1].Count : val.Count;
+		const change = arr[index].Count / (totalAmount ?? arr[index].Count);
 		return { ...val, change };
 	});
 }
 
 export function toFrontendData(data?: MetricsEndpointReturnType) {
 	const withChangeCalculated = {
-		nodes: addValueChange(enrichMetricsTimeSeriesData(data?.Nodes ?? [])),
+		nodes: addValueChange(
+			enrichMetricsTimeSeriesData(data?.Nodes ?? []),
+			data?.TotalNodes
+		),
 		jobsCompleted: addValueChange(
-			enrichMetricsTimeSeriesData(data?.JobsCompleted ?? [])
+			enrichMetricsTimeSeriesData(data?.JobsCompleted ?? []),
+			data?.TotalJobs
 		),
 	};
 
