@@ -68,7 +68,7 @@ export function toTableData({
 						  } as const);
 				return result;
 			})(),
-			"Reward Points": Points,
+			"Reward Points": "n.a.",
 
 			Status: (() => {
 				const online = nodesData.find(
@@ -91,8 +91,7 @@ export function toTableData({
 						const start = DateTime.fromMillis(startMillis);
 						const now = DateTime.now();
 						const diff = now.diff(start, "hours");
-						const hours = diff.hours.toFixed(0);
-						return hours + (hours === "1" ? " hour" : " hours");
+						return diff.hours.toFixed(0) + " hours";
 				  })(connectedSince)
 				: "n.a.",
 
