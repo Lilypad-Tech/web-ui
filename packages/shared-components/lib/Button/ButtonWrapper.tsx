@@ -1,34 +1,31 @@
-import type { ButtonHTMLAttributes } from "react";
-import type {
-	ButtonColor,
-	ButtonDestructive,
-	ButtonHierarchy,
-	ButtonSize,
-} from "./ButtonTypes";
+import type { HTMLAttributes } from "react";
+import {
+	type Coloring,
+	type AnchorColor,
+	type AnchorDestructive,
+	type AnchorHierarchy,
+	type AnchorIcon,
+	type AnchorSize,
+	AnchorIconAtom,
+} from "../Anchor";
 
-interface ButtonWrapperProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-	size: ButtonSize;
-	destructive: ButtonDestructive;
-	color: ButtonColor;
-	hierarchy: ButtonHierarchy;
+interface AnchorWrapperProps extends HTMLAttributes<HTMLButtonElement> {
+	size: AnchorSize;
+	destructive: AnchorDestructive;
+	color: AnchorColor;
+	hierarchy: AnchorHierarchy;
+	icon?: AnchorIcon;
 }
 
-type Coloring = {
-	[D in `${ButtonDestructive}`]: {
-		[H in ButtonHierarchy]: {
-			color: string[];
-		};
-	};
-};
-
-export const ButtonWrapper = ({
+export const AnchorWrapper = ({
 	children,
 	size,
 	destructive,
 	color,
 	hierarchy,
+	icon,
 	...props
-}: ButtonWrapperProps) => {
+}: AnchorWrapperProps) => {
 	const layer1 =
 		" group flex justify-center items-center [&.disabled]:pointer-events-none uui-focus-all:outline-none [&.disabled]:text-uui-fg-disabled [&.disabled]:pointer-events-none ";
 	const shadow = " shadow-uui-xs ";
@@ -39,7 +36,7 @@ export const ButtonWrapper = ({
 		"2xl": " px-[var(--uui-spacing-5-5)] gap-[var(--uui-spacing-2-5)] p-uui-xl",
 	};
 
-	const coloring = {
+	const coloring: Coloring = {
 		false: {
 			primary: {
 				color: [
@@ -60,12 +57,53 @@ export const ButtonWrapper = ({
 					"[&.disabled]:bg-uui-bg-disabled",
 					"[&.disabled]:border-uui-border-disabled_subtle",
 				],
+				gray: [""],
+			},
+			secondary: {
+				gray: [
+					"bg-uui-button-secondary-bg",
+					"text-uui-button-secondary-fg",
+					"border-uui-button-secondary-border",
+					"border",
+					"rounded-uui-3xl",
+					"border-solid",
+					// hover
+					"uui-hover-all:bg-uui-button-secondary-bg_hover",
+					"uui-hover-all:text-uui-button-secondary-fg_hover",
+					"uui-hover-all:border-uui-button-secondary-border_hover",
+					// focus
+					"uui-focus-all:uui-ring-gray",
+					"uui-focus-all:shadow-uui-xs",
+					// disabled
+					"[&.disabled]:border-uui-border-disabled_subtle",
+				],
+				color: [
+					"bg-uui-button-secondary-color-bg",
+					"text-uui-button-secondary-color-fg",
+					"border-uui-button-secondary-color-border",
+					"border",
+					"rounded-uui-3xl",
+					"border-solid",
+					// hover
+					"uui-hover-all:bg-uui-button-secondary-color-bg_hover",
+					"uui-hover-all:text-uui-button-secondary-color-fg_hover",
+					"uui-hover-all:border-uui-button-secondary-color-border_hover",
+					// focus
+					"uui-focus-all:uui-ring-brand",
+					"uui-focus-all:shadow-uui-xs",
+					// disabled
+					"[&.disabled]:border-uui-border-disabled_subtle",
+				],
 			},
 		},
-		// empty for now, will add in correct styles when needed
 		true: {
 			primary: {
-				color: [],
+				color: [""],
+				gray: [""],
+			},
+			secondary: {
+				color: [""],
+				gray: [""],
 			},
 		},
 	};
@@ -75,14 +113,34 @@ export const ButtonWrapper = ({
 	return (
 		<button
 			{...props}
-			onClick={props.onClick}
 			className={` ${props.className} ${layer1} ${shadow} ${
 				wrapperSizes[size]
-			} ${coloring[destructiveColoring][hierarchy][color].join(" ")}`}
+			} ${wrapperSizes[size]} ${coloring[destructiveColoring][hierarchy][
+				color
+			].join(" ")}`}
 		>
-			{children}
+			{icon?.type === "icon" && icon.leading && (
+				<AnchorIconAtom
+					size={size}
+					destructive={destructive}
+					color={color}
+					hierarchy={hierarchy}
+					icon={icon}
+				></AnchorIconAtom>
+			)}
+
+			<span>{children}</span>
+			{icon?.type === "icon" && icon.trailing && (
+				<AnchorIconAtom
+					size={size}
+					destructive={destructive}
+					color={color}
+					hierarchy={hierarchy}
+					icon={icon}
+				></AnchorIconAtom>
+			)}
 		</button>
 	);
 };
 
-export default ButtonWrapper;
+export default AnchorWrapper;
