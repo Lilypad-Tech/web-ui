@@ -1,18 +1,18 @@
-export type destructive = boolean;
+export type AnchorDestructive = boolean;
 
-export type color = "color" | "gray";
+export type AnchorColor = "color" | "gray";
 
-export type hierarchy = "primary" | "secondary";
+export type AnchorHierarchy = "primary" | "secondary";
 
-export type size = "md" | "xl" | "2xl";
+export type AnchorSize = "md" | "xl" | "2xl";
 
-export type icon =
+export type AnchorIcon =
 	| { type: "icon"; leading: string; trailing?: never }
 	| { type: "icon"; trailing: string; leading?: never };
 
 export type Coloring = {
-	[D in `${destructive}`]: {
-		[H in hierarchy]: {
+	[D in `${AnchorDestructive}`]: {
+		[H in AnchorHierarchy]: {
 			color: string[];
 			gray: string[];
 		};

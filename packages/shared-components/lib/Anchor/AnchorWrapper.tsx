@@ -1,21 +1,20 @@
 import type { HTMLAttributes } from "react";
 import type {
 	Coloring,
-	color,
-	destructive,
-	hierarchy,
-	icon,
-	size,
+	AnchorColor,
+	AnchorDestructive,
+	AnchorHierarchy,
+	AnchorIcon,
+	AnchorSize,
 } from "./AnchorTypes";
 import AnchorIconAtom from "./AnchorIconAtom";
-import { generalActivity } from "@frontline-hq/untitledui-icons";
 
 interface AnchorWrapperProps extends HTMLAttributes<HTMLAnchorElement> {
-	size: size;
-	destructive: destructive;
-	color: color;
-	hierarchy: hierarchy;
-	icon?: icon;
+	size: AnchorSize;
+	destructive: AnchorDestructive;
+	color: AnchorColor;
+	hierarchy: AnchorHierarchy;
+	icon?: AnchorIcon;
 }
 
 export const AnchorWrapper = ({
