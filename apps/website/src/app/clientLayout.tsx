@@ -18,7 +18,9 @@ import {
 	mediaAndDevicesLightbulb05,
 	mediaAndDevicesTv03,
 	usersUsers03,
+	weatherLightning01,
 } from "@frontline-hq/untitledui-icons";
+import { Anchor } from "@lilypad/shared-components";
 
 const INTER = Inter({ subsets: ["latin"] });
 
@@ -58,6 +60,23 @@ export default function ClientLayout({
 							opened: menuOpened,
 							setOpened: setMenuOpened,
 						}}
+						trailingCTA={
+							<Anchor
+								target="_blank"
+								href="https://lilypadnetwork.notion.site/Leap-into-Lilypad-s-IncentiveNet-9e9b12936d4340ad9417d92dab8bd9d1"
+								className="hidden uui-desktop:flex"
+								color="color"
+								destructive={false}
+								hierarchy="secondary"
+								size="md"
+								icon={{
+									type: "icon",
+									leading: weatherLightning01,
+								}}
+							>
+								Get Started
+							</Anchor>
+						}
 					>
 						{nestedMenu != null && menuOpened ? (
 							<button
