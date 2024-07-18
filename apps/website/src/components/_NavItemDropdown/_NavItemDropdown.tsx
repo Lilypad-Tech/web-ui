@@ -1,6 +1,8 @@
 import { HTMLAttributes, HtmlHTMLAttributes, PropsWithChildren } from "react";
 import { twMerge } from "tailwind-merge";
 import _NavMenuItem from "../_NavMenuItem/_NavMenuItem";
+import IconAtom from "../IconAtom/IconAtom";
+import { arrowsChevronDown } from "@frontline-hq/untitledui-icons";
 
 interface _NavItemDropdownProps
 	extends Omit<HTMLAttributes<HTMLDivElement>, "children"> {
@@ -22,7 +24,7 @@ export default function _NavItemDropdown({
 		<div
 			tabIndex={0}
 			className={twMerge(
-				"flex relative rounded-uui-sm px-uui-lg py-uui-md gap-uui-md group peer cursor-default  ",
+				"flex items-center relative rounded-uui-sm px-uui-lg py-uui-md gap-uui-md group peer cursor-default  ",
 				{
 					notCurrent:
 						"bg-uui-bg-primary hover:bg-uui-bg-primary_hover",
@@ -44,6 +46,10 @@ export default function _NavItemDropdown({
 			>
 				{children?.title}
 			</span>
+			<IconAtom
+				className="[&&]:w-[1.25rem] [&&]:h-[1.25rem] bg-uui-fg-quarterary-500"
+				iconUrl={arrowsChevronDown}
+			></IconAtom>
 
 			<ul
 				aria-hidden
