@@ -1,24 +1,27 @@
 import type { ButtonHTMLAttributes } from "react";
 import type {
-	ButtonColor,
-	ButtonDestructive,
-	ButtonHierarchy,
-	ButtonSize,
-} from "./ButtonTypes";
+	AnchorColor,
+	AnchorDestructive,
+	AnchorHierarchy,
+	AnchorIcon,
+	AnchorSize,
+} from "../Anchor/AnchorTypes";
 import ButtonWrapper from "./ButtonWrapper";
-import ButtonTextAtom from "./ButtonTextAtom";
+import AnchorTextAtom from "../Anchor/AnchorTextAtom";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-	size: ButtonSize;
-	destructive: ButtonDestructive;
-	color: ButtonColor;
-	hierarchy: ButtonHierarchy;
+	size: AnchorSize;
+	destructive: AnchorDestructive;
+	color: AnchorColor;
+	hierarchy: AnchorHierarchy;
+	icon?: AnchorIcon;
 }
 const Button = ({
 	size,
 	destructive,
 	color,
 	hierarchy,
+	icon,
 	...props
 }: ButtonProps) => {
 	return (
@@ -27,12 +30,14 @@ const Button = ({
 			destructive={destructive}
 			color={color}
 			hierarchy={hierarchy}
+			icon={icon}
 			{...props}
 			className={`${props.className}`}
 		>
-			<ButtonTextAtom size={size}>{props.children}</ButtonTextAtom>
+			<AnchorTextAtom size={size}>{props.children}</AnchorTextAtom>
 		</ButtonWrapper>
 	);
 };
 
+// Button is created out of the Anchor component, the only differences are the export and the ButtonWrapper.
 export default Button;
