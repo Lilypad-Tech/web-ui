@@ -1,21 +1,20 @@
 import type {
 	Coloring,
-	CustomCSSProperties,
-	size,
-	color,
-	destructive,
-	hierarchy,
-	icon,
-} from "@lilypad/shared-components";
-
+	AnchorColor,
+	AnchorDestructive,
+	AnchorHierarchy,
+	AnchorIcon,
+	AnchorSize,
+} from "./AnchorTypes";
+import type { CustomCSSProperties } from "../types";
 import type { HTMLAttributes } from "react";
 
 interface AnchorIconAtomProps extends HTMLAttributes<HTMLSpanElement> {
-	size: size;
-	color: color;
-	destructive: destructive;
-	hierarchy: hierarchy;
-	icon?: icon;
+	size: AnchorSize;
+	color: AnchorColor;
+	destructive: AnchorDestructive;
+	hierarchy: AnchorHierarchy;
+	icon?: AnchorIcon;
 }
 
 const AnchorIconAtom = ({
