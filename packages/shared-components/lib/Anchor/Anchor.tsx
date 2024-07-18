@@ -1,5 +1,5 @@
-import type { AnchorHTMLAttributes, HTMLAttributes } from "react";
-import type { color, destructive, hierarchy, size } from "./AnchorTypes";
+import type { AnchorHTMLAttributes } from "react";
+import type { color, destructive, hierarchy, icon, size } from "./AnchorTypes";
 import AnchorWrapper from "./AnchorWrapper";
 import AnchorTextAtom from "./AnchorTextAtom";
 
@@ -8,12 +8,14 @@ interface AnchorProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
 	destructive: destructive;
 	color: color;
 	hierarchy: hierarchy;
+	icon?: icon;
 }
 const Anchor = ({
 	size,
 	destructive,
 	color,
 	hierarchy,
+	icon,
 	...props
 }: AnchorProps) => {
 	return (
@@ -22,6 +24,7 @@ const Anchor = ({
 			destructive={destructive}
 			color={color}
 			hierarchy={hierarchy}
+			icon={icon}
 			{...props}
 			className={`${props.className}`}
 		>
