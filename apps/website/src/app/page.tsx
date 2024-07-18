@@ -22,6 +22,8 @@ import CenterHeadingSection from "@/components/CenterHeadingSection/CenterHeadin
 import SocialProofSection from "@/components/SocialProofSection/SocialProofSection";
 import IconAtom from "@/components/IconAtom/IconAtom";
 import BlogPostCard from "@/components/BlogPostCard/BlogPostCard";
+import Roadmap from "@/components/Roadmap/Roadmap";
+import RoadmapItem from "@/components/Roadmap/RoadmapItem";
 
 export default function Home() {
 	const socialLinks = [
@@ -295,19 +297,22 @@ export default function Home() {
 						title="Trusted by"
 					></SocialProofSection>
 				</SectionContainer>
-
 				<div className=" bg-uui-bg-secondary  py-uui-7xl lg:py-uui-9xl  ">
-					<div className="text-center mx-auto  max-w-uui-width-2xl">
-						<h5 className="text-uui-text-brand-secondary-700 font-semibold antialiased uui-text-sm md:uui-text-md">
-							Mission Statement
-						</h5>
-						<h2 className="text-uui-text-primary-900 pt-uui-lg uui-display-xs md:uui-display-lg font-semibold">
-							We create an AI-driven decentralized network that
-							uses underutilized resources to make efficient,
-							sustainable technology accessible to everyone.
-						</h2>
-					</div>
+					<SectionContainer>
+						<div className="text-center mx-auto  max-w-uui-width-2xl">
+							<h5 className="text-uui-text-brand-secondary-700 font-semibold antialiased uui-text-sm md:uui-text-md">
+								Mission Statement
+							</h5>
+							<h2 className="text-uui-text-primary-900 pt-uui-lg uui-display-xs md:uui-display-lg font-semibold">
+								We create an AI-driven decentralized network
+								that uses underutilized resources to make
+								efficient, sustainable technology accessible to
+								everyone.
+							</h2>
+						</div>
+					</SectionContainer>
 				</div>
+
 				<SectionContainer id="products">
 					<CenterHeadingSection
 						className="[&&]:bg-uui-bg-primary"
@@ -373,33 +378,88 @@ export default function Home() {
 						</div>
 					</SectionContainer>
 				</CenterHeadingSection>
+				<SectionContainer>
+					<CenterHeadingSection
+						className="[&&]:bg-uui-bg-primary"
+						header="Roadmap"
+						title="A New Era of Computing"
+						subtitle="Empowering Innovation, Security, and Scalability in the Digital Age"
+					>
+						<div className="w-full flex items-center justify-center pt-uui-7xl pb-uui-9xl">
+							<Roadmap>
+								<RoadmapItem
+									achieved={true}
+									header="July 2023"
+									subtitle="Whether you have a team of 2 or 200, our
+									shared team inboxes keep everyone on the
+									same page and in the loop. same page and
+									in the loop. more Whether you have a
+									team of 2 or 200, our shared team
+									inboxes keep everyone on the same page
+									and in the loop. more Whether you have a
+									team of 2 or 200, our shared team
+									inboxes keep everyone on the same page
+									and in the loop. more Whether you have a
+									team of 2 or 200, our shared team
+									inboxes keep everyone on the same page
+									and in the loop. more Whether you have a
+									team of 2 or 200, our shared team
+									inboxes keep everyone on the same page
+									and in the loop. more ether you have a team of 2 or 200, our shared team inboxes keep everyone on the same page and in the loop."
+									title="Milestone 0: Launched Lilypad v1 Modicum-based Testnet"
+								/>
 
-				<CenterHeadingSection
-					title="Introducing Lilypad Token: Power your projects and
+								<RoadmapItem
+									achieved={true}
+									header="July 2023"
+									subtitle="Whether you have a team of 2 or 200, our shared team inboxes keep everyone on the same page and in the loop."
+									title="Milestone 0: Launched Lilypad v1 Modicum-based Testnet"
+								/>
+								<RoadmapItem
+									header="July 2023"
+									subtitle="Whether you have a team of 2 or 200, our shared team inboxes keep everyone on the same page and in the loop."
+									title="Milestone 0: Launched Lilypad v1 Modicum-based Testnet"
+								/>
+								<RoadmapItem
+									header="July 2023"
+									subtitle="Whether you have a team of 2 or 200, our shared team inboxes keep everyone on the same page and in the loop."
+									title="Milestone 0: Launched Lilypad v1 Modicum-based Testnet"
+								/>
+								{/* Add this empty div to create an extra child to finish the roadmap line */}
+								<div></div>
+							</Roadmap>
+						</div>
+					</CenterHeadingSection>
+				</SectionContainer>
+				<SectionContainer>
+					<CenterHeadingSection
+						title="Introducing Lilypad Token: Power your projects and
 					fuel innovation with the currency of decentralized
 					computing."
-					subtitle="Be the first to know about the token release, join
+						subtitle="Be the first to know about the token release, join
 					our socials"
-					header="Coming in Q4 2024"
-				>
-					<div className="pt-uui-4xl flex items-center justify-center w-full">
-						<div className="flex space-x-uui-xl">
-							{socialLinks.map((link) => (
-								<a
-									key={link.href}
-									href={link.href}
-									target="_blank"
-									rel="noopener noreferrer"
-								>
-									<SocialIcon
-										className="w-[2rem] h-[2rem]"
-										iconUrl={link.iconUrl}
-									></SocialIcon>
-								</a>
-							))}
+						header="Coming in Q4 2024"
+					>
+						<div className="pt-uui-4xl flex items-center justify-center w-full">
+							<div className="flex space-x-uui-xl">
+								{socialLinks.map((link) => (
+									<a
+										key={link.href}
+										href={link.href}
+										target="_blank"
+										rel="noopener noreferrer"
+									>
+										<SocialIcon
+											className="w-[2rem] h-[2rem]"
+											iconUrl={link.iconUrl}
+										></SocialIcon>
+									</a>
+								))}
+							</div>
 						</div>
-					</div>
-				</CenterHeadingSection>
+					</CenterHeadingSection>
+				</SectionContainer>
+
 				<SectionContainer>
 					<div className="grid grid-cols-1 lg:grid-cols-2 py-uui-9xl gap-uui-3xl">
 						<button
