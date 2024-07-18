@@ -20,11 +20,13 @@ export default function NavBar({
 	logo,
 	dropdown,
 	menuButton,
+	trailingCTA,
 	openedState,
 }: PropsWithChildren<{
 	logo: ReactNode;
 	dropdown?: ReactNode;
 	menuButton?: ReactNode;
+	trailingCTA?: ReactNode;
 	openedState?: {
 		opened: boolean;
 		setOpened: Dispatch<SetStateAction<boolean>>;
@@ -56,13 +58,19 @@ export default function NavBar({
 						</div>
 						<div className="ml-auto flex gap-uui-xl">
 							<div className="uui-desktop:hidden">{dropdown}</div>
-							<div className="uui-desktop:hidden">
+
+							<div className="uui-desktop:flex hidden">
+								{trailingCTA}
+							</div>
+
+							<div className=" uui-desktop:hidden">
 								{menuButton}
 							</div>
 						</div>
 					</div>
 				</SectionContainer>
 			</div>
+
 			<div
 				className={twMerge(
 					"flex flex-col uui-desktop:hidden items-center justify-between p-uui-5xl fixed inset-0 z-10 bg-uui-bg-primary",
@@ -75,6 +83,7 @@ export default function NavBar({
 				<div className="flex flex-col items-center gap-uui-md">
 					{children}
 				</div>
+
 				{logo}
 			</div>
 		</NavBarContext.Provider>
