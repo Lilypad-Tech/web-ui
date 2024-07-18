@@ -385,7 +385,7 @@ export default function Home() {
 						title="A New Era of Computing"
 						subtitle="Empowering Innovation, Security, and Scalability in the Digital Age"
 					>
-						<div className="w-full flex items-center justify-center pt-uui-7xl pb-uui-9xl">
+						<div className="w-full flex items-center justify-center pt-uui-7xl ">
 							<Roadmap>
 								<RoadmapItem
 									achieved={true}
