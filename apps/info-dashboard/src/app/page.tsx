@@ -93,7 +93,7 @@ export default function Home() {
 					title={m.metrics_heading_title()}
 					subtitle={m.metrics_heading_subtitle()}
 				/>
-				<SectionContainer className=" mx-auto pt-uui-4xl w-full justify-between flex uui-desktop:gap-uui-3xl gap-uui-2xl sm:flex-row flex-col  snap-x overflow-x-auto no-scrollbar">
+				{/* <SectionContainer className=" mx-auto pt-uui-4xl w-full justify-between flex uui-desktop:gap-uui-3xl gap-uui-2xl sm:flex-row flex-col  snap-x overflow-x-auto no-scrollbar">
 					{(
 						[
 							metricsTransformedData.jobsCompletedScalar,
@@ -298,7 +298,7 @@ export default function Home() {
 							</CardWithBorder>
 						);
 					})}
-				</SectionContainer>
+				</SectionContainer> */}
 				<SectionContainer className=" mx-auto pt-uui-4xl w-full justify-between flex uui-desktop:gap-uui-3xl gap-uui-2xl sm:flex-row flex-col  snap-x overflow-x-auto no-scrollbar">
 					<CardWithBorder
 						title={m.metrics_active_nodes_world_map_title()}
