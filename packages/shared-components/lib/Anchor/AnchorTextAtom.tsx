@@ -1,8 +1,8 @@
 import type { HTMLAttributes } from "react";
-import type { size } from "./AnchorTypes";
+import type { AnchorSize } from "./AnchorTypes";
 
 interface AnchorTextAtomProps extends HTMLAttributes<HTMLSpanElement> {
-	size: size;
+	size: AnchorSize;
 }
 
 const AnchorTextAtom = ({ size, children, ...props }: AnchorTextAtomProps) => {
