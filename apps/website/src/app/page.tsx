@@ -12,9 +12,8 @@ import {
 	arrowsArrowRight,
 	educationBookOpen01,
 	generalCheck,
-	generalCopy01,
-	generalCopy02,
 	generalCopy06,
+	mapsAndTravelRocket02,
 } from "@frontline-hq/untitledui-icons";
 import Head from "next/head";
 import Image from "next/image";
@@ -22,6 +21,7 @@ import { useEffect, useState } from "react";
 import CenterHeadingSection from "@/components/CenterHeadingSection/CenterHeadingSection";
 import SocialProofSection from "@/components/SocialProofSection/SocialProofSection";
 import IconAtom from "@/components/IconAtom/IconAtom";
+import BlogPostCard from "@/components/BlogPostCard/BlogPostCard";
 
 export default function Home() {
 	const socialLinks = [
@@ -59,6 +59,51 @@ export default function Home() {
 			subtitle:
 				"Small text about. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore",
 			anchorHref: "/marketplace",
+			anchorText: "Learn more",
+		},
+	];
+
+	const blogPostCardData = [
+		{
+			title: "DeSci",
+			subtitle:
+				"Transform scientific research with decentralized solutions, enhancing collaboration and transparency.",
+			anchorHref: "/desci",
+			anchorText: "Learn more",
+		},
+		{
+			title: "Gaming",
+			subtitle:
+				"Revolutionize gaming experiences through decentralized platforms, enabling true ownership and innovative gameplay.",
+			anchorHref: "/gaming",
+			anchorText: "Learn more",
+		},
+		{
+			title: "Social Networks",
+			subtitle:
+				"Build and engage communities on decentralized social networks, prioritizing user privacy and data control.",
+			anchorHref: "/social-networks",
+			anchorText: "Learn more",
+		},
+		{
+			title: "Marketing",
+			subtitle:
+				"Enhance marketing strategies with decentralized tools, driving engagement and authenticity in campaigns.",
+			anchorHref: "/marketing",
+			anchorText: "Learn more",
+		},
+		{
+			title: "IoT",
+			subtitle:
+				"Integrate and manage IoT devices securely with decentralized networks, ensuring data integrity and efficiency.",
+			anchorHref: "/iot",
+			anchorText: "Learn more",
+		},
+		{
+			title: "AI x Crypto",
+			subtitle:
+				"Leverage the power of AI and cryptocurrency for innovative solutions, driving advancements in finance and technology.",
+			anchorHref: "/ai-crypto",
 			anchorText: "Learn more",
 		},
 	];
@@ -293,6 +338,41 @@ export default function Home() {
 						</div>
 					</CenterHeadingSection>
 				</SectionContainer>
+				<CenterHeadingSection
+					title="What the hell can I build with this?"
+					subtitle="Transform Your Ideas into Reality with Decentralized Power."
+				>
+					<SectionContainer>
+						<div className="grid mt-uui-7xl grid-rows-6  md:grid-rows-none md:grid-cols-2 lg:grid-cols-3 gap-uui-4xl ">
+							{blogPostCardData.map((card, index) => (
+								<BlogPostCard
+									href="/blog/1"
+									key={index}
+									title={card.title}
+									subtitle={card.subtitle}
+									imageSrc={`/dummy-image-${
+										(index % 3) + 1
+									}.png`}
+								></BlogPostCard>
+							))}
+						</div>
+						<div className="flex items-center w-full justify-center pt-uui-7xl">
+							<Anchor
+								className="w-fit"
+								size={"xl"}
+								destructive={false}
+								color={"color"}
+								hierarchy={"secondary"}
+								icon={{
+									type: "icon",
+									leading: mapsAndTravelRocket02,
+								}}
+							>
+								Start Building
+							</Anchor>
+						</div>
+					</SectionContainer>
+				</CenterHeadingSection>
 
 				<CenterHeadingSection
 					title="Introducing Lilypad Token: Power your projects and
@@ -361,6 +441,7 @@ export default function Home() {
 								></IconAtom>
 							</div>
 						</button>
+						{/* TODO turn into newsletter signup form */}
 						<div className="lg:col-span-2 mb-uui-xl h-full text-left rounded-2xl bg-uui-bg-secondary gap-uui-2xl lg:gap-uui-4xl p-uui-6xl lg:p-uui-7xl flex flex-col lg:flex-row  items-start justify-start">
 							<div className="lg:w-1/2">
 								<h3 className="text-uui-text-primary-900 mb-uui-xl uui-display-xs md:uui-display-sm font-semibold antialiased">
