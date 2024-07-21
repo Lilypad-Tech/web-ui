@@ -11,6 +11,7 @@ import { usePathname } from "next/navigation";
 import _NavItemDropdown from "@/components/_NavItemDropdown/_NavItemDropdown";
 import _NavMenuItem from "@/components/_NavMenuItem/_NavMenuItem";
 import {
+	chartsBarChart05,
 	educationBookClosed,
 	generalHelpCircle,
 	imagesCamera01,
@@ -37,6 +38,89 @@ export default function ClientLayout({
 	const [bannerOpened, setBannerOpened] = useState(true);
 
 	const pathname = usePathname();
+
+	const resourcesArray = [
+		{
+			description: "The latest industry news, updates and info",
+			title: "Discord",
+			iconUrl: "/discord.svg",
+			target: "_blank",
+			href: "https://discord.gg/lilypad-network",
+		},
+		{
+			description: "The latest industry news, updates and info",
+			title: "Blog",
+			iconUrl: educationBookClosed,
+			href: "/test",
+			target: "_self",
+		},
+		{
+			description: "The latest industry news, updates and info",
+			title: "Github",
+			iconUrl: "/github.svg",
+			href: "https://github.com/Lilypad-Tech",
+			target: "_blank",
+		},
+		{
+			description: "The latest industry news, updates and info",
+			title: "Metrics Dashboard",
+			iconUrl: chartsBarChart05,
+			href: "https://info.lilypad.tech/",
+			target: "_blank",
+		},
+		{
+			description: "The latest industry news, updates and info",
+			title: "Media Kit",
+			iconUrl: imagesCamera01,
+			href: "/media-kit",
+			target: "_self",
+		},
+		{
+			description: "The latest industry news, updates and info",
+			title: "FAQ",
+			iconUrl: generalHelpCircle,
+			href: "/faq",
+			target: "_self",
+		},
+	];
+
+	const aboutArray = [
+		{
+			description: "The latest industry news, updates and info",
+			title: "About us",
+			iconUrl: "/lilypad-icon.svg",
+			href: "/test",
+			target: "_self", // Default target if not specified
+		},
+		{
+			description: "The latest industry news, updates and info",
+			title: "Our team",
+			iconUrl: usersUsers03,
+			href: "/test",
+			target: "_self",
+		},
+		{
+			description: "The latest industry news, updates and info",
+			title: "Roadmap",
+			iconUrl: mapsAndTravelRoute,
+			href: "/#roadmap",
+			target: "_self",
+		},
+		{
+			description: "The latest industry news, updates and info",
+			title: "Press/Media",
+			iconUrl: mediaAndDevicesTv03,
+			href: "/#products",
+			target: "_self",
+		},
+		{
+			description: "The latest industry news, updates and info",
+			title: "Use Cases",
+			iconUrl: mediaAndDevicesLightbulb05,
+			href: "/#products",
+			target: "_self",
+		},
+	];
 
 	return (
 		<html lang="en" className="uui-dark">
@@ -147,70 +231,27 @@ export default function ClientLayout({
 								)}
 								{nestedMenu === "About" ? (
 									<div className="overflow-auto no-scrollbar max-h-[50vh] flex flex-col gap-uui-xl border-uui-1 border-uui-border-secondary rounded-xl p-uui-lg">
-										<_NavMenuItem
-											description="The latest industry news, updates and info"
-											title="About us"
-											iconUrl={"/lilypad-icon.svg"}
-											href="/test"
-										></_NavMenuItem>
-										<_NavMenuItem
-											description="The latest industry news, updates and info"
-											title="Our team"
-											iconUrl={usersUsers03}
-											href="/test"
-										></_NavMenuItem>
-										<_NavMenuItem
-											description="The latest industry news, updates and info"
-											title="Roadmap"
-											iconUrl={mapsAndTravelRoute}
-											href="/#products"
-										></_NavMenuItem>
-										<_NavMenuItem
-											description="The latest industry news, updates and info"
-											title="Press/Media"
-											iconUrl={mediaAndDevicesTv03}
-											href="/#products"
-										></_NavMenuItem>
-										<_NavMenuItem
-											description="The latest industry news, updates and info"
-											title="Use Cases"
-											iconUrl={mediaAndDevicesLightbulb05}
-											href="/#products"
-										></_NavMenuItem>
+										{aboutArray.map((item, index) => (
+											<_NavMenuItem
+												key={index}
+												description={item.description}
+												title={item.title}
+												iconUrl={item.iconUrl}
+												href={item.href}
+											/>
+										))}
 									</div>
 								) : nestedMenu === "Resources" ? (
 									<div className="overflow-auto no-scrollbar max-h-[50vh] flex flex-col gap-uui-xl border-uui-1 border-uui-border-secondary rounded-xl p-uui-lg">
-										<_NavMenuItem
-											description="The latest industry news, updates and info"
-											title="Discord"
-											iconUrl={"/discord.svg"}
-											target="_blank"
-											href="https://discord.gg/lilypad-network"
-										></_NavMenuItem>
-										<_NavMenuItem
-											description="The latest industry news, updates and info"
-											title="Blog"
-											iconUrl={educationBookClosed}
-											href="/test"
-										></_NavMenuItem>
-										<_NavMenuItem
-											description="The latest industry news, updates and info"
-											title="Github"
-											iconUrl={"/github.svg"}
-											href="https://github.com/Lilypad-Tech"
-										></_NavMenuItem>
-										<_NavMenuItem
-											description="The latest industry news, updates and info"
-											title="Media Kit"
-											iconUrl={imagesCamera01}
-											href="/media-kit"
-										></_NavMenuItem>
-										<_NavMenuItem
-											description="The latest industry news, updates and info"
-											title="FAQ"
-											iconUrl={generalHelpCircle}
-											href="/faq"
-										></_NavMenuItem>
+										{resourcesArray.map((item, index) => (
+											<_NavMenuItem
+												key={index}
+												description={item.description}
+												title={item.title}
+												iconUrl={item.iconUrl}
+												href={item.href}
+											/>
+										))}
 									</div>
 								) : null}
 							</>
@@ -223,42 +264,21 @@ export default function ClientLayout({
 										title: "About",
 										dropdownList: (
 											<>
-												<_NavMenuItem
-													description="The latest industry news, updates and info"
-													title="About us"
-													iconUrl={
-														"/lilypad-icon.svg"
-													}
-													href="/test"
-												></_NavMenuItem>
-												<_NavMenuItem
-													description="The latest industry news, updates and info"
-													title="Our team"
-													iconUrl={usersUsers03}
-													href="/test"
-												></_NavMenuItem>
-												<_NavMenuItem
-													description="The latest industry news, updates and info"
-													title="Roadmap"
-													iconUrl={mapsAndTravelRoute}
-													href="/#products"
-												></_NavMenuItem>
-												<_NavMenuItem
-													description="The latest industry news, updates and info"
-													title="Press/Media"
-													iconUrl={
-														mediaAndDevicesTv03
-													}
-													href="/#products"
-												></_NavMenuItem>
-												<_NavMenuItem
-													description="The latest industry news, updates and info"
-													title="Use Cases"
-													iconUrl={
-														mediaAndDevicesLightbulb05
-													}
-													href="/#products"
-												></_NavMenuItem>
+												{aboutArray.map(
+													(item, index) => (
+														<_NavMenuItem
+															key={index}
+															description={
+																item.description
+															}
+															title={item.title}
+															iconUrl={
+																item.iconUrl
+															}
+															href={item.href}
+														/>
+													)
+												)}
 											</>
 										),
 									}}
@@ -280,39 +300,21 @@ export default function ClientLayout({
 										title: "Resources",
 										dropdownList: (
 											<>
-												<_NavMenuItem
-													description="The latest industry news, updates and info"
-													title="Discord"
-													iconUrl={"/discord.svg"}
-													target="_blank"
-													href="https://discord.gg/lilypad-network"
-												></_NavMenuItem>
-												<_NavMenuItem
-													description="The latest industry news, updates and info"
-													title="Blog"
-													iconUrl={
-														educationBookClosed
-													}
-													href="/test"
-												></_NavMenuItem>
-												<_NavMenuItem
-													description="The latest industry news, updates and info"
-													title="Github"
-													iconUrl={"/github.svg"}
-													href="https://github.com/Lilypad-Tech"
-												></_NavMenuItem>
-												<_NavMenuItem
-													description="The latest industry news, updates and info"
-													title="Media Kit"
-													iconUrl={imagesCamera01}
-													href="/media-kit"
-												></_NavMenuItem>
-												<_NavMenuItem
-													description="The latest industry news, updates and info"
-													title="FAQ"
-													iconUrl={generalHelpCircle}
-													href="/faq"
-												></_NavMenuItem>
+												{resourcesArray.map(
+													(item, index) => (
+														<_NavMenuItem
+															key={index}
+															description={
+																item.description
+															}
+															title={item.title}
+															iconUrl={
+																item.iconUrl
+															}
+															href={item.href}
+														/>
+													)
+												)}
 											</>
 										),
 									}}

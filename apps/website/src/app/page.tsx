@@ -378,7 +378,7 @@ export default function Home() {
 						</div>
 					</SectionContainer>
 				</CenterHeadingSection>
-				<SectionContainer>
+				<SectionContainer id="roadmap">
 					<CenterHeadingSection
 						className="[&&]:bg-uui-bg-primary"
 						header="Roadmap"
