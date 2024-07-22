@@ -96,7 +96,7 @@ export default function ClientLayout({
 			description: "The latest industry news, updates and info",
 			title: "Our team",
 			iconUrl: usersUsers03,
-			href: "/test",
+			href: "/team",
 			target: "_self",
 		},
 		{
