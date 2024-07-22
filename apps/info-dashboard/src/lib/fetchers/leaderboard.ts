@@ -1,6 +1,5 @@
 import { ascending, sort } from "d3";
 import { DateTime } from "luxon";
-import { getTimeDiff } from "../time/time";
 export type LeaderboardReturnType = {
 	Points: string;
 	Rank: string;
@@ -68,7 +67,7 @@ export function toTableData({
 						  } as const);
 				return result;
 			})(),
-			"Reward Points": "n.a.",
+			"Reward Points": Points,
 
 			Status: (() => {
 				const online = nodesData.find(
@@ -91,7 +90,8 @@ export function toTableData({
 						const start = DateTime.fromMillis(startMillis);
 						const now = DateTime.now();
 						const diff = now.diff(start, "hours");
-						return diff.hours.toFixed(0) + " hours";
+						const hours = diff.hours.toFixed(0);
+						return hours + (hours === "1" ? " hour" : " hours");
 				  })(connectedSince)
 				: "n.a.",
 
