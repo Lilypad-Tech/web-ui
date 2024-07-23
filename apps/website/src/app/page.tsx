@@ -292,6 +292,9 @@ export default function Home() {
 							/>
 						</div>
 					</div>
+				</SectionContainer>
+				<SectionContainer className="pb-uui-7xl lg:pb-uui-8xl">
+					{" "}
 					<SocialProofSection
 						trustedByArray={trustedByArray}
 						title="Trusted by"
