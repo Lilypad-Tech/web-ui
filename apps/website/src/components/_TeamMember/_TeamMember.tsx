@@ -18,7 +18,7 @@ const TeamMember = ({
 	socialIcons,
 }: TeamMemberProps) => {
 	return (
-		<div className="text-center flex flex-col items-center justify-center max-w-[19rem] md:max-w-uui-width-xs ">
+		<div className="text-center flex flex-col items-center justify-center max-w-[19rem] md:max-w-[15rem] ">
 			{src && (
 				<Avatar
 					className="mb-uui-xl md:mb-uui-2xl"
@@ -48,8 +48,8 @@ const TeamMember = ({
 			)}
 			{socialIcons && (
 				<div className="flex items-center justify-center space-x-uui-xl mt-uui-xl">
-					{socialIcons.map((icon) => (
-						<a href={icon.href} target="_blank">
+					{socialIcons.map((icon, index) => (
+						<a key={index} href={icon.href} target="_blank">
 							<SocialIcon iconUrl={icon.iconUrl}></SocialIcon>
 						</a>
 					))}
