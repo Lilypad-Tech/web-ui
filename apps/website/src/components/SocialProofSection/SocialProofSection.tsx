@@ -19,7 +19,7 @@ const SocialProofSection = ({
 			<span className="uui-text-sm md:uui-text-md font-medium text-uui-text-primary-900 antialiased">
 				{title}
 			</span>
-			<div className="flex overflow-x-auto no-scrollbar gap-uui-4xl lg:gap-uui-6xl w-full items-center justify-between pb-uui-7xl lg:pb-uui-8xl">
+			<div className="flex overflow-x-auto no-scrollbar gap-uui-4xl lg:gap-uui-6xl w-full items-center justify-between ">
 				{trustedByArray.map(({ src, alt }, index) => {
 					return (
 						<Image
