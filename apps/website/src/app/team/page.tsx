@@ -124,8 +124,8 @@ export default function Teams() {
 			</Head>
 
 			<main className="overflow-hidden relative ">
-				<div className="relative w-full overflow-hidden  max-w-uui-width-6xl mx-auto">
-					<div className="absolute top-0 min-w-uui-width-2xl -translate-y-[10%] md:-translate-y-[17.5%]  left-0 w-full h-[35vh] -z-10">
+				<div className="relative w-full overflow-hidden  max-w-uui-width-4xl mx-auto">
+					<div className="absolute top-0 min-w-uui-width-2xl -translate-x-[25%] sm:-translate-x-uui-none -translate-y-[10%] md:-translate-y-[12%]  left-0 w-full h-[40vh] -z-10">
 						<Image
 							layout="responsive"
 							width={1920}
