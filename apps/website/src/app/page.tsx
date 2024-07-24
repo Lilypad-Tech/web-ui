@@ -517,7 +517,7 @@ export default function Home() {
 									</span>
 								</div>
 							</div>
-							<form className="lg:w-1/2 flex space-x-uui-xl w-full">
+							<form className="lg:w-1/2 space-y-uui-2xl md:space-y-uui-none md:flex md:space-x-uui-xl w-full">
 								<InputField
 									inputSize="md"
 									destructive={false}
