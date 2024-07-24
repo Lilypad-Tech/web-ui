@@ -22,6 +22,7 @@ import {
 	weatherLightning01,
 } from "@frontline-hq/untitledui-icons";
 import { Anchor } from "@lilypad/shared-components";
+import Footer from "@/components/Footer";
 
 const INTER = Inter({ subsets: ["latin"] });
 
@@ -119,6 +120,30 @@ export default function ClientLayout({
 			iconUrl: mediaAndDevicesLightbulb05,
 			href: "/#products",
 			target: "_self",
+		},
+	];
+
+	const footerSocialLinks = [
+		{ href: "https://twitter.com/lilypad_tech", iconUrl: "/x.svg" },
+		{
+			href: "https://discord.gg/lilypad-network",
+			iconUrl: "/discord.svg",
+		},
+		{
+			href: "https://t.me/lilypadnetwork",
+			iconUrl: "/telegram.svg",
+		},
+		{
+			href: "https://github.com/Lilypad-Tech",
+			iconUrl: "/github.svg",
+		},
+		{
+			href: "https://www.linkedin.com/company/lilypad-network/",
+			iconUrl: "/linkedin.svg",
+		},
+		{
+			href: "https://www.youtube.com/@LilypadNetwork/featured",
+			iconUrl: "/youtube.svg",
 		},
 	];
 
@@ -337,6 +362,14 @@ export default function ClientLayout({
 					</NavBar>
 				</div>
 				{children}
+				<Footer
+					footerIcon={{
+						src: "lilypad-logo.svg",
+						alt: "Lilypad Logo",
+						href: "#top",
+					}}
+					socialLinks={footerSocialLinks}
+				/>
 			</body>
 		</html>
 	);
