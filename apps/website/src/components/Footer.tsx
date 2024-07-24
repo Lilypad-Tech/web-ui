@@ -1,6 +1,9 @@
 import { SectionContainer } from "@lilypad/shared-components";
 import Image from "next/image";
 import { SocialIcon } from "@lilypad/shared-components";
+import _FooterLinksHeader from "./_FooterLinksHeader/_FooterLinksHeader";
+import _FooterLink from "./_FooterLink/_FooterLink";
+import _FooterLinksColumn from "./_FooterLinksColumn/_FooterLinksColumn";
 interface FooterProps extends React.HTMLProps<HTMLDivElement> {
 	socialLinks: { href: string; iconUrl: string }[];
 	footerIcon: { src: string; alt: string; href: string };
@@ -32,60 +35,23 @@ const Footer = ({ socialLinks, footerIcon }: FooterProps) => {
 						</span>
 					</div>
 					<div className="flex items-start justify-center md:justify-between w-full md:w-auto space-x-uui-11xl  ">
-						<nav>
-							<ul className="flex flex-col space-y-uui-lg ">
-								<li className="font-semibold uui-text-sm text-uui-text-quarterary-500 antialiased">
-									Quick Links
-								</li>
-								<li>
-									<a
-										className="uui-text-md font-semibold hover:text-uui-button-tertiary-fg_hover text-uui-button-tertiary-fg antialiased "
-										href="#architecture"
-									>
-										Architecture
-									</a>
-								</li>
-								<li>
-									<a
-										className="uui-text-md font-semibold hover:text-uui-button-tertiary-fg_hover text-uui-button-tertiary-fg antialiased "
-										href="#whitepaper"
-									>
-										Whitepaper
-									</a>
-								</li>
-							</ul>
-						</nav>
-						<nav>
-							<ul className="flex flex-col space-y-uui-lg ">
-								<li className="font-semibold uui-text-sm text-uui-text-quarterary-500 antialiased">
-									Legal
-								</li>
-								<li>
-									<a
-										className="uui-text-md font-semibold hover:text-uui-button-tertiary-fg_hover text-uui-button-tertiary-fg antialiased "
-										href="#terms"
-									>
-										Terms
-									</a>
-								</li>
-								<li>
-									<a
-										className="uui-text-md font-semibold hover:text-uui-button-tertiary-fg_hover text-uui-button-tertiary-fg antialiased "
-										href="#privacy"
-									>
-										Privacy
-									</a>
-								</li>
-								<li>
-									<a
-										className="uui-text-md font-semibold hover:text-uui-button-tertiary-fg_hover text-uui-button-tertiary-fg antialiased "
-										href="#cookies"
-									>
-										Cookies
-									</a>
-								</li>
-							</ul>
-						</nav>
+						<_FooterLinksColumn>
+							<_FooterLinksHeader title="Quick Links" />
+							<_FooterLink
+								href="#architecture"
+								title="Architecture"
+							/>
+							<_FooterLink
+								href="#whitepaper"
+								title="Whitepaper"
+							/>
+						</_FooterLinksColumn>
+						<_FooterLinksColumn>
+							<_FooterLinksHeader title="Legal" />
+							<_FooterLink href="#terms" title="Terms" />
+							<_FooterLink href="#privacy" title="Privacy" />
+							<_FooterLink href="#cookies" title="Cookies" />
+						</_FooterLinksColumn>
 					</div>
 				</div>
 			</SectionContainer>
