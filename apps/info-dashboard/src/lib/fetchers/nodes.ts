@@ -17,8 +17,7 @@ export type NodesEndpointReturnElement = {
 export type NodesEndpointReturnType = NodesEndpointReturnElement[];
 
 export async function fetchNodes() {
-	//const api_host = process.env.NEXT_PUBLIC_API_HOST;
-	const API_HOST = "https://api-testnet.lilypad.tech/";
+	const API_HOST = process.env.NEXT_PUBLIC_API_HOST;
 	const URL = `${API_HOST}metrics-dashboard/nodes`;
 	const raw = await fetch(URL);
 	const res = (await raw.json()) as NodesEndpointReturnType;
