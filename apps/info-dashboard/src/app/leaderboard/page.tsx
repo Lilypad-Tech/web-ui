@@ -176,18 +176,18 @@ export default function Leaderboard() {
 									</span>
 									<span className="text-uui-text-primary-900 uui-display-sm font-semibold">
 										{/* Todo add api cumalative Lilybit_rewards earned */}
-										{ Math.trunc(leaderboardData ? leaderboardData.reduce((total, node) => +node.Points + total, 0) : 0)}
+										n.a.
 									</span>
 								</div>
-								{/* Todo add api week total Lilybit_rewards earned */}
-								{/* <div className="flex-col flex space-y-uui-xs">
+								<div className="flex-col flex space-y-uui-xs">
 									<span className="uui-text-sm font-medium text-uui-text-tertiary-600">
 										{m.leaderboard_incentive_program_week_title()}
 									</span>
 									<span className="text-uui-text-primary-900 uui-display-sm font-semibold">
+										{/* Todo add api total Lilybit_rewards earned */}
 										n.a.
 									</span>
-								</div> */}
+								</div>
 							</div>
 						</CardWithBorder>
 						<CardWithBorder

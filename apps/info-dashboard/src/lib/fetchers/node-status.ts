@@ -16,7 +16,8 @@ import { Balances, PowSubmissions } from "./node-chain-data";
 import { DateTime } from "luxon";
 
 export async function fetchNodeStatus() {
-	const API_HOST = process.env.NEXT_PUBLIC_API_HOST;
+	//const api_host = process.env.NEXT_PUBLIC_API_HOST;
+	const API_HOST = "https://api-testnet.lilypad.tech/";
 	const leaderboard_url = `${API_HOST}metrics-dashboard/leaderboard`;
 	const raw = await fetch(leaderboard_url);
 	return (await raw.json()) as NodeStatusReturnType;
