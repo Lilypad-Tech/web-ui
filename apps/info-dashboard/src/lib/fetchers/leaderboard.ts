@@ -66,7 +66,7 @@ export function toTableData({
 						  } as const);
 				return result;
 			})(),
-			"Reward Points": Math.trunc(+Points),
+			"Reward Points": Math.round(+Points * 100) / 100,
 
 			Status: (() => {
 				const online = nodesData.find(
