@@ -366,7 +366,7 @@ export default function ClientLayout({
 					footerIcon={{
 						src: "lilypad-logo.svg",
 						alt: "Lilypad Logo",
-						href: "#top",
+						href: "/",
 					}}
 					socialLinks={footerSocialLinks}
 				/>

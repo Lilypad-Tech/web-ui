@@ -3,6 +3,7 @@ import {
 	PropsWithChildren,
 	ReactNode,
 	SetStateAction,
+	useEffect,
 	useState,
 } from "react";
 import { SectionContainer } from "@lilypad/shared-components";
@@ -33,6 +34,22 @@ export default function NavBar({
 	};
 }>) {
 	const [menuOpened, setMenuOpened] = useState(false);
+
+	// Make sure menu closes
+	useEffect(() => {
+		const handleResize = () => {
+			setMenuOpened(false);
+			if (openedState && openedState.setOpened) {
+				openedState.setOpened(false);
+			}
+		};
+
+		window.addEventListener("resize", handleResize);
+		return () => {
+			window.removeEventListener("resize", handleResize);
+		};
+	}, [openedState]);
+
 	return (
 		<NavBarContext.Provider
 			value={{
