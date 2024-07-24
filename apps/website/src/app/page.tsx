@@ -436,6 +436,7 @@ export default function Home() {
 				</SectionContainer>
 				<SectionContainer>
 					<CenterHeadingSection
+						className="rounded-uui-2xl"
 						title="Introducing Lilypad Token: Power your projects and
 					fuel innovation with the currency of decentralized
 					computing."
