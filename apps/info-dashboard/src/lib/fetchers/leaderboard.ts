@@ -17,7 +17,7 @@ import { NodesEndpointReturnType } from "./nodes";
 
 export async function fetchLeaderboard() {
 	//const api_host = process.env.NEXT_PUBLIC_API_HOST;
-	const API_HOST = "https://api-devnet.lilypad.tech/";
+	const API_HOST = "https://api-testnet.lilypad.tech/";
 	const leaderboard_url = `${API_HOST}metrics-dashboard/leaderboard`;
 	const raw = await fetch(leaderboard_url);
 	return (await raw.json()) as LeaderboardReturnType;
