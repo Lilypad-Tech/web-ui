@@ -125,7 +125,7 @@ export default function Teams() {
 
 			<main className="overflow-hidden relative ">
 				<div className="relative w-full overflow-hidden  max-w-uui-width-4xl mx-auto">
-					<div className="absolute top-0 min-w-uui-width-2xl -translate-x-[25%] sm:-translate-x-uui-none -translate-y-[10%] md:-translate-y-[12%]  left-0 w-full h-[40vh] -z-10">
+					<div className="absolute top-0 min-w-uui-width-2xl -translate-x-[25%] sm:-translate-x-uui-none -translate-y-[8%]  left-0 w-full h-[40vh] -z-10">
 						<Image
 							layout="responsive"
 							width={1920}
@@ -138,6 +138,7 @@ export default function Teams() {
 
 					<SectionContainer>
 						<CenterHeadingSection
+							titleClassName="[&&]:uui-display-md [&&]:md:uui-display-lg "
 							className="[&&]:bg-transparent pt-uui-7xl lg:pt-uui-9xl relative"
 							header="Lilypad team"
 							title="Meet our innovators"
