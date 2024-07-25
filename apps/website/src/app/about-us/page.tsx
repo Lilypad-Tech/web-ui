@@ -12,6 +12,8 @@ import {
 	usersUsers01,
 } from "@frontline-hq/untitledui-icons";
 import IconAtom from "@/components/IconAtom/IconAtom";
+import ContentItem from "@/components/ContentItem/ContentItem";
+import Image from "next/image";
 
 export default function Teams() {
 	return (
@@ -41,15 +43,38 @@ export default function Teams() {
 			</Head>
 
 			<main className="overflow-hidden relative ">
-				<div className="relative w-full overflow-hidden  max-w-uui-width-4xl mx-auto">
-					<SectionContainer>
+				<div className="relative w-full overflow-hidden bg-uui-bg-secondary pb-uui-2xl md:pb-uui-9xl  mx-auto">
+					<SectionContainer className="max-w-uui-width-4xl pb-uui-7xl">
 						<CenterHeadingSection
 							titleClassName="uui-display-lg [&&]:md:uui-display-2xl "
-							className="[&&]:bg-transparent  pt-uui-7xl lg:pt-uui-9xl relative"
+							className="[&&]:bg-transparent pt-uui-7xl lg:pt-uui-9xl [&&]:pb-uui-7xl relative"
 							header="About Lilypad"
 							title="Open compute infrastructure for tomorrow"
 							subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
 						></CenterHeadingSection>
+					</SectionContainer>
+				</div>
+
+				<div className="pt-uui-9xl relative">
+					<Image
+						alt="Lilypad geo shapes"
+						className="absolute min-w-[40rem] top-0 left-1/2 -translate-y-[48.5%] -translate-x-1/2"
+						width={1216}
+						height={304}
+						src="/geo-shapes-lilypad.svg"
+					/>
+					<SectionContainer className="pt-uui-7xl">
+						<div className="max-w-[45rem] md:py-uui-9xl mx-auto">
+							<ContentItem
+								size="lg"
+								heading="Our story"
+								paragraph="Mi tincidunt elit, id quisque ligula ac diam, amet. Vel etiam suspendisse morbi eleifend faucibus eget vestibulum felis. Dictum quis montes, sit sit. Tellus aliquam enim urna, etiam. Mauris posuere vulputate arcu amet, vitae nisi, tellus tincidunt. At feugiat sapien varius id."
+							/>
+							<ContentItem
+								size="lg"
+								paragraph="Eget quis mi enim, leo lacinia pharetra, semper. Eget in volutpat mollis at volutpat lectus velit, sed auctor. Porttitor fames arcu quis fusce augue enim. Quis at habitant diam at. Suscipit tristique risus, at donec. In turpis vel et quam imperdiet. Ipsum molestie aliquet sodales id est ac volutpat. "
+							/>
+						</div>
 					</SectionContainer>
 				</div>
 
