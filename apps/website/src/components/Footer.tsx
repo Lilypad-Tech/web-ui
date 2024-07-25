@@ -11,9 +11,9 @@ interface FooterProps extends React.HTMLProps<HTMLDivElement> {
 
 const Footer = ({ socialLinks, footerIcon }: FooterProps) => {
 	return (
-		<div className="pt-uui-9xl ">
+		<div className="pt-uui-9xl max-w-uui-width-xxs mx-auto md:mx-0 md:max-w-none ">
 			<SectionContainer className="w-full flex flex-col md:justify-between items-center pt-uui-7xl pb-uui-6xl ">
-				<div className="flex w-full flex-col space-y-uui-3xl md:space-y-uui-none md:flex-row md:justify-between items-center md:items-start">
+				<div className="flex w-full flex-col space-y-uui-6xl md:space-y-uui-none md:flex-row md:justify-between items-start">
 					<div className="flex flex-col space-y-uui-3xl ">
 						<a className="" href={footerIcon.href}>
 							<Image
@@ -34,7 +34,7 @@ const Footer = ({ socialLinks, footerIcon }: FooterProps) => {
 							</a>
 						</span>
 					</div>
-					<div className="flex items-start justify-center md:justify-between w-full md:w-auto space-x-uui-11xl  ">
+					<div className="flex flex-col items-start md:items-start space-y-uui-6xl md:space-y-uui-none md:flex-row justify-center md:justify-between w-full md:w-auto md:space-x-uui-11xl  ">
 						<_FooterLinksColumn>
 							<_FooterLinksHeader title="Quick Links" />
 							<_FooterLink
