@@ -6,7 +6,7 @@
 	"main": "index.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"boot": "doppler run --preserve-env --command=\"pnpm i && pnpm -r build\"",
+		"boot": "doppler run --preserve-env --command=\"pnpm i && pnpm -r --filter=!website-cms build\"",
 		"dev": "fun() { doppler run --preserve-env -- pnpm --filter $@ dev; }; fun",
 		"preview": "fun() { doppler run --preserve-env -- pnpm --filter $@ preview; }; fun"
 	},
