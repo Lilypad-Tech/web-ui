@@ -3,7 +3,7 @@ name: Deploy to Cloudflare Pages
 on:
     push:
         branches:
-            - main # or the branch you want to deploy from
+            - bgins/build-deploy-to-devnet # or the branch you want to deploy from.
 
 jobs:
     build:
