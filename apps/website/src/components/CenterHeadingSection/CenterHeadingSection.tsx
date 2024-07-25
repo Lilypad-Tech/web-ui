@@ -4,12 +4,14 @@ interface CenterHeadingSection extends HTMLAttributes<HTMLDivElement> {
 	title?: string;
 	subtitle?: string;
 	header?: string;
+	titleClassName?: string;
 }
 
 const CenterHeadingSection = ({
 	title,
 	subtitle,
 	header,
+	titleClassName,
 	...props
 }: CenterHeadingSection) => {
 	return (
@@ -26,7 +28,9 @@ const CenterHeadingSection = ({
 					</h5>
 				)}
 				{title && (
-					<h2 className="text-uui-text-primary-900 pb-uui-2xl pt-uui-lg uui-display-sm md:uui-display-md font-semibold">
+					<h2
+						className={` ${titleClassName} text-uui-text-primary-900 pb-uui-2xl pt-uui-lg uui-display-sm md:uui-display-md font-semibold`}
+					>
 						{title}
 					</h2>
 				)}
