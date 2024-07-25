@@ -1,6 +1,5 @@
 import { ascending, sort } from "d3";
 import { DateTime } from "luxon";
-import { getTimeDiff } from "../time/time";
 export type LeaderboardReturnType = {
 	Points: string;
 	Rank: string;
@@ -17,8 +16,7 @@ import {
 import { NodesEndpointReturnType } from "./nodes";
 
 export async function fetchLeaderboard() {
-	//const api_host = process.env.NEXT_PUBLIC_API_HOST;
-	const API_HOST = "https://api-testnet.lilypad.tech/";
+	const API_HOST = process.env.NEXT_PUBLIC_API_HOST;
 	const leaderboard_url = `${API_HOST}metrics-dashboard/leaderboard`;
 	const raw = await fetch(leaderboard_url);
 	return (await raw.json()) as LeaderboardReturnType;
@@ -68,7 +66,7 @@ export function toTableData({
 						  } as const);
 				return result;
 			})(),
-			"Reward Points": "n.a.",
+			"Reward Points": Math.round(+Points * 100) / 100,
 
 			Status: (() => {
 				const online = nodesData.find(
@@ -91,7 +89,8 @@ export function toTableData({
 						const start = DateTime.fromMillis(startMillis);
 						const now = DateTime.now();
 						const diff = now.diff(start, "hours");
-						return diff.hours.toFixed(0) + " hours";
+						const hours = diff.hours.toFixed(0);
+						return hours + (hours === "1" ? " hour" : " hours");
 				  })(connectedSince)
 				: "n.a.",
 
