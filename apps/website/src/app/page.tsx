@@ -284,7 +284,6 @@ export default function Home() {
 						<div className="relative w-full lg:w-1/2 lg:h-full max-w-2xl mr-auto pb-uui-7xl lg:pb-uui-none">
 							<Image
 								className="mr-auto lg:mx-auto lg:mr-0 lg:ml-auto object-cover w-full h-full"
-								layout="responsive"
 								width={500}
 								height={500}
 								alt="Lilypad Header"

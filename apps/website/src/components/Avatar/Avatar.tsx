@@ -24,7 +24,7 @@ const Avatar = ({ size, avatarImageProps, ...props }: AvatarProps) => {
 						className={` ${avatarImageSizes[size]} rounded-full relative overflow-hidden`}
 					>
 						<Image
-							layout="fill"
+							fill
 							src={avatarImageProps?.src}
 							alt={avatarImageProps?.alt}
 							className={` w-full h-full
