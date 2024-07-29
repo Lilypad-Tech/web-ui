@@ -78,7 +78,7 @@ export function toTableData({
 			: "n.a.";
 
 		return {
-			Wallet,
+			Wallet: Wallet.toLowerCase(),
 			Status: (() => {
 				return {
 					online,

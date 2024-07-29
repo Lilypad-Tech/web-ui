@@ -266,7 +266,9 @@ export default function NodeStatus() {
 								nodesPowSubmissionsIsError ||
 								nodeStatusData?.filter((d) =>
 									walletAddress
-										? d.Wallet.includes(walletAddress)
+										? d.Wallet.toLowerCase().includes(
+												walletAddress.toLowerCase()
+										  )
 										: true
 								).length === 0 ? (
 									<EmptyState
@@ -384,8 +386,8 @@ export default function NodeStatus() {
 										})
 											.filter((d) =>
 												walletAddress
-													? d.Wallet.includes(
-															walletAddress
+													? d.Wallet.toLowerCase().includes(
+															walletAddress.toLowerCase()
 													  )
 													: true
 											)

@@ -176,7 +176,16 @@ export default function Leaderboard() {
 									</span>
 									<span className="text-uui-text-primary-900 uui-display-sm font-semibold">
 										{/* Todo add api cumalative Lilybit_rewards earned */}
-										{ Math.trunc(leaderboardData ? leaderboardData.reduce((total, node) => +node.Points + total, 0) : 0)}
+										{Math.trunc(
+											leaderboardData
+												? leaderboardData.reduce(
+														(total, node) =>
+															+node.Points +
+															total,
+														0
+												  )
+												: 0
+										)}
 									</span>
 								</div>
 								{/* Todo add api week total Lilybit_rewards earned */}
@@ -239,7 +248,9 @@ export default function Leaderboard() {
 								nodesIsError ||
 								leaderboardData?.filter((d) =>
 									walletAddress
-										? d.Wallet.includes(walletAddress)
+										? d.Wallet.toLowerCase().includes(
+												walletAddress.toLowerCase()
+										  )
 										: true
 								).length === 0 ? (
 									<EmptyState
@@ -330,8 +341,8 @@ export default function Leaderboard() {
 										})
 											.filter((d) =>
 												walletAddress
-													? d.Wallet.includes(
-															walletAddress
+													? d.Wallet.toLowerCase().includes(
+															walletAddress.toLowerCase()
 													  )
 													: true
 											)

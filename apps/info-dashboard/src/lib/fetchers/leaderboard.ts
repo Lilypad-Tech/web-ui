@@ -34,10 +34,9 @@ export function toTableData({
 	).map(({ Rank, Wallet, Points }) => {
 		const nodeData = nodesData.find((nodeData) => nodeData.ID === Wallet);
 		const connectedSince = nodeData ? nodeData.ConnectedSince : null;
-
 		return {
 			Rank,
-			Wallet,
+			Wallet: Wallet.toLowerCase(),
 			Level: (() => {
 				const rankNumber = Number(Rank);
 				const result =
@@ -117,7 +116,7 @@ export function toTableData({
 							: " 🤖" + "!") +
 						"\n";
 					const normalShareText = encodeURIComponent(linkText);
-					return `https://twitter.com/intent/tweet?text=${normalShareText}&url=${currentUrl}?wallet_id=${Wallet}`;
+					return `https://twitter.com/intent/tweet?text=${normalShareText}&url=${currentUrl}?wallet_id=${Wallet.toLowerCase()}`;
 				},
 			},
 		};
