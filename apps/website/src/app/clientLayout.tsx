@@ -118,7 +118,7 @@ export default function ClientLayout({
 			description: "The latest industry news, updates and info",
 			title: "Use Cases",
 			iconUrl: mediaAndDevicesLightbulb05,
-			href: "/#products",
+			href: "https://docs.lilypad.tech/lilypad/use-cases/extra-labs-x-lilypad",
 			target: "_self",
 		},
 	];
