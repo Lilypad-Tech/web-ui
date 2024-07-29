@@ -83,7 +83,7 @@ export default function NodeStatus() {
 		error,
 	} = useQuery({
 		queryFn: async () =>
-			getNodesPowSubmissions(nodesData?.map((n) => n.ID) ?? []),
+			await getNodesPowSubmissions(nodesData?.map((n) => n.ID) ?? []),
 		queryKey: ["nodesPowSubmissions", nodesData?.map((n) => n.ID)], //Array according to Documentation
 		enabled: !!nodesData,
 	});
