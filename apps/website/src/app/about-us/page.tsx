@@ -8,20 +8,25 @@ import Head from "next/head";
 import CenterHeadingSection from "@/components/CenterHeadingSection/CenterHeadingSection";
 import _TeamMember from "@/components/_TeamMember/_TeamMember";
 import {
+	developmentPuzzlePiece01,
 	educationBookOpen01,
+	generalCheckHeart,
 	generalEye,
 	mapsAndTravelFlag02,
+	mediaAndDevicesLightbulb05,
 	usersUsers01,
 } from "@frontline-hq/untitledui-icons";
 import IconAtom from "@/components/IconAtom/IconAtom";
 import ContentItem from "@/components/ContentItem/ContentItem";
 import Image from "next/image";
+import FeaturedIcon from "@/components/FeaturedIcon/FeaturedIcon";
+import _FeatureText from "@/components/_FeatureText/_FeatureText";
 
 export default function Teams() {
 	return (
 		<>
 			<Head>
-				<title>The Lilypad Network - Meet our innovators</title>
+				<title>The Lilypad Network - About Us</title>
 				<meta
 					name="description"
 					content="Discover The Lilypad Network, your gateway to efficient, sustainable, and decentralized computing."
@@ -96,12 +101,7 @@ export default function Teams() {
 							</div>
 							<div className="flex flex-col space-y-uui-4xl md:space-y-uui-6xl">
 								<div className="flex space-x-uui-xl">
-									<div className="p-uui-lg h-fit w-fit -mt-uui-md border-uui-1 bg-uui-bg-primary border-uui-featured-icon-modern-border rounded-uui-lg">
-										<IconAtom
-											className="flex-shrink-0"
-											iconUrl={generalEye}
-										/>
-									</div>
+									<FeaturedIcon iconUrl={generalEye} />
 									<div className="flex flex-col items-start justify-center spacing-y-uui-md ">
 										<span className="text-uui-text-primary-900 font-semibold antialiased uui-text-lg md:uui-text-xl">
 											Vision
@@ -116,12 +116,9 @@ export default function Teams() {
 									</div>
 								</div>
 								<div className="flex space-x-uui-xl">
-									<div className="p-uui-lg h-fit w-fit -mt-uui-md border-uui-1 bg-uui-bg-primary border-uui-featured-icon-modern-border rounded-uui-lg">
-										<IconAtom
-											className="flex-shrink-0"
-											iconUrl={mapsAndTravelFlag02}
-										/>
-									</div>
+									<FeaturedIcon
+										iconUrl={mapsAndTravelFlag02}
+									/>
 									<div className="flex flex-col items-start justify-center spacing-y-uui-md ">
 										<span className="text-uui-text-primary-900 font-semibold antialiased uui-text-lg md:uui-text-xl">
 											Mission
@@ -139,7 +136,53 @@ export default function Teams() {
 						</div>
 					</SectionContainer>
 				</div>
+				<div className="relative w-full -mt-uui-9xl  mx-auto flex justify-center items-center">
+					<SectionContainer>
+						<Image
+							alt="Lilypad middle section picture"
+							className=" "
+							width={1216}
+							height={516}
+							src="/dummy-placeholder-about-us.svg"
+						/>
+					</SectionContainer>
+				</div>
+				<div className="bg-uui-bg-primary pt-uui-9xl pb-uui-9xl">
+					<SectionContainer className="bg-uui-bg-primary">
+						<CenterHeadingSection
+							className="[&&]:bg-uui-bg-primary"
+							title="Lilypad's Ethos"
+							subtitle="Connect your tools, connect your teams. With over 100 apps already available in our directory, your team’s favourite tools are just a click away."
+						></CenterHeadingSection>
 
+						<div className="flex flex-col space-y-uui-3xl items-center justify-center md:space-y-uui-none md:flex-row md:space-x-uui-4xl">
+							<_FeatureText
+								featuredIconUrl={mediaAndDevicesLightbulb05}
+								title="Innovation"
+								description="Yes, you can try us for free for 30
+										days. Our friendly team will work with
+										you to get you up and running as soon as
+										possible."
+							/>
+							<_FeatureText
+								featuredIconUrl={generalCheckHeart}
+								title="Accessibility"
+								description="Yes, you can try us for free for 30
+										days. Our friendly team will work with
+										you to get you up and running as soon as
+										possible."
+							/>
+							<_FeatureText
+								featuredIconUrl={developmentPuzzlePiece01}
+								title="Collaboration"
+								description="Yes, you can try us for free for 30
+										days. Our friendly team will work with
+										you to get you up and running as soon as
+										possible."
+							/>
+						</div>
+					</SectionContainer>
+				</div>
 				<SectionContainer>
 					<div className="grid grid-cols-1 lg:grid-cols-2 py-uui-9xl gap-uui-3xl">
 						<a
