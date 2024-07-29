@@ -486,7 +486,11 @@ export default function Home() {
 							</div>
 						</button>
 
-						<button className="group relative hover:bg-uui-bg-secondary_hover mb-uui-xl h-full text-left rounded-2xl bg-uui-bg-secondary p-uui-6xl lg:p-uui-7xl flex flex-col items-start justify-between">
+						<a
+							href="https://blog.lilypadnetwork.org/"
+							target="_blank"
+							className="group relative hover:bg-uui-bg-secondary_hover mb-uui-xl h-full text-left rounded-2xl bg-uui-bg-secondary p-uui-6xl lg:p-uui-7xl flex flex-col items-start justify-between"
+						>
 							<h3 className=" text-uui-text-primary-900 uui-display-xs md:uui-display-sm font-semibold antialiased">
 								Read our blog
 							</h3>
@@ -504,7 +508,7 @@ export default function Home() {
 									iconUrl={educationBookOpen01}
 								></IconAtom>
 							</div>
-						</button>
+						</a>
 						{/* TODO turn into newsletter signup form */}
 						<div className="lg:col-span-2 mb-uui-xl h-full text-left rounded-2xl bg-uui-bg-secondary gap-uui-2xl lg:gap-uui-4xl p-uui-6xl lg:p-uui-7xl flex flex-col lg:flex-row  items-start justify-start">
 							<div className="lg:w-1/2">

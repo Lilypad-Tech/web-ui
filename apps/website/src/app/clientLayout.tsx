@@ -52,7 +52,7 @@ export default function ClientLayout({
 			description: "The latest industry news, updates and info",
 			title: "Blog",
 			iconUrl: educationBookClosed,
-			href: "/test",
+			href: "https://blog.lilypadnetwork.org/",
 			target: "_self",
 		},
 		{
@@ -80,7 +80,7 @@ export default function ClientLayout({
 			description: "The latest industry news, updates and info",
 			title: "FAQ",
 			iconUrl: generalHelpCircle,
-			href: "/faq",
+			href: "https://docs.lilypad.tech/lilypad/faqs",
 			target: "_self",
 		},
 	];
@@ -90,7 +90,7 @@ export default function ClientLayout({
 			description: "The latest industry news, updates and info",
 			title: "About us",
 			iconUrl: "/lilypad-icon.svg",
-			href: "/test",
+			href: "/about-us",
 			target: "_self", // Default target if not specified
 		},
 		{
@@ -111,7 +111,7 @@ export default function ClientLayout({
 			description: "The latest industry news, updates and info",
 			title: "Press/Media",
 			iconUrl: mediaAndDevicesTv03,
-			href: "/#products",
+			href: "https://lilypadnetwork.notion.site/Press-Kit-d1d4e16d558d419c9bc502ade1404e17",
 			target: "_self",
 		},
 		{
