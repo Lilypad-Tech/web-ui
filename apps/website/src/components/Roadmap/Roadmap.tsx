@@ -24,7 +24,7 @@ export default function Roadmap({ children }: RoadmapProps) {
 								} absolute  last-of-type:hidden rounded-full z-10 w-[1rem] h-[1rem] lg:w-[1.25rem] lg:h-[1.25rem]`}
 							>
 								<Image
-									layout="fill"
+									fill
 									src={
 										achieved
 											? "/lilypad-roadmap-icon-finished.svg"
