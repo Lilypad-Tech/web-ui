@@ -9,6 +9,8 @@ import CenterHeadingSection from "@/components/CenterHeadingSection/CenterHeadin
 import _TeamMember from "@/components/_TeamMember/_TeamMember";
 import {
 	educationBookOpen01,
+	generalEye,
+	mapsAndTravelFlag02,
 	usersUsers01,
 } from "@frontline-hq/untitledui-icons";
 import IconAtom from "@/components/IconAtom/IconAtom";
@@ -78,6 +80,66 @@ export default function Teams() {
 					</SectionContainer>
 				</div>
 
+				<div className="bg-uui-bg-secondary pt-uui-9xl pb-uui-11xl">
+					<SectionContainer>
+						<div className="flex flex-col md:flex-row space-y-uui-7xl md:space-y-uui-none md:space-x-uui-9xl ">
+							<div className="flex flex-col space-y-uui-xl md:space-y-uui-2xl">
+								<h3 className="uui-display-lg md:uui-display-md font-semibold text-uui-text-primary-900 antialiased">
+									What we stand for
+								</h3>
+								<p className="text-uui-text-tertiary-600 font-regular uui-text-lg md:uui-text-xl antialiased">
+									Powerful, self-serve product and growth
+									analytics to help you convert, engage, and
+									retain more users. Trusted by over 4,000
+									startups.
+								</p>
+							</div>
+							<div className="flex flex-col space-y-uui-4xl md:space-y-uui-6xl">
+								<div className="flex space-x-uui-xl">
+									<div className="p-uui-lg h-fit w-fit -mt-uui-md border-uui-1 bg-uui-bg-primary border-uui-featured-icon-modern-border rounded-uui-lg">
+										<IconAtom
+											className="flex-shrink-0"
+											iconUrl={generalEye}
+										/>
+									</div>
+									<div className="flex flex-col items-start justify-center spacing-y-uui-md ">
+										<span className="text-uui-text-primary-900 font-semibold antialiased uui-text-lg md:uui-text-xl">
+											Vision
+										</span>
+										<p className="uui-text-sm md:uui-text-md font-regular text-uui-text-tertiary-600  antialiased">
+											A future where cutting-edge
+											computational power is universally
+											accessible, fueling boundless
+											innovation and empowering
+											individuals to build the impossible.
+										</p>
+									</div>
+								</div>
+								<div className="flex space-x-uui-xl">
+									<div className="p-uui-lg h-fit w-fit -mt-uui-md border-uui-1 bg-uui-bg-primary border-uui-featured-icon-modern-border rounded-uui-lg">
+										<IconAtom
+											className="flex-shrink-0"
+											iconUrl={mapsAndTravelFlag02}
+										/>
+									</div>
+									<div className="flex flex-col items-start justify-center spacing-y-uui-md ">
+										<span className="text-uui-text-primary-900 font-semibold antialiased uui-text-lg md:uui-text-xl">
+											Mission
+										</span>
+										<p className="uui-text-sm md:uui-text-md font-regular text-uui-text-tertiary-600  antialiased">
+											A future where cutting-edge
+											computational power is universally
+											accessible, fueling boundless
+											innovation and empowering
+											individuals to build the impossible.
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</SectionContainer>
+				</div>
+
 				<SectionContainer>
 					<div className="grid grid-cols-1 lg:grid-cols-2 py-uui-9xl gap-uui-3xl">
 						<a
@@ -101,7 +163,11 @@ export default function Teams() {
 							</div>
 						</a>
 
-						<button className="group relative hover:bg-uui-bg-secondary_hover mb-uui-xl h-full text-left rounded-2xl bg-uui-bg-secondary p-uui-6xl lg:p-uui-7xl flex flex-col items-start justify-between">
+						<a
+							href="https://blog.lilypadnetwork.org/"
+							target="_blank"
+							className="group relative hover:bg-uui-bg-secondary_hover mb-uui-xl h-full text-left rounded-2xl bg-uui-bg-secondary p-uui-6xl lg:p-uui-7xl flex flex-col items-start justify-between"
+						>
 							<h3 className=" text-uui-text-primary-900 uui-display-xs md:uui-display-sm font-semibold antialiased">
 								Read our blog
 							</h3>
@@ -119,7 +185,7 @@ export default function Teams() {
 									iconUrl={educationBookOpen01}
 								></IconAtom>
 							</div>
-						</button>
+						</a>
 						{/* TODO turn into newsletter signup form */}
 						<div className="lg:col-span-2 mb-uui-xl h-full text-left rounded-2xl bg-uui-bg-secondary gap-uui-2xl lg:gap-uui-4xl p-uui-6xl lg:p-uui-7xl flex flex-col lg:flex-row  items-start justify-start">
 							<div className="lg:w-1/2">
