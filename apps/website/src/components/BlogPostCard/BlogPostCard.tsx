@@ -27,7 +27,7 @@ const BlogPostCard = ({
 					className="w-full h-full object-cover transition-transform duration-300 transform group-hover:scale-110 rounded-uui-2xl"
 					alt="dummy"
 					src={imageSrc}
-					layout="fill"
+					fill
 				/>
 			</div>
 			<div className="flex flex-col space-y-uui-lg md:space-y-uui-md p-uui-3xl ">
