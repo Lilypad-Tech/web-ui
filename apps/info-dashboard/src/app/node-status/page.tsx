@@ -547,7 +547,7 @@ export default function NodeStatus() {
 															}
 														/>
 													</td>
-													<td>
+													{/* <td>
 														<TableLeadText
 															title={
 																<Badge
@@ -571,7 +571,7 @@ export default function NodeStatus() {
 																</Badge>
 															}
 														/>
-													</td>
+													</td> */}
 
 													<td>
 														<TableLeadText
@@ -601,7 +601,7 @@ export default function NodeStatus() {
 															}
 														/>
 													</td>
-													<td>
+													{/* <td>
 														<TableLeadText
 															className="whitespace-nowrap"
 															title={
@@ -610,7 +610,7 @@ export default function NodeStatus() {
 																]
 															}
 														/>
-													</td>
+													</td> */}
 													<td>
 														<TableLeadText
 															className="whitespace-nowrap"
