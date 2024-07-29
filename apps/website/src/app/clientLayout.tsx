@@ -73,7 +73,7 @@ export default function ClientLayout({
 			description: "The latest industry news, updates and info",
 			title: "Media Kit",
 			iconUrl: imagesCamera01,
-			href: "/media-kit",
+			href: "/https://lilypadnetwork.notion.site/Press-Kit-d1d4e16d558d419c9bc502ade1404e17",
 			target: "_self",
 		},
 		{
@@ -111,7 +111,7 @@ export default function ClientLayout({
 			description: "The latest industry news, updates and info",
 			title: "Press/Media",
 			iconUrl: mediaAndDevicesTv03,
-			href: "https://lilypadnetwork.notion.site/Press-Kit-d1d4e16d558d419c9bc502ade1404e17",
+			href: "/page for press overview",
 			target: "_self",
 		},
 		{
