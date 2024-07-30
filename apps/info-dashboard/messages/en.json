@@ -120,5 +120,7 @@
 	"node_status_node_overview_table_warning_status": "Not-earning",
 	"coming_soon_metrics_card": "Coming soon",
 	"leaderboard_node_provider_table_wallet_id_copy_text": "Copy",
-	"node_status_node_overview_table_wallet_id_copy_text": "Copy"
+	"node_status_node_overview_table_wallet_id_copy_text": "Copy",
+	"good_patient_spider_amuse": "WebGL is not supported / enabled",
+	"tangy_stout_guppy_loop": "Please enable WebGL to view this map. Follow the instructions at "
 }
