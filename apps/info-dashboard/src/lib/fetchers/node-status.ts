@@ -78,7 +78,7 @@ export function toTableData({
 			: "n.a.";
 
 		return {
-			Wallet,
+			Wallet: Wallet.toLowerCase(),
 			Status: (() => {
 				return {
 					online,
@@ -117,14 +117,14 @@ export function getHeaderData() {
 			translation: m.node_status_header_titles_wallet(),
 			tooltip: undefined,
 		},
-		{
+		/* {
 			name: "Status",
 			translation: m.node_status_header_titles_status(),
 			tooltip: {
 				title: m.node_status_header_tooltip_title_status(),
 				description: m.node_status_header_tooltip_description_status(),
 			},
-		},
+		}, */
 		{
 			name: "Available ETH",
 			translation: m.node_status_header_titles_available_eth(),
@@ -152,7 +152,7 @@ export function getHeaderData() {
 					m.node_status_header_tooltip_description_last_pow_submitted(),
 			},
 		},
-		{
+		/* {
 			name: "Connected since",
 			translation: m.node_status_header_titles_connected_since(),
 			tooltip: {
@@ -160,7 +160,7 @@ export function getHeaderData() {
 				description:
 					m.node_status_header_tooltip_description_connected_since(),
 			},
-		},
+		}, */
 
 		{
 			name: "Chain",

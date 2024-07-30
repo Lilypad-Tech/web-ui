@@ -1,4 +1,4 @@
-import { PropsWithChildren } from "react";
+import { PropsWithChildren, type ReactNode } from "react";
 
 export default function EmptyState({
 	children,
@@ -6,7 +6,7 @@ export default function EmptyState({
 	description,
 }: PropsWithChildren<{
 	header: string;
-	description: string;
+	description: ReactNode;
 }>) {
 	return (
 		<div className="w-full h-[70vh] flex items-center flex-col justify-center space-y-uui-lg">

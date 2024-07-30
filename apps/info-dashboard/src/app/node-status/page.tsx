@@ -83,7 +83,7 @@ export default function NodeStatus() {
 		error,
 	} = useQuery({
 		queryFn: async () =>
-			getNodesPowSubmissions(nodesData?.map((n) => n.ID) ?? []),
+			await getNodesPowSubmissions(nodesData?.map((n) => n.ID) ?? []),
 		queryKey: ["nodesPowSubmissions", nodesData?.map((n) => n.ID)], //Array according to Documentation
 		enabled: !!nodesData,
 	});
@@ -266,7 +266,9 @@ export default function NodeStatus() {
 								nodesPowSubmissionsIsError ||
 								nodeStatusData?.filter((d) =>
 									walletAddress
-										? d.Wallet.includes(walletAddress)
+										? d.Wallet.toLowerCase().includes(
+												walletAddress.toLowerCase()
+										  )
 										: true
 								).length === 0 ? (
 									<EmptyState
@@ -384,8 +386,8 @@ export default function NodeStatus() {
 										})
 											.filter((d) =>
 												walletAddress
-													? d.Wallet.includes(
-															walletAddress
+													? d.Wallet.toLowerCase().includes(
+															walletAddress.toLowerCase()
 													  )
 													: true
 											)
@@ -545,7 +547,7 @@ export default function NodeStatus() {
 															}
 														/>
 													</td>
-													<td>
+													{/* <td>
 														<TableLeadText
 															title={
 																<Badge
@@ -569,7 +571,7 @@ export default function NodeStatus() {
 																</Badge>
 															}
 														/>
-													</td>
+													</td> */}
 
 													<td>
 														<TableLeadText
@@ -599,7 +601,7 @@ export default function NodeStatus() {
 															}
 														/>
 													</td>
-													<td>
+													{/* <td>
 														<TableLeadText
 															className="whitespace-nowrap"
 															title={
@@ -608,7 +610,7 @@ export default function NodeStatus() {
 																]
 															}
 														/>
-													</td>
+													</td> */}
 													<td>
 														<TableLeadText
 															className="whitespace-nowrap"

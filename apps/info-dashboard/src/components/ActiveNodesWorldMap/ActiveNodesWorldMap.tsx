@@ -10,6 +10,7 @@ export default function ActiveNodesWorldMap({
 	return (
 		<div className="relative h-[60vh] w-full">
 			<Map
+				onError={(evt) => console.error(evt.error)}
 				initialViewState={{
 					latitude: 20,
 					longitude: 0,

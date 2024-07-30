@@ -40,38 +40,38 @@ export type PowSubmissions = {
 }[];
 
 export async function getNodesPowSubmissions(addresses: string[]) {
-	const nodesSubmissions = (await Promise.all(
-		addresses.map((address) => {
-			return powContract.read.getMinerPowSubmissions([address]);
+	const nodesSubmissionCounts = (await Promise.all(
+		addresses.map((address) =>
+			powContract.read.minerSubmissionCount([address])
+		)
+	)) as bigint[];
+	const nodesLastSubmissions = (await Promise.all(
+		nodesSubmissionCounts.map((count, i) => {
+			return Number(count) > 0
+				? powContract.read.powSubmissions([
+						addresses[i],
+						Number(count) - 1,
+				  ])
+				: undefined;
 		})
 	)) as (
-		| {
-				walletAddress: `0x${string}`; // wallet address
-				nodeId: string; // node Id
-				nonce: bigint; // nonce
-				start_timestamp: bigint; // start timestamp (unix epoch)
-				complete_timestamp: bigint; // complete timestamp (unix epoch)
-				challenge: string; // challenge
-				difficulty: bigint; // difficulty
-		  }
+		| [
+				`0x${string}`, // wallet address
+				string, // node id
+				bigint, // nonce
+				bigint, // start_timestamp
+				bigint, // complete_timestamp
+				string, // challenge
+				bigint // difficulty
+		  ]
 		| undefined
-	)[][];
-
-	const nodesLastSubmissions = nodesSubmissions.map((submissions) => {
-		return submissions[submissions.length - 1];
-	});
-
-	/* const nodesSubmissionCounts = await Promise.all(
-		addresses.map((address) =>
-			powContract.read.getMinerPowSubmissionCount([address])
-		)
-	); */
+	)[];
 
 	return addresses.map((address, index) => ({
 		address,
 		lastSubmission: {
 			complete_timestamp: Number(
-				nodesLastSubmissions[index]?.complete_timestamp ?? null
+				nodesLastSubmissions[index]?.[4] ?? null
 			),
 		},
 	})) as PowSubmissions;

@@ -2,7 +2,11 @@
 import React from "react";
 import * as m from "@/paraglide/messages.js";
 import Head from "next/head";
-import { Badge } from "@lilypad/shared-components";
+import {
+	Badge,
+	ErrorBoundary,
+	WebGLFallback,
+} from "@lilypad/shared-components";
 import MetricsCard from "@/components/MetricsCard/MetricsCard";
 import HeadingSection from "@/components/HeadingSection";
 import { SectionContainer } from "@lilypad/shared-components";
@@ -35,7 +39,6 @@ import { DateTime } from "luxon";
 import EmptyState from "@/components/EmptyState/EmptyState";
 import ActiveNodesWorldMap from "@/components/ActiveNodesWorldMap/ActiveNodesWorldMap";
 import { fetchNodes, toGeoJson } from "@/lib/fetchers/nodes";
-
 export default function Home() {
 	const {
 		data: metricsData,
@@ -330,13 +333,34 @@ export default function Home() {
 								/>
 							</EmptyState>
 						) : (
-							<ActiveNodesWorldMap
-								geojson={toGeoJson(nodesData ?? [])}
-								protomapsApiKey={
-									process.env
-										.NEXT_PUBLIC_PROTOMAPS_API_KEY as string
+							<WebGLFallback
+								fallback={
+									<EmptyState
+										header={m.good_patient_spider_amuse()}
+										description={
+											<span>
+												{m.tangy_stout_guppy_loop()}
+												<a>https://get.webgl.org/</a>
+											</span>
+										}
+									>
+										<FeaturedIcon
+											spinIcon={false}
+											iconUrl={
+												alertAndFeedbackAlertCircle
+											}
+										/>
+									</EmptyState>
 								}
-							/>
+							>
+								<ActiveNodesWorldMap
+									geojson={toGeoJson(nodesData ?? [])}
+									protomapsApiKey={
+										process.env
+											.NEXT_PUBLIC_PROTOMAPS_API_KEY as string
+									}
+								/>
+							</WebGLFallback>
 						)}
 					</CardWithBorder>
 				</SectionContainer>
