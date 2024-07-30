@@ -15,7 +15,6 @@ const Avatar = ({ size, avatarImageProps, ...props }: AvatarProps) => {
 		"2xl": "h-[4rem] w-[4rem]",
 		"team-member-card": "h-[5rem] w-[5rem] md:h-[6rem] md:w-[6rem]",
 	};
-	console.log(props.onClick, "props");
 	return (
 		<AvatarWrapper {...props}>
 			{{
