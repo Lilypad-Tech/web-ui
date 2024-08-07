@@ -7,7 +7,8 @@ This repo contains the Lilypad UIs reachable via a browser or node based.
 - [pnpm](https://pnpm.io/installation)
 - [node](https://nodejs.org/en/download/package-manager)
 - [doppler](https://docs.doppler.com/docs/install-cli)
-
+- [Bun.js](https://bun.sh/docs/installation)
+  
 ## Local development
 
 Make sure you have access to the doppler project and configuration and have run `doppler setup`.
