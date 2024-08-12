@@ -21,8 +21,11 @@ import ContentItem from "@/components/ContentItem/ContentItem";
 import Image from "next/image";
 import FeaturedIcon from "@/components/FeaturedIcon/FeaturedIcon";
 import _FeatureText from "@/components/_FeatureText/_FeatureText";
+import useFade from "../hooks/UseFade";
+import { animated } from "@react-spring/web";
 
 export default function Teams() {
+	const fadeLandingspage = useFade();
 	return (
 		<>
 			<Head>
@@ -52,13 +55,15 @@ export default function Teams() {
 			<main className="overflow-hidden relative ">
 				<div className="relative w-full overflow-hidden bg-uui-bg-secondary pb-uui-2xl md:pb-uui-9xl  mx-auto">
 					<SectionContainer className="max-w-uui-width-4xl pb-uui-7xl">
-						<CenterHeadingSection
-							titleClassName="uui-display-lg [&&]:md:uui-display-2xl "
-							className="[&&]:bg-transparent pt-uui-7xl lg:pt-uui-9xl [&&]:pb-uui-7xl relative"
-							header="About Lilypad"
-							title="Open compute infrastructure for tomorrow"
-							subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
-						></CenterHeadingSection>
+						<animated.div style={fadeLandingspage}>
+							<CenterHeadingSection
+								titleClassName="uui-display-lg [&&]:md:uui-display-2xl "
+								className="[&&]:bg-transparent pt-uui-7xl lg:pt-uui-9xl [&&]:pb-uui-7xl relative"
+								header="About Lilypad"
+								title="Open compute infrastructure for tomorrow"
+								subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+							></CenterHeadingSection>
+						</animated.div>
 					</SectionContainer>
 				</div>
 
