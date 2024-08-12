@@ -6,6 +6,10 @@ import _TeamMember from "@/components/_TeamMember/_TeamMember";
 import { mapsAndTravelGlobe02 } from "@frontline-hq/untitledui-icons";
 import SocialProofSection from "@/components/SocialProofSection/SocialProofSection";
 import Image from "next/image";
+import useFadeInView from "../hooks/UseFadeInView";
+import { animated } from "@react-spring/web";
+import AnimateSpring from "@/components/AnimateSpring";
+import useFade from "../hooks/UseFade";
 
 export default function Teams() {
 	const socialLinks = [
@@ -97,6 +101,11 @@ export default function Teams() {
 			socialIcons: socialLinks,
 		},
 	];
+
+	const [teamSection2Ref, teamSection2Springs] = useFadeInView();
+	const [teamSection3Ref, teamSection3Springs] = useFadeInView();
+	const fadeLandingspage = useFade();
+
 	return (
 		<>
 			<Head>
@@ -126,14 +135,16 @@ export default function Teams() {
 			<main className="overflow-hidden relative ">
 				<div className="relative w-full overflow-hidden  max-w-uui-width-4xl mx-auto">
 					<div className="absolute top-0 min-w-uui-width-2xl -translate-x-[25%] sm:-translate-x-uui-none -translate-y-[8%]  left-0 w-full h-[40vh] -z-10">
-						<Image
-							layout="responsive"
-							width={1920}
-							height={1080}
-							src="/lilypad-background.svg"
-							alt="lilypads"
-							className="object-cover object-top w-full h-full"
-						/>
+						<animated.div style={fadeLandingspage}>
+							<Image
+								layout="responsive"
+								width={1920}
+								height={1080}
+								src="/lilypad-background.svg"
+								alt="lilypads"
+								className="object-cover object-top w-full h-full"
+							/>
+						</animated.div>
 					</div>
 
 					<SectionContainer>
@@ -151,14 +162,16 @@ export default function Teams() {
 					<SectionContainer>
 						<div className="py-uui-7xl lg:py-uui-9xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-uui-4xl gap-y-uui-6xl justify-items-center">
 							{teamMembers.map((member, index) => (
-								<_TeamMember
-									key={index}
-									src={member.src}
-									title={member.title}
-									position={member.position}
-									description={member.description}
-									socialIcons={member.socialIcons}
-								/>
+								<AnimateSpring key={index}>
+									<_TeamMember
+										key={index}
+										src={member.src}
+										title={member.title}
+										position={member.position}
+										description={member.description}
+										socialIcons={member.socialIcons}
+									/>
+								</AnimateSpring>
 							))}
 						</div>
 					</SectionContainer>
@@ -171,7 +184,11 @@ export default function Teams() {
 							subtitle="Our philosophy is simple — hire a team of diverse, passionate people and foster a culture that empowers you to do your best work."
 						></CenterHeadingSection>
 
-						<div className="pb-uui-7xl lg:pb-uui-9xl  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-uui-4xl gap-y-uui-6xl justify-items-center">
+						<animated.div
+							ref={teamSection2Ref}
+							style={teamSection2Springs}
+							className="pb-uui-7xl lg:pb-uui-9xl  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-uui-4xl gap-y-uui-6xl justify-items-center"
+						>
 							{teamMembers.map((member, index) => (
 								<_TeamMember
 									key={index}
@@ -182,7 +199,7 @@ export default function Teams() {
 									socialIcons={member.socialIcons}
 								/>
 							))}
-						</div>
+						</animated.div>
 					</SectionContainer>
 				</div>
 				<SectionContainer>
@@ -191,7 +208,11 @@ export default function Teams() {
 						title="Partners"
 						subtitle="Our philosophy is simple — hire a team of diverse, passionate people and foster a culture that empowers you to do your best work."
 					>
-						<div className="pt-uui-7xl lg:pt-uui-9xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-uui-4xl gap-y-uui-6xl justify-items-center">
+						<animated.div
+							ref={teamSection3Ref}
+							style={teamSection3Springs}
+							className="pt-uui-7xl lg:pt-uui-9xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-uui-4xl gap-y-uui-6xl justify-items-center"
+						>
 							{teamMembers.map((member, index) => (
 								<_TeamMember
 									key={index}
@@ -202,7 +223,7 @@ export default function Teams() {
 									socialIcons={member.socialIcons}
 								/>
 							))}
-						</div>
+						</animated.div>
 					</CenterHeadingSection>
 				</SectionContainer>
 				<div className="bg-uui-bg-secondary py-uui-4xl lg:py-uui-7xl">
