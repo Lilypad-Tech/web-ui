@@ -24,7 +24,10 @@ import IconAtom from "@/components/IconAtom/IconAtom";
 import BlogPostCard from "@/components/BlogPostCard/BlogPostCard";
 import Roadmap from "@/components/Roadmap/Roadmap";
 import RoadmapItem from "@/components/Roadmap/RoadmapItem";
-
+import AnimateSpring from "@/components/AnimateSpring";
+import { animated } from "@react-spring/web";
+import useFade from "./hooks/UseFade";
+import useFadeInView from "./hooks/UseFadeInView";
 export default function Home() {
 	const socialLinks = [
 		{ href: "https://twitter.com/lilypad_tech", iconUrl: "/x.svg" },
@@ -184,6 +187,12 @@ export default function Home() {
 		}, 2000);
 	};
 
+	const fade = useFade();
+
+	const [missionStatementRef, missionStatementSprings] = useFadeInView();
+
+	const [communityRef, communitySprings] = useFadeInView();
+
 	return (
 		<>
 			<Head>
@@ -211,77 +220,91 @@ export default function Home() {
 				/>
 				<meta property="og:url" content="/" />
 				<meta property="og:type" content="website" />
+				{/* TODO add twitter image and google image tag twitter:image & og:image */}
 			</Head>
 
 			<main className="overflow-hidden ">
 				<SectionContainer>
 					<div className="bg-uui-bg-primary flex flex-col lg:flex-row justify-between items-end px-uui-sm space-y-uui-7xl lg:space-y-uui-none lg:gap-uui-9xl lg:pl-uui-4xl pt-uui-7xl lg:pb-uui-9xl ">
 						<div className="items-start w-full lg:w-fit justify-start flex flex-col lg:flex-grow mr-auto">
-							<GroupBadge
-								onClick={() =>
-									window.open(
-										"https://lilypadnetwork.notion.site/Welcome-to-Lilypad-s-IncentiveNet-9e9b12936d4340ad9417d92dab8bd9d1",
-										"_blank"
-									)
-								}
-								badge="leading"
-								icon={{
-									url: arrowsArrowRight,
-								}}
-								color="brand"
-								message="We've recently launched IncentiveNet"
-								text="News"
-								size={
-									screenSize === "xl" || screenSize === "2xl"
-										? "lg"
-										: "md"
-								}
-								theme="modern"
-							/>
-							<div className="pt-uui-xl antialiased pb-uui-xl md:pb-uui-3xl flex flex-wrap gap-uui-md lg:flex-nowrap md:gap-uui-xl uui-display-md md:uui-display-xl font-semibold text-uui-text-primary-900 ">
-								<h1 className="sm:whitespace-nowrap">
-									AI that&apos;s
-								</h1>
-								<h1 className="text-uui-text-quarterary-500">
-									truly
-								</h1>
-								<h1>open</h1>
-							</div>
-							<h5 className="pb-uui-4xl md:pb-uui-6xl uui-text-lg md:uui-text-xl font-regular text-uui-text-tertiary-600">
-								Serverless Distributed Compute for AI
-							</h5>
-							<Anchor
-								target="_blank"
-								href="https://lilypadnetwork.notion.site/Leap-into-Lilypad-s-IncentiveNet-9e9b12936d4340ad9417d92dab8bd9d1"
-								className="[&&]:rounded-full w-full md:w-fit"
-								color="color"
-								destructive={false}
-								hierarchy="primary"
-								size={
-									screenSize === "xl" || screenSize === "2xl"
-										? "2xl"
-										: "xl"
-								}
-							>
-								Get started
-							</Anchor>
-							<div className="flex space-x-uui-xl pt-uui-7xl lg:pt-uui-9xl">
-								{socialLinks.map((link) => (
-									<a
-										key={link.href}
-										href={link.href}
-										target="_blank"
-										rel="noopener noreferrer"
-									>
-										<SocialIcon
-											className="w-[2rem] h-[2rem]"
-											iconUrl={link.iconUrl}
-										/>
-									</a>
-								))}
-							</div>
+							<animated.div style={fade}>
+								<GroupBadge
+									onClick={() =>
+										window.open(
+											"https://lilypadnetwork.notion.site/Welcome-to-Lilypad-s-IncentiveNet-9e9b12936d4340ad9417d92dab8bd9d1",
+											"_blank"
+										)
+									}
+									badge="leading"
+									icon={{
+										url: arrowsArrowRight,
+									}}
+									color="brand"
+									message="We've recently launched IncentiveNet"
+									text="News"
+									size={
+										screenSize === "xl" ||
+										screenSize === "2xl"
+											? "lg"
+											: "md"
+									}
+									theme="modern"
+								/>
+							</animated.div>
+
+							<AnimateSpring>
+								<div className="pt-uui-xl antialiased pb-uui-xl md:pb-uui-3xl flex flex-wrap gap-uui-md lg:flex-nowrap md:gap-uui-xl uui-display-md md:uui-display-xl font-semibold text-uui-text-primary-900 ">
+									<h1 className="sm:whitespace-nowrap">
+										AI that&apos;s
+									</h1>
+									<h1 className="text-uui-text-quarterary-500">
+										truly
+									</h1>
+									<h1>open</h1>
+								</div>
+								<h5 className="pb-uui-4xl md:pb-uui-6xl uui-text-lg md:uui-text-xl font-regular text-uui-text-tertiary-600">
+									Serverless Distributed Compute for AI
+								</h5>
+								<Anchor
+									target="_blank"
+									href="https://lilypadnetwork.notion.site/Leap-into-Lilypad-s-IncentiveNet-9e9b12936d4340ad9417d92dab8bd9d1"
+									className="[&&]:rounded-full w-full md:w-fit"
+									color="color"
+									destructive={false}
+									hierarchy="primary"
+									size={
+										screenSize === "xl" ||
+										screenSize === "2xl"
+											? "2xl"
+											: "xl"
+									}
+								>
+									Get started
+								</Anchor>
+							</AnimateSpring>
+
+							<animated.div style={fade}>
+								<div className="flex space-x-uui-xl pt-uui-7xl lg:pt-uui-9xl">
+									{socialLinks.map((link) => (
+										<a
+											key={link.href}
+											href={link.href}
+											target="_blank"
+											rel="noopener noreferrer"
+										>
+											<SocialIcon
+												className="w-[2rem] h-[2rem]"
+												iconUrl={link.iconUrl}
+											/>
+										</a>
+									))}
+								</div>
+							</animated.div>
 						</div>
-						<div className="relative w-full lg:w-1/2 lg:h-full max-w-2xl mr-auto pb-uui-7xl lg:pb-uui-none">
+						<animated.div
+							style={fade}
+							className="relative w-full lg:w-1/2 lg:h-full max-w-2xl mr-auto pb-uui-7xl lg:pb-uui-none"
+						>
 							<Image
 								className="mr-auto lg:mx-auto lg:mr-0 lg:ml-auto object-cover w-full h-full"
 								width={500}
@@ -289,28 +312,37 @@ export default function Home() {
 								alt="Lilypad Header"
 								src="/lilypad-fill.png"
 							/>
-						</div>
+						</animated.div>
 					</div>
 				</SectionContainer>
 				<SectionContainer className="pb-uui-7xl lg:pb-uui-8xl">
-					{" "}
-					<SocialProofSection
-						trustedByArray={trustedByArray}
-						title="Trusted by"
-					></SocialProofSection>
+					<animated.div style={fade}>
+						<SocialProofSection
+							trustedByArray={trustedByArray}
+							title="Trusted by"
+						></SocialProofSection>
+					</animated.div>
 				</SectionContainer>
-				<div className=" bg-uui-bg-secondary  py-uui-7xl lg:py-uui-9xl  ">
+				<div className="bg-uui-bg-secondary py-uui-7xl lg:py-uui-9xl">
 					<SectionContainer>
-						<div className="text-center mx-auto  max-w-uui-width-2xl">
-							<h5 className="text-uui-text-brand-secondary-700 font-semibold antialiased uui-text-sm md:uui-text-md">
+						<div className="text-center mx-auto max-w-uui-width-2xl">
+							<animated.h5
+								className="text-uui-text-brand-secondary-700 font-semibold antialiased uui-text-sm md:uui-text-md"
+								style={missionStatementSprings}
+								ref={missionStatementRef}
+							>
 								Mission Statement
-							</h5>
-							<h2 className="text-uui-text-primary-900 pt-uui-lg uui-display-xs md:uui-display-lg font-semibold">
+							</animated.h5>
+							<animated.h2
+								className="text-uui-text-primary-900 pt-uui-lg uui-display-xs md:uui-display-lg font-semibold"
+								style={missionStatementSprings}
+								ref={missionStatementRef}
+							>
 								We create an AI-driven decentralized network
 								that uses underutilized resources to make
 								efficient, sustainable technology accessible to
 								everyone.
-							</h2>
+							</animated.h2>
 						</div>
 					</SectionContainer>
 				</div>
@@ -427,40 +459,37 @@ export default function Home() {
 									subtitle="Whether you have a team of 2 or 200, our shared team inboxes keep everyone on the same page and in the loop."
 									title="Milestone 0: Launched Lilypad v1 Modicum-based Testnet"
 								/>
-								{/* Add this empty div to create an extra child to finish the roadmap line */}
-								<div></div>
 							</Roadmap>
 						</div>
 					</CenterHeadingSection>
 				</SectionContainer>
 				<SectionContainer>
-					<CenterHeadingSection
-						className="rounded-uui-2xl"
-						title="Introducing Lilypad Token: Power your projects and
-					fuel innovation with the currency of decentralized
-					computing."
-						subtitle="Be the first to know about the token release, join
-					our socials"
-						header="Coming in Q4 2024"
-					>
-						<div className="pt-uui-4xl flex items-center justify-center w-full">
-							<div className="flex space-x-uui-xl">
-								{socialLinks.map((link) => (
-									<a
-										key={link.href}
-										href={link.href}
-										target="_blank"
-										rel="noopener noreferrer"
-									>
-										<SocialIcon
-											className="w-[2rem] h-[2rem]"
-											iconUrl={link.iconUrl}
-										></SocialIcon>
-									</a>
-								))}
+					<animated.div ref={communityRef} style={communitySprings}>
+						<CenterHeadingSection
+							className="rounded-uui-2xl"
+							title="Introducing Lilypad Token: Power your projects and fuel innovation with the currency of decentralized computing."
+							subtitle="Be the first to know about the token release, join our socials"
+							header="Coming in Q4 2024"
+						>
+							<div className="pt-uui-4xl flex items-center justify-center w-full">
+								<div className="flex space-x-uui-xl">
+									{socialLinks.map((link) => (
+										<a
+											key={link.href}
+											href={link.href}
+											target="_blank"
+											rel="noopener noreferrer"
+										>
+											<SocialIcon
+												className="w-[2rem] h-[2rem]"
+												iconUrl={link.iconUrl}
+											/>
+										</a>
+									))}
+								</div>
 							</div>
-						</div>
-					</CenterHeadingSection>
+						</CenterHeadingSection>
+					</animated.div>
 				</SectionContainer>
 
 				<SectionContainer>
