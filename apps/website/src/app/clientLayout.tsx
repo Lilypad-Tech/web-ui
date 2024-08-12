@@ -23,6 +23,7 @@ import {
 } from "@frontline-hq/untitledui-icons";
 import { Anchor } from "@lilypad/shared-components";
 import Footer from "@/components/Footer";
+import { animated, useSpring } from "@react-spring/web";
 
 const INTER = Inter({ subsets: ["latin"] });
 
@@ -35,8 +36,6 @@ export default function ClientLayout({
 	const [nestedMenu, setNestedMenu] = useState<null | "About" | "Resources">(
 		null
 	);
-
-	const [bannerOpened, setBannerOpened] = useState(true);
 
 	const pathname = usePathname();
 
@@ -147,10 +146,16 @@ export default function ClientLayout({
 		},
 	];
 
+	const fade = useSpring({
+		from: { opacity: 0 },
+		to: { opacity: 1 },
+		config: { duration: 1 },
+	});
+
 	return (
 		<html lang="en" className="uui-dark">
 			<body className={INTER.className}>
-				<div className="sticky top-0 w-full z-40">
+				<animated.div style={fade} className="sticky top-0 w-full z-40">
 					<NavBar
 						logo={
 							<a href="/">
@@ -241,7 +246,7 @@ export default function ClientLayout({
 										</button>
 
 										<Link
-											href="/docs"
+											href="https://docs.lilypad.tech/lilypad"
 											onClick={() => {
 												setMenuOpened(() => false);
 											}}
@@ -346,7 +351,7 @@ export default function ClientLayout({
 								</_NavItemDropdown>
 
 								<Link
-									href="/docs"
+									href="https://docs.lilypad.tech/lilypad"
 									onClick={() => {
 										setMenuOpened(() => false);
 									}}
@@ -360,7 +365,7 @@ export default function ClientLayout({
 							</>
 						)}
 					</NavBar>
-				</div>
+				</animated.div>
 				{children}
 				<Footer
 					footerIcon={{
