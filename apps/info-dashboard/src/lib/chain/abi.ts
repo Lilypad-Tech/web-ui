@@ -409,495 +409,495 @@ export const abis = {
 	],
 	"0x8B852BA45293d6dd51B10c57625C6c5f25ADFB40": [
 		{
-			inputs: [],
-			name: "InvalidInitialization",
-			type: "error",
-		},
-		{
-			inputs: [],
-			name: "NotInitializing",
-			type: "error",
-		},
-		{
-			inputs: [
+			"anonymous": false,
+			"inputs": [
 				{
-					internalType: "address",
-					name: "owner",
-					type: "address",
+					"indexed": false,
+					"internalType": "bytes32",
+					"name": "challenge",
+					"type": "bytes32"
 				},
+				{
+					"indexed": false,
+					"internalType": "uint256",
+					"name": "difficulty",
+					"type": "uint256"
+				}
 			],
-			name: "OwnableInvalidOwner",
-			type: "error",
+			"name": "GenerateChallenge",
+			"type": "event"
 		},
 		{
-			inputs: [
+			"anonymous": false,
+			"inputs": [
 				{
-					internalType: "address",
-					name: "account",
-					type: "address",
-				},
+					"indexed": false,
+					"internalType": "uint8",
+					"name": "version",
+					"type": "uint8"
+				}
 			],
-			name: "OwnableUnauthorizedAccount",
-			type: "error",
+			"name": "Initialized",
+			"type": "event"
 		},
 		{
-			anonymous: false,
-			inputs: [
+			"anonymous": false,
+			"inputs": [],
+			"name": "NewPowRound",
+			"type": "event"
+		},
+		{
+			"anonymous": false,
+			"inputs": [
 				{
-					indexed: false,
-					internalType: "bytes32",
-					name: "challenge",
-					type: "bytes32",
+					"indexed": true,
+					"internalType": "address",
+					"name": "previousOwner",
+					"type": "address"
 				},
 				{
-					indexed: false,
-					internalType: "uint256",
-					name: "difficulty",
-					type: "uint256",
-				},
+					"indexed": true,
+					"internalType": "address",
+					"name": "newOwner",
+					"type": "address"
+				}
 			],
-			name: "GenerateChallenge",
-			type: "event",
+			"name": "OwnershipTransferred",
+			"type": "event"
 		},
 		{
-			anonymous: false,
-			inputs: [
+			"anonymous": false,
+			"inputs": [
 				{
-					indexed: false,
-					internalType: "uint64",
-					name: "version",
-					type: "uint64",
+					"indexed": false,
+					"internalType": "address",
+					"name": "walletAddress",
+					"type": "address"
 				},
+				{
+					"indexed": false,
+					"internalType": "string",
+					"name": "nodeId",
+					"type": "string"
+				},
+				{
+					"indexed": false,
+					"internalType": "uint256",
+					"name": "nonce",
+					"type": "uint256"
+				},
+				{
+					"indexed": false,
+					"internalType": "uint256",
+					"name": "start_timestamp",
+					"type": "uint256"
+				},
+				{
+					"indexed": false,
+					"internalType": "uint256",
+					"name": "complete_timestamp",
+					"type": "uint256"
+				},
+				{
+					"indexed": false,
+					"internalType": "bytes32",
+					"name": "challenge",
+					"type": "bytes32"
+				},
+				{
+					"indexed": false,
+					"internalType": "uint256",
+					"name": "difficulty",
+					"type": "uint256"
+				}
 			],
-			name: "Initialized",
-			type: "event",
+			"name": "ValidPOWSubmitted",
+			"type": "event"
 		},
 		{
-			anonymous: false,
-			inputs: [],
-			name: "NewPowRound",
-			type: "event",
-		},
-		{
-			anonymous: false,
-			inputs: [
+			"inputs": [],
+			"name": "calculate_difficulty",
+			"outputs": [
 				{
-					indexed: true,
-					internalType: "address",
-					name: "previousOwner",
-					type: "address",
-				},
-				{
-					indexed: true,
-					internalType: "address",
-					name: "newOwner",
-					type: "address",
-				},
+					"internalType": "uint256",
+					"name": "",
+					"type": "uint256"
+				}
 			],
-			name: "OwnershipTransferred",
-			type: "event",
+			"stateMutability": "view",
+			"type": "function"
 		},
 		{
-			anonymous: false,
-			inputs: [
+			"inputs": [
 				{
-					indexed: false,
-					internalType: "address",
-					name: "walletAddress",
-					type: "address",
-				},
-				{
-					indexed: false,
-					internalType: "string",
-					name: "nodeId",
-					type: "string",
-				},
-				{
-					indexed: false,
-					internalType: "uint256",
-					name: "nonce",
-					type: "uint256",
-				},
-				{
-					indexed: false,
-					internalType: "uint256",
-					name: "start_timestamp",
-					type: "uint256",
-				},
-				{
-					indexed: false,
-					internalType: "uint256",
-					name: "complete_timestamp",
-					type: "uint256",
-				},
-				{
-					indexed: false,
-					internalType: "bytes32",
-					name: "challenge",
-					type: "bytes32",
-				},
-				{
-					indexed: false,
-					internalType: "uint256",
-					name: "difficulty",
-					type: "uint256",
-				},
+					"internalType": "uint256",
+					"name": "difficulty",
+					"type": "uint256"
+				}
 			],
-			name: "ValidPOWSubmitted",
-			type: "event",
+			"name": "change_difficulty",
+			"outputs": [],
+			"stateMutability": "nonpayable",
+			"type": "function"
 		},
 		{
-			inputs: [],
-			name: "calculate_difficulty",
-			outputs: [
+			"inputs": [],
+			"name": "checkTimeWindow",
+			"outputs": [],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
 				{
-					internalType: "uint256",
-					name: "",
-					type: "uint256",
-				},
+					"internalType": "string",
+					"name": "nodeId",
+					"type": "string"
+				}
 			],
-			stateMutability: "view",
-			type: "function",
+			"name": "generateChallenge",
+			"outputs": [],
+			"stateMutability": "nonpayable",
+			"type": "function"
 		},
 		{
-			inputs: [
+			"inputs": [],
+			"name": "getMinerCount",
+			"outputs": [
 				{
-					internalType: "uint256",
-					name: "difficulty",
-					type: "uint256",
-				},
+					"internalType": "uint256",
+					"name": "",
+					"type": "uint256"
+				}
 			],
-			name: "change_difficulty",
-			outputs: [],
-			stateMutability: "nonpayable",
-			type: "function",
+			"stateMutability": "view",
+			"type": "function"
 		},
 		{
-			inputs: [],
-			name: "checkTimeWindow",
-			outputs: [],
-			stateMutability: "view",
-			type: "function",
-		},
-		{
-			inputs: [
+			"inputs": [
 				{
-					internalType: "string",
-					name: "nodeId",
-					type: "string",
-				},
+					"internalType": "address",
+					"name": "addr",
+					"type": "address"
+				}
 			],
-			name: "generateChallenge",
-			outputs: [],
-			stateMutability: "nonpayable",
-			type: "function",
+			"name": "getMinerPowSubmissionCount",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
 		},
 		{
-			inputs: [
+			"inputs": [
 				{
-					internalType: "address",
-					name: "addr",
-					type: "address",
-				},
+					"internalType": "address",
+					"name": "addr",
+					"type": "address"
+				}
 			],
-			name: "getMinerPowSubmissions",
-			outputs: [
+			"name": "getMinerPowSubmissions",
+			"outputs": [
 				{
-					components: [
+					"components": [
 						{
-							internalType: "address",
-							name: "walletAddress",
-							type: "address",
+							"internalType": "address",
+							"name": "walletAddress",
+							"type": "address"
 						},
 						{
-							internalType: "string",
-							name: "nodeId",
-							type: "string",
+							"internalType": "string",
+							"name": "nodeId",
+							"type": "string"
 						},
 						{
-							internalType: "uint256",
-							name: "nonce",
-							type: "uint256",
+							"internalType": "uint256",
+							"name": "nonce",
+							"type": "uint256"
 						},
 						{
-							internalType: "uint256",
-							name: "start_timestamp",
-							type: "uint256",
+							"internalType": "uint256",
+							"name": "start_timestamp",
+							"type": "uint256"
 						},
 						{
-							internalType: "uint256",
-							name: "complete_timestamp",
-							type: "uint256",
+							"internalType": "uint256",
+							"name": "complete_timestamp",
+							"type": "uint256"
 						},
 						{
-							internalType: "bytes32",
-							name: "challenge",
-							type: "bytes32",
+							"internalType": "bytes32",
+							"name": "challenge",
+							"type": "bytes32"
 						},
 						{
-							internalType: "uint256",
-							name: "difficulty",
-							type: "uint256",
-						},
+							"internalType": "uint256",
+							"name": "difficulty",
+							"type": "uint256"
+						}
 					],
-					internalType: "struct LilypadPow.POWSubmission[]",
-					name: "",
-					type: "tuple[]",
-				},
+					"internalType": "structLilypadPow.POWSubmission[]",
+					"name": "",
+					"type": "tuple[]"
+				}
 			],
-			stateMutability: "view",
-			type: "function",
+			"stateMutability": "view",
+			"type": "function"
 		},
 		{
-			inputs: [],
-			name: "getMiners",
-			outputs: [
+			"inputs": [],
+			"name": "getMiners",
+			"outputs": [
 				{
-					internalType: "address[]",
-					name: "",
-					type: "address[]",
-				},
+					"internalType": "address[]",
+					"name": "",
+					"type": "address[]"
+				}
 			],
-			stateMutability: "view",
-			type: "function",
+			"stateMutability": "view",
+			"type": "function"
 		},
 		{
-			inputs: [],
-			name: "initialize",
-			outputs: [],
-			stateMutability: "nonpayable",
-			type: "function",
+			"inputs": [],
+			"name": "initialize",
+			"outputs": [],
+			"stateMutability": "nonpayable",
+			"type": "function"
 		},
 		{
-			inputs: [
+			"inputs": [
 				{
-					internalType: "address",
-					name: "",
-					type: "address",
-				},
+					"internalType": "address",
+					"name": "",
+					"type": "address"
+				}
 			],
-			name: "lastChallenges",
-			outputs: [
+			"name": "lastChallenges",
+			"outputs": [
 				{
-					internalType: "bytes32",
-					name: "challenge",
-					type: "bytes32",
+					"internalType": "bytes32",
+					"name": "challenge",
+					"type": "bytes32"
 				},
 				{
-					internalType: "uint256",
-					name: "difficulty",
-					type: "uint256",
+					"internalType": "uint256",
+					"name": "difficulty",
+					"type": "uint256"
 				},
 				{
-					internalType: "string",
-					name: "nodeId",
-					type: "string",
+					"internalType": "string",
+					"name": "nodeId",
+					"type": "string"
 				},
 				{
-					internalType: "uint256",
-					name: "timestamp",
-					type: "uint256",
-				},
+					"internalType": "uint256",
+					"name": "timestamp",
+					"type": "uint256"
+				}
 			],
-			stateMutability: "view",
-			type: "function",
+			"stateMutability": "view",
+			"type": "function"
 		},
 		{
-			inputs: [
+			"inputs": [
 				{
-					internalType: "uint256",
-					name: "",
-					type: "uint256",
-				},
+					"internalType": "uint256",
+					"name": "",
+					"type": "uint256"
+				}
 			],
-			name: "miners",
-			outputs: [
+			"name": "miners",
+			"outputs": [
 				{
-					internalType: "address",
-					name: "",
-					type: "address",
-				},
+					"internalType": "address",
+					"name": "",
+					"type": "address"
+				}
 			],
-			stateMutability: "view",
-			type: "function",
+			"stateMutability": "view",
+			"type": "function"
 		},
 		{
-			inputs: [],
-			name: "owner",
-			outputs: [
+			"inputs": [],
+			"name": "owner",
+			"outputs": [
 				{
-					internalType: "address",
-					name: "",
-					type: "address",
-				},
+					"internalType": "address",
+					"name": "",
+					"type": "address"
+				}
 			],
-			stateMutability: "view",
-			type: "function",
+			"stateMutability": "view",
+			"type": "function"
 		},
 		{
-			inputs: [
+			"inputs": [
 				{
-					internalType: "address",
-					name: "",
-					type: "address",
+					"internalType": "address",
+					"name": "",
+					"type": "address"
 				},
 				{
-					internalType: "uint256",
-					name: "",
-					type: "uint256",
-				},
+					"internalType": "uint256",
+					"name": "",
+					"type": "uint256"
+				}
 			],
-			name: "powSubmissions",
-			outputs: [
+			"name": "powSubmissions",
+			"outputs": [
 				{
-					internalType: "address",
-					name: "walletAddress",
-					type: "address",
+					"internalType": "address",
+					"name": "walletAddress",
+					"type": "address"
 				},
 				{
-					internalType: "string",
-					name: "nodeId",
-					type: "string",
+					"internalType": "string",
+					"name": "nodeId",
+					"type": "string"
 				},
 				{
-					internalType: "uint256",
-					name: "nonce",
-					type: "uint256",
+					"internalType": "uint256",
+					"name": "nonce",
+					"type": "uint256"
 				},
 				{
-					internalType: "uint256",
-					name: "start_timestamp",
-					type: "uint256",
+					"internalType": "uint256",
+					"name": "start_timestamp",
+					"type": "uint256"
 				},
 				{
-					internalType: "uint256",
-					name: "complete_timestamp",
-					type: "uint256",
+					"internalType": "uint256",
+					"name": "complete_timestamp",
+					"type": "uint256"
 				},
 				{
-					internalType: "bytes32",
-					name: "challenge",
-					type: "bytes32",
+					"internalType": "bytes32",
+					"name": "challenge",
+					"type": "bytes32"
 				},
 				{
-					internalType: "uint256",
-					name: "difficulty",
-					type: "uint256",
-				},
+					"internalType": "uint256",
+					"name": "difficulty",
+					"type": "uint256"
+				}
 			],
-			stateMutability: "view",
-			type: "function",
+			"stateMutability": "view",
+			"type": "function"
 		},
 		{
-			inputs: [],
-			name: "renounceOwnership",
-			outputs: [],
-			stateMutability: "nonpayable",
-			type: "function",
+			"inputs": [],
+			"name": "renounceOwnership",
+			"outputs": [],
+			"stateMutability": "nonpayable",
+			"type": "function"
 		},
 		{
-			inputs: [],
-			name: "startTime",
-			outputs: [
+			"inputs": [],
+			"name": "startTime",
+			"outputs": [
 				{
-					internalType: "uint256",
-					name: "",
-					type: "uint256",
-				},
+					"internalType": "uint256",
+					"name": "",
+					"type": "uint256"
+				}
 			],
-			stateMutability: "view",
-			type: "function",
+			"stateMutability": "view",
+			"type": "function"
 		},
 		{
-			inputs: [
+			"inputs": [
 				{
-					internalType: "uint256",
-					name: "nonce",
-					type: "uint256",
+					"internalType": "uint256",
+					"name": "nonce",
+					"type": "uint256"
 				},
 				{
-					internalType: "string",
-					name: "nodeId",
-					type: "string",
-				},
+					"internalType": "string",
+					"name": "nodeId",
+					"type": "string"
+				}
 			],
-			name: "submitWork",
-			outputs: [],
-			stateMutability: "nonpayable",
-			type: "function",
+			"name": "submitWork",
+			"outputs": [],
+			"stateMutability": "nonpayable",
+			"type": "function"
 		},
 		{
-			inputs: [],
-			name: "targetDifficulty",
-			outputs: [
+			"inputs": [],
+			"name": "targetDifficulty",
+			"outputs": [
 				{
-					internalType: "uint256",
-					name: "",
-					type: "uint256",
-				},
+					"internalType": "uint256",
+					"name": "",
+					"type": "uint256"
+				}
 			],
-			stateMutability: "view",
-			type: "function",
+			"stateMutability": "view",
+			"type": "function"
 		},
 		{
-			inputs: [
+			"inputs": [
 				{
-					internalType: "address",
-					name: "newOwner",
-					type: "address",
-				},
+					"internalType": "address",
+					"name": "newOwner",
+					"type": "address"
+				}
 			],
-			name: "transferOwnership",
-			outputs: [],
-			stateMutability: "nonpayable",
-			type: "function",
+			"name": "transferOwnership",
+			"outputs": [],
+			"stateMutability": "nonpayable",
+			"type": "function"
 		},
 		{
-			inputs: [],
-			name: "triggerNewPowRound",
-			outputs: [],
-			stateMutability: "nonpayable",
-			type: "function",
+			"inputs": [],
+			"name": "triggerNewPowRound",
+			"outputs": [],
+			"stateMutability": "nonpayable",
+			"type": "function"
 		},
 		{
-			inputs: [],
-			name: "validProofs",
-			outputs: [
+			"inputs": [],
+			"name": "validProofs",
+			"outputs": [
 				{
-					internalType: "uint256",
-					name: "",
-					type: "uint256",
-				},
+					"internalType": "uint256",
+					"name": "",
+					"type": "uint256"
+				}
 			],
-			stateMutability: "view",
-			type: "function",
+			"stateMutability": "view",
+			"type": "function"
 		},
 		{
-			inputs: [],
-			name: "window_end",
-			outputs: [
+			"inputs": [],
+			"name": "window_end",
+			"outputs": [
 				{
-					internalType: "uint256",
-					name: "",
-					type: "uint256",
-				},
+					"internalType": "uint256",
+					"name": "",
+					"type": "uint256"
+				}
 			],
-			stateMutability: "view",
-			type: "function",
+			"stateMutability": "view",
+			"type": "function"
 		},
 		{
-			inputs: [],
-			name: "window_start",
-			outputs: [
+			"inputs": [],
+			"name": "window_start",
+			"outputs": [
 				{
-					internalType: "uint256",
-					name: "",
-					type: "uint256",
-				},
+					"internalType": "uint256",
+					"name": "",
+					"type": "uint256"
+				}
 			],
-			stateMutability: "view",
-			type: "function",
-		},
+			"stateMutability": "view",
+			"type": "function"
+		}
 	],
 	"0xFEA5B410a374cE6f1c2265B2E2d1eE7C70e479f4": [
 		{
