@@ -515,7 +515,7 @@ export default function Home() {
 						</button>
 
 						<a
-							href="https://blog.lilypadnetwork.org/"
+							href="https://blog.lilypad.tech/"
 							target="_blank"
 							className="group relative hover:bg-uui-bg-secondary_hover mb-uui-xl h-full text-left rounded-2xl bg-uui-bg-secondary p-uui-6xl lg:p-uui-7xl flex flex-col items-start justify-between"
 						>
