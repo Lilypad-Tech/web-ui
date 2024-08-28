@@ -180,12 +180,10 @@ export default function Leaderboard() {
 											leaderboardData
 												? leaderboardData.reduce(
 														(total, node) =>
-															+node.Points +
-															total,
-														0
+															+node.Points +total, 0
 												  )
 												: 0
-										)}
+										).toLocaleString()}
 									</span>
 								</div>
 								{/* Todo add api week total Lilybit_rewards earned */}
