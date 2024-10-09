@@ -66,8 +66,8 @@ export default function Home() {
 
 	        if (response.status === 201) {
 	            setMessage('You have successfully subscribed! Please check your email for confirmation.');
-	            setEmail(''); // Clear the input field after successful submission
-	        } else if (response.status === 429) { // Too many requests error
+	            setEmail(''); 
+	        } else if (response.status === 429) { // Too many requests error to handle Ghost rate limits
 	            setMessage('You have made too many subscription attempts. Please wait a few minutes and try again.');
 	        } else {
 	            const errorData = await response.json();
