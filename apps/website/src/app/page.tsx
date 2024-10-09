@@ -41,6 +41,45 @@ export default function Home() {
 		},
 	];
 
+	const [email, setEmail] = useState('');
+	const [message, setMessage] = useState('');
+
+	const handleSubscribe = async (e) => {
+	    e.preventDefault();
+
+	    if (!email) {
+	        setMessage('Please enter a valid email address.');
+	        return;
+	    }
+
+	    try {
+	        const response = await fetch('https://updates.lilypad.tech/members/api/send-magic-link/', {
+	            method: 'POST',
+	            headers: {
+	                'Content-Type': 'application/json',
+	            },
+	            body: JSON.stringify({
+	                email: email,
+	                emailType: 'subscribe',
+	            }),
+	        });
+
+	        if (response.status === 201) {
+	            setMessage('You have successfully subscribed! Please check your email for confirmation.');
+	            setEmail(''); // Clear the input field after successful submission
+	        } else if (response.status === 429) { // Too many requests error
+	            setMessage('You have made too many subscription attempts. Please wait a few minutes and try again.');
+	        } else {
+	            const errorData = await response.json();
+	            const errorMessage = errorData.errors?.[0]?.message || 'Subscription failed. Please try again later.';
+	            setMessage(errorMessage);
+	        }
+	    } catch (error) {
+	        console.error('Error subscribing to the newsletter:', error);
+	        setMessage('There was an error while processing your request. Please try again later.');
+	    }
+	};
+
 	const productCardsData = [
 		{
 			header: "Marketplace",
@@ -537,57 +576,58 @@ export default function Home() {
 								></IconAtom>
 							</div>
 						</a>
-						{/* TODO turn into newsletter signup form */}
-						<div className="lg:col-span-2 mb-uui-xl h-full text-left rounded-2xl bg-uui-bg-secondary gap-uui-2xl lg:gap-uui-4xl p-uui-6xl lg:p-uui-7xl flex flex-col lg:flex-row  items-start justify-start">
-							<div className="lg:w-1/2">
-								<h3 className="text-uui-text-primary-900 mb-uui-xl uui-display-xs md:uui-display-sm font-semibold antialiased">
-									Be the first to know
-								</h3>
-								<div className=" text-uui-text-tertiary-600 flex flex-col antialiased font-regular text-uui-lg md:uui-text-xl">
-									<span>
-										Stay in the loop with everything you
-										need to know.
-									</span>
-								</div>
-							</div>
-							<form className="lg:w-1/2 space-y-uui-2xl md:space-y-uui-none md:flex md:space-x-uui-xl w-full">
-								<InputField
-									inputSize="md"
-									destructive={false}
-									placeholder="Enter your e-mail"
-									className="flex-1"
-								>
-									{{
-										hint: (
-											<span className="">
-												We care about your data in our{" "}
-												<a
-													href="/privacy"
-													target="_blank"
-													className="underline underline-offset-4"
-												>
-													privacy policy.
-												</a>
-											</span>
-										),
-									}}
-								</InputField>
-								<Button
-									type="submit"
-									color="color"
-									destructive={false}
-									hierarchy="primary"
-									size="md"
-									className="[&&]:rounded-full [&&]:h-fit"
-									onClick={(e) => {
-										e.preventDefault();
-										console.log("click");
-									}}
-								>
-									Subscribe
-								</Button>
-							</form>
+						<div className="lg:col-span-2 mb-uui-xl h-full text-left rounded-2xl bg-uui-bg-secondary gap-uui-2xl lg:gap-uui-4xl p-uui-6xl lg:p-uui-7xl flex flex-col lg:flex-row items-start justify-start">
+						    <div className="lg:w-1/2">
+						        <h3 className="text-uui-text-primary-900 mb-uui-xl uui-display-xs md:uui-display-sm font-semibold antialiased">
+						            Be the first to know
+						        </h3>
+						        <div className="text-uui-text-tertiary-600 flex flex-col antialiased font-regular text-uui-lg md:uui-text-xl">
+						            <span>
+						                Stay in the loop with everything you need to know.
+						            </span>
+						        </div>
+						    </div>
+						    <form
+						        className="lg:w-1/2 space-y-uui-2xl md:space-y-uui-none md:flex md:space-x-uui-xl w-full"
+						        onSubmit={handleSubscribe}
+						    >
+						        <InputField
+						            inputSize="md"
+						            destructive={false}
+						            placeholder="Enter your e-mail"
+						            className="flex-1"
+						            value={email}
+						            onChange={(e) => setEmail(e.target.value)}
+						        >
+						            {{
+						                hint: (
+						                    <span>
+						                        We care about your data in our{" "}
+						                        <a
+						                            href="/privacy"
+						                            target="_blank"
+						                            className="underline underline-offset-4"
+						                        >
+						                            privacy policy.
+						                        </a>
+						                    </span>
+						                ),
+						            }}
+						        </InputField>
+						        <Button
+						            type="submit"
+						            color="color"
+						            destructive={false}
+						            hierarchy="primary"
+						            size="md"
+						            className="[&&]:rounded-full [&&]:h-fit"
+						        >
+						            Subscribe
+						        </Button>
+						    </form>
+						    <div className="undefined  antialiased text-uui-text-tertiary-600 font-regular uui-text-sm [&amp;.error]:text-uui-text-error-primary-600 mt-uui-sm block text-left "><span>{message && <p>{message}</p>}</span></div>
 						</div>
+
 					</div>
 				</SectionContainer>
 			</main>
