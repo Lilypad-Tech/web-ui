@@ -44,7 +44,7 @@ export default function Home() {
 	const [email, setEmail] = useState('');
 	const [message, setMessage] = useState('');
 
-	const handleSubscribe = async (e) => {
+	const handleSubscribe = async (e: React.FormEvent<HTMLFormElement>) => {
 	    e.preventDefault();
 
 	    if (!email) {
