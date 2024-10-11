@@ -57,7 +57,7 @@ export async function GET(req) {
 
   try {
     const ambassadors = await parseCSVFile(csvFilePath);
-    
+	
     const enrichedAmbassadors = await Promise.all(
       ambassadors.map(async (ambassador) => {
         if (ambassador.id) {
@@ -67,7 +67,7 @@ export async function GET(req) {
             username: discordUser?.username ?? 'Unknown',
             avatar: discordUser?.avatar ?? null,
             wallet_address: ambassador.wallet_address,
-            rewards: null, 
+            rewards: ambassador?.rewards,
             contributions: null
           };
         } else {
