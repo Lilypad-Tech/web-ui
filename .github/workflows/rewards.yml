@@ -1,9 +1,8 @@
-name: Build and Deploy Next.js to GCP
+name: Rewards Site
 
 on:
   push:
     branches:
-      - rewards-dashboard
       - main
 
 jobs:
@@ -50,6 +49,8 @@ jobs:
       - name: Build Next.js app
         working-directory: ./apps/rewards-dashboard
         run: pnpm run build
+        env:
+          DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
 
       # Step 11: Upload build output to GCS
       - name: Upload build output to GCS
