@@ -6,7 +6,7 @@ import _NavItemBase from "@/components/_NavItemBase/_NavItemBase";
 import _ApplicationNavMenuButton from "@/components/_ApplicationNavMenuButton/_ApplicationNavMenuButton";
 import NavBar from "@/components/NavBar";
 import Image from "next/image";
-import { useState } from "react";
+import { Context, useState } from "react";
 import { usePathname } from "next/navigation";
 import _NavItemDropdown from "@/components/_NavItemDropdown/_NavItemDropdown";
 import _NavMenuItem from "@/components/_NavMenuItem/_NavMenuItem";
@@ -24,8 +24,16 @@ import {
 import { Anchor } from "@lilypad/shared-components";
 import Footer from "@/components/Footer";
 import { animated, useSpring } from "@react-spring/web";
+import { createContext } from "react";
+import useStrapi, { StrapiContext } from "./hooks/UseStrapi";
 
 const INTER = Inter({ subsets: ["latin"] });
+
+export const PageContext: Context<StrapiContext> = createContext({
+	strapi: {
+		mission_statement: "",
+	},
+});
 
 export default function ClientLayout({
 	children,
@@ -36,8 +44,8 @@ export default function ClientLayout({
 	const [nestedMenu, setNestedMenu] = useState<null | "About" | "Resources">(
 		null
 	);
-
 	const pathname = usePathname();
+	const { strapi, isLoading: isCmsLoading } = useStrapi({ pathname });
 
 	const resourcesArray = [
 		{
@@ -151,149 +159,134 @@ export default function ClientLayout({
 		to: { opacity: 1 },
 		config: { duration: 1 },
 	});
-
 	return (
 		<html lang="en" className="uui-dark">
 			<body className={INTER.className}>
-				<animated.div style={fade} className="sticky top-0 w-full z-40">
-					<NavBar
-						logo={
-							<a href="/">
-								<Image
-									src="lilypad-logo.svg"
-									width={155}
-									height={32}
-									alt={"alt"}
-								/>
-							</a>
-						}
-						menuButton={
-							<_ApplicationNavMenuButton></_ApplicationNavMenuButton>
-						}
-						openedState={{
-							opened: menuOpened,
-							setOpened: setMenuOpened,
-						}}
-						trailingCTA={
-							<Anchor
-								target="_blank"
-								href="https://lilypadnetwork.notion.site/Leap-into-Lilypad-s-IncentiveNet-9e9b12936d4340ad9417d92dab8bd9d1"
-								className="hidden uui-desktop:flex"
-								color="color"
-								destructive={false}
-								hierarchy="secondary"
-								size="md"
-								icon={{
-									type: "icon",
-									leading: weatherLightning01,
+				{!isCmsLoading && (
+					<PageContext.Provider value={{ strapi }}>
+						<animated.div
+							style={fade}
+							className="sticky top-0 w-full z-40"
+						>
+							<NavBar
+								logo={
+									<a href="/">
+										<Image
+											src="lilypad-logo.svg"
+											width={155}
+											height={32}
+											alt={"alt"}
+										/>
+									</a>
+								}
+								menuButton={
+									<_ApplicationNavMenuButton></_ApplicationNavMenuButton>
+								}
+								openedState={{
+									opened: menuOpened,
+									setOpened: setMenuOpened,
 								}}
+								trailingCTA={
+									<Anchor
+										target="_blank"
+										href="https://lilypadnetwork.notion.site/Leap-into-Lilypad-s-IncentiveNet-9e9b12936d4340ad9417d92dab8bd9d1"
+										className="hidden uui-desktop:flex"
+										color="color"
+										destructive={false}
+										hierarchy="secondary"
+										size="md"
+										icon={{
+											type: "icon",
+											leading: weatherLightning01,
+										}}
+									>
+										Get Started
+									</Anchor>
+								}
 							>
-								Get Started
-							</Anchor>
-						}
-					>
-						{nestedMenu != null && menuOpened ? (
-							<button
-								className="mb-uui-2xl"
-								onClick={() => setNestedMenu(null)}
-							>
-								<_NavItemBase current={true}>
-									{"Back"}
-								</_NavItemBase>
-							</button>
-						) : null}
-						{menuOpened ? (
-							<>
-								{nestedMenu === null && (
-									<>
-										<button
-											onClick={() => {
-												setNestedMenu("About");
-											}}
-										>
-											<_NavItemBase
-												// TODO add all paths that have to do with the about page
-												current={pathname === "/about"}
-											>
-												{"About"}
-											</_NavItemBase>
-										</button>
-										<Link
-											href="/#products"
-											onClick={() => {
-												setMenuOpened(() => false);
-											}}
-										>
-											<_NavItemBase
-												current={pathname === "/"}
-											>
-												{"Products"}
-											</_NavItemBase>
-										</Link>
-										<button
-											onClick={() => {
-												setNestedMenu("Resources");
-											}}
-										>
-											<_NavItemBase
-												// TODO add all paths that have to do with the about page
-												current={
-													pathname === "/resources"
-												}
-											>
-												{"Resources"}
-											</_NavItemBase>
-										</button>
-
-										<Link
-											href="https://docs.lilypad.tech/lilypad"
-											onClick={() => {
-												setMenuOpened(() => false);
-											}}
-										>
-											<_NavItemBase
-												current={pathname === "/docs"}
-											>
-												{"Docs"}
-											</_NavItemBase>
-										</Link>
-									</>
-								)}
-								{nestedMenu === "About" ? (
-									<div className="overflow-auto no-scrollbar max-h-[50vh] flex flex-col gap-uui-xl border-uui-1 border-uui-border-secondary rounded-xl p-uui-lg">
-										{aboutArray.map((item, index) => (
-											<_NavMenuItem
-												key={index}
-												description={item.description}
-												title={item.title}
-												iconUrl={item.iconUrl}
-												href={item.href}
-											/>
-										))}
-									</div>
-								) : nestedMenu === "Resources" ? (
-									<div className="overflow-auto no-scrollbar max-h-[50vh] flex flex-col gap-uui-xl border-uui-1 border-uui-border-secondary rounded-xl p-uui-lg">
-										{resourcesArray.map((item, index) => (
-											<_NavMenuItem
-												key={index}
-												description={item.description}
-												title={item.title}
-												iconUrl={item.iconUrl}
-												href={item.href}
-											/>
-										))}
-									</div>
+								{nestedMenu != null && menuOpened ? (
+									<button
+										className="mb-uui-2xl"
+										onClick={() => setNestedMenu(null)}
+									>
+										<_NavItemBase current={true}>
+											{"Back"}
+										</_NavItemBase>
+									</button>
 								) : null}
-							</>
-						) : (
-							<>
-								<_NavItemDropdown
-									current={pathname === "/About"}
-								>
-									{{
-										title: "About",
-										dropdownList: (
+								{menuOpened ? (
+									<>
+										{nestedMenu === null && (
 											<>
+												<button
+													onClick={() => {
+														setNestedMenu("About");
+													}}
+												>
+													<_NavItemBase
+														// TODO add all paths that have to do with the about page
+														current={
+															pathname ===
+															"/about"
+														}
+													>
+														{"About"}
+													</_NavItemBase>
+												</button>
+												<Link
+													href="/#products"
+													onClick={() => {
+														setMenuOpened(
+															() => false
+														);
+													}}
+												>
+													<_NavItemBase
+														current={
+															pathname === "/"
+														}
+													>
+														{"Products"}
+													</_NavItemBase>
+												</Link>
+												<button
+													onClick={() => {
+														setNestedMenu(
+															"Resources"
+														);
+													}}
+												>
+													<_NavItemBase
+														// TODO add all paths that have to do with the about page
+														current={
+															pathname ===
+															"/resources"
+														}
+													>
+														{"Resources"}
+													</_NavItemBase>
+												</button>
+
+												<Link
+													href="https://docs.lilypad.tech/lilypad"
+													onClick={() => {
+														setMenuOpened(
+															() => false
+														);
+													}}
+												>
+													<_NavItemBase
+														current={
+															pathname === "/docs"
+														}
+													>
+														{"Docs"}
+													</_NavItemBase>
+												</Link>
+											</>
+										)}
+										{nestedMenu === "About" ? (
+											<div className="overflow-auto no-scrollbar max-h-[50vh] flex flex-col gap-uui-xl border-uui-1 border-uui-border-secondary rounded-xl p-uui-lg">
 												{aboutArray.map(
 													(item, index) => (
 														<_NavMenuItem
@@ -309,27 +302,9 @@ export default function ClientLayout({
 														/>
 													)
 												)}
-											</>
-										),
-									}}
-								</_NavItemDropdown>
-								<Link
-									href="/#products"
-									onClick={() => {
-										setMenuOpened(() => false);
-									}}
-								>
-									<_NavItemBase current={pathname === "/"}>
-										{"Products"}
-									</_NavItemBase>
-								</Link>
-								<_NavItemDropdown
-									current={pathname === "/Resources"}
-								>
-									{{
-										title: "Resources",
-										dropdownList: (
-											<>
+											</div>
+										) : nestedMenu === "Resources" ? (
+											<div className="overflow-auto no-scrollbar max-h-[50vh] flex flex-col gap-uui-xl border-uui-1 border-uui-border-secondary rounded-xl p-uui-lg">
 												{resourcesArray.map(
 													(item, index) => (
 														<_NavMenuItem
@@ -345,36 +320,111 @@ export default function ClientLayout({
 														/>
 													)
 												)}
-											</>
-										),
-									}}
-								</_NavItemDropdown>
+											</div>
+										) : null}
+									</>
+								) : (
+									<>
+										<_NavItemDropdown
+											current={pathname === "/About"}
+										>
+											{{
+												title: "About",
+												dropdownList: (
+													<>
+														{aboutArray.map(
+															(item, index) => (
+																<_NavMenuItem
+																	key={index}
+																	description={
+																		item.description
+																	}
+																	title={
+																		item.title
+																	}
+																	iconUrl={
+																		item.iconUrl
+																	}
+																	href={
+																		item.href
+																	}
+																/>
+															)
+														)}
+													</>
+												),
+											}}
+										</_NavItemDropdown>
+										<Link
+											href="/#products"
+											onClick={() => {
+												setMenuOpened(() => false);
+											}}
+										>
+											<_NavItemBase
+												current={pathname === "/"}
+											>
+												{"Products"}
+											</_NavItemBase>
+										</Link>
+										<_NavItemDropdown
+											current={pathname === "/Resources"}
+										>
+											{{
+												title: "Resources",
+												dropdownList: (
+													<>
+														{resourcesArray.map(
+															(item, index) => (
+																<_NavMenuItem
+																	key={index}
+																	description={
+																		item.description
+																	}
+																	title={
+																		item.title
+																	}
+																	iconUrl={
+																		item.iconUrl
+																	}
+																	href={
+																		item.href
+																	}
+																/>
+															)
+														)}
+													</>
+												),
+											}}
+										</_NavItemDropdown>
 
-								<Link
-									href="https://docs.lilypad.tech/lilypad"
-									onClick={() => {
-										setMenuOpened(() => false);
-									}}
-								>
-									<_NavItemBase
-										current={pathname === "/docs"}
-									>
-										{"Docs"}
-									</_NavItemBase>
-								</Link>
-							</>
-						)}
-					</NavBar>
-				</animated.div>
-				{children}
-				<Footer
-					footerIcon={{
-						src: "lilypad-logo.svg",
-						alt: "Lilypad Logo",
-						href: "/",
-					}}
-					socialLinks={footerSocialLinks}
-				/>
+										<Link
+											href="https://docs.lilypad.tech/lilypad"
+											onClick={() => {
+												setMenuOpened(() => false);
+											}}
+										>
+											<_NavItemBase
+												current={pathname === "/docs"}
+											>
+												{"Docs"}
+											</_NavItemBase>
+										</Link>
+									</>
+								)}
+							</NavBar>
+						</animated.div>
+						{children}
+						<Footer
+							footerIcon={{
+								src: "lilypad-logo.svg",
+								alt: "Lilypad Logo",
+								href: "/",
+							}}
+							socialLinks={footerSocialLinks}
+						/>
+					</PageContext.Provider>
+				)}
 			</body>
 		</html>
 	);
