@@ -29,9 +29,10 @@ import { animated } from "@react-spring/web";
 import useFade from "./hooks/UseFade";
 import useFadeInView from "./hooks/UseFadeInView";
 import { PageContext } from "./clientLayout";
+import { HomePageCmsInfo } from "./hooks/strapi/types";
 
 export default function Home() {
-	const { strapi } = useContext(PageContext);
+	const { strapi } = useContext(PageContext) as { strapi: HomePageCmsInfo };
 	const socialLinks = [
 		{ href: "https://twitter.com/lilypad_tech", iconUrl: "/x.svg" },
 		{
@@ -200,16 +201,6 @@ export default function Home() {
 		}
 	}, []);
 
-	const trustedByArray = [
-		{ src: "/bacalhau.svg", alt: "Bacalhau" },
-		{ src: "/bacalhau.svg", alt: "Filecoin" },
-		{ src: "/bacalhau.svg", alt: "Holon" },
-		{ src: "/bacalhau.svg", alt: "Protocol Labs" },
-		{ src: "/bacalhau.svg", alt: "Rare Compute" },
-		{ src: "/bacalhau.svg", alt: "Spheron" },
-		{ src: "/bacalhau.svg", alt: "Swan" },
-	];
-
 	const copyEmail = "hello@lilypad.tech";
 
 	const [copyState, setCopyState] = useState({
@@ -370,7 +361,7 @@ export default function Home() {
 				<SectionContainer className="pb-uui-7xl lg:pb-uui-8xl">
 					<animated.div style={fade}>
 						<SocialProofSection
-							trustedByArray={trustedByArray}
+							trustedByArray={strapi?.trusted_bies}
 							title="Trusted by"
 						></SocialProofSection>
 					</animated.div>
@@ -394,7 +385,7 @@ export default function Home() {
 								that uses underutilized resources to make
 								efficient, sustainable technology accessible to
 								everyone. */}
-								{strapi.mission_statement}
+								{strapi?.mission_statement}
 							</animated.h2>
 						</div>
 					</SectionContainer>
