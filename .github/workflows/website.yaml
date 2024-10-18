@@ -4,6 +4,7 @@ on:
     push:
         branches:
             - staging # or the branch you want to deploy from
+    workflow_dispatch:
 
 jobs:
     build:
