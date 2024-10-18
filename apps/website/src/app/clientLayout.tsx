@@ -25,14 +25,13 @@ import { Anchor } from "@lilypad/shared-components";
 import Footer from "@/components/Footer";
 import { animated, useSpring } from "@react-spring/web";
 import { createContext } from "react";
-import useStrapi, { StrapiContext } from "./hooks/UseStrapi";
+import useStrapi from "./hooks/strapi/UseStrapi";
+import { StrapiContext } from "./hooks/strapi/types";
 
 const INTER = Inter({ subsets: ["latin"] });
 
 export const PageContext: Context<StrapiContext> = createContext({
-	strapi: {
-		mission_statement: "",
-	},
+	strapi: {},
 });
 
 export default function ClientLayout({
@@ -46,7 +45,7 @@ export default function ClientLayout({
 	);
 	const pathname = usePathname();
 	const { strapi, isLoading: isCmsLoading } = useStrapi({ pathname });
-
+	console.log(strapi, isCmsLoading);
 	const resourcesArray = [
 		{
 			description: "The latest industry news, updates and info",

@@ -10,8 +10,14 @@ import useFadeInView from "../hooks/UseFadeInView";
 import { animated } from "@react-spring/web";
 import AnimateSpring from "@/components/AnimateSpring";
 import useFade from "../hooks/UseFade";
+import { useContext } from "react";
+import { PageContext } from "../clientLayout";
+import { TeamPageCmsInfo } from "../hooks/strapi/types";
 
 export default function Teams() {
+	const { strapi } = useContext(PageContext) as {
+		strapi: TeamPageCmsInfo;
+	};
 	const socialLinks = [
 		{ href: "twitter.com", iconUrl: "/x.svg" },
 
@@ -229,7 +235,7 @@ export default function Teams() {
 				<div className="bg-uui-bg-secondary py-uui-4xl lg:py-uui-7xl">
 					<SectionContainer>
 						<SocialProofSection
-							trustedByArray={trustedByArray}
+							trustedByArray={strapi.trusted_bies}
 							title="Supported by"
 						></SocialProofSection>
 					</SectionContainer>
