@@ -3,8 +3,8 @@
 	"version": "0.1.0",
 	"private": true,
 	"scripts": {
-		"dev": "doppler run --preserve-env -- next dev",
-		"build": "doppler run --preserve-env -- next build",
+		"dev": "doppler run --preserve-env -- next dev && next-sitemap",
+		"build": "doppler run --preserve-env -- next build && next-sitemap",
 		"start": "next start",
 		"lint": "next lint",
 		"test": "vitest",
@@ -15,6 +15,7 @@
 		"@lilypad/shared-components": "workspace:~",
 		"@react-spring/web": "^9.7.4",
 		"next": "14.2.4",
+		"next-sitemap": "^4.2.3",
 		"react": "^18",
 		"react-dom": "^18",
 		"react-intersection-observer": "^9.13.0",
