@@ -240,8 +240,7 @@ export default function Home() {
 		<>
 			<Head>
 				<title>
-					The Lilypad Network - Revolutionizing Decentralized
-					Computing
+					The Lilypad Network - Revolutionizing Decentralized Computing
 				</title>
 				<meta
 					name="description"
@@ -274,17 +273,17 @@ export default function Home() {
 								<GroupBadge
 									onClick={() =>
 										window.open(
-											"https://lilypadnetwork.notion.site/Welcome-to-Lilypad-s-IncentiveNet-9e9b12936d4340ad9417d92dab8bd9d1",
+											strapi?.badge_url,
 											"_blank"
 										)
 									}
-									badge="leading"
+									badge={strapi?.badge_badge}
 									icon={{
 										url: arrowsArrowRight,
 									}}
 									color="brand"
-									message="We've recently launched IncentiveNet"
-									text="News"
+									message={strapi?.badge_message}
+									text={strapi?.badge_text}
 									size={
 										screenSize === "xl" ||
 										screenSize === "2xl"
