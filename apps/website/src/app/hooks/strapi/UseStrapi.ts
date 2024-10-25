@@ -18,10 +18,13 @@ function useStrapi({ pathname }: StrapiProps): StrapiResponse {
 							homepageInfoResp.status === "fulfilled" &&
 							trustedByResp.status === "fulfilled"
 						) {
+
+				            const homepageData = homepageInfoResp.value as HomePageCmsInfo;
+							
 							setStrapi((prevState: HomePageCmsInfo) => {
 								return {
 									...prevState,
-									mission_statement: homepageInfoResp.value,
+									...homepageData,
 									trusted_bies: trustedByResp.value,
 								};
 							});
