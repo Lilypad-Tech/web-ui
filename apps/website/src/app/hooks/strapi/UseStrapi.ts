@@ -1,67 +1,56 @@
 import { useEffect, useState } from "react";
-import { getHomepageInfo, getTrustedBy } from "./requests";
-import { HomePageCmsInfo, StrapiProps, StrapiResponse } from "./types";
+import { getHomepageInfo, getTrustedBy, getTeamCore, getTeamAdvisors, getTeamPartners } from "./requests";
+import { HomePageCmsInfo, TeamPageCmsInfo, StrapiProps, StrapiResponse } from "./types";
 
 function useStrapi({ pathname }: StrapiProps): StrapiResponse {
 	const [isLoading, setIsLoading] = useState<boolean>(true);
-	const [strapi, setStrapi] = useState<HomePageCmsInfo | Object>({});
+	const [strapi, setStrapi] = useState<HomePageCmsInfo | TeamPageCmsInfo | Object>({});
+
 	const getData = () => {
 		switch (pathname) {
 			case "/":
 				Promise.allSettled([getHomepageInfo(), getTrustedBy()])
 					.then((results) => {
-						const homepageInfoResp =
-							results[0] as PromiseFulfilledResult<unknown>;
-						const trustedByResp =
-							results[1] as PromiseFulfilledResult<unknown>;
-						if (
-							homepageInfoResp.status === "fulfilled" &&
-							trustedByResp.status === "fulfilled"
-						) {
+						const homepageInfoResp = results[0];
+						const trustedByResp = results[1];
 
-				            const homepageData = homepageInfoResp.value as HomePageCmsInfo;
-							
-							setStrapi((prevState: HomePageCmsInfo) => {
-								return {
-									...prevState,
-									...homepageData,
-									trusted_bies: trustedByResp.value,
-								};
-							});
+						if (homepageInfoResp.status === "fulfilled" && trustedByResp.status === "fulfilled") {
+							setStrapi((prevState) => ({
+								...prevState,
+								...(homepageInfoResp.value as HomePageCmsInfo),
+								trusted_bies: trustedByResp.value || [],
+							}));
 						}
 					})
-					.catch(() => {
-						throw new Error("Failed to fetch strapi data");
-					})
-					.finally(() => {
-						setIsLoading(false);
-					});
+					.finally(() => setIsLoading(false));
 				break;
+
 			case "/team":
-				Promise.allSettled([getTrustedBy()])
-					.then((results) => {
-						const trustedByResp =
-							results[0] as PromiseFulfilledResult<unknown>;
-						if (trustedByResp.status === "fulfilled") {
-							setStrapi((prevState: HomePageCmsInfo) => {
-								return {
-									...prevState,
-									trusted_bies: trustedByResp.value,
-								};
-							});
-						}
-					})
-					.finally(() => {
-						setIsLoading(false);
-					});
-				break;
+			  Promise.allSettled([getTeamCore(), getTeamAdvisors(), getTeamPartners()])
+			    .then((results) => {
+			      const teamCoreResp = results[0];
+			      const advisorsResp = results[1];
+			      const partnersResp = results[2];
+
+			      setStrapi((prevState) => ({
+			        ...prevState,
+			        teamMembers: teamCoreResp.status === "fulfilled" ? teamCoreResp.value : [],
+			        advisors: advisorsResp.status === "fulfilled" ? advisorsResp.value : [],
+			        partners: partnersResp.status === "fulfilled" ? partnersResp.value : [],
+			      }));
+			    })
+			    .finally(() => setIsLoading(false));
+			  break;
+
 			default:
 				setIsLoading(false);
 		}
 	};
+
 	useEffect(() => {
 		getData();
-	}, []);
+	}, [pathname]);
+
 	return { strapi, isLoading };
 }
 
