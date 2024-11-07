@@ -1,5 +1,5 @@
 export interface StrapiContext {
-	strapi: HomePageCmsInfo | Object;
+	strapi: HomePageCmsInfo | TeamPageCmsInfo | Object;
 }
 
 export interface HomePageCmsInfo {
@@ -14,22 +14,69 @@ export interface HomePageCmsInfo {
 		alt: string;
 	}[];
 }
+
 export interface TeamPageCmsInfo {
 	trusted_bies: {
 		src: string;
 		alt: string;
 	}[];
+	teamMembers: {
+		id: number;
+		documentId: string;
+		Name: string;
+		Title: string;
+		blurb: string;
+		twitter: string;
+		linkedin: string;
+		website: string;
+		Image?: { url: string } | null;
+	}[];
+	advisors: {
+		id: number;
+		documentId: string;
+		Name: string;
+		Title: string;
+		blurb: string;
+		twitter: string;
+		linkedin: string;
+		website: string;
+		Image?: { url: string } | null;
+	}[];
+	partners: {
+		id: number;
+		documentId: string;
+		Name: string;
+		Title: string;
+		blurb: string;
+		twitter: string;
+		linkedin: string;
+		website: string;
+		Image?: { url: string } | null;
+	}[];
 }
+
+export interface TeamMemberInfo {
+	name: string;
+	image: string;
+	title: string;
+	blurb: string;
+	twitter?: string;
+	linkedin?: string;
+	website?: string;
+}
+
 export interface TrustedByInfo {
 	alt: string;
 	image: {
 		url: string;
 	};
 }
+
 export interface StrapiResponse {
-	strapi: HomePageCmsInfo | Object;
-	isLoading: Boolean;
+	strapi: HomePageCmsInfo | TeamPageCmsInfo | Object;
+	isLoading: boolean;
 }
+
 export interface StrapiProps {
 	pathname: string;
 }

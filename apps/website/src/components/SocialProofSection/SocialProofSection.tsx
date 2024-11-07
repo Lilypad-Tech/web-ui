@@ -20,7 +20,7 @@ const SocialProofSection = ({
 				{title}
 			</span>
 			<div className="flex overflow-x-auto no-scrollbar gap-uui-4xl lg:gap-uui-6xl w-full items-center justify-between ">
-				{trustedByArray.map(({ src, alt }, index) => {
+				{(trustedByArray || []).map(({ src, alt }, index) => {
 					return (
 						<Image
 							height={400}

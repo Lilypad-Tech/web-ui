@@ -15,9 +15,13 @@ import { PageContext } from "../clientLayout";
 import { TeamPageCmsInfo } from "../hooks/strapi/types";
 
 export default function Teams() {
-	const { strapi } = useContext(PageContext) as {
-		strapi: TeamPageCmsInfo;
-	};
+
+	const { strapi } = useContext(PageContext) as { strapi: TeamPageCmsInfo };
+
+	const teamMembers = strapi?.teamMembers || [];
+	const advisors = strapi?.advisors || [];
+	const partners = strapi?.partners || [];
+
 	const socialLinks = [
 		{ href: "twitter.com", iconUrl: "/x.svg" },
 
@@ -28,83 +32,6 @@ export default function Teams() {
 		{
 			href: "https://frontline.codes",
 			iconUrl: mapsAndTravelGlobe02,
-		},
-	];
-
-	const trustedByArray = [
-		{ src: "/bacalhau.svg", alt: "Bacalhau" },
-		{ src: "/bacalhau.svg", alt: "Filecoin" },
-		{ src: "/bacalhau.svg", alt: "Holon" },
-		{ src: "/bacalhau.svg", alt: "Protocol Labs" },
-		{ src: "/bacalhau.svg", alt: "Rare Compute" },
-		{ src: "/bacalhau.svg", alt: "Spheron" },
-		{ src: "/bacalhau.svg", alt: "Swan" },
-	];
-
-	const teamMembers = [
-		{
-			src: "/dummy-image-1.png",
-			title: "Olivia Rhye",
-			position: "Founder & CEO",
-			description:
-				"Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-			socialIcons: socialLinks,
-		},
-		{
-			src: "/dummy-image-2.png",
-			title: "Phoenix Baker",
-			position: "Chief Marketing Officer",
-			description:
-				"Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-			socialIcons: socialLinks,
-		},
-		{
-			src: "/dummy-image-3.png",
-			title: "Liam James",
-			position: "Chief Technology Officer",
-			description:
-				"Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-			socialIcons: socialLinks,
-		},
-		{
-			src: "/dummy-image-1.png",
-			title: "Olivia Rhye",
-			position: "Founder & CEO",
-			description:
-				"Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-			socialIcons: socialLinks,
-		},
-		{
-			src: "/dummy-image-2.png",
-			title: "Phoenix Baker",
-			position: "Chief Marketing Officer",
-			description:
-				"Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-			socialIcons: socialLinks,
-		},
-		{
-			src: "/dummy-image-3.png",
-			title: "Liam James",
-			position: "Chief Technology Officer",
-			description:
-				"Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-			socialIcons: socialLinks,
-		},
-		{
-			src: "/dummy-image-2.png",
-			title: "Phoenix Baker",
-			position: "Chief Marketing Officer",
-			description:
-				"Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-			socialIcons: socialLinks,
-		},
-		{
-			src: "/dummy-image-1.png",
-			title: "Phoenix Baker",
-			position: "Chief Marketing Officer",
-			description:
-				"Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-			socialIcons: socialLinks,
 		},
 	];
 
@@ -167,79 +94,101 @@ export default function Teams() {
 				<div className="bg-uui-bg-primary w-full">
 					<SectionContainer>
 						<div className="py-uui-7xl lg:py-uui-9xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-uui-4xl gap-y-uui-6xl justify-items-center">
-							{teamMembers.map((member, index) => (
-								<AnimateSpring key={index}>
-									<_TeamMember
-										key={index}
-										src={member.src}
-										title={member.title}
-										position={member.position}
-										description={member.description}
-										socialIcons={member.socialIcons}
-									/>
-								</AnimateSpring>
-							))}
+							{teamMembers.length > 0 ? (
+								teamMembers.map((member, index) => (
+									<AnimateSpring key={index}>
+										<_TeamMember
+											src={
+												member.Image && member.Image.url
+													? `https://webadmin.lilypad.team${member.Image.url}`
+													: "/default-image.png" // Use a default image if none exists
+											}
+											title={member.Name}
+											position={member.Title}
+											description={member.blurb}
+											socialIcons={[
+												{ href: `https://twitter.com/${member.twitter}`, iconUrl: "/x.svg" },
+												{ href: `https://linkedin.com/in/${member.linkedin}`, iconUrl: "/linkedin.svg" },
+												{ href: member.website, iconUrl: mapsAndTravelGlobe02 },
+											]}
+										/>
+									</AnimateSpring>
+								))
+							) : (
+								<p>No team members found.</p>
+							)}
 						</div>
 					</SectionContainer>
+
 				</div>
 				<div className="bg-uui-bg-secondary">
-					<SectionContainer>
-						<CenterHeadingSection
-							className=" py-uui-7xl lg:py-uui-9xl"
-							title="Advisors"
-							subtitle="Our philosophy is simple — hire a team of diverse, passionate people and foster a culture that empowers you to do your best work."
-						></CenterHeadingSection>
+				  <SectionContainer>
+				    <CenterHeadingSection
+				      className="py-uui-7xl lg:py-uui-9xl"
+				      title="Advisors"
+				      subtitle="Our philosophy is simple — hire a team of diverse, passionate people and foster a culture that empowers you to do your best work."
+				    ></CenterHeadingSection>
 
-						<animated.div
-							ref={teamSection2Ref}
-							style={teamSection2Springs}
-							className="pb-uui-7xl lg:pb-uui-9xl  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-uui-4xl gap-y-uui-6xl justify-items-center"
-						>
-							{teamMembers.map((member, index) => (
-								<_TeamMember
-									key={index}
-									src={member.src}
-									title={member.title}
-									position={member.position}
-									description={member.description}
-									socialIcons={member.socialIcons}
-								/>
-							))}
-						</animated.div>
-					</SectionContainer>
+				    <animated.div
+				      ref={teamSection2Ref}
+				      style={teamSection2Springs}
+				      className="pb-uui-7xl lg:pb-uui-9xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-uui-4xl gap-y-uui-6xl justify-items-center"
+				    >
+				      {advisors.length > 0 ? (
+				        advisors.map((advisor, index) => (
+				          <_TeamMember
+				            key={index}
+				            src={advisor.Image?.url ? `https://webadmin.lilypad.team${advisor.Image.url}` : "/default-image.png"}
+				            title={advisor.Name}
+				            position={advisor.Title}
+				            description={advisor.blurb}
+				            socialIcons={[
+				              { href: `https://twitter.com/${advisor.twitter}`, iconUrl: "/x.svg" },
+				              { href: `https://linkedin.com/in/${advisor.linkedin}`, iconUrl: "/linkedin.svg" },
+				              { href: advisor.website, iconUrl: mapsAndTravelGlobe02 },
+				            ]}
+				          />
+				        ))
+				      ) : (
+				        <p>No advisors found.</p>
+				      )}
+				    </animated.div>
+				  </SectionContainer>
 				</div>
+
 				<SectionContainer>
-					<CenterHeadingSection
-						className="[&&]:bg-uui-bg-primary  pt-uui-7xl lg:pt-uui-9xl"
-						title="Partners"
-						subtitle="Our philosophy is simple — hire a team of diverse, passionate people and foster a culture that empowers you to do your best work."
-					>
-						<animated.div
-							ref={teamSection3Ref}
-							style={teamSection3Springs}
-							className="pt-uui-7xl lg:pt-uui-9xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-uui-4xl gap-y-uui-6xl justify-items-center"
-						>
-							{teamMembers.map((member, index) => (
-								<_TeamMember
-									key={index}
-									src={member.src}
-									title={member.title}
-									position={member.position}
-									description={member.description}
-									socialIcons={member.socialIcons}
-								/>
-							))}
-						</animated.div>
-					</CenterHeadingSection>
+				  <CenterHeadingSection
+				    className="[&&]:bg-uui-bg-primary pt-uui-7xl lg:pt-uui-9xl"
+				    title="Partners"
+				    subtitle="Our philosophy is simple — hire a team of diverse, passionate people and foster a culture that empowers you to do your best work."
+				  >
+				    <animated.div
+				      ref={teamSection3Ref}
+				      style={teamSection3Springs}
+				      className="pt-uui-7xl lg:pt-uui-9xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-uui-4xl gap-y-uui-6xl justify-items-center"
+				    >
+				      {partners.length > 0 ? (
+				        partners.map((partner, index) => (
+				          <_TeamMember
+				            key={index}
+					        src={partner.Image?.url ? `https://webadmin.lilypad.team${partner.Image.url}` : "/default-image.png"}
+				            title={partner.Name}
+				            position={partner.Title}
+				            description={partner.blurb}
+				            socialIcons={[
+				              { href: `https://twitter.com/${partner.twitter}`, iconUrl: "/x.svg" },
+				              { href: `https://linkedin.com/in/${partner.linkedin}`, iconUrl: "/linkedin.svg" },
+				              { href: partner.website, iconUrl: mapsAndTravelGlobe02 },
+				            ]}
+				          />
+				        ))
+				      ) : (
+				        <p>No partners found.</p>
+				      )}
+				    </animated.div>
+				  </CenterHeadingSection>
 				</SectionContainer>
-				<div className="bg-uui-bg-secondary py-uui-4xl lg:py-uui-7xl">
-					<SectionContainer>
-						<SocialProofSection
-							trustedByArray={strapi.trusted_bies}
-							title="Supported by"
-						></SocialProofSection>
-					</SectionContainer>
-				</div>
+
 			</main>
 		</>
 	);
