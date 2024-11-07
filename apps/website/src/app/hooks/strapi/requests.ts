@@ -5,14 +5,18 @@ const cms_home_url = cms_base_url?.replace("/api", "");
 
 export function getHomepageInfo() {
   return new Promise((resolve, reject) => {
-    fetch(`${cms_base_url}/website-homepage`, {
+    fetch(`${cms_base_url}/website-homepage?populate[header_image][fields][0]=url`, {
       headers: {
-        authorization: `bearer ${process.env.NEXT_PUBLIC_STRAPI_API}`,
+        authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API}`,
       },
     })
       .then((data) => {
         data.json().then(({ data: info }) => {
-          resolve(info); // Return the whole info object
+          const homepageInfo = {
+            ...info,
+            header_image_url: info.header_image ? info.header_image.url : null,
+          };
+          resolve(homepageInfo); // Return the full homepage info with header image URL
         });
       })
       .catch((err) => {
@@ -20,6 +24,7 @@ export function getHomepageInfo() {
       });
   });
 }
+
 
 export function getTrustedBy() {
 	return new Promise((resolve, reject) => {

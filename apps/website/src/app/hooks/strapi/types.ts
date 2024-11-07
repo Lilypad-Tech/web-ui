@@ -3,17 +3,20 @@ export interface StrapiContext {
 }
 
 export interface HomePageCmsInfo {
-	badge_url: string;
-	badge_badge: string;
-	badge_icon: string;
-	badge_message: string;
-	badge_text: string;
-	mission_statement: string;
-	trusted_bies: {
-		src: string;
-		alt: string;
-	}[];
+  badge_url: string;
+  badge_badge: string;
+  badge_icon: string;
+  badge_message: string;
+  badge_text: string;
+  mission_statement: string;
+  header_image_alt: string;
+  header_image_url: string; 
+  trusted_bies: {
+    src: string;
+    alt: string;
+  }[];
 }
+
 
 export interface TeamPageCmsInfo {
 	trusted_bies: {
