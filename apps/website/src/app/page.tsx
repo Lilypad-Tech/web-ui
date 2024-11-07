@@ -277,7 +277,7 @@ export default function Home() {
 											"_blank"
 										)
 									}
-									badge={strapi?.badge_badge}
+									badge="leading"
 									icon={{
 										url: arrowsArrowRight,
 									}}
