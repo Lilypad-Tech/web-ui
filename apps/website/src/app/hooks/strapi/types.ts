@@ -10,7 +10,8 @@ export interface HomePageCmsInfo {
   badge_text: string;
   mission_statement: string;
   header_image_alt: string;
-  header_image_url: string; 
+  header_image_url?: string | null;
+  header_lottie?: { url: string } | null;
   trusted_bies: {
     src: string;
     alt: string;

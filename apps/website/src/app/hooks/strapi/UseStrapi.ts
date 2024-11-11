@@ -18,9 +18,9 @@ function useStrapi({ pathname }: StrapiProps): StrapiResponse {
 							const homepageData = homepageInfoResp.value as HomePageCmsInfo;
 							setStrapi((prevState) => ({
 								...prevState,
-								...(homepageInfoResp.value as HomePageCmsInfo),
+								...homepageData,
 								trusted_bies: trustedByResp.value || [],
-								header_image_url: homepageData.header_image?.url,
+								header_lottie: homepageData.header_lottie || null,
 							}));
 						}
 					})
