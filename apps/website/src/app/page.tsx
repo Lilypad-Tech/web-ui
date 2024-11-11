@@ -30,6 +30,7 @@ import useFade from "./hooks/UseFade";
 import useFadeInView from "./hooks/UseFadeInView";
 import { PageContext } from "./clientLayout";
 import { HomePageCmsInfo } from "./hooks/strapi/types";
+import { Player } from '@lottiefiles/react-lottie-player';
 
 export default function Home() {
 	const { strapi } = useContext(PageContext) as { strapi: HomePageCmsInfo };
@@ -347,13 +348,25 @@ export default function Home() {
 							style={fade}
 							className="relative w-full lg:w-1/2 lg:h-full max-w-2xl mr-auto pb-uui-7xl lg:pb-uui-none"
 						>
-							<Image
-								className="mr-auto lg:mx-auto lg:mr-0 lg:ml-auto object-cover w-full h-full"
-								width={500}
-								height={500}
-								alt="Lilypad Header"
-								src="/lilypad-fill.png"
-							/>
+						  {strapi?.header_lottie?.url ? (
+						    <Player
+						      autoplay
+						      loop
+						      src={`https://webadmin.lilypad.team${strapi.header_lottie.url}`}
+						      style={{ width: '100%', height: '100%' }}
+						    />
+						  ) : (
+						    <Image
+						      width={500}
+						      height={500}
+						      alt={strapi?.header_image_alt || "Default Image"}
+						      src={
+						        strapi?.header_image_url
+						          ? `https://webadmin.lilypad.team${strapi.header_image_url}`
+						          : "/lilypad-fill.png" // Default image if none exists
+						      }
+						    />
+						  )}
 						</animated.div>
 					</div>
 				</SectionContainer>

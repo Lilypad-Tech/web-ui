@@ -15,10 +15,12 @@ function useStrapi({ pathname }: StrapiProps): StrapiResponse {
 						const trustedByResp = results[1];
 
 						if (homepageInfoResp.status === "fulfilled" && trustedByResp.status === "fulfilled") {
+							const homepageData = homepageInfoResp.value as HomePageCmsInfo;
 							setStrapi((prevState) => ({
 								...prevState,
-								...(homepageInfoResp.value as HomePageCmsInfo),
+								...homepageData,
 								trusted_bies: trustedByResp.value || [],
+								header_lottie: homepageData.header_lottie || null,
 							}));
 						}
 					})
