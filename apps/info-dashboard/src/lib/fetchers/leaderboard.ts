@@ -152,8 +152,7 @@ export function getHeaderData() {
 					m.leaderboard_header_tooltip_description_reward_points(),
 			},
 		},
-
-		/* {
+		{
 			name: "Status",
 			translation: m.leaderboard_header_titles_status(),
 			tooltip: {
@@ -169,7 +168,7 @@ export function getHeaderData() {
 				description:
 					m.node_status_header_tooltip_description_connected_since(),
 			},
-		}, */
+		},
 		{
 			name: "Share",
 			translation: m.leaderboard_header_titles_share(),
