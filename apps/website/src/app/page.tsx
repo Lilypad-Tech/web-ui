@@ -34,6 +34,7 @@ import { Player } from '@lottiefiles/react-lottie-player';
 
 export default function Home() {
 	const { strapi } = useContext(PageContext) as { strapi: HomePageCmsInfo };
+
 	const socialLinks = [
 		{ href: "https://twitter.com/lilypad_tech", iconUrl: "/x.svg" },
 		{
@@ -98,28 +99,28 @@ export default function Home() {
 
 	const productCardsData = [
 		{
-			header: "Marketplace",
-			title: "Monetize your GPU - turn power into profit",
+			header: "Resource Providers",
+			title: "Monetize Your Idle GPU",
 			subtitle:
-				"Small text about. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore",
-			anchorHref: "/marketplace",
-			anchorText: "Learn more",
+				"Contribute your idle GPU power and earn rewards by helping power decentralized AI and compute jobs on Lilypad.",
+			anchorHref: "https://docs.lilypad.tech/lilypad/hardware-providers/run-a-node",
+			anchorText: "Become a Resource Provider",
 		},
 		{
-			header: "Compute as a service",
-			title: "Run compute jobs",
+			header: "AI Module Builders",
+			title: "Build and Monetize Your AI",
 			subtitle:
-				"Small text about. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore",
-			anchorHref: "/marketplace",
-			anchorText: "Learn more",
+				"Create and monetize your own AI modules and data sets, harness cost-effective and scalable compute.",
+			anchorHref: "/marketplace", // TODO - Add correct link
+			anchorText: "Start building",
 		},
 		{
-			header: "Module marketplace",
-			title: "Build AI.",
+			header: "Creator Community",
+			title: "Build Faster, Together",
 			subtitle:
-				"Small text about. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore",
-			anchorHref: "/marketplace",
-			anchorText: "Learn more",
+				"Accelerate your AI projects. Train and deploy models faster and cheaper, plus connect with a thriving community of AI innovators.",
+			anchorHref: "https://lilypad.team/discord",
+			anchorText: "Join our community",
 		},
 	];
 
@@ -127,46 +128,61 @@ export default function Home() {
 		{
 			title: "DeSci",
 			subtitle:
-				"Transform scientific research with decentralized solutions, enhancing collaboration and transparency.",
+				"Empower decentralized science using Lilypad to process complex data and run AI-driven models to accelerate scientific breakthroughs.",
 			anchorHref: "/desci",
 			anchorText: "Learn more",
 		},
 		{
 			title: "Gaming",
 			subtitle:
-				"Revolutionize gaming experiences through decentralized platforms, enabling true ownership and innovative gameplay.",
+				"Level up your gaming visions with Lilypad's decentralized compute, enabling developers to seamlessly run demanding game logic and AI at scale.",
 			anchorHref: "/gaming",
 			anchorText: "Learn more",
 		},
 		{
 			title: "Social Networks",
 			subtitle:
-				"Build and engage communities on decentralized social networks, prioritizing user privacy and data control.",
+				"Build next-generation social platforms with advanced AI features like content moderation, recommendation engines, and fraud detection.",
 			anchorHref: "/social-networks",
 			anchorText: "Learn more",
 		},
 		{
 			title: "Marketing",
 			subtitle:
-				"Enhance marketing strategies with decentralized tools, driving engagement and authenticity in campaigns.",
+				"Drive hyper-personalized marketing campaigns and unlock real-time customer insights with AI-powered analytics.",
 			anchorHref: "/marketing",
 			anchorText: "Learn more",
 		},
 		{
 			title: "IoT",
 			subtitle:
-				"Integrate and manage IoT devices securely with decentralized networks, ensuring data integrity and efficiency.",
+				"Securely process and analyze massive amounts of IoT data at the edge, enabling real-time decision-making and intelligent automation.",
 			anchorHref: "/iot",
 			anchorText: "Learn more",
 		},
 		{
 			title: "AI x Crypto",
 			subtitle:
-				"Leverage the power of AI and cryptocurrency for innovative solutions, driving advancements in finance and technology.",
+				"Unleash the power of cutting-edge AI and cryptography on Lilypad's decentralized network, delivering secure, scalable solutions that push the boundaries of innovation.",
 			anchorHref: "/ai-crypto",
 			anchorText: "Learn more",
 		},
 	];
+
+	const capabilityCardData = [
+		{
+			header: "On-demand Generative AI",
+			subtitle: "Accelerate your generative AI workflows with Lilypad's on-demand compute power. Execute jobs seamlessly from any platform, using smart contracts, APIs, or SDKs."
+		},
+		{
+			header: "Model Fine-tuning Pipelines",
+			subtitle: "Train your AI models on your own terms. Lilypad's fine-tuning pipelines offer secure data ingress/egress and advanced privacy measures like TEE and FHE."
+		},
+		{
+			header: "ML Training via GPU Clusters",
+			subtitle: "Ensure the integrity of your ML training with Lilypad's data provenance proofs. Train your models with confidence, knowing the origin and history of your data."
+		}
+	]
 
 	function getScreenSize() {
 		if (typeof window !== "undefined") {
@@ -306,7 +322,7 @@ export default function Home() {
 									<h1>open</h1>
 								</div>
 								<h5 className="pb-uui-4xl md:pb-uui-6xl uui-text-lg md:uui-text-xl font-regular text-uui-text-tertiary-600">
-									Serverless Distributed Compute for AI
+									Access a decentralized global compute network
 								</h5>
 								<Anchor
 									target="_blank"
@@ -406,9 +422,9 @@ export default function Home() {
 				<SectionContainer id="products">
 					<CenterHeadingSection
 						className="[&&]:bg-uui-bg-primary"
-						title="Use the LilyPad network"
-						subtitle="We offer three paths of interaction with LilyPad."
-						header="Innovate. Build. Compute."
+						title="How to use Lilypad"
+						subtitle="Connecting those with idle compute to those who need it, creating a decentralized marketplace for AI compute."
+						header="Decentralized. Accessible. Collaborative."
 					>
 						<div className="flex mt-uui-7xl  flex-col lg:flex-row space-y-uui-4xl lg:space-y-uui-none lg:space-x-uui-4xl">
 							{productCardsData.map((card, index) => (
@@ -434,8 +450,8 @@ export default function Home() {
 					</CenterHeadingSection>
 				</SectionContainer>
 				<CenterHeadingSection
-					title="What the hell can I build with this?"
-					subtitle="Transform Your Ideas into Reality with Decentralized Power."
+					title="What can I build on Lilypad"
+					subtitle="Create cutting-edge AI models, immersive game worlds, and transformative decentralized applications on our limitless, community-powered compute network."
 				>
 					<SectionContainer>
 						<div className="grid mt-uui-7xl grid-rows-6  md:grid-rows-none md:grid-cols-2 lg:grid-cols-3 gap-uui-4xl ">
@@ -453,7 +469,7 @@ export default function Home() {
 						</div>
 						<div className="flex items-center w-full justify-center pt-uui-7xl">
 							<Anchor
-								className="w-fit"
+								className="w-fit cursor-pointer"
 								size={"xl"}
 								destructive={false}
 								color={"color"}
@@ -468,6 +484,25 @@ export default function Home() {
 						</div>
 					</SectionContainer>
 				</CenterHeadingSection>
+				<SectionContainer id="capabilities">
+				<CenterHeadingSection
+					className="[&&]:bg-uui-bg-primary"
+					title="Unlocking the possible. One job at a time."
+					subtitle="Accelerate your AI development with Lilypad. Execute generative AI, fine-tune models with privacy, and train on powerful GPU clusters, all on one decentralized platform."
+					header="Our Capabilities"
+				>
+					<div className="flex mt-uui-7xl  flex-col lg:flex-row space-y-uui-4xl lg:space-y-uui-none lg:space-x-uui-4xl">
+							{capabilityCardData.map((card, index) => (
+								<ProductCard
+									key={index}
+									header={card.header}
+									subtitle={card.subtitle}
+								>
+								</ProductCard>
+							))}
+						</div>
+				</CenterHeadingSection>
+				</SectionContainer>
 				<SectionContainer id="roadmap">
 					<CenterHeadingSection
 						className="[&&]:bg-uui-bg-primary"
@@ -525,7 +560,7 @@ export default function Home() {
 							className="rounded-uui-2xl"
 							title="Introducing Lilypad Token: Power your projects and fuel innovation with the currency of decentralized computing."
 							subtitle="Be the first to know about the token release, join our socials"
-							header="Coming in Q4 2024"
+							header="Coming in Q1 2025"
 						>
 							<div className="pt-uui-4xl flex items-center justify-center w-full">
 								<div className="flex space-x-uui-xl">
