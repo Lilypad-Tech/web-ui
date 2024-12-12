@@ -31,6 +31,7 @@ import useFadeInView from "./hooks/UseFadeInView";
 import { PageContext } from "./clientLayout";
 import { HomePageCmsInfo } from "./hooks/strapi/types";
 import { Player } from '@lottiefiles/react-lottie-player';
+import RoadmapFull from "@/components/Roadmap/RoadmapFull";
 
 export default function Home() {
 	const { strapi } = useContext(PageContext) as { strapi: HomePageCmsInfo };
@@ -218,7 +219,7 @@ export default function Home() {
 		}
 	}, []);
 
-	const copyEmail = "hello@lilypad.tech";
+	const copyEmail = "contact@lilypad.tech";
 
 	const [copyState, setCopyState] = useState({
 		iconUrl: generalCopy06,
@@ -324,22 +325,40 @@ export default function Home() {
 								<h5 className="pb-uui-4xl md:pb-uui-6xl uui-text-lg md:uui-text-xl font-regular text-uui-text-tertiary-600">
 									Access a decentralized global compute network
 								</h5>
-								<Anchor
-									target="_blank"
-									href="https://lilypadnetwork.notion.site/Leap-into-Lilypad-s-IncentiveNet-9e9b12936d4340ad9417d92dab8bd9d1"
-									className="[&&]:rounded-full w-full md:w-fit"
-									color="color"
-									destructive={false}
-									hierarchy="primary"
-									size={
-										screenSize === "xl" ||
-										screenSize === "2xl"
-											? "2xl"
-											: "xl"
-									}
-								>
-									Get started
-								</Anchor>
+								<div className="flex flex-row gap-4">
+									<Anchor
+										target="_blank"
+										href="https://lilypad.team/discord"
+										className="[&&]:rounded-full w-full md:w-fit cursor-pointer"
+										color="color"
+										destructive={false}
+										hierarchy="primary"
+										size={
+											screenSize === "xl" ||
+											screenSize === "2xl"
+												? "2xl"
+												: "xl"
+										}
+									>
+										Join our community
+									</Anchor>
+									<Anchor
+										target="_blank"
+										href="https://docs.lilypad.tech/lilypad"
+										className="[&&]:rounded-full w-full md:w-fit cursor-pointer"
+										color="color"
+										destructive={false}
+										hierarchy="primary"
+										size={
+											screenSize === "xl" ||
+											screenSize === "2xl"
+												? "2xl"
+												: "xl"
+										}
+									>
+										Get started
+									</Anchor>
+								</div>
 							</AnimateSpring>
 
 							<animated.div style={fade}>
@@ -352,7 +371,7 @@ export default function Home() {
 											rel="noopener noreferrer"
 										>
 											<SocialIcon
-												className="w-[2rem] h-[2rem]"
+												className="w-[2rem] h-[2rem] cursor-pointer"
 												iconUrl={link.iconUrl}
 											/>
 										</a>
@@ -394,27 +413,23 @@ export default function Home() {
 						></SocialProofSection>
 					</animated.div>
 				</SectionContainer>
-				<div className="bg-uui-bg-secondary py-uui-7xl lg:py-uui-9xl">
+				<div className="bg-uui-bg-secondary p-uui-7xl lg:py-uui-9xl">
 					<SectionContainer>
 						<div className="text-center mx-auto max-w-uui-width-2xl">
-							<animated.h5
-								className="text-uui-text-brand-secondary-700 font-semibold antialiased uui-text-sm md:uui-text-md"
+							<animated.h3
+								className="text-uui-text-brand-secondary-700 font-semibold antialiased uui-text-md md:uui-text-lg"
 								style={missionStatementSprings}
 								ref={missionStatementRef}
 							>
 								Mission Statement
-							</animated.h5>
-							<animated.h2
-								className="text-uui-text-primary-900 pt-uui-lg uui-display-xs md:uui-display-lg font-semibold"
+							</animated.h3>
+							<animated.h5
+								className="text-uui-text-tertiary-600 uui-text-lg md:uui-text-xl font-normal pt-uui-lg"
 								style={missionStatementSprings}
 								ref={missionStatementRef}
 							>
-								{/* We create an AI-driven decentralized network
-								that uses underutilized resources to make
-								efficient, sustainable technology accessible to
-								everyone. */}
 								{strapi?.mission_statement}
-							</animated.h2>
+							</animated.h5>
 						</div>
 					</SectionContainer>
 				</div>
@@ -449,6 +464,16 @@ export default function Home() {
 						</div>
 					</CenterHeadingSection>
 				</SectionContainer>
+				<SectionContainer id="our-network">
+				<CenterHeadingSection
+					className="[&&]:bg-uui-bg-primary"
+					title="Lilypad Network"
+					subtitle="Lilypad offers a seamless and efficient way to access the computing power you need for AI and other demanding tasks—no need to invest in expensive hardware or navigate complex cloud setups. Simply submit your job; our decentralized network connects you with the best available resources. Benefit from competitive pricing, secure transactions, and a transparent process, all powered by blockchain technology."
+					header="Our network explained"
+				>
+					{/* TODO: Network infographic goes here */}
+				</CenterHeadingSection>
+				</SectionContainer>
 				<CenterHeadingSection
 					title="What can I build on Lilypad"
 					subtitle="Create cutting-edge AI models, immersive game worlds, and transformative decentralized applications on our limitless, community-powered compute network."
@@ -470,6 +495,8 @@ export default function Home() {
 						<div className="flex items-center w-full justify-center pt-uui-7xl">
 							<Anchor
 								className="w-fit cursor-pointer"
+								target="_blank"
+								href="https://docs.lilypad.tech/lilypad"
 								size={"xl"}
 								destructive={false}
 								color={"color"}
@@ -485,149 +512,165 @@ export default function Home() {
 					</SectionContainer>
 				</CenterHeadingSection>
 				<SectionContainer id="capabilities">
-				<CenterHeadingSection
-					className="[&&]:bg-uui-bg-primary"
-					title="Unlocking the possible. One job at a time."
-					subtitle="Accelerate your AI development with Lilypad. Execute generative AI, fine-tune models with privacy, and train on powerful GPU clusters, all on one decentralized platform."
-					header="Our Capabilities"
-				>
-					<div className="flex mt-uui-7xl  flex-col lg:flex-row space-y-uui-4xl lg:space-y-uui-none lg:space-x-uui-4xl">
-							{capabilityCardData.map((card, index) => (
-								<ProductCard
-									key={index}
-									header={card.header}
-									subtitle={card.subtitle}
-								>
-								</ProductCard>
-							))}
-						</div>
-				</CenterHeadingSection>
+					<CenterHeadingSection
+						className="[&&]:bg-uui-bg-primary"
+						title="Unlocking the possible. One job at a time."
+						subtitle="Accelerate your AI development with Lilypad. Execute generative AI, fine-tune models with privacy, and train on powerful GPU clusters, all on one decentralized platform."
+						header="Our Capabilities"
+					>
+						<div className="flex mt-uui-7xl  flex-col lg:flex-row space-y-uui-4xl lg:space-y-uui-none lg:space-x-uui-4xl">
+								{capabilityCardData.map((card, index) => (
+									<ProductCard
+										key={index}
+										header={card.header}
+										subtitle={card.subtitle}
+									>
+									</ProductCard>
+								))}
+							</div>
+					</CenterHeadingSection>
 				</SectionContainer>
+				{/* TODO: Add handler for early access subscribers */}
+				<SectionContainer id="early-access">
+					<CenterHeadingSection
+						className="[&&]:bg-uui-bg-primary"
+						title="Shape the Future of AI with Us"
+						subtitle="Be among the first to explore, build, and share powerful AI modules in Lilypad’s Module Marketplace"
+					>
+						<form
+							className="mx-auto py-2 lg:w-1/2 space-y-uui-2xl md:space-y-uui-none md:flex md:space-x-uui-xl w-full"
+							onSubmit={handleSubscribe}
+						>
+							<InputField
+								inputSize="md"
+								destructive={false}
+								placeholder="Enter your e-mail"
+								className="flex-1"
+								value={email}
+								onChange={(e) => setEmail(e.target.value)}
+							>
+								{{
+									hint: (
+										<span>
+											We care about your data in our{" "}
+											<a
+												href="/privacy"
+												target="_blank"
+												className="underline underline-offset-4"
+											>
+												privacy policy.
+											</a>
+										</span>
+									),
+								}}
+							</InputField>
+							<Button
+								type="submit"
+								color="color"
+								destructive={false}
+								hierarchy="primary"
+								size="md"
+								className="[&&]:rounded-full [&&]:h-fit"
+							>
+								Get Early Access
+							</Button>
+						</form>
+					</CenterHeadingSection>
+				</SectionContainer>
+				{/* TODO: Finish roadmap */}
 				<SectionContainer id="roadmap">
 					<CenterHeadingSection
 						className="[&&]:bg-uui-bg-primary"
-						header="Roadmap"
-						title="A New Era of Computing"
-						subtitle="Empowering Innovation, Security, and Scalability in the Digital Age"
+						title="Roadmap"
 					>
 						<div className="w-full flex items-center justify-center pt-uui-7xl ">
-							<Roadmap>
-								<RoadmapItem
-									achieved={true}
-									header="July 2023"
-									subtitle="Whether you have a team of 2 or 200, our
-									shared team inboxes keep everyone on the
-									same page and in the loop. same page and
-									in the loop. more Whether you have a
-									team of 2 or 200, our shared team
-									inboxes keep everyone on the same page
-									and in the loop. more Whether you have a
-									team of 2 or 200, our shared team
-									inboxes keep everyone on the same page
-									and in the loop. more Whether you have a
-									team of 2 or 200, our shared team
-									inboxes keep everyone on the same page
-									and in the loop. more Whether you have a
-									team of 2 or 200, our shared team
-									inboxes keep everyone on the same page
-									and in the loop. more ether you have a team of 2 or 200, our shared team inboxes keep everyone on the same page and in the loop."
-									title="Milestone 0: Launched Lilypad v1 Modicum-based Testnet"
-								/>
-
-								<RoadmapItem
-									achieved={true}
-									header="July 2023"
-									subtitle="Whether you have a team of 2 or 200, our shared team inboxes keep everyone on the same page and in the loop."
-									title="Milestone 0: Launched Lilypad v1 Modicum-based Testnet"
-								/>
-								<RoadmapItem
-									header="July 2023"
-									subtitle="Whether you have a team of 2 or 200, our shared team inboxes keep everyone on the same page and in the loop."
-									title="Milestone 0: Launched Lilypad v1 Modicum-based Testnet"
-								/>
-								<RoadmapItem
-									header="July 2023"
-									subtitle="Whether you have a team of 2 or 200, our shared team inboxes keep everyone on the same page and in the loop."
-									title="Milestone 0: Launched Lilypad v1 Modicum-based Testnet"
-								/>
-							</Roadmap>
+							<RoadmapFull />
 						</div>
 					</CenterHeadingSection>
 				</SectionContainer>
-				<SectionContainer>
-					<animated.div ref={communityRef} style={communitySprings}>
-						<CenterHeadingSection
-							className="rounded-uui-2xl"
-							title="Introducing Lilypad Token: Power your projects and fuel innovation with the currency of decentralized computing."
-							subtitle="Be the first to know about the token release, join our socials"
-							header="Coming in Q1 2025"
-						>
-							<div className="pt-uui-4xl flex items-center justify-center w-full">
-								<div className="flex space-x-uui-xl">
-									{socialLinks.map((link) => (
-										<a
-											key={link.href}
-											href={link.href}
-											target="_blank"
-											rel="noopener noreferrer"
-										>
-											<SocialIcon
-												className="w-[2rem] h-[2rem]"
-												iconUrl={link.iconUrl}
-											/>
-										</a>
-									))}
-								</div>
-							</div>
-						</CenterHeadingSection>
-					</animated.div>
-				</SectionContainer>
 
-				<SectionContainer>
-					<div className="grid grid-cols-1 lg:grid-cols-2 py-uui-9xl gap-uui-3xl">
-						<button
-							onClick={handleCopyClick}
-							className="group relative hover:bg-uui-bg-secondary_hover mb-uui-xl h-full text-left rounded-2xl bg-uui-bg-secondary p-uui-6xl lg:p-uui-7xl flex flex-col items-start justify-between"
-						>
-							<h3 className=" text-uui-text-primary-900 uui-display-xs md:uui-display-sm font-semibold antialiased">
-								Reach Out
-							</h3>
-							<div className="text-uui-text-tertiary-600 gap-uui-xs flex flex-wrap antialiased font-regular text-uui-lg md:uui-text-xl">
-								<span>Get in touch with us at</span>
-								<span className="font-regular underline underline-offset-4 ">
-									{copyEmail}
-								</span>
-							</div>
-							<div className="rounded-full m-uui-3xl w-fit bg-uui-bg-tertiary p-uui-lg absolute right-0 top-0 cursor-pointer">
-								<IconAtom
-									iconUrl={copyState.iconUrl}
-								></IconAtom>
-							</div>
-						</button>
-
-						<a
-							href="https://blog.lilypad.tech/"
+				{/* TODO: Style this */}
+				{/* <SectionContainer id="incentivenet" className="mx-auto py-2 lg:w-1/2 space-y-uui-2xl md:space-y-uui-none md:flex md:space-x-uui-xl w-full">
+					<CenterHeadingSection
+						className="[&&]:bg-uui-bg-primary"
+						title="Lilypad IncentiveNet"
+						subtitle="Earn rewards for powering the future of decentralized AI with Lilypad's IncentiveNet."
+					>
+						<Anchor
 							target="_blank"
-							className="group relative hover:bg-uui-bg-secondary_hover mb-uui-xl h-full text-left rounded-2xl bg-uui-bg-secondary p-uui-6xl lg:p-uui-7xl flex flex-col items-start justify-between"
+							href="https://docs.lilypad.tech/lilypad"
+							className="[&&]:rounded-full w-full md:w-fit cursor-pointer"
+							color="color"
+							destructive={false}
+							hierarchy="primary"
+							size={
+								screenSize === "xl" ||
+								screenSize === "2xl"
+									? "2xl"
+									: "xl"
+							}
 						>
-							<h3 className=" text-uui-text-primary-900 uui-display-xs md:uui-display-sm font-semibold antialiased">
-								Read our blog
-							</h3>
-							<div className="text-uui-text-tertiary-600 flex flex-col antialiased font-regular text-uui-lg md:uui-text-xl">
-								<span>
-									Check out our latest news on the Lilypad
-									blog!
-								</span>
-								<span className="font-regular underline underline-offset-4 ">
-									Read more -{">"}
-								</span>
+							Get started
+						</Anchor>
+						<animated.div style={fade}>
+							<div className="flex space-x-uui-xl pt-uui-7xl lg:pt-uui-9xl">
+								{socialLinks.map((link) => (
+									<a
+										key={link.href}
+										href={link.href}
+										target="_blank"
+										rel="noopener noreferrer"
+									>
+										<SocialIcon
+											className="w-[2rem] h-[2rem] cursor-pointer"
+											iconUrl={link.iconUrl}
+										/>
+									</a>
+								))}
 							</div>
-							<div className="rounded-full m-uui-3xl w-fit bg-uui-bg-tertiary p-uui-lg absolute right-0 top-0">
-								<IconAtom
-									iconUrl={educationBookOpen01}
-								></IconAtom>
-							</div>
-						</a>
+						</animated.div>
+					</CenterHeadingSection>
+				</SectionContainer> */}
+
+				<SectionContainer>
+					<div className="grid grid-cols-1 lg:grid-cols-2 pt-uui-9xl gap-uui-3xl">
+					<a
+						href="mailto:contact@lilypad.tech"
+						className="group relative hover:bg-uui-bg-secondary_hover mb-uui-xl h-full text-left rounded-2xl bg-uui-bg-secondary p-uui-6xl lg:p-uui-7xl flex flex-col items-start justify-between"
+					>
+						<h3 className="text-uui-text-primary-900 font-semibold antialiased uui-display-sm">
+							Got questions?
+						</h3>
+						<p className="text-uui-text-tertiary-600 font-regular text-uui-lg md:text-uui-xl">
+							We’re here to help
+						</p>
+						<span className="text-uui-text-tertiary-600 underline underline-offset-4">
+							contact@lilypad.tech
+						</span>
+					</a>
+
+					<a
+						href="https://blog.lilypad.tech/"
+						target="_blank"
+						className="group relative hover:bg-uui-bg-secondary_hover mb-uui-xl h-full text-left rounded-2xl bg-uui-bg-secondary p-uui-6xl lg:p-uui-7xl flex flex-col items-start justify-between"
+					>
+						<h3 className=" text-uui-text-primary-900 uui-display-xs md:uui-display-sm font-semibold antialiased">
+							Stay ahead with Lilypad
+						</h3>
+						<div className="text-uui-text-tertiary-600 flex flex-col antialiased font-regular text-uui-lg md:uui-text-xl">
+							<span>
+								Discover the latest advancements in AI and decentralized computing on the Lilypad blog.
+							</span>
+							<span className="font-regular underline underline-offset-4 pt-4">
+								Explore Now
+							</span>
+						</div>
+						<div className="rounded-full m-uui-3xl w-fit bg-uui-bg-tertiary p-uui-lg absolute right-0 top-0">
+							<IconAtom
+								iconUrl={educationBookOpen01}
+							></IconAtom>
+						</div>
+					</a>
 						<div className="lg:col-span-2 mb-uui-xl h-full text-left rounded-2xl bg-uui-bg-secondary gap-uui-2xl lg:gap-uui-4xl p-uui-6xl lg:p-uui-7xl flex flex-col lg:flex-row items-start justify-start">
 							<div className="lg:w-1/2">
 								<h3 className="text-uui-text-primary-900 mb-uui-xl uui-display-xs md:uui-display-sm font-semibold antialiased">
@@ -635,8 +678,7 @@ export default function Home() {
 								</h3>
 								<div className="text-uui-text-tertiary-600 flex flex-col antialiased font-regular text-uui-lg md:uui-text-xl">
 									<span>
-										Stay in the loop with everything you
-										need to know.
+										Subscribe to the Lilypad newsletter for the latest updates.
 									</span>
 								</div>
 							</div>
@@ -657,7 +699,7 @@ export default function Home() {
 											<span>
 												We care about your data in our{" "}
 												<a
-													href="/privacy"
+													href="/privacy-policy"
 													target="_blank"
 													className="underline underline-offset-4"
 												>
@@ -678,7 +720,7 @@ export default function Home() {
 									Subscribe
 								</Button>
 							</form>
-							<div className="undefined  antialiased text-uui-text-tertiary-600 font-regular uui-text-sm [&amp;.error]:text-uui-text-error-primary-600 mt-uui-sm block text-left ">
+							<div className="antialiased text-uui-text-tertiary-600 font-regular uui-text-sm [&amp;.error]:text-uui-text-error-primary-600 mt-uui-sm block text-left">
 								<span>{message && <p>{message}</p>}</span>
 							</div>
 						</div>
