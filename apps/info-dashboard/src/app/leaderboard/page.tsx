@@ -126,22 +126,6 @@ export default function Leaderboard() {
 							<div className="flex space-x-uui-5xl">
 								<div className="flex-col flex space-y-uui-xs">
 									<span className="uui-text-sm font-medium text-uui-text-tertiary-600">
-										{m.leaderboard_node_count_total_title()}
-									</span>
-									<span className="text-uui-text-primary-900 uui-display-sm font-semibold">
-										{nodesIsLoading ? (
-											<RandomHexSpan
-												length={4}
-											></RandomHexSpan>
-										) : nodesIsError ? (
-											<span>!err</span>
-										) : (
-											<span>{nodesData?.length}</span>
-										)}
-									</span>
-								</div>
-								<div className="flex-col flex space-y-uui-xs">
-									<span className="uui-text-sm font-medium text-uui-text-tertiary-600">
 										{m.leaderboard_node_count_online_title()}
 									</span>
 									<span className="text-uui-text-primary-900 uui-display-sm font-semibold">
