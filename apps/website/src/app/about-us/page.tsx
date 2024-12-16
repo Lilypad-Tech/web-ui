@@ -23,6 +23,8 @@ import FeaturedIcon from "@/components/FeaturedIcon/FeaturedIcon";
 import _FeatureText from "@/components/_FeatureText/_FeatureText";
 import useFade from "../hooks/UseFade";
 import { animated } from "@react-spring/web";
+import { NewsletterForm } from "@/components/Forms/NewsletterForm";
+import { CallToActions } from "@/components/FooterBlock/CallToActions";
 
 export default function Teams() {
 	const fadeLandingspage = useFade();
@@ -60,8 +62,8 @@ export default function Teams() {
 								titleClassName="uui-display-lg [&&]:md:uui-display-2xl "
 								className="[&&]:bg-transparent pt-uui-7xl lg:pt-uui-9xl [&&]:pb-uui-7xl relative"
 								header="About Lilypad"
-								title="Open compute infrastructure for tomorrow"
-								subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+								title="We're on a Mission to Democratize AI, One Job at a Time."
+								subtitle="A passionate team leveraging decentralized compute to make AI accessible and empowering for everyone."
 							></CenterHeadingSection>
 						</animated.div>
 					</SectionContainer>
@@ -78,13 +80,33 @@ export default function Teams() {
 					<SectionContainer className="pt-uui-7xl">
 						<div className="max-w-[45rem] md:py-uui-9xl mx-auto">
 							<ContentItem
-								size="lg"
+								size="xl"
 								heading="Our story"
-								paragraph="Mi tincidunt elit, id quisque ligula ac diam, amet. Vel etiam suspendisse morbi eleifend faucibus eget vestibulum felis. Dictum quis montes, sit sit. Tellus aliquam enim urna, etiam. Mauris posuere vulputate arcu amet, vitae nisi, tellus tincidunt. At feugiat sapien varius id."
+								paragraph="A Story of Empowering AI for All, Fueled by Two Trailblazers"
 							/>
 							<ContentItem
-								size="lg"
-								paragraph="Eget quis mi enim, leo lacinia pharetra, semper. Eget in volutpat mollis at volutpat lectus velit, sed auctor. Porttitor fames arcu quis fusce augue enim. Quis at habitant diam at. Suscipit tristique risus, at donec. In turpis vel et quam imperdiet. Ipsum molestie aliquet sodales id est ac volutpat. "
+								size="md"
+								paragraph="Lilypad's journey began with Ally, a software engineer with a diverse background spanning cafes and cutting-edge tech, and Stanley, a bioinformatician driven by a passion for open science and accessible research. Together, they were frustrated by a common obstacle: brilliant minds with groundbreaking AI ideas, held back by the lack of access to powerful computing resources."
+							/>
+							<ContentItem
+								size="md"
+								paragraph="Ally, with her experience at IBM and Protocol Labs, and Stanley, with his decade of expertise in high-performance computing for medical research, knew there had to be a better way. They saw a world where innovation was bottlenecked, not by a lack of talent, but by the scarcity of affordable compute."
+							/>
+							<ContentItem
+								size="md"
+								paragraph="Their solution? Harness the untapped potential of billions of idle personal computers. Lilypad was born from this vision – a decentralized network democratizing access to AI compute. By leveraging blockchain technology and smart contracts, Lilypad connects those with spare compute to those who need it, ensuring transparency, security, and fair compensation for all."
+							/>
+							<ContentItem
+								size="md"
+								paragraph={`"We're creating a protocol where compute jobs are matched dynamically with nodes," explains Ally, "ensuring optimized resource allocation without middlemen overheads." This peer-to-peer marketplace for computational tasks significantly lowers the computing cost compared to traditional services.`}
+							/>
+							<ContentItem
+								size="md"
+								paragraph="For Stanley, Lilypad is a platform to advance his mission of applying machine learning to biological research. He envisions a future where Lilypad's computing power accelerates personalized medicine and genetic research breakthroughs, like drastically reducing the cost of genome sequencing."
+							/>
+							<ContentItem
+								size="md"
+								paragraph="Lilypad is a testament to Ally and Stanley's shared belief: the future of AI should be open, accessible, and community-driven. With their combined vision and expertise, they're making that future a reality, one hop at a time."
 							/>
 						</div>
 					</SectionContainer>
@@ -94,7 +116,7 @@ export default function Teams() {
 					<SectionContainer>
 						<div className="flex flex-col md:flex-row space-y-uui-7xl md:space-y-uui-none md:space-x-uui-9xl ">
 							<div className="flex flex-col space-y-uui-xl md:space-y-uui-2xl">
-								<h3 className="uui-display-lg md:uui-display-md font-semibold text-uui-text-primary-900 antialiased">
+								<h3 className=" uui-display-sm md:uui-display-md text-uui-text-primary-900 font-semibold">
 									What we stand for
 								</h3>
 								<p className="text-uui-text-tertiary-600 font-regular uui-text-lg md:uui-text-xl antialiased">
@@ -112,11 +134,7 @@ export default function Teams() {
 											Vision
 										</span>
 										<p className="uui-text-sm md:uui-text-md font-regular text-uui-text-tertiary-600  antialiased">
-											A future where cutting-edge
-											computational power is universally
-											accessible, fueling boundless
-											innovation and empowering
-											individuals to build the impossible.
+											To empower individuals and communities through decentralized AI and computing, fostering an open, equitable, and accessible technological ecosystem.
 										</p>
 									</div>
 								</div>
@@ -124,16 +142,12 @@ export default function Teams() {
 									<FeaturedIcon
 										iconUrl={mapsAndTravelFlag02}
 									/>
-									<div className="flex flex-col items-start justify-center spacing-y-uui-md ">
+									<div className="flex flex-col items-start justify-center spacing-y-uui-md">
 										<span className="text-uui-text-primary-900 font-semibold antialiased uui-text-lg md:uui-text-xl">
 											Mission
 										</span>
 										<p className="uui-text-sm md:uui-text-md font-regular text-uui-text-tertiary-600  antialiased">
-											A future where cutting-edge
-											computational power is universally
-											accessible, fueling boundless
-											innovation and empowering
-											individuals to build the impossible.
+											To democratize access to cutting-edge AI and computing resources by leveraging web3 technologies, fostering an inclusive, transparent, and decentralized ecosystem that empowers individuals and communities to innovate, collaborate, and drive positive change in the world.
 										</p>
 									</div>
 								</div>
@@ -143,148 +157,50 @@ export default function Teams() {
 				</div>
 				<div className="relative w-full -mt-uui-9xl  mx-auto flex justify-center items-center">
 					<SectionContainer>
-						<Image
+						{/* TODO: Add pic for middle section */}
+						{/* <Image
 							alt="Lilypad middle section picture"
 							className=" "
 							width={1216}
 							height={516}
 							src="/dummy-placeholder-about-us.svg"
-						/>
+						/> */}
 					</SectionContainer>
 				</div>
-				<div className="bg-uui-bg-primary pt-uui-9xl pb-uui-9xl">
+				<div className="bg-uui-bg-primary py-uui-6xl">
 					<SectionContainer className="bg-uui-bg-primary">
 						<CenterHeadingSection
 							className="[&&]:bg-uui-bg-primary"
 							title="Lilypad's Ethos"
-							subtitle="Connect your tools, connect your teams. With over 100 apps already available in our directory, your team’s favourite tools are just a click away."
-						></CenterHeadingSection>
+							subtitle="Decentralized. Accessible. Collaborative."
+						>
+							<p className="w-1/2 text-center mx-auto py-4 uui-text-md antialiased text-uui-text-primary-900">
+								Lilypad is built on the pillars of decentralization, accessibility, and collaboration, empowering a community-driven approach to AI innovation.
+							</p>
+						</CenterHeadingSection>
 
 						<div className="flex flex-col space-y-uui-3xl items-center justify-center md:space-y-uui-none md:flex-row md:space-x-uui-4xl">
 							<_FeatureText
 								featuredIconUrl={mediaAndDevicesLightbulb05}
-								title="Innovation"
-								description="Yes, you can try us for free for 30
-										days. Our friendly team will work with
-										you to get you up and running as soon as
-										possible."
+								title="Decentralized and Unstoppable"
+								description="Lilypad is built on the bedrock of decentralization. Our network operates across a distributed array of GPUs, ensuring no single point of failure or control. This resilience safeguards against outages and censorship and fosters a permissionless environment where innovation can flourish without boundaries."
 							/>
 							<_FeatureText
 								featuredIconUrl={generalCheckHeart}
-								title="Accessibility"
-								description="Yes, you can try us for free for 30
-										days. Our friendly team will work with
-										you to get you up and running as soon as
-										possible."
+								title="Accessible and Empowering"
+								description="We believe that the power of AI should be accessible to all, not just a select few. Lilypad breaks down barriers to entry by providing affordable and scalable compute resources, enabling individuals, startups, and researchers alike to harness the potential of artificial intelligence."
 							/>
 							<_FeatureText
 								featuredIconUrl={developmentPuzzlePiece01}
-								title="Collaboration"
-								description="Yes, you can try us for free for 30
-										days. Our friendly team will work with
-										you to get you up and running as soon as
-										possible."
+								title="Collaborative and Community Driven"
+								description="Lilypad is more than just a platform; it's a thriving community. We embrace open-source principles and believe in the power of collective intelligence. By fostering collaboration and knowledge sharing, we're building a more inclusive and dynamic AI ecosystem where everyone can contribute and benefit."
 							/>
 						</div>
 					</SectionContainer>
 				</div>
 				<SectionContainer>
-					<div className="grid grid-cols-1 lg:grid-cols-2 py-uui-9xl gap-uui-3xl">
-						<a
-							href="/team"
-							className="group relative hover:bg-uui-bg-secondary_hover mb-uui-xl h-full text-left rounded-2xl bg-uui-bg-secondary p-uui-6xl lg:p-uui-7xl flex flex-col items-start justify-between"
-						>
-							<h3 className=" text-uui-text-primary-900 uui-display-xs md:uui-display-sm font-semibold antialiased">
-								Our team
-							</h3>
-							<div className="text-uui-text-tertiary-600 gap-uui-xs flex flex-wrap antialiased font-regular text-uui-lg md:uui-text-xl">
-								<span>
-									We are an international team of the worlds
-									leading web3 experts.
-								</span>
-								<span className="font-regular underline underline-offset-4 ">
-									{"Meet the team ->"}
-								</span>
-							</div>
-							<div className="rounded-full m-uui-3xl w-fit bg-uui-bg-tertiary p-uui-lg absolute right-0 top-0 cursor-pointer">
-								<IconAtom iconUrl={usersUsers01}></IconAtom>
-							</div>
-						</a>
-
-						<a
-							href="https://blog.lilypadnetwork.org/"
-							target="_blank"
-							className="group relative hover:bg-uui-bg-secondary_hover mb-uui-xl h-full text-left rounded-2xl bg-uui-bg-secondary p-uui-6xl lg:p-uui-7xl flex flex-col items-start justify-between"
-						>
-							<h3 className=" text-uui-text-primary-900 uui-display-xs md:uui-display-sm font-semibold antialiased">
-								Read our blog
-							</h3>
-							<div className="text-uui-text-tertiary-600 flex flex-col antialiased font-regular text-uui-lg md:uui-text-xl">
-								<span>
-									Check out our latest news on the Lilypad
-									blog!
-								</span>
-								<span className="font-regular underline underline-offset-4 ">
-									Read more -{">"}
-								</span>
-							</div>
-							<div className="rounded-full m-uui-3xl w-fit bg-uui-bg-tertiary p-uui-lg absolute right-0 top-0">
-								<IconAtom
-									iconUrl={educationBookOpen01}
-								></IconAtom>
-							</div>
-						</a>
-						{/* TODO turn into newsletter signup form */}
-						<div className="lg:col-span-2 mb-uui-xl h-full text-left rounded-2xl bg-uui-bg-secondary gap-uui-2xl lg:gap-uui-4xl p-uui-6xl lg:p-uui-7xl flex flex-col lg:flex-row  items-start justify-start">
-							<div className="lg:w-1/2">
-								<h3 className="text-uui-text-primary-900 mb-uui-xl uui-display-xs md:uui-display-sm font-semibold antialiased">
-									Be the first to know
-								</h3>
-								<div className=" text-uui-text-tertiary-600 flex flex-col antialiased font-regular text-uui-lg md:uui-text-xl">
-									<span>
-										Stay in the loop with everything you
-										need to know.
-									</span>
-								</div>
-							</div>
-							<form className="lg:w-1/2 space-y-uui-2xl md:space-y-uui-none md:flex md:space-x-uui-xl w-full">
-								<InputField
-									inputSize="md"
-									destructive={false}
-									placeholder="Enter your e-mail"
-									className="flex-1"
-								>
-									{{
-										hint: (
-											<span className="">
-												We care about your data in our{" "}
-												<a
-													href="/privacy"
-													target="_blank"
-													className="underline underline-offset-4"
-												>
-													privacy policy.
-												</a>
-											</span>
-										),
-									}}
-								</InputField>
-								<Button
-									type="submit"
-									color="color"
-									destructive={false}
-									hierarchy="primary"
-									size="md"
-									className="[&&]:rounded-full [&&]:h-fit"
-									onClick={(e) => {
-										e.preventDefault();
-										console.log("click");
-									}}
-								>
-									Subscribe
-								</Button>
-							</form>
-						</div>
+					<div className="grid grid-cols-1 lg:grid-cols-2 py-uui-6xl gap-uui-3xl">
+						<CallToActions />
 					</div>
 				</SectionContainer>
 			</main>
