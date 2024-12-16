@@ -8,7 +8,6 @@ interface FooterProps extends React.HTMLProps<HTMLDivElement> {
 	socialLinks: { href: string; iconUrl: string }[];
 	footerIcon: { src: string; alt: string; href: string };
 }
-
 const Footer = ({ socialLinks, footerIcon }: FooterProps) => {
 	return (
 		<div className="pt-uui-9xl max-w-uui-width-xxs mx-auto md:mx-0 md:max-w-none ">
@@ -26,7 +25,7 @@ const Footer = ({ socialLinks, footerIcon }: FooterProps) => {
 						<span className="uui-text-md font-regular antialiased text-uui-text-tertiary-600">
 							Follow our journey on our{" "}
 							<a
-								href="/privacy"
+								href="/privacy-policy"
 								target="_blank"
 								className="underline underline-offset-4"
 							>
@@ -48,19 +47,18 @@ const Footer = ({ socialLinks, footerIcon }: FooterProps) => {
 						</_FooterLinksColumn>
 						<_FooterLinksColumn>
 							<_FooterLinksHeader title="Legal" />
-							<_FooterLink href="#terms" title="Terms" />
-							<_FooterLink href="#privacy" title="Privacy" />
-							<_FooterLink href="#cookies" title="Cookies" />
+							{/* TODO: Do we have a terms page? */}
+							{/* <_FooterLink href="/terms" title="Terms" /> */}
+							<_FooterLink href="/privacy-policy" title="Privacy" />
+							<_FooterLink href="/privacy-policy#cookies" title="Cookies" />
 						</_FooterLinksColumn>
 					</div>
 				</div>
 			</SectionContainer>
-
 			<SectionContainer className="w-full py-uui-6xl flex flex-col space-y-uui-6xl md:space-y-uui-none md:flex-row justify-center  md:justify-between items-center ">
 				<span className="text-uui-fg-quarterary-500 text-uui-text-md font-regular antialiased">
 					© 2024 Lilypad. All rights reserved.
 				</span>
-
 				<div className="flex space-x-uui-3xl">
 					{socialLinks?.map((link) => (
 						<a
@@ -77,5 +75,4 @@ const Footer = ({ socialLinks, footerIcon }: FooterProps) => {
 		</div>
 	);
 };
-
 export default Footer;
