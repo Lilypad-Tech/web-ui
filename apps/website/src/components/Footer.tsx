@@ -26,7 +26,7 @@ const Footer = ({ socialLinks, footerIcon }: FooterProps) => {
 						<span className="uui-text-md font-regular antialiased text-uui-text-tertiary-600">
 							Follow our journey on our{" "}
 							<a
-								href="/privacy"
+								href="/privacy-policy"
 								target="_blank"
 								className="underline underline-offset-4"
 							>
@@ -48,9 +48,10 @@ const Footer = ({ socialLinks, footerIcon }: FooterProps) => {
 						</_FooterLinksColumn>
 						<_FooterLinksColumn>
 							<_FooterLinksHeader title="Legal" />
-							<_FooterLink href="#terms" title="Terms" />
-							<_FooterLink href="#privacy" title="Privacy" />
-							<_FooterLink href="#cookies" title="Cookies" />
+							{/* TODO: Do we have a terms page? */}
+							{/* <_FooterLink href="/terms" title="Terms" /> */}
+							<_FooterLink href="/privacy-policy" title="Privacy" />
+							<_FooterLink href="/privacy-policy#cookies" title="Cookies" />
 						</_FooterLinksColumn>
 					</div>
 				</div>
