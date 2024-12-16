@@ -158,6 +158,7 @@ export default function ClientLayout({
 		to: { opacity: 1 },
 		config: { duration: 1 },
 	});
+
 	return (
 		<html lang="en" className="uui-dark">
 			<body className={INTER.className}>
@@ -242,7 +243,7 @@ export default function ClientLayout({
 												>
 													<_NavItemBase
 														current={
-															pathname === "/"
+															pathname === "/" && window.location.hash === "#products"
 														}
 													>
 														{"Products"}
@@ -361,7 +362,7 @@ export default function ClientLayout({
 											}}
 										>
 											<_NavItemBase
-												current={pathname === "/"}
+												current={pathname === "/" && window.location.hash === "#products"}
 											>
 												{"Products"}
 											</_NavItemBase>
