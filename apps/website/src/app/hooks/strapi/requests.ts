@@ -62,6 +62,7 @@ export async function getTeamAdvisors() {
       Name: advisor.Name,
       Title: advisor.Title,
       blurb: advisor.blurb,
+	  experience: advisor.experience,
       twitter: advisor.twitter,
       linkedin: advisor.linkedin,
       website: advisor.website,
@@ -108,10 +109,12 @@ export async function getTeamCore() {
       Name: member.Name,
       Title: member.Title,
       blurb: member.blurb,
+	  experience: member.experience,
       twitter: member.twitter,
       linkedin: member.linkedin,
       website: member.website,
       Image: member.Image?.url || null,
+	  order: member.order
     }));
   } catch (err) {
     console.error("Error fetching team core members:", err);
