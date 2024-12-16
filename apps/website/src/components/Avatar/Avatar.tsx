@@ -13,7 +13,7 @@ const Avatar = ({ size, avatarImageProps, ...props }: AvatarProps) => {
 		lg: "h-[3rem] w-[3rem]",
 		xl: "h-[3.5rem] w-[3.5rem]",
 		"2xl": "h-[4rem] w-[4rem]",
-		"team-member-card": "h-[5rem] w-[5rem] md:h-[6rem] md:w-[6rem]",
+		"team-member-card": "h-[12rem] w-[12rem] md:h-[10rem] md:w-[10rem]",
 	};
 	return (
 		<AvatarWrapper {...props}>
@@ -26,7 +26,7 @@ const Avatar = ({ size, avatarImageProps, ...props }: AvatarProps) => {
 							fill
 							src={avatarImageProps?.src}
 							alt={avatarImageProps?.alt}
-							className={` w-full h-full
+							className={`w-full h-full
 		rounded-full border-uui-avatar-contrast-border object-cover ${avatarImageProps?.objectFit} bg-center bg-contain bg-no-repeat`}
 						/>
 					</div>
