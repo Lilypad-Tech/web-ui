@@ -48,42 +48,36 @@ export default function ClientLayout({
 	console.log(strapi, isCmsLoading);
 	const resourcesArray = [
 		{
-			description: "The latest industry news, updates and info",
 			title: "Discord",
 			iconUrl: "/discord.svg",
 			target: "_blank",
 			href: "https://discord.gg/lilypad-network",
 		},
 		{
-			description: "The latest industry news, updates and info",
 			title: "Blog",
 			iconUrl: educationBookClosed,
 			href: "https://blog.lilypadnetwork.org/",
 			target: "_self",
 		},
 		{
-			description: "The latest industry news, updates and info",
 			title: "Github",
 			iconUrl: "/github.svg",
 			href: "https://github.com/Lilypad-Tech",
 			target: "_blank",
 		},
 		{
-			description: "The latest industry news, updates and info",
 			title: "Metrics Dashboard",
 			iconUrl: chartsBarChart05,
 			href: "https://info.lilypad.tech/",
 			target: "_blank",
 		},
 		{
-			description: "The latest industry news, updates and info",
 			title: "Media Kit",
 			iconUrl: imagesCamera01,
 			href: "/https://lilypadnetwork.notion.site/Press-Kit-d1d4e16d558d419c9bc502ade1404e17",
 			target: "_self",
 		},
 		{
-			description: "The latest industry news, updates and info",
 			title: "FAQ",
 			iconUrl: generalHelpCircle,
 			href: "https://docs.lilypad.tech/lilypad/faqs",
@@ -93,35 +87,31 @@ export default function ClientLayout({
 
 	const aboutArray = [
 		{
-			description: "The latest industry news, updates and info",
 			title: "About us",
 			iconUrl: "/lilypad-icon.svg",
 			href: "/about-us",
 			target: "_self", // Default target if not specified
 		},
 		{
-			description: "The latest industry news, updates and info",
 			title: "Our team",
 			iconUrl: usersUsers03,
 			href: "/team",
 			target: "_self",
 		},
 		{
-			description: "The latest industry news, updates and info",
 			title: "Roadmap",
 			iconUrl: mapsAndTravelRoute,
 			href: "/#roadmap",
 			target: "_self",
 		},
 		{
-			description: "The latest industry news, updates and info",
+			// TODO: Add link to press page when ready
 			title: "Press/Media",
 			iconUrl: mediaAndDevicesTv03,
 			href: "/page for press overview",
 			target: "_self",
 		},
 		{
-			description: "The latest industry news, updates and info",
 			title: "Use Cases",
 			iconUrl: mediaAndDevicesLightbulb05,
 			href: "https://docs.lilypad.tech/lilypad/use-cases/extra-labs-x-lilypad",
@@ -158,6 +148,7 @@ export default function ClientLayout({
 		to: { opacity: 1 },
 		config: { duration: 1 },
 	});
+
 	return (
 		<html lang="en" className="uui-dark">
 			<body className={INTER.className}>
@@ -242,7 +233,7 @@ export default function ClientLayout({
 												>
 													<_NavItemBase
 														current={
-															pathname === "/"
+															pathname === "/" && window.location.hash === "#products"
 														}
 													>
 														{"Products"}
@@ -290,9 +281,6 @@ export default function ClientLayout({
 													(item, index) => (
 														<_NavMenuItem
 															key={index}
-															description={
-																item.description
-															}
 															title={item.title}
 															iconUrl={
 																item.iconUrl
@@ -361,7 +349,7 @@ export default function ClientLayout({
 											}}
 										>
 											<_NavItemBase
-												current={pathname === "/"}
+												current={pathname === "/" && window.location.hash === "#products"}
 											>
 												{"Products"}
 											</_NavItemBase>
