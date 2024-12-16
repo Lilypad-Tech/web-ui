@@ -32,6 +32,9 @@ import { PageContext } from "./clientLayout";
 import { HomePageCmsInfo } from "./hooks/strapi/types";
 import { Player } from '@lottiefiles/react-lottie-player';
 import RoadmapFull from "@/components/Roadmap/RoadmapFull";
+import { NewsletterForm } from "@/components/Forms/NewsletterForm";
+import { CallToActions } from "@/components/FooterBlock/CallToActions";
+import { sendEmail } from "@/utils/sendEmail";
 
 export default function Home() {
 	const { strapi } = useContext(PageContext) as { strapi: HomePageCmsInfo };
@@ -59,43 +62,13 @@ export default function Home() {
 		}
 
 		try {
-			const response = await fetch(
-				"https://updates.lilypad.tech/members/api/send-magic-link/",
-				{
-					method: "POST",
-					headers: {
-						"Content-Type": "application/json",
-					},
-					body: JSON.stringify({
-						email: email,
-						emailType: "subscribe",
-					}),
-				}
-			);
-
-			if (response.status === 201) {
-				setMessage(
-					"You have successfully subscribed! Please check your email for confirmation."
-				);
-				setEmail("");
-			} else if (response.status === 429) {
-				// Too many requests error to handle Ghost rate limits
-				setMessage(
-					"You have made too many subscription attempts. Please wait a few minutes and try again."
-				);
-			} else {
-				const errorData = await response.json();
-				const errorMessage =
-					errorData.errors?.[0]?.message ||
-					"Subscription failed. Please try again later.";
-				setMessage(errorMessage);
-			}
-		} catch (error) {
-			console.error("Error subscribing to the newsletter:", error);
-			setMessage(
-				"There was an error while processing your request. Please try again later."
-			);
-		}
+			// TODO: This mailer should be for Lilypad's Module Marketplace
+			const successMessage = await sendEmail(email, "subscribe");
+			setMessage(successMessage);
+			setEmail("");
+		  } catch (error: any) {
+			setMessage(error.message);
+		  }
 	};
 
 	const productCardsData = [
@@ -112,7 +85,7 @@ export default function Home() {
 			title: "Build and Monetize Your AI",
 			subtitle:
 				"Create and monetize your own AI modules and data sets, harness cost-effective and scalable compute.",
-			anchorHref: "/marketplace", // TODO - Add correct link
+			anchorHref: "https://docs.lilypad.tech/lilypad",
 			anchorText: "Start building",
 		},
 		{
@@ -408,7 +381,6 @@ export default function Home() {
 				<SectionContainer className="pb-uui-7xl lg:pb-uui-8xl">
 					<animated.div style={fade}>
 						<SocialProofSection
-							trustedByArray={strapi?.trusted_bies}
 							title="Trusted by"
 						></SocialProofSection>
 					</animated.div>
@@ -530,7 +502,6 @@ export default function Home() {
 							</div>
 					</CenterHeadingSection>
 				</SectionContainer>
-				{/* TODO: Add handler for early access subscribers */}
 				<SectionContainer id="early-access">
 					<CenterHeadingSection
 						className="[&&]:bg-uui-bg-primary"
@@ -570,14 +541,13 @@ export default function Home() {
 								destructive={false}
 								hierarchy="primary"
 								size="md"
-								className="[&&]:rounded-full [&&]:h-fit"
+								className="[&&]:rounded-full [&&]:h-fit mx-auto"
 							>
 								Get Early Access
 							</Button>
 						</form>
 					</CenterHeadingSection>
 				</SectionContainer>
-				{/* TODO: Finish roadmap */}
 				<SectionContainer id="roadmap">
 					<CenterHeadingSection
 						className="[&&]:bg-uui-bg-primary"
@@ -590,140 +560,46 @@ export default function Home() {
 				</SectionContainer>
 
 				{/* TODO: Style this */}
-				{/* <SectionContainer id="incentivenet" className="mx-auto py-2 lg:w-1/2 space-y-uui-2xl md:space-y-uui-none md:flex md:space-x-uui-xl w-full">
-					<CenterHeadingSection
-						className="[&&]:bg-uui-bg-primary"
-						title="Lilypad IncentiveNet"
-						subtitle="Earn rewards for powering the future of decentralized AI with Lilypad's IncentiveNet."
+				<SectionContainer id="incentivenet" className="mx-auto py-2 lg:w-1/2 space-y-uui-2xl md:space-y-uui-none md:flex md:space-x-uui-xl w-full">
+				<CenterHeadingSection
+					className="[&&]:bg-uui-bg-primary mx-auto text-center"
+					title="Lilypad IncentiveNet"
+					subtitle="Earn rewards for powering the future of decentralized AI with Lilypad's IncentiveNet."
+				>
+					<Anchor
+						target="_blank"
+						href="https://docs.lilypad.tech/lilypad"
+						className="[&&]:rounded-full w-full md:w-fit cursor-pointer mx-auto my-4"
+						color="color"
+						destructive={false}
+						hierarchy="primary"
+						size={screenSize === "xl" || screenSize === "2xl" ? "2xl" : "xl"}
 					>
-						<Anchor
-							target="_blank"
-							href="https://docs.lilypad.tech/lilypad"
-							className="[&&]:rounded-full w-full md:w-fit cursor-pointer"
-							color="color"
-							destructive={false}
-							hierarchy="primary"
-							size={
-								screenSize === "xl" ||
-								screenSize === "2xl"
-									? "2xl"
-									: "xl"
-							}
-						>
-							Get started
-						</Anchor>
-						<animated.div style={fade}>
-							<div className="flex space-x-uui-xl pt-uui-7xl lg:pt-uui-9xl">
-								{socialLinks.map((link) => (
-									<a
-										key={link.href}
-										href={link.href}
-										target="_blank"
-										rel="noopener noreferrer"
-									>
-										<SocialIcon
-											className="w-[2rem] h-[2rem] cursor-pointer"
-											iconUrl={link.iconUrl}
-										/>
-									</a>
-								))}
-							</div>
-						</animated.div>
-					</CenterHeadingSection>
-				</SectionContainer> */}
+						Get started
+					</Anchor>
+					<animated.div style={fade} className="flex justify-center mx-auto">
+						<div className="flex space-x-uui-xl">
+							{socialLinks.map((link) => (
+								<a
+									key={link.href}
+									href={link.href}
+									target="_blank"
+									rel="noopener noreferrer"
+								>
+									<SocialIcon
+										className="w-[2rem] h-[2rem] cursor-pointer"
+										iconUrl={link.iconUrl}
+									/>
+								</a>
+							))}
+						</div>
+					</animated.div>
+				</CenterHeadingSection>
+				</SectionContainer>
 
 				<SectionContainer>
-					<div className="grid grid-cols-1 lg:grid-cols-2 pt-uui-9xl gap-uui-3xl">
-					<a
-						href="mailto:contact@lilypad.tech"
-						className="group relative hover:bg-uui-bg-secondary_hover mb-uui-xl h-full text-left rounded-2xl bg-uui-bg-secondary p-uui-6xl lg:p-uui-7xl flex flex-col items-start justify-between"
-					>
-						<h3 className="text-uui-text-primary-900 font-semibold antialiased uui-display-sm">
-							Got questions?
-						</h3>
-						<p className="text-uui-text-tertiary-600 font-regular text-uui-lg md:text-uui-xl">
-							We’re here to help
-						</p>
-						<span className="text-uui-text-tertiary-600 underline underline-offset-4">
-							contact@lilypad.tech
-						</span>
-					</a>
-
-					<a
-						href="https://blog.lilypad.tech/"
-						target="_blank"
-						className="group relative hover:bg-uui-bg-secondary_hover mb-uui-xl h-full text-left rounded-2xl bg-uui-bg-secondary p-uui-6xl lg:p-uui-7xl flex flex-col items-start justify-between"
-					>
-						<h3 className=" text-uui-text-primary-900 uui-display-xs md:uui-display-sm font-semibold antialiased">
-							Stay ahead with Lilypad
-						</h3>
-						<div className="text-uui-text-tertiary-600 flex flex-col antialiased font-regular text-uui-lg md:uui-text-xl">
-							<span>
-								Discover the latest advancements in AI and decentralized computing on the Lilypad blog.
-							</span>
-							<span className="font-regular underline underline-offset-4 pt-4">
-								Explore Now
-							</span>
-						</div>
-						<div className="rounded-full m-uui-3xl w-fit bg-uui-bg-tertiary p-uui-lg absolute right-0 top-0">
-							<IconAtom
-								iconUrl={educationBookOpen01}
-							></IconAtom>
-						</div>
-					</a>
-						<div className="lg:col-span-2 mb-uui-xl h-full text-left rounded-2xl bg-uui-bg-secondary gap-uui-2xl lg:gap-uui-4xl p-uui-6xl lg:p-uui-7xl flex flex-col lg:flex-row items-start justify-start">
-							<div className="lg:w-1/2">
-								<h3 className="text-uui-text-primary-900 mb-uui-xl uui-display-xs md:uui-display-sm font-semibold antialiased">
-									Be the first to know
-								</h3>
-								<div className="text-uui-text-tertiary-600 flex flex-col antialiased font-regular text-uui-lg md:uui-text-xl">
-									<span>
-										Subscribe to the Lilypad newsletter for the latest updates.
-									</span>
-								</div>
-							</div>
-							<form
-								className="lg:w-1/2 space-y-uui-2xl md:space-y-uui-none md:flex md:space-x-uui-xl w-full"
-								onSubmit={handleSubscribe}
-							>
-								<InputField
-									inputSize="md"
-									destructive={false}
-									placeholder="Enter your e-mail"
-									className="flex-1"
-									value={email}
-									onChange={(e) => setEmail(e.target.value)}
-								>
-									{{
-										hint: (
-											<span>
-												We care about your data in our{" "}
-												<a
-													href="/privacy-policy"
-													target="_blank"
-													className="underline underline-offset-4"
-												>
-													privacy policy.
-												</a>
-											</span>
-										),
-									}}
-								</InputField>
-								<Button
-									type="submit"
-									color="color"
-									destructive={false}
-									hierarchy="primary"
-									size="md"
-									className="[&&]:rounded-full [&&]:h-fit"
-								>
-									Subscribe
-								</Button>
-							</form>
-							<div className="antialiased text-uui-text-tertiary-600 font-regular uui-text-sm [&amp;.error]:text-uui-text-error-primary-600 mt-uui-sm block text-left">
-								<span>{message && <p>{message}</p>}</span>
-							</div>
-						</div>
+					<div className="grid grid-cols-1 lg:grid-cols-2 pt-uui-6xl gap-uui-3xl">
+						<CallToActions />
 					</div>
 				</SectionContainer>
 			</main>
