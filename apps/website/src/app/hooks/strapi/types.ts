@@ -29,22 +29,26 @@ export interface TeamPageCmsInfo {
 		documentId: string;
 		Name: string;
 		Title: string;
+		experience: string;
 		blurb: string;
 		twitter: string;
 		linkedin: string;
 		website: string;
 		Image?: { url: string } | null;
+		order: number;
 	}[];
 	advisors: {
 		id: number;
 		documentId: string;
 		Name: string;
 		Title: string;
+		experience: string;
 		blurb: string;
 		twitter: string;
 		linkedin: string;
 		website: string;
 		Image?: { url: string } | null;
+		order: number;
 	}[];
 	partners: {
 		id: number;
@@ -63,6 +67,7 @@ export interface TeamMemberInfo {
 	name: string;
 	image: string;
 	title: string;
+	experience: string;
 	blurb: string;
 	twitter?: string;
 	linkedin?: string;
