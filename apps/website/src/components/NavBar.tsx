@@ -67,7 +67,6 @@ export default function NavBar({
 			>
 				{/* Add mr-auto and ml-uui-none to the sectionContainer className with double ampersend to place the navbar logo on the left side */}
 				<SectionContainer>
-					{/* TODO update this href to go to the lilypad homepage in the future */}
 					<div className="flex gap-uui-xl items-center">
 						{logo}
 						<div className="gap-uui-xs hidden uui-desktop:flex">
