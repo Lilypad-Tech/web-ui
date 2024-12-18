@@ -8,10 +8,8 @@ const INTER = Inter({ subsets: ["latin"] });
 // metadata isn't allowed on a client layout
 export const metadata: Metadata = {
 	title: "Lilypad Network",
-	description: "Lilypad Network: Experience the Power of Decentralized Computing",
-	icons: {
-		icon: "/favicon.ico",
-	},
+	description:
+		"Lilypad Network: Experience the Power of Decentralized Computing",
 };
 
 export default function RootLayout({
@@ -19,11 +17,5 @@ export default function RootLayout({
 }: {
 	children: React.ReactNode;
 }) {
-	return (
-		<html lang="en">
-			<body className={INTER.className}>
-				<ClientLayout>{children}</ClientLayout>
-			</body>
-		</html>
-	);
+	return <ClientLayout>{children}</ClientLayout>;
 }

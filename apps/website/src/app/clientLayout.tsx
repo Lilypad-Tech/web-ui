@@ -45,7 +45,7 @@ export default function ClientLayout({
 	);
 	const pathname = usePathname();
 	const { strapi, isLoading: isCmsLoading } = useStrapi({ pathname });
-	console.log(strapi, isCmsLoading);
+
 	const resourcesArray = [
 		{
 			title: "Discord",
@@ -296,9 +296,6 @@ export default function ClientLayout({
 													(item, index) => (
 														<_NavMenuItem
 															key={index}
-															description={
-																item.description
-															}
 															title={item.title}
 															iconUrl={
 																item.iconUrl
@@ -323,9 +320,6 @@ export default function ClientLayout({
 															(item, index) => (
 																<_NavMenuItem
 																	key={index}
-																	description={
-																		item.description
-																	}
 																	title={
 																		item.title
 																	}
@@ -365,9 +359,6 @@ export default function ClientLayout({
 															(item, index) => (
 																<_NavMenuItem
 																	key={index}
-																	description={
-																		item.description
-																	}
 																	title={
 																		item.title
 																	}
