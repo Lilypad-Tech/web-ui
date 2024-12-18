@@ -72,7 +72,6 @@ export default function Teams() {
 							title="Meet the Lilypad team"
 							subtitle="A multi-disciplinary, diverse team at the intersection of AI and crypto, building an accessible, community-driven network empowering next generation of open web innovation."
 						></CenterHeadingSection>
-						{/* TODO: Add diversity stats? */}
 					</SectionContainer>
 				</div>
 				<div className="bg-uui-bg-primary w-full">
@@ -172,7 +171,7 @@ export default function Teams() {
 				    <animated.div
 				      ref={teamSection3Ref}
 				      style={teamSection3Springs}
-				      className="pt-uui-7xl lg:pt-uui-9xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-uui-4xl gap-y-uui-6xl justify-items-center"
+				      className="pt-uui-7xl lg:pt-uui-9xl flex flex-row justify-center gap-x-uui-2xl gap-y-uui-6xl justify-items-center"
 				    >
 				      {partners.length > 0 ? (
 				        partners.map((partner, index) => (
@@ -195,9 +194,7 @@ export default function Teams() {
 					{/* TODO: Fix render bug */}
 				  	{/* <SectionContainer className="pb-uui-7xl lg:pb-uui-8xl">
 						<animated.div>
-							<SocialProofSection
-								title="Trusted by"
-							></SocialProofSection>
+							<SocialProofSection />
 						</animated.div>
 					</SectionContainer> */}
 				</SectionContainer>
