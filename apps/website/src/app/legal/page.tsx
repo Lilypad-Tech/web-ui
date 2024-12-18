@@ -1,6 +1,6 @@
 import ContentItem from "@/components/ContentItem/ContentItem";
 import PrivacyPolicy from "@/components/Legal/PrivacyPolicy";
-import Terms from "@/components/Legal/terms";
+import Terms from "@/components/Legal/Terms";
 
 const Legal = () => {
 	return (
