@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button, InputField } from "@lilypad/shared-components";
 import { sendEmail } from "@/utils/sendEmail"; // Assuming the utility function exists
+import { ToastContainer, toast } from 'react-toastify';
 
 export function NewsletterForm() {
   const [email, setEmail] = useState<string>("");
@@ -11,20 +12,20 @@ export function NewsletterForm() {
     e.preventDefault();
 
     if (!email) {
-      setMessage("Please enter a valid email.");
+      toast.warning("Please enter a valid email.");
       return;
     }
 
     setLoading(true);
     try {
-      const successMessage = await sendEmail(email, "newsletter");
-      setMessage(successMessage);
-      setEmail("");
-    } catch (error: any) {
-      setMessage(error.message);
-    } finally {
-      setLoading(false);
-    }
+		const successMessage = await sendEmail(email, "subscribe");
+		toast.success(successMessage || "Successfully subscribed to the newsletter!");
+		setEmail("");
+	} catch (error: any) {
+		toast.error(error.message || "Failed to subscribe. Please try again.");
+	} finally {
+		setLoading(false);
+	}
   };
 
   return (
@@ -79,6 +80,7 @@ export function NewsletterForm() {
       {message && (
         <p className="text-uui-text-primary-800 mt-uui-xl text-sm">{message}</p>
       )}
+	  <ToastContainer />
     </div>
   );
 }
