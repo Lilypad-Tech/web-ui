@@ -75,7 +75,7 @@ export default function PrivacyPolicy() {
 					<ContentItem
 						size="md"
 						className="py-uui-4xl"
-						heading="4. Links"
+						heading="5. Links"
 						paragraph="Our website may contain links to documentation, blogs, and other resources hosted on third-party platforms but managed by Lilypad Network Inc. While we make every effort to ensure the security and privacy of these resources, please be aware that accessing these resources may involve third-party services (e.g., hosting or content delivery networks) with their own privacy practices. Lilypad Network Inc. is not responsible for the privacy practices or policies of these third-party platforms. We encourage users to review the privacy policies of these platforms before interacting with the content."
 					/>
 				</section>
