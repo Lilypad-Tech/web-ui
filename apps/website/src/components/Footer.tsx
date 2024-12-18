@@ -42,6 +42,7 @@ const Footer = ({ socialLinks, footerIcon }: FooterProps) => {
 								href="https://docs.lilypad.tech/lilypad/lilypad-testnet/architecture"
 								title="Architecture"
 							/>
+							{/* TODO: Uncomment when litepaper is ready */}
 							{/* <_FooterLink
 								href="#whitepaper"
 								title="Whitepaper"
@@ -49,8 +50,9 @@ const Footer = ({ socialLinks, footerIcon }: FooterProps) => {
 						</_FooterLinksColumn>
 						<_FooterLinksColumn>
 							<_FooterLinksHeader title="Legal" />
-							<_FooterLink href="/privacy-policy" title="Privacy" />
-							<_FooterLink href="/privacy-policy#cookies" title="Cookies" />
+							<_FooterLink href="/legal#privacy" title="Privacy Policy" />
+							<_FooterLink href="/legal#terms" title="Terms of Use" />
+							<_FooterLink href="/legal#cookies" title="Cookies" />
 						</_FooterLinksColumn>
 					</div>
 				</div>
