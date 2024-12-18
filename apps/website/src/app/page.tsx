@@ -37,7 +37,7 @@ export default function Home() {
 	const socialLinks = [
 		{ href: "https://twitter.com/lilypad_tech", iconUrl: "/x.svg" },
 		{
-			href: "https://discord.gg/lilypad-network",
+			href: "https://lilypad.team/discord",
 			iconUrl: "/discord.svg",
 		},
 		{

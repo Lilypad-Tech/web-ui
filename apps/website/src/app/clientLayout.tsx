@@ -51,7 +51,7 @@ export default function ClientLayout({
 			title: "Discord",
 			iconUrl: "/discord.svg",
 			target: "_blank",
-			href: "https://discord.gg/lilypad-network",
+			href: "https://lilypad.team/discord",
 		},
 		{
 			title: "Blog",
@@ -74,7 +74,7 @@ export default function ClientLayout({
 		{
 			title: "Media Kit",
 			iconUrl: imagesCamera01,
-			href: "/https://lilypadnetwork.notion.site/Press-Kit-d1d4e16d558d419c9bc502ade1404e17",
+			href: "https://lilypadnetwork.notion.site/Press-Kit-d1d4e16d558d419c9bc502ade1404e17",
 			target: "_self",
 		},
 		{
@@ -104,13 +104,13 @@ export default function ClientLayout({
 			href: "/#roadmap",
 			target: "_self",
 		},
-		{
-			// TODO: Add link to press page when ready
-			title: "Press/Media",
-			iconUrl: mediaAndDevicesTv03,
-			href: "/page for press overview",
-			target: "_self",
-		},
+		// {
+		// 	// TODO: Add link to press page when ready
+		// 	title: "Press/Media",
+		// 	iconUrl: mediaAndDevicesTv03,
+		// 	href: "/page for press overview",
+		// 	target: "_self",
+		// },
 		{
 			title: "Use Cases",
 			iconUrl: mediaAndDevicesLightbulb05,
@@ -122,7 +122,7 @@ export default function ClientLayout({
 	const footerSocialLinks = [
 		{ href: "https://twitter.com/lilypad_tech", iconUrl: "/x.svg" },
 		{
-			href: "https://discord.gg/lilypad-network",
+			href: "https://lilypad.team/discord",
 			iconUrl: "/discord.svg",
 		},
 		{
