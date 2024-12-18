@@ -23,12 +23,19 @@ import useFade from "./hooks/UseFade";
 import useFadeInView from "./hooks/UseFadeInView";
 import { PageContext } from "./clientLayout";
 import { HomePageCmsInfo } from "./hooks/strapi/types";
-import { Player } from '@lottiefiles/react-lottie-player';
 import RoadmapFull from "@/components/Roadmap/RoadmapFull";
 import { CallToActions } from "@/components/FooterBlock/CallToActions";
 // import { sendEmail } from "@/utils/sendEmail";
 import { ToastContainer, toast } from 'react-toastify';
+import dynamic from 'next/dynamic'
 
+const Player = dynamic(
+  () => import('@lottiefiles/react-lottie-player').then((mod) => mod.Player),
+  {
+    ssr: false,
+    loading: () => <div>Loading...</div>
+  }
+);
 export default function Home() {
 	const [loading, setLoading] = useState<boolean>(false);
 	const [email, setEmail] = useState("");
