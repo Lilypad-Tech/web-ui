@@ -10,6 +10,9 @@ export const metadata: Metadata = {
 	title: "Lilypad Network",
 	description:
 		"Lilypad Network: Experience the Power of Decentralized Computing",
+	icons: {
+		icon: "/lilypad-icon.svg", // Path to the favicon
+	},
 };
 
 export default function RootLayout({

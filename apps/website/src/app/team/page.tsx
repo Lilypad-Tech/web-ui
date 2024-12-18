@@ -39,6 +39,7 @@ export default function Teams() {
 					content="width=device-width, initial-scale=1"
 				/>
 				<link rel="canonical" href="/" />
+				<link rel="icon" href="/lilypad-icon.svg" />
 				<meta
 					property="og:title"
 					content="The Lilypad Network - Revolutionizing Decentralized Computing"
