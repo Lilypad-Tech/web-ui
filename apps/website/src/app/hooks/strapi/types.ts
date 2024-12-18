@@ -15,6 +15,7 @@ export interface HomePageCmsInfo {
   trusted_bies: {
     src: string;
     alt: string;
+	href: string;
   }[];
 }
 
@@ -79,6 +80,7 @@ export interface TrustedByInfo {
 	image: {
 		url: string;
 	};
+	href: string;
 }
 
 export interface StrapiResponse {
