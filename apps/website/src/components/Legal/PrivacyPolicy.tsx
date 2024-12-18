@@ -96,7 +96,7 @@ export default function PrivacyPolicy() {
 					/>
 					<ul className="list-disc pl-5 space-y-2 text-uui-text-tertiary-600">
 						<li>Managing Cookies: You can configure your browser to refuse cookies or alert you when cookies are being sent.</li>
-						<li>Unsubscribing from Emails: You can opt out of our newsletter at any time by using the "Unsubscribe" link or contacting us directly.</li>
+						<li>Unsubscribing from Emails: You can opt out of our newsletter at any time by using the &quot;Unsubscribe&quot; link or contacting us directly.</li>
 					</ul>
 				</section>
 				<section>
