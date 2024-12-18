@@ -19,7 +19,6 @@ const Advisor = ({
   experience,
   socialIcons,
 }: AdvisorProps) => {
-	console.log(experience)
 	return (
 		<div className="flex flex-col items-center text-center bg-inherit p-4 rounded-lg h-full max-w-[19rem] md:max-w-[15rem]">
 		{src && (
