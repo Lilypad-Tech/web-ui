@@ -4,7 +4,7 @@ import IconAtom from "../IconAtom/IconAtom";
 interface _NavMenuItemProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
 	iconUrl: string;
 	title: string;
-	description: string;
+	description?: string;
 	onClick?: () => void;
 }
 
@@ -31,9 +31,11 @@ const _NavMenuItem = ({
 					<div className="font-semibold text-uui-text-primary-900 antialiased uui-text-md">
 						{title}
 					</div>
-					<div className="uui-text-sm font-regular text-uui-text-tertiary-600 antialiased">
-						{description}
-					</div>
+					{description &&
+						<div className="uui-text-sm font-regular text-uui-text-tertiary-600 antialiased">
+							{description}
+						</div>
+					}
 				</div>
 			</a>
 		</li>
