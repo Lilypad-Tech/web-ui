@@ -2,17 +2,13 @@ import { useContext } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { PageContext } from "../../app/clientLayout";
 import { HomePageCmsInfo } from "../../app/hooks/strapi/types";
 
-interface SocialProofSectionProps {
-	title: string;
+interface SocialProofProps {
+	strapi: HomePageCmsInfo;
 }
 
-const SocialProofSection = ({ title }: SocialProofSectionProps) => {
-	const { strapi } = useContext(PageContext) as { strapi: HomePageCmsInfo };
-
-	// Use trustedBies from the context
+const SocialProofSection = ({ strapi }: SocialProofProps) => {
 	const trustedByArray = strapi?.trusted_bies || [];
 
 	const settings = {
@@ -32,28 +28,28 @@ const SocialProofSection = ({ title }: SocialProofSectionProps) => {
 			},
 			{
 				breakpoint: 768,
-				settings: { slidesToShow: 3 },
+				settings: { slidesToShow: 4 },
 			},
 			{
 				breakpoint: 576,
-				settings: { slidesToShow: 2 },
+				settings: { slidesToShow: 3 },
 			},
 		],
 	};
 
 	return (
-		<div className="flex flex-col w-full items-center space-y-uui-2xl lg:space-y-uui-4xl">
-			<span className="uui-text-sm md:uui-text-md font-medium text-uui-text-primary-900 antialiased">
-				{title}
+		<div className="flex flex-col w-full items-center space-y-uui-xl">
+			<span className="text-uui-text-brand-secondary-700 font-semibold antialiased uui-text-md md:uui-text-lg">
+				Trusted by
 			</span>
 			<Slider {...settings} className="w-full">
 				{trustedByArray?.map(({ src, alt, href }, index) => (
-					<div key={index} className="flex items-center px-4">
+					<div key={index} className="single-partner-item">
 						<a href={href} target="_blank" rel="noopener noreferrer">
 							<img
 								src={src}
-								alt={alt}
-								className="flex items-center w-52 h-24 object-contain transition-opacity duration-300 opacity-80 hover:opacity-100"
+								alt={`${alt} Partner Logo` || "Partner Logo"}
+								className="w-32 h-20 md:w-36 md:h-24 object-contain mx-auto"
 							/>
 						</a>
 					</div>
