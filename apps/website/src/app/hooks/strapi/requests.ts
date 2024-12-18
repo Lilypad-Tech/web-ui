@@ -1,132 +1,124 @@
 import { TrustedByInfo } from "./types";
 
-const cms_base_url = process.env.NEXT_PUBLIC_STRAPI_URL;
-const cms_home_url = cms_base_url?.replace("/api", "");
+const cms_base_url = process.env.NEXT_PUBLIC_STRAPI_URL!;
+const cms_home_url = cms_base_url.replace("/api", "");
 
-export function getHomepageInfo() {
-  return new Promise((resolve, reject) => {
-    fetch(
-      `${cms_base_url}/website-homepage?populate[header_image][fields][0]=url&populate[header_lottie][fields][0]=url`, 
-      {
-        headers: {
-          authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API}`,
-        },
-      }
-    )
-      .then((data) => {
-        data.json().then(({ data: info }) => {
-          const homepageInfo = {
-            ...info,
-            header_image_url: info.header_image ? info.header_image.url : null,
-            header_lottie: info.header_lottie ? { url: info.header_lottie.url } : null,
-          };
-          resolve(homepageInfo); // Return the updated homepage info with header image and Lottie file URLs
-        });
-      })
-      .catch((err) => {
-        reject(err);
-      });
+const fetchWithAuth = async (url: string) => {
+  const response = await fetch(url, {
+    headers: {
+      authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API}`,
+    },
   });
+
+  if (!response.ok) {
+    throw new Error(`Failed to fetch ${url}: ${response.statusText}`);
+  }
+
+  return response.json();
+};
+
+export async function getHomepageInfo() {
+  try {
+    const { data: info } = await fetchWithAuth(
+      `${cms_base_url}/website-homepage?populate[header_image][fields][0]=url&populate[header_lottie][fields][0]=url`
+    );
+
+    return {
+      ...info,
+      header_image_url: info.header_image?.url || null,
+      header_lottie: info.header_lottie ? { url: info.header_lottie.url } : null,
+    };
+  } catch (err) {
+    console.error("Error fetching homepage info:", err);
+    throw err;
+  }
 }
 
-export function getTrustedBy() {
-	return new Promise((resolve, reject) => {
-		fetch(
-			`${cms_base_url}/website-trusted-bies?populate[image][fields][0]=url`,
-			{
-				headers: {
-					authorization: `bearer ${process.env.NEXT_PUBLIC_STRAPI_API}`,
-				},
-			}
-		).then((data) => {
-			data.json()
-				.then(({ data: infos }) => {
-					const trustedBies = infos.map((infos: TrustedByInfo) => ({
-						alt: infos.alt,
-						src: cms_home_url + infos.image.url,
-					}));
-					resolve(trustedBies);
-				})
-				.catch((err) => {
-					reject(err);
-				});
-		});
-	});
+export async function getTrustedBy() {
+  try {
+    const { data: infos } = await fetchWithAuth(
+      `${cms_base_url}/website-trusted-bies?populate[image][fields][0]=url`
+    );
+
+    return infos.map((info: TrustedByInfo) => ({
+      alt: info.alt,
+      src: cms_home_url + info.image?.url,
+	  href: info.href
+    }));
+  } catch (err) {
+    console.error("Error fetching trusted by info:", err);
+    throw err;
+  }
 }
 
-export function getTeamAdvisors() {
-  return new Promise((resolve, reject) => {
-    fetch(`${cms_base_url}/team-advisors?populate[Image][fields][0]=url`, {
-      headers: { authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API}` },
-    })
-      .then((data) => data.json())
-      .then(({ data }) => {
-        const advisorsData = data.map((advisor: any) => ({
-          id: advisor.id,
-          documentId: advisor.documentId,
-          Name: advisor.Name,
-          Title: advisor.Title,
-          blurb: advisor.blurb,
-          twitter: advisor.twitter,
-          linkedin: advisor.linkedin,
-          website: advisor.website,
-          Image: advisor.Image ? { url: advisor.Image.url } : null, // Extract Image URL if present
-        }));
-        resolve(advisorsData);
-      })
-      .catch((err) => reject(err));
-  });
+export async function getTeamAdvisors() {
+  try {
+    const { data } = await fetchWithAuth(
+      `${cms_base_url}/team-advisors?populate[Image][fields][0]=url`
+    );
+
+    return data.map((advisor: any) => ({
+      id: advisor.id,
+      documentId: advisor.documentId,
+      Name: advisor.Name,
+      Title: advisor.Title,
+      blurb: advisor.blurb,
+	  experience: advisor.experience,
+      twitter: advisor.twitter,
+      linkedin: advisor.linkedin,
+      website: advisor.website,
+      Image: advisor.Image?.url || null,
+    }));
+  } catch (err) {
+    console.error("Error fetching team advisors:", err);
+    throw err;
+  }
 }
 
-export function getTeamPartners() {
-  return new Promise((resolve, reject) => {
-    fetch(`${cms_base_url}/team-partners?populate[Image][fields][0]=url`, {
-      headers: { authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API}` },
-    })
-      .then((data) => data.json())
-      .then(({ data }) => {
-        const partnersData = data.map((partner: any) => ({
-          id: partner.id,
-          documentId: partner.documentId,
-          Name: partner.Name,
-          Title: partner.Title,
-          blurb: partner.blurb,
-          twitter: partner.twitter,
-          linkedin: partner.linkedin,
-          website: partner.website,
-          Image: partner.Image ? { url: partner.Image.url } : null, // Extract Image URL if present
-        }));
-        resolve(partnersData);
-      })
-      .catch((err) => reject(err));
-  });
+export async function getTeamPartners() {
+  try {
+    const { data } = await fetchWithAuth(
+      `${cms_base_url}/team-partners?populate[Image][fields][0]=url`
+    );
+
+    return data.map((partner: any) => ({
+      id: partner.id,
+      documentId: partner.documentId,
+      Name: partner.Name,
+      Title: partner.Title,
+      blurb: partner.blurb,
+      twitter: partner.twitter,
+      linkedin: partner.linkedin,
+      website: partner.website,
+      Image: partner.Image?.url || null,
+    }));
+  } catch (err) {
+    console.error("Error fetching team partners:", err);
+    throw err;
+  }
 }
 
-export function getTeamCore() {
-	return new Promise((resolve, reject) => {
-		fetch(
-			`${cms_base_url}/team-cores?populate[Image][fields][0]=url`, // Ensure Image field is populated
-			{
-				headers: {
-					authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API}`,
-				},
-			}
-		)
-			.then((data) => data.json())
-			.then(({ data }) => {
-				const teamCoreData = data.map((member: any) => ({
-					id: member.id,
-					documentId: member.documentId,
-					Name: member.Name,
-					Title: member.Title,
-					blurb: member.blurb,
-					twitter: member.twitter,
-					linkedin: member.linkedin,
-					website: member.website,
-					Image: member.Image ? { url: member.Image.url } : null, // Extract Image URL if present
-				}));
-				resolve(teamCoreData);
-			})
-			.catch((err) => reject(err));
-	});
+export async function getTeamCore() {
+  try {
+    const { data } = await fetchWithAuth(
+      `${cms_base_url}/team-cores?populate[Image][fields][0]=url`
+    );
+
+    return data.map((member: any) => ({
+      id: member.id,
+      documentId: member.documentId,
+      Name: member.Name,
+      Title: member.Title,
+      blurb: member.blurb,
+	  experience: member.experience,
+      twitter: member.twitter,
+      linkedin: member.linkedin,
+      website: member.website,
+      Image: member.Image?.url || null,
+	  order: member.order
+    }));
+  } catch (err) {
+    console.error("Error fetching team core members:", err);
+    throw err;
+  }
 }

@@ -16,7 +16,7 @@ const CenterHeadingSection = ({
 }: CenterHeadingSection) => {
 	return (
 		<div
-			className={` ${props.className} bg-uui-bg-secondary py-uui-7xl lg:py-uui-9xl  `}
+			className={` ${props.className} bg-uui-bg-secondary py-uui-4xl lg:py-uui-5xl  `}
 		>
 			<div
 				className="text-center mx-auto  max-w-uui-width-xl

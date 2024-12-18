@@ -1,39 +1,62 @@
-import Image from "next/image";
-import { HTMLAttributes } from "react";
+import { useContext } from "react";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import { HomePageCmsInfo } from "../../app/hooks/strapi/types";
 
-interface SocialProofSectionProps extends HTMLAttributes<HTMLDivElement> {
-	trustedByArray: Array<{ src: string; alt: string }>;
-	title: string;
+interface SocialProofProps {
+	strapi: HomePageCmsInfo;
 }
 
-const SocialProofSection = ({
-	trustedByArray,
-	title,
-	...props
-}: SocialProofSectionProps) => {
+const SocialProofSection = ({ strapi }: SocialProofProps) => {
+	const trustedByArray = strapi?.trusted_bies || [];
+
+	const settings = {
+		dots: false,
+		infinite: true,
+		speed: 500,
+		slidesToShow: 6,
+		slidesToScroll: 1,
+		autoplay: true,
+		autoplaySpeed: 5000,
+		pauseOnHover: false,
+		arrows: false,
+		responsive: [
+			{
+				breakpoint: 1200,
+				settings: { slidesToShow: 5 },
+			},
+			{
+				breakpoint: 768,
+				settings: { slidesToShow: 4 },
+			},
+			{
+				breakpoint: 576,
+				settings: { slidesToShow: 3 },
+			},
+		],
+	};
+
 	return (
-		<div
-			{...props}
-			className={`${props.className} flex flex-col w-full items-center space-y-uui-2xl lg:space-y-uui-4xl`}
-		>
-			<span className="uui-text-sm md:uui-text-md font-medium text-uui-text-primary-900 antialiased">
-				{title}
+		<div className="flex flex-col w-full items-center space-y-uui-xl">
+			<span className="text-uui-text-brand-secondary-700 font-semibold antialiased uui-text-md md:uui-text-lg">
+				Trusted by
 			</span>
-			<div className="flex overflow-x-auto no-scrollbar gap-uui-4xl lg:gap-uui-6xl w-full items-center justify-between ">
-				{(trustedByArray || []).map(({ src, alt }, index) => {
-					return (
-						<Image
-							height={400}
-							width={400}
-							key={index}
-							className="h-6 md:h-8 w-auto"
-							src={src}
-							alt={alt}
-						/>
-					);
-				})}
-			</div>
+			<Slider {...settings} className="w-full">
+				{trustedByArray?.map(({ src, alt, href }, index) => (
+					<div key={index} className="single-partner-item">
+						<a href={href} target="_blank" rel="noopener noreferrer">
+							<img
+								src={src}
+								alt={`${alt} Partner Logo` || "Partner Logo"}
+								className="w-32 h-20 md:w-36 md:h-24 object-contain mx-auto"
+							/>
+						</a>
+					</div>
+				))}
+			</Slider>
 		</div>
 	);
 };
+
 export default SocialProofSection;
