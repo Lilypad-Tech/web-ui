@@ -1,9 +1,9 @@
-name: Website Staging Deploy
+name: Website Deploy
 
 on:
     push:
         branches:
-            - staging # or the branch you want to deploy from
+            - main # or the branch you want to deploy from
     workflow_dispatch:
 
 jobs:
