@@ -40,7 +40,7 @@ const SocialProofSection = ({ strapi }: SocialProofProps) => {
 	return (
 		<div className="flex flex-col w-full items-center space-y-uui-xl">
 			<span className="text-uui-text-brand-secondary-700 font-semibold antialiased uui-text-md md:uui-text-lg">
-				Trusted by
+				Partners & Supporters
 			</span>
 			<Slider {...settings} className="w-full">
 				{trustedByArray?.map(({ src, alt, href }, index) => (
