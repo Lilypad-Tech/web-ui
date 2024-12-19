@@ -1,8 +1,8 @@
 import type { HTMLAttributes } from "react";
-import type { size } from "./AnchorTypes";
+import type { AnchorSize } from "./AnchorTypes";
 
 interface AnchorTextAtomProps extends HTMLAttributes<HTMLSpanElement> {
-	size: size;
+	size: AnchorSize;
 }
 
 const AnchorTextAtom = ({ size, children, ...props }: AnchorTextAtomProps) => {
@@ -12,16 +12,15 @@ const AnchorTextAtom = ({ size, children, ...props }: AnchorTextAtomProps) => {
 		"2xl": " uui-text-lg ",
 	};
 
-	const layer1 =
-		" pointer-events-none font-semibold whitespace-nowrap px-uui-xxs ";
+	const layer1 = "  font-semibold whitespace-nowrap px-uui-xxs ";
 
 	return (
-		<span
+		<div
 			{...props}
-			className={`${props.className} ${textSizes[size]}  ${layer1}`}
+			className={`  ${props.className} ${textSizes[size]}  ${layer1}`}
 		>
 			{children}
-		</span>
+		</div>
 	);
 };
 

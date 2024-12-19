@@ -157,8 +157,8 @@ export default function Home() {
 							</MetricsCard>
 						);
 					})}
-				</SectionContainer> */}
-				{/* <SectionContainer className="mx-auto pt-uui-4xl w-full justify-between flex uui-desktop:gap-uui-3xl gap-uui-2xl sm:flex-row flex-col  snap-x overflow-x-auto no-scrollbar">
+				</SectionContainer>
+				<SectionContainer className="mx-auto pt-uui-4xl w-full justify-between flex uui-desktop:gap-uui-3xl gap-uui-2xl sm:flex-row flex-col  snap-x overflow-x-auto no-scrollbar">
 					{(["Nodes", "JobsCompleted"] as const).map((key, id) => {
 						return (
 							<CardWithBorder
@@ -215,7 +215,11 @@ export default function Home() {
 													height="100%"
 												>
 													<AreaChart
-														data={metricsTransformedData[key]}
+														data={
+															metricsTransformedData[
+																key
+															]
+														}
 														margin={{
 															top: 0,
 															right: 0,

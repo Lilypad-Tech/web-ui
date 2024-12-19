@@ -46,6 +46,17 @@ const Badge = ({
 								badgeType={badgeType}
 								color={color}
 								size={size}
+								type={icon.type}
+							/>
+						)}
+
+						{icon && icon.type === "dot-outline" && (
+							<BadgeDotAtom
+								className={icon.className}
+								badgeType={badgeType}
+								color={color}
+								size={size}
+								type={icon.type}
 							/>
 						)}
 					</>

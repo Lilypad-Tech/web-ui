@@ -6,11 +6,15 @@
 	"main": "index.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"boot": "doppler run --preserve-env --command=\"pnpm i && pnpm -r build\"",
+		"boot": "doppler run --preserve-env --command=\"pnpm i && pnpm -r --filter=!website-cms --filter=!info-dashboard build\"",
 		"dev": "fun() { doppler run --preserve-env -- pnpm --filter $@ dev; }; fun",
 		"preview": "fun() { doppler run --preserve-env -- pnpm --filter $@ preview; }; fun"
 	},
 	"keywords": [],
 	"author": "",
-	"license": "ISC"
+	"license": "ISC",
+	"dependencies": {
+		"@lottiefiles/dotlottie-react": "^0.9.3",
+		"@lottiefiles/react-lottie-player": "^3.5.4"
+	}
 }
