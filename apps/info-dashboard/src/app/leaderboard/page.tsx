@@ -164,7 +164,9 @@ export default function Leaderboard() {
 											leaderboardData
 												? leaderboardData.reduce(
 														(total, node) =>
-															+node.Points +total, 0
+															+node.Points +
+															total,
+														0
 												  )
 												: 0
 										).toLocaleString()}
@@ -527,7 +529,7 @@ export default function Leaderboard() {
 															}
 														/>
 													</td>
-													{/* <td>
+													<td>
 														<TableLeadText
 															title={
 																<Badge
@@ -560,7 +562,7 @@ export default function Leaderboard() {
 																]
 															}
 														/>
-													</td> */}
+													</td>
 													<td>
 														<TableLeadText
 															title={
