@@ -1,40 +1,31 @@
 {
-	"name": "website",
-	"version": "0.1.0",
-	"private": true,
-	"scripts": {
-		"dev": "doppler run --preserve-env -- next dev",
-		"build": "doppler run --preserve-env -- next build",
-		"start": "next start",
-		"lint": "next lint",
-		"test": "vitest",
-		"preview": "pnpm dlx http-server out"
-	},
-	"dependencies": {
-		"@frontline-hq/untitledui-icons": "^0.0.4",
-		"@lilypad/shared-components": "workspace:~",
-		"@react-spring/web": "^9.7.4",
-		"next": "14.2.4",
-		"next-sitemap": "^4.2.3",
-		"react": "^18",
-		"react-dom": "^18",
-		"react-intersection-observer": "^9.13.0",
-		"react-slick": "^0.30.2",
-		"react-toastify": "^11.0.0",
-		"slick-carousel": "^1.8.1",
-		"tailwind-merge": "^2.3.0"
-	},
-	"devDependencies": {
-		"@lilypad/uui-tailwind-styles": "workspace:~",
-		"@types/node": "^20",
-		"@types/react": "^18",
-		"@types/react-dom": "^18",
-		"@types/react-slick": "^0.23.13",
-		"autoprefixer": "^10.4.19",
-		"eslint": "^8",
-		"eslint-config-next": "14.2.4",
-		"postcss": "^8.4.38",
-		"tailwindcss": "^3.4.3",
-		"typescript": "^5"
-	}
+  "name": "website",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "doppler run --preserve-env -- next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "test": "vitest",
+    "preview": "pnpm dlx http-server out"
+  },
+  "dependencies": {
+    "next": "14.2.4",
+    "react": "^18",
+    "react-dom": "^18",
+	"@lilypad/shared-components": "workspace:~"
+  },
+  "devDependencies": {
+	"@lilypad/uui-tailwind-styles": "workspace:~",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "autoprefixer": "^10.4.19",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.4",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.3",
+    "typescript": "^5"
+  }
 }
