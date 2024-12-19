@@ -44,7 +44,7 @@ const SocialProofSection = ({ strapi }: SocialProofProps) => {
 			</span>
 			<Slider {...settings} className="w-full">
 				{trustedByArray?.map(({ src, alt, href }, index) => (
-					<div key={index} className="single-partner-item">
+					<div key={index} className="single-partner-item px-4 md:px-0">
 						<a href={href} target="_blank" rel="noopener noreferrer">
 							<img
 								src={src}
