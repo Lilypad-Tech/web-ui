@@ -51,7 +51,7 @@ export default function ClientLayout({
 			title: "Discord",
 			iconUrl: "/discord.svg",
 			target: "_blank",
-			href: "https://lilypad.team/discord",
+			href: "https://discord.gg/ywSEGd3d84",
 		},
 		{
 			title: "Blog",
@@ -122,7 +122,7 @@ export default function ClientLayout({
 	const footerSocialLinks = [
 		{ href: "https://twitter.com/lilypad_tech", iconUrl: "/x.svg" },
 		{
-			href: "https://lilypad.team/discord",
+			href: "https://discord.gg/ywSEGd3d84",
 			iconUrl: "/discord.svg",
 		},
 		{

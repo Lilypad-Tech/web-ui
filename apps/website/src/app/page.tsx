@@ -44,7 +44,7 @@ export default function Home() {
 	const socialLinks = [
 		{ href: "https://twitter.com/lilypad_tech", iconUrl: "/x.svg" },
 		{
-			href: "https://lilypad.team/discord",
+			href: "https://discord.gg/ywSEGd3d84",
 			iconUrl: "/discord.svg",
 		},
 		{
@@ -95,7 +95,7 @@ export default function Home() {
 			title: "Build Faster, Together",
 			subtitle:
 				"Accelerate your AI projects. Train and deploy models faster and cheaper, plus connect with a thriving community of AI innovators.",
-			anchorHref: "https://lilypad.team/discord",
+			anchorHref: "https://discord.gg/ywSEGd3d84",
 			anchorText: "Join our community",
 		},
 	];
@@ -283,7 +283,7 @@ export default function Home() {
 								<div className="flex flex-row gap-4">
 									<Anchor
 										target="_blank"
-										href="https://lilypad.team/discord"
+										href="https://discord.gg/ywSEGd3d84"
 										className="[&&]:rounded-full w-full md:w-fit cursor-pointer"
 										color="color"
 										destructive={false}
