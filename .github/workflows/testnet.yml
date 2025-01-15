@@ -3,7 +3,7 @@ name: Deploy Testnet
 on:
     push:
         branches:
-            - main # or the branch you want to deploy from
+            - staging # or the branch you want to deploy from
     workflow_dispatch:
 
 jobs:
