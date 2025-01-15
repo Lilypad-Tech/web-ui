@@ -27,10 +27,10 @@ export const METADATA: Metadata = {
 
 const SOCIALLINKS = [
 	{ href: m.metrics_footer_social_link_twitter(), iconUrl: "/x.svg" },
-	{
-		href: m.metrics_footer_social_link_discord(),
-		iconUrl: "/discord.svg",
-	},
+	// {
+	// 	href: m.metrics_footer_social_link_discord(),
+	// 	iconUrl: "/discord.svg",
+	// },
 	{
 		href: m.metrics_footer_social_link_telegram(),
 		iconUrl: "/telegram.svg",
