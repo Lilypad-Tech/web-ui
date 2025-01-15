@@ -1,7 +1,7 @@
 import { TrustedByInfo } from "./types";
 
 const cms_base_url = process.env.NEXT_PUBLIC_STRAPI_URL!;
-const cms_home_url = cms_base_url.replace("/api", "");
+const cms_home_url = cms_base_url?.replace("/api", "");
 
 const fetchWithAuth = async (url: string) => {
   const response = await fetch(url, {
