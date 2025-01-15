@@ -114,7 +114,7 @@ export default function Teams() {
 							<p className="text-uui-text-tertiary-600 uui-text-lg md:uui-text-xl font-regular">Want to learn more about our team?</p>
 							<Anchor
 								target="_blank"
-								href="https://lilypad.team/presskit"
+								href="https://lilypadnetwork.notion.site/Press-Kit-d1d4e16d558d419c9bc502ade1404e17"
 								className="[&&]:rounded-full w-full md:w-fit cursor-pointer mx-auto"
 								color="color"
 								destructive={false}

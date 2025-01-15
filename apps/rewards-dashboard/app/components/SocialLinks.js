@@ -1,6 +1,6 @@
 const socialLinks = [
   { href: "https://twitter.com/lilypad_tech", iconUrl: "/x.svg" },
-  { href: "https://discord.gg/lilypad-network", iconUrl: "/discord.svg" },
+  { href: "https://discord.gg/ywSEGd3d84", iconUrl: "/discord.svg" },
   { href: "https://t.me/lilypadnetwork", iconUrl: "/telegram.svg" },
   { href: "https://github.com/Lilypad-Tech", iconUrl: "/github.svg" },
   { href: "https://www.linkedin.com/company/lilypad-network/", iconUrl: "/linkedin.svg" },
