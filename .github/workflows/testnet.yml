@@ -42,7 +42,6 @@ jobs:
               working-directory: ./apps/info-dashboard/.next
               run: |
                   mkdir -p cache
-                  rm -rf cache
 
             - name: Deploy to Cloudflare Pages
               env:
