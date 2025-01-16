@@ -2,7 +2,7 @@ name: Deploy Devnet
 on:
   push:
     branches:
-      - main
+      - staging
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -41,4 +41,4 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.DEVNET_CLOUDFLARE_ACCOUNT_ID }}
           CLOUDFLARE_PROJECT_NAME: ${{ secrets.DEVNET_CLOUDFLARE_PROJECT_NAME }}
         run: |
-          npx wrangler pages deploy ./apps/info-dashboard/out --project-name=$CLOUDFLARE_PROJECT_NAME --branch=main
+          npx wrangler pages deploy ./apps/info-dashboard/out --project-name=$CLOUDFLARE_PROJECT_NAME --branch=staging
