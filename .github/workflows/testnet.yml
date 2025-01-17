@@ -38,10 +38,10 @@ jobs:
               env:
                   DOPPLER_TOKEN: ${{ secrets.TESTNET_DOPPLER_TOKEN }}
 
-            - name: Clean up build output
+            - name: Create output dir
               working-directory: ./apps/info-dashboard/.next
               run: |
-                  mkdir -p cache
+                  mkdir -p ./apps/info-dashboard/out
 
             - name: Deploy to Cloudflare Pages
               env:
