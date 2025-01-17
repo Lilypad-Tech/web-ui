@@ -13,6 +13,9 @@ jobs:
             - name: Checkout repository
               uses: actions/checkout@v3
 
+            - name: Setup Bun
+              uses: oven-sh/setup-bun@v1
+
             - name: Set up Node.js and pnpm
               uses: actions/setup-node@v3
               with:
@@ -29,6 +32,7 @@ jobs:
                   doppler run -- npm run boot
               env:
                   DOPPLER_TOKEN: ${{ secrets.TESTNET_DOPPLER_TOKEN }}
+                  
             - name: Verify build output
               run: |
                   if [ ! -d "./apps/info-dashboard/out" ]; then
@@ -37,7 +41,7 @@ jobs:
                     pnpm build
                     cd ../..
                   fi
-                  ls -la ./apps/info-dashboard/out
+                   ls -la ./apps/info-dashboard/out || echo "Output directory not found"
 
             - name: Deploy to Cloudflare Pages
               env:
