@@ -2,7 +2,7 @@ name: Deploy Testnet
 on:
     push:
         branches:
-            - staging
+            - main
     workflow_dispatch:
 
 jobs:
