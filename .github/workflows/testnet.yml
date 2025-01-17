@@ -3,7 +3,7 @@ name: Deploy Testnet
 on:
     push:
         branches:
-            - staging # or the branch you want to deploy from
+            - staging
     workflow_dispatch:
 
 jobs:
@@ -37,12 +37,7 @@ jobs:
               run: doppler run -- npm run boot
               env:
                   DOPPLER_TOKEN: ${{ secrets.TESTNET_DOPPLER_TOKEN }}
-
-            - name: Create output dir
-              working-directory: ./apps/info-dashboard/.next
-              run: |
-                  mkdir -p ./apps/info-dashboard/out
-
+                  
             - name: Deploy to Cloudflare Pages
               env:
                   CLOUDFLARE_API_TOKEN: ${{ secrets.TESTNET_CLOUDFLARE_API_TOKEN }}
