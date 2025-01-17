@@ -49,4 +49,4 @@ jobs:
                   CLOUDFLARE_ACCOUNT_ID: ${{ secrets.TESTNET_CLOUDFLARE_ACCOUNT_ID }}
                   CLOUDFLARE_PROJECT_NAME: ${{ secrets.TESTNET_CLOUDFLARE_PROJECT_NAME }}
               run: |
-                  npx wrangler pages deploy ./apps/info-dashboard/out --project-name=$CLOUDFLARE_PROJECT_NAME --branch=staging --commit-dirty=true
+                  npx wrangler pages deploy ./apps/info-dashboard/out --project-name=$CLOUDFLARE_PROJECT_NAME --branch=main --production --commit-dirty=true
