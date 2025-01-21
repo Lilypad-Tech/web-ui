@@ -18,8 +18,4 @@ export default paraglide({
         outdir: "./src/paraglide",
     },
     ...nextConfig,
-<<<<<<< Updated upstream
 });
-=======
-});
->>>>>>> Stashed changes
