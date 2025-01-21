@@ -16,10 +16,21 @@ import {
 import { NodesEndpointReturnType } from "./nodes";
 
 export async function fetchLeaderboard() {
-	const API_HOST = process.env.NEXT_PUBLIC_API_HOST;
-	const leaderboard_url = `${API_HOST}metrics-dashboard/leaderboard`;
-	const raw = await fetch(leaderboard_url);
-	return (await raw.json()) as LeaderboardReturnType;
+    // Add default value and trim any trailing slashes
+    const API_HOST = (process.env.NEXT_PUBLIC_API_HOST || '').replace(/\/$/, '');
+    // Add error handling and logging
+    try {
+        const leaderboard_url = `${API_HOST}/metrics-dashboard/leaderboard`;
+        console.log('Fetching from:', leaderboard_url); // Debug log
+        const raw = await fetch(leaderboard_url);
+        if (!raw.ok) {
+            throw new Error(`HTTP error! status: ${raw.status}`);
+        }
+        return (await raw.json()) as LeaderboardReturnType;
+    } catch (error) {
+        console.error('Error fetching leaderboard:', error);
+        throw error;
+    }
 }
 
 export function toTableData({
