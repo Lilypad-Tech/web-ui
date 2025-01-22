@@ -43,10 +43,11 @@ jobs:
                   fi
                    ls -la ./apps/info-dashboard/out || echo "Output directory not found"
 
-            - name: Deploy to Cloudflare Pages
-              env:
-                  CLOUDFLARE_API_TOKEN: ${{ secrets.TESTNET_CLOUDFLARE_API_TOKEN }}
-                  CLOUDFLARE_ACCOUNT_ID: ${{ secrets.TESTNET_CLOUDFLARE_ACCOUNT_ID }}
-                  CLOUDFLARE_PROJECT_NAME: ${{ secrets.TESTNET_CLOUDFLARE_PROJECT_NAME }}
-              run: |
-                  npx wrangler pages deploy ./apps/info-dashboard/out --project-name=$CLOUDFLARE_PROJECT_NAME --branch=main --commit-dirty=true
+           - name: Deploy to Cloudflare Pages
+  env:
+    CLOUDFLARE_API_TOKEN: ${{ secrets.TESTNET_CLOUDFLARE_API_TOKEN }}
+    CLOUDFLARE_ACCOUNT_ID: ${{ secrets.TESTNET_CLOUDFLARE_ACCOUNT_ID }}
+    CLOUDFLARE_PROJECT_NAME: ${{ secrets.TESTNET_CLOUDFLARE_PROJECT_NAME }}
+    NEXT_PUBLIC_API_HOST: ${{ secrets.NEXT_PUBLIC_API_HOST }}
+  run: |
+    npx wrangler pages deploy out --project-name=$CLOUDFLARE_PROJECT_NAME --branch=main --env NEXT_PUBLIC_API_HOST=$NEXT_PUBLIC_API_HOST
