@@ -49,6 +49,6 @@ jobs:
           CLOUDFLARE_API_TOKEN: ${{ secrets.TESTNET_CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.TESTNET_CLOUDFLARE_ACCOUNT_ID }}
           CLOUDFLARE_PROJECT_NAME: ${{ secrets.TESTNET_CLOUDFLARE_PROJECT_NAME }}
-          NEXT_PUBLIC_API_HOST: ${{ secrets.NEXT_PUBLIC_API_HOST }}
+        working-directory: ./apps/info-dashboard
         run: |
-          npx wrangler pages deploy out --project-name=$CLOUDFLARE_PROJECT_NAME --branch=main --vars NEXT_PUBLIC_API_HOST:$NEXT_PUBLIC_API_HOST
+          npx wrangler pages deploy out --project-name=$CLOUDFLARE_PROJECT_NAME --branch=main
