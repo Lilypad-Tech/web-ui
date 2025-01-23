@@ -52,7 +52,7 @@ export function NewsletterForm() {
           {{
             hint: (
               <span className="">
-                We care about your data in our{" "}
+                We care about your data. See our{" "}
                 <a
                   href="/privacy-policy"
                   target="_blank"
