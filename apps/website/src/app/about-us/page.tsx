@@ -64,7 +64,7 @@ export default function Teams() {
 								titleClassName="uui-display-lg [&&]:md:uui-display-2xl "
 								className="[&&]:bg-transparent pt-uui-7xl lg:pt-uui-9xl [&&]:pb-uui-7xl relative"
 								header="About Lilypad"
-								title="We're on a Mission to Democratize AI, One Job at a Time."
+								title="Lilypad Network: Experience the Power of Decentralized Computing."
 								subtitle="A passionate team leveraging decentralized compute to make AI accessible and empowering for everyone."
 							></CenterHeadingSection>
 						</animated.div>
