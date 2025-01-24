@@ -367,7 +367,7 @@ export default function Home() {
 					</animated.div>
 				</SectionContainer>
 				<div className="bg-uui-bg-secondary p-uui-7xl lg:py-uui-9xl">
-					{/* <SectionContainer>
+					<SectionContainer>
 						<div className="text-center mx-auto max-w-uui-width-2xl">
 							<animated.h3
 								className="text-uui-text-brand-secondary-700 font-semibold antialiased uui-text-md md:uui-text-lg"
@@ -384,17 +384,17 @@ export default function Home() {
 								{strapi?.mission_statement}
 							</animated.h5>
 						</div>
-					</SectionContainer> */}
-					<SectionContainer className="pt-uui-7xl">
+					</SectionContainer>
+					<SectionContainer className="">
 						<div className="max-w-[45rem] md:py-uui-9xl mx-auto">
 							<ContentItem
 								size="xl"
 								heading="Our story"
-								paragraph="A Story of Empowering AI for All, Fueled by Two Trailblazers"
+								paragraph="A Story Two Trailblazers Empowering AI for All"
 							/>
 							<ContentItem
 								size="md"
-								paragraph="Lilypad's journey began with Ally, a software engineer with a diverse background spanning cafes and cutting-edge tech, and Stanley, a bioinformatician driven by a passion for open science and accessible research. Together, they were frustrated by a common obstacle: brilliant minds with groundbreaking AI ideas, held back by the lack of access to powerful computing resources."
+								paragraph="Lilypad's journey began with Ally, a software engineer with a diverse background in cutting edge technologies, and Stanley, a bioinformatician driven by a passion for open science and accessible research. They recognize that there is a wealth of groundbreaking AI ideas who are held back by the lack of access to powerful computing resources."
 							/>
 							<ContentItem
 								size="md"

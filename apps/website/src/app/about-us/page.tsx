@@ -22,9 +22,11 @@ import Image from "next/image";
 import FeaturedIcon from "@/components/FeaturedIcon/FeaturedIcon";
 import _FeatureText from "@/components/_FeatureText/_FeatureText";
 import useFade from "../hooks/UseFade";
-import { animated } from "@react-spring/web";
+import { useSpring, animated } from "@react-spring/web";
 import { NewsletterForm } from "@/components/Forms/NewsletterForm";
 import { CallToActions } from "@/components/FooterBlock/CallToActions";
+import React, { useEffect, useState, useRef } from 'react';
+
 
 export default function Teams() {
 	const fadeLandingspage = useFade();
@@ -79,6 +81,8 @@ export default function Teams() {
 						height={304}
 						src="/geo-shapes-lilypad.svg"
 					/>
+					
+
 					{/* <SectionContainer className="pt-uui-7xl">
 						<div className="max-w-[45rem] md:py-uui-9xl mx-auto">
 							<ContentItem
