@@ -279,7 +279,7 @@ export default function Home() {
 									<h1>open</h1>
 								</div>
 								<h5 className="pb-uui-4xl md:pb-uui-6xl uui-text-lg md:uui-text-xl font-regular text-uui-text-tertiary-600">
-									Access a decentralized global compute network
+								   Unlocking the possible. One Job at a time.
 								</h5>
 								<div className="flex flex-row gap-4">
 									<Anchor

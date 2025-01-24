@@ -24,7 +24,7 @@ export default function RoadmapFull() {
 				title="Lilypad Incentivized Testnet (running until Mainnet)"
 			/>
 			<RoadmapItem
-				header="Q4 2024"
+				header="Q1 2025"
 				subtitle="The Lilypad Whitepaper and Tokenomics will be released, providing a detailed roadmap for the future. In partnership with the CryptoEconLab, the Lilypad Research Team will meticulously craft the economic systems that will power Lilypad at Mainnet, ensuring a fair and incentivized environment for all participants."
 				title="Whitepaper and tokenomics"
 			/>
