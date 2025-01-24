@@ -26,10 +26,13 @@ import { useSpring, animated } from "@react-spring/web";
 import { NewsletterForm } from "@/components/Forms/NewsletterForm";
 import { CallToActions } from "@/components/FooterBlock/CallToActions";
 import React, { useEffect, useState, useRef } from 'react';
+import AnimateSpring from "@/components/AnimateSpring";;
+import useFadeInView from "../hooks/UseFadeInView";
 
 
 export default function Teams() {
 	const fadeLandingspage = useFade();
+	const [missionStatementRef, missionStatementSprings] = useFadeInView();
 	return (
 		<>
 			<Head>
@@ -81,7 +84,41 @@ export default function Teams() {
 						height={304}
 						src="/geo-shapes-lilypad.svg"
 					/>
-					
+					<SectionContainer>
+					<div className="max-w-[45rem] md:py-uui-9xl mx-auto">
+						<div className="text-center mx-auto max-w-uui-width-2xl">
+				
+							<br/>
+							<br/>
+							<br/>
+							<animated.h3
+								className="text-uui-text-brand-secondary-700 font-semibold antialiased uui-text-md md:uui-text-lg"
+								style={missionStatementSprings}
+								ref={missionStatementRef}
+							>
+								Mission Statement
+							</animated.h3>
+							
+							<ContentItem
+								size="lg"
+								paragraph="We are building the most accessible GPU network for AI innovators, providing the distributed compute resources needed to push the boundaries of what's possible."
+							/>
+							<ContentItem
+								size="lg"
+								paragraph="We are democratizing access to AI and Agentic computing resources by fostering an open, equitable, and accessible ecosystem for running AI & Agentic compute jobs."
+							/>
+							<br/>
+							<br/>
+							{/* <animated.h5
+								className="text-uui-text-tertiary-600 uui-text-lg md:uui-text-xl font-normal pt-uui-lg"
+								style={missionStatementSprings}
+								ref={missionStatementRef}
+							>
+								{strapi?.mission_statement}
+							</animated.h5> */}
+						</div>
+					</div>
+					</SectionContainer>
 
 					{/* <SectionContainer className="pt-uui-7xl">
 						<div className="max-w-[45rem] md:py-uui-9xl mx-auto">
