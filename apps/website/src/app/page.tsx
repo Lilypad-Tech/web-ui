@@ -27,7 +27,8 @@ import RoadmapFull from "@/components/Roadmap/RoadmapFull";
 import { CallToActions } from "@/components/FooterBlock/CallToActions";
 // import { sendEmail } from "@/utils/sendEmail";
 import { ToastContainer, toast } from 'react-toastify';
-import dynamic from 'next/dynamic'
+import dynamic from 'next/dynamic';
+import ContentItem from "@/components/ContentItem/ContentItem";
 
 const Player = dynamic(
   () => import('@lottiefiles/react-lottie-player').then((mod) => mod.Player),
@@ -366,7 +367,7 @@ export default function Home() {
 					</animated.div>
 				</SectionContainer>
 				<div className="bg-uui-bg-secondary p-uui-7xl lg:py-uui-9xl">
-					<SectionContainer>
+					{/* <SectionContainer>
 						<div className="text-center mx-auto max-w-uui-width-2xl">
 							<animated.h3
 								className="text-uui-text-brand-secondary-700 font-semibold antialiased uui-text-md md:uui-text-lg"
@@ -382,6 +383,39 @@ export default function Home() {
 							>
 								{strapi?.mission_statement}
 							</animated.h5>
+						</div>
+					</SectionContainer> */}
+					<SectionContainer className="pt-uui-7xl">
+						<div className="max-w-[45rem] md:py-uui-9xl mx-auto">
+							<ContentItem
+								size="xl"
+								heading="Our story"
+								paragraph="A Story of Empowering AI for All, Fueled by Two Trailblazers"
+							/>
+							<ContentItem
+								size="md"
+								paragraph="Lilypad's journey began with Ally, a software engineer with a diverse background spanning cafes and cutting-edge tech, and Stanley, a bioinformatician driven by a passion for open science and accessible research. Together, they were frustrated by a common obstacle: brilliant minds with groundbreaking AI ideas, held back by the lack of access to powerful computing resources."
+							/>
+							<ContentItem
+								size="md"
+								paragraph="Ally, with her experience at IBM and Protocol Labs, and Stanley, with his decade of expertise in high-performance computing for medical research, knew there had to be a better way. They saw a world where innovation was bottlenecked, not by a lack of talent, but by the scarcity of affordable compute."
+							/>
+							<ContentItem
+								size="md"
+								paragraph="Their solution? Harness the untapped potential of billions of idle personal computers. Lilypad was born from this vision – a decentralized network democratizing access to AI compute. By leveraging blockchain technology and smart contracts, Lilypad connects those with spare compute to those who need it, ensuring transparency, security, and fair compensation for all."
+							/>
+							<ContentItem
+								size="md"
+								paragraph={`"We're creating a protocol where compute jobs are matched dynamically with nodes," explains Ally, "ensuring optimized resource allocation without middlemen overheads." This peer-to-peer marketplace for computational tasks significantly lowers the computing cost compared to traditional services.`}
+							/>
+							<ContentItem
+								size="md"
+								paragraph="For Stanley, Lilypad is a platform to advance his mission of applying machine learning to biological research. He envisions a future where Lilypad's computing power accelerates personalized medicine and genetic research breakthroughs, like drastically reducing the cost of genome sequencing."
+							/>
+							<ContentItem
+								size="md"
+								paragraph="Lilypad is a testament to Ally and Stanley's shared belief: the future of AI should be open, accessible, and community-driven. With their combined vision and expertise, they're making that future a reality, one hop at a time."
+							/>
 						</div>
 					</SectionContainer>
 				</div>

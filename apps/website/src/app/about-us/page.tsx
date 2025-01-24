@@ -79,7 +79,7 @@ export default function Teams() {
 						height={304}
 						src="/geo-shapes-lilypad.svg"
 					/>
-					<SectionContainer className="pt-uui-7xl">
+					{/* <SectionContainer className="pt-uui-7xl">
 						<div className="max-w-[45rem] md:py-uui-9xl mx-auto">
 							<ContentItem
 								size="xl"
@@ -111,7 +111,7 @@ export default function Teams() {
 								paragraph="Lilypad is a testament to Ally and Stanley's shared belief: the future of AI should be open, accessible, and community-driven. With their combined vision and expertise, they're making that future a reality, one hop at a time."
 							/>
 						</div>
-					</SectionContainer>
+					</SectionContainer> */}
 				</div>
 
 				<div className="bg-uui-bg-secondary pt-uui-9xl pb-uui-11xl">
