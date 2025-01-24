@@ -367,7 +367,7 @@ export default function Home() {
 					</animated.div>
 				</SectionContainer>
 				<div className="bg-uui-bg-secondary p-uui-7xl lg:py-uui-9xl">
-					<SectionContainer>
+					{/* <SectionContainer>
 						<div className="text-center mx-auto max-w-uui-width-2xl">
 							<animated.h3
 								className="text-uui-text-brand-secondary-700 font-semibold antialiased uui-text-md md:uui-text-lg"
@@ -384,13 +384,14 @@ export default function Home() {
 								{strapi?.mission_statement}
 							</animated.h5>
 						</div>
-					</SectionContainer>
+					</SectionContainer> */}
 					<SectionContainer className="">
-						<div className="max-w-[45rem] md:py-uui-9xl mx-auto">
+						{/* <div className="max-w-[45rem] md:py-uui-9xl mx-auto"> */}
+						<div className="max-w-[45rem] mx-auto">
 							<ContentItem
 								size="xl"
-								heading="Our story"
-								paragraph="A Story Two Trailblazers Empowering AI for All"
+								heading="Our Story"
+								paragraph="A Story of Two Trailblazers Empowering AI for All"
 							/>
 							<ContentItem
 								size="md"
@@ -398,19 +399,27 @@ export default function Home() {
 							/>
 							<ContentItem
 								size="md"
-								paragraph="Ally, with her experience at IBM and Protocol Labs, and Stanley, with his decade of expertise in high-performance computing for medical research, knew there had to be a better way. They saw a world where innovation was bottlenecked, not by a lack of talent, but by the scarcity of affordable compute."
+								paragraph="Ally, with her background in engineering at IBM and Protocol Labs, and Stanley with a decade of expertise in high-performance computing for medical research, saw a world where innovation was bottlenecked, not by a lack of talent, but by the scarcity of affordable compute."
 							/>
 							<ContentItem
 								size="md"
-								paragraph="Their solution? Harness the untapped potential of billions of idle personal computers. Lilypad was born from this vision – a decentralized network democratizing access to AI compute. By leveraging blockchain technology and smart contracts, Lilypad connects those with spare compute to those who need it, ensuring transparency, security, and fair compensation for all."
+								paragraph="The solution? Harness the untapped potential of billions of idle computers across the globe."
 							/>
 							<ContentItem
 								size="md"
-								paragraph={`"We're creating a protocol where compute jobs are matched dynamically with nodes," explains Ally, "ensuring optimized resource allocation without middlemen overheads." This peer-to-peer marketplace for computational tasks significantly lowers the computing cost compared to traditional services.`}
+								paragraph="Lilypad was born from this vision – a decentralized network democratizing access to AI compute. By leveraging blockchain technology and open communities, Lilypad connects those with spare compute to those who need it, ensuring transparency, security, and fair compensation for all."
 							/>
 							<ContentItem
 								size="md"
-								paragraph="For Stanley, Lilypad is a platform to advance his mission of applying machine learning to biological research. He envisions a future where Lilypad's computing power accelerates personalized medicine and genetic research breakthroughs, like drastically reducing the cost of genome sequencing."
+								paragraph={`"We're creating a protocol where compute jobs are matched dynamically with nodes, ensuring optimized resource allocation without middlemen and overhead." `} 
+							/>
+							<ContentItem
+								size="md"
+								paragraph="Lilypad's peer-to-peer marketplace for computational tasks significantly lowers the computing cost compared to traditional services."
+							/>
+							<ContentItem
+								size="md"
+								paragraph="Stanley is working on Lilypad as a platform to advance his mission of applying machine learning to biological research. He envisions a future where Lilypad's computing power accelerates medical and genetic research breakthroughs."
 							/>
 							<ContentItem
 								size="md"
@@ -418,6 +427,8 @@ export default function Home() {
 							/>
 						</div>
 					</SectionContainer>
+					<br/>
+					<br/>
 				</div>
 
 				<SectionContainer id="products">
@@ -426,7 +437,7 @@ export default function Home() {
 						title="How to use Lilypad"
 						subtitle="Connecting those with idle compute to those who need it, creating a decentralized marketplace for AI compute."
 						header="Decentralized. Accessible. Collaborative."
-					>
+					><br/>
 						<div className="flex mt-uui-7xl  flex-col lg:flex-row space-y-uui-4xl lg:space-y-uui-none lg:space-x-uui-4xl">
 							{productCardsData.map((card, index) => (
 								<ProductCard
@@ -448,7 +459,10 @@ export default function Home() {
 								</ProductCard>
 							))}
 						</div>
+						<br/>
+						<br/>
 					</CenterHeadingSection>
+					
 				</SectionContainer>
 				<SectionContainer id="our-network">
 				<CenterHeadingSection
