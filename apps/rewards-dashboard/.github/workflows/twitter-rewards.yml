@@ -1,0 +1,17 @@
+name: Update Twitter Rewards
+
+on:
+  schedule:
+    - cron: '0 * * * *'  # Run every hour
+  workflow_dispatch:      # Allow manual triggers
+
+jobs:
+  update-rewards:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger rewards update
+        run: |
+          curl -X POST \
+            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Content-Type: application/json" \
+            ${{ github.api_url }}/repos/${{ github.repository }}/api/twitter
