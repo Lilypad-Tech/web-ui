@@ -53,6 +53,7 @@ export default function Home() {
 
 	return contributors.map((contributor) => {
 	  const isAmbassador = currentView === "ambassador";
+	  const isCommunity = currentView === "community";
 	  const isExpanded = expandedRow === contributor?.id || expandedRow === contributor?.username;
 
 	  return (
@@ -61,7 +62,7 @@ export default function Home() {
 			className={`border-b border-gray-700 hover:bg-gray-800 cursor-pointer ${
 			  isExpanded ? "bg-gray-900" : ""
 			}`}
-			onClick={() => !isAmbassador && toggleRow(contributor?.id || contributor?.username)}
+			onClick={() => !isAmbassador && !isCommunity && toggleRow(contributor?.id || contributor?.username)}
 		  >
 			<td className="px-4 py-2">
 			  <div className="flex items-center gap-2">
@@ -77,7 +78,7 @@ export default function Home() {
 				  <div className="contributor-name text-sm font-semibold">
 					{contributor.username}
 				  </div>
-				  {!isAmbassador && (
+				  {!isAmbassador && !isCommunity && (
 					<a
 					  href={`https://github.com/${contributor?.username}`}
 					  target="_blank"
@@ -88,11 +89,22 @@ export default function Home() {
 					  GitHub Profile
 					</a>
 				  )}
+                  {isCommunity && (
+                    <a
+                      href={`https://twitter.com/${contributor?.username}`}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-xs text-blue-500 underline"
+                      aria-label={`Visit ${contributor?.username}'s Twitter profile`}
+                    >
+                      Twitter Profile
+                    </a>
+                  )}
 				</div>
 			  </div>
 			</td>
 			<td className="text-center px-4 py-2">{contributor.rewards || "0"}</td>
-			{!isAmbassador && (
+			{!isAmbassador && !isCommunity && (
 			  <td className="text-center px-4 py-2">
 				{contributor.contributions
 				  ?.split(";")
@@ -102,7 +114,7 @@ export default function Home() {
 			<td className="text-center px-4 py-2">{contributor.wallet_address || "N/A"}</td>
 		  </tr>
 
-		  {!isAmbassador && isExpanded && (
+		  {!isAmbassador && !isCommunity && isExpanded && (
 			<tr>
 			  <td colSpan="4" className="px-4 py-4">
 				<div className="p-4 rounded-lg">
@@ -124,6 +136,7 @@ export default function Home() {
 	openSource: "Open Sourcerors",
 	ambassador: "Ambassadors",
 	modules: "Module Creators",
+    community: "Community Contributors"
   };
 
   return (
@@ -167,12 +180,22 @@ export default function Home() {
             >
               Module Creators
             </button>
+            <button
+              className={`rounded p-1 md:px-4 md:py-2 text-sm md:text-lg text-center cursor-pointer hover:bg-[#272d35] ${
+                currentView === "community"
+                  ? "bg-[#272D35] text-[#e0fff9] border"
+                  : "bg-[#181c21] text-text-color"
+              }`}
+              onClick={() => setCurrentView("community")}
+            >
+              Community
+            </button>
           </div>
           <div className="flex flex-col items-center gap-2">
             <div className="text-center text-sm md:text-md leading-7 text-[#E0FFF9] font-semibold antialiased" style={{ minWidth: '200px' }}>
               {loading ? (
                 <span aria-live="polite">Loading...</span>
-              ) : currentView !== "ambassador" ? (
+              ) : currentView !== "ambassador" && currentView !== "community" ? (
                 <span>
                   {`Total Contributions: ${contributors.reduce((total, contributor) => {
                     const count = contributor?.contributions?.split(";").filter(Boolean).length || 0;
@@ -183,7 +206,7 @@ export default function Home() {
                 <span>{`Total Contributors: ${contributors?.length || 0}`}</span>
               )}
             </div>
-            {currentView !== "ambassador" && (
+            {currentView !== "ambassador" && currentView !== "community" && (
               <label className="block">
                 <span className="sr-only">Sort contributions</span>
                 <select
@@ -214,7 +237,7 @@ export default function Home() {
                   <tr className="border-b border-gray-600">
                     <th className="text-left px-4 py-2">Contributor</th>
                     <th className="text-center px-4 py-2">Lilybit Rewards</th>
-                    {currentView !== "ambassador" && (
+                    {currentView !== "ambassador" && currentView !== "community" && (
                       <th className="text-center px-4 py-2">Contributions</th>
                     )}
                     <th className="text-center px-4 py-2">Wallet ID</th>
