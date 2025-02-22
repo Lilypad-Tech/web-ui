@@ -1,0 +1,39 @@
+name: Update Twitter Rewards
+
+on:
+    schedule:
+        - cron: '0 * * * *' # Run every hour
+    workflow_dispatch: # Allow manual triggers
+
+jobs:
+    update-rewards:
+        runs-on: ubuntu-latest
+        permissions:
+            contents: write
+        steps:
+            - uses: actions/checkout@v3
+
+            - name: Setup Node.js
+              uses: actions/setup-node@v3
+              with:
+                  node-version: '18'
+
+            - name: Install dependencies
+              run: |
+                  cd apps/rewards-dashboard
+                  npm install twitter-api-v2 @octokit/rest papaparse
+
+            - name: Trigger rewards update
+              run: |
+                  curl -X POST ${{ github.server_url }}/${{ github.repository }}/api/twitter
+              env:
+                  TWITTER_BEARER_TOKEN: ${{ secrets.TWITTER_BEARER_TOKEN }}
+                  CONFIG_GIST_ID: ${{ secrets.CONFIG_GIST_ID }}
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+            - name: Commit and push if changed
+              run: |
+                  git config --global user.name 'GitHub Action'
+                  git config --global user.email 'action@github.com'
+                  git add apps/rewards-dashboard/public/community_rewards.csv
+                  git diff --quiet && git diff --staged --quiet || (git commit -m "Update community rewards" && git push)
