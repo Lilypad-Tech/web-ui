@@ -11,6 +11,7 @@ export default function Home() {
   const [sortOption, setSortOption] = useState("");
   const [loading, setLoading] = useState(true);
   const [expandedRow, setExpandedRow] = useState(null);
+  const SHOW_COMMUNITY_TAB = process.env.NEXT_PUBLIC_SHOW_COMMUNITY_TAB === 'true';
 
   const fetchContributors = async (view) => {
     setContributors([]);
@@ -182,16 +183,18 @@ export default function Home() {
             >
               Module Creators
             </button>
-            <button
-              className={`rounded p-1 md:px-4 md:py-2 text-sm md:text-lg text-center cursor-pointer hover:bg-[#272d35] ${
-                currentView === "community"
-                  ? "bg-[#272D35] text-[#e0fff9] border"
-                  : "bg-[#181c21] text-text-color"
-              }`}
-              onClick={() => setCurrentView("community")}
-            >
-              Community
-            </button>
+            {SHOW_COMMUNITY_TAB && (
+              <button
+                className={`rounded p-1 md:px-4 md:py-2 text-sm md:text-lg text-center cursor-pointer hover:bg-[#272d35] ${
+                  currentView === "community"
+                    ? "bg-[#272D35] text-[#e0fff9] border"
+                    : "bg-[#181c21] text-text-color"
+                }`}
+                onClick={() => setCurrentView("community")}
+              >
+                Community
+              </button>
+            )}
           </div>
           <div className="flex flex-col items-center gap-2">
             <div className="text-center text-sm md:text-md leading-7 text-[#E0FFF9] font-semibold antialiased" style={{ minWidth: '200px' }}>
