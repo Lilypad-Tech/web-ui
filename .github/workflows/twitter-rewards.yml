@@ -1,4 +1,5 @@
 name: Update Twitter Rewards
+# Workflow to automatically update Twitter rewards based on user engagement
 
 on:
     schedule:
