@@ -9,14 +9,17 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@octokit/rest": "^21.1.1",
     "daisyui": "^4.12.13",
-    "next": "14.2.14",
+    "next": "^14.2.24",
     "papaparse": "^5.4.1",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "twitter-api-v2": "^1.20.1"
   },
   "devDependencies": {
     "@types/node": "22.7.5",
+    "@types/react": "19.0.10",
     "eslint": "^8",
     "eslint-config-next": "14.2.14",
     "postcss": "^8",
