@@ -146,7 +146,7 @@ export default function Teams() {
 						  <_Advisor
 							key={index}
 							src={advisor.Image ? `https://webadmin.lilypad.team${advisor.Image}` : "/default-image.png"}
-							title={advisor.Name}
+							name={advisor.Name}
 							position={advisor.Title}
 							experience={advisor.experience}
 							socialIcons={[
@@ -179,7 +179,7 @@ export default function Teams() {
 				          <_Advisor
 				            key={index}
 					        src={partner.Image ? `https://webadmin.lilypad.team${partner.Image}` : "/default-image.png"}
-				            title={partner.Name}
+				            name={partner.Name}
 				            position={partner.Title}
 				            description={partner.blurb}
 				            socialIcons={[
