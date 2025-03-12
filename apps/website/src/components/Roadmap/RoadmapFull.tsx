@@ -25,13 +25,13 @@ export default function RoadmapFull() {
 			/>
 			<RoadmapItem
 				header="Q1 2025"
-				subtitle="The Lilypad Whitepaper and Tokenomics will be released, providing a detailed roadmap for the future. In partnership with the CryptoEconLab, the Lilypad Research Team will meticulously craft the economic systems that will power Lilypad at Mainnet, ensuring a fair and incentivized environment for all participants."
-				title="Whitepaper and tokenomics"
-			/>
-			<RoadmapItem
-				header="Q1 2025"
 				subtitle="The focus will shift to empowering developers and users. A comprehensive API, module creation tools, and a full SDK will be forged, enabling seamless integration and a vibrant ecosystem of applications. Partnerships with decentralized storage providers and AI model developers will expand the horizons of possibility. Smart contract audits will commence, ensuring the security and integrity of the platform."
 				title="Tooling, audits, integrations and plugins"
+			/>
+			<RoadmapItem
+				header="Q2 2025"
+				subtitle="The Lilypad Whitepaper and Tokenomics will be released, providing a detailed roadmap for the future. In partnership with the CryptoEconLab, the Lilypad Research Team will meticulously craft the economic systems that will power Lilypad at Mainnet, ensuring a fair and incentivized environment for all participants."
+				title="Whitepaper and tokenomics"
 			/>
 			<RoadmapItem
 				header="Q2 2025"
