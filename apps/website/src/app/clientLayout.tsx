@@ -179,7 +179,7 @@ export default function ClientLayout({
 								trailingCTA={
 									<Anchor
 										target="_blank"
-										href="https://lilypadnetwork.notion.site/Leap-into-Lilypad-s-IncentiveNet-9e9b12936d4340ad9417d92dab8bd9d1"
+										href="https://docs.lilypad.tech"
 										className="hidden uui-desktop:flex"
 										color="color"
 										destructive={false}
