@@ -37,6 +37,7 @@ import { Badge, Anchor } from "@lilypad/shared-components";
 
 export default function Leaderboard() {
 	const [walletAddress, setWalletAddress] = useState("");
+	const [totalPoints,setTotalPoints]=useState("")
 	const {
 		data: leaderboardData,
 		isLoading: leaderboardIsLoading,
@@ -53,7 +54,6 @@ export default function Leaderboard() {
 		queryFn: fetchNodes,
 		queryKey: ["nodes"], //Array according to Documentation
 	});
-
 	const [currentUrl, setCurrentUrl] = useState("");
 
 	// Array to manage the copy badges
@@ -64,7 +64,23 @@ export default function Leaderboard() {
 		  }[]
 		| []
 	>([]);
-
+	const calculateTotalPoints = ():void => {
+			setTotalPoints(Math.trunc(
+					leaderboardData
+						? leaderboardData.reduce(
+								(total, node) =>
+									+node.Points +
+									total,
+								0
+							)
+						: 0
+			).toLocaleString())
+	};
+	useEffect(() => {
+		if (leaderboardData !== undefined) {
+			calculateTotalPoints()
+		}
+	}, [leaderboardData]);
 	useEffect(() => {
 		if (typeof window !== "undefined") {
 			setCurrentUrl(
@@ -77,7 +93,6 @@ export default function Leaderboard() {
 			if (walletId) setWalletAddress(walletId);
 		}
 	}, []);
-
 	return (
 		<>
 			<Head>
@@ -133,7 +148,7 @@ export default function Leaderboard() {
 
 										{nodesIsLoading ? (
 											<RandomHexSpan
-												length={2}
+												length={3}
 											></RandomHexSpan>
 										) : nodesIsError ? (
 											<span>!err</span>
@@ -159,15 +174,18 @@ export default function Leaderboard() {
 										{m.leaderboard_incentive_program_total_title()}
 									</span>
 									<span className="text-uui-text-primary-900 uui-display-sm font-semibold">
-										{/* Todo add api cumalative Lilybit_rewards earned */}
-										{Math.trunc(
-											leaderboardData
-												? leaderboardData.reduce(
-														(total, node) =>
-															+node.Points +total, 0
-												  )
-												: 0
-										).toLocaleString()}
+										{/* Todo add api cumalative Lilybit_rewards earned */}										
+										{leaderboardIsLoading || nodesIsLoading || totalPoints === '' ? (
+											<RandomHexSpan
+												length={5}
+											></RandomHexSpan>
+										) : leaderboardIsError || nodesIsError ? (
+											<span>!err</span>
+										) : (
+											<span>
+												{totalPoints}
+											</span>
+										)}
 									</span>
 								</div>
 								{/* Todo add api week total Lilybit_rewards earned */}
@@ -228,7 +246,8 @@ export default function Leaderboard() {
 								leaderboardIsLoading ||
 								nodesIsLoading ||
 								leaderboardIsError ||
-								nodesIsError ||
+								totalPoints == '' || 
+								nodesIsError ||								
 								leaderboardData?.filter((d) =>
 									walletAddress
 										? d.Wallet.toLowerCase().includes(
@@ -239,7 +258,8 @@ export default function Leaderboard() {
 									<EmptyState
 										header={
 											leaderboardIsLoading ||
-											nodesIsLoading
+											nodesIsLoading || 
+											totalPoints == ''
 												? m.leaderboard_node_provider_table_loadingState_loadingText()
 												: leaderboardIsError ||
 												  nodesIsError
@@ -248,7 +268,8 @@ export default function Leaderboard() {
 										}
 										description={
 											leaderboardIsLoading ||
-											nodesIsLoading
+											nodesIsLoading ||
+											totalPoints == ''
 												? m.leaderboard_node_provider_table_loadingState_loadingHint()
 												: leaderboardIsError ||
 												  nodesIsError
@@ -258,12 +279,14 @@ export default function Leaderboard() {
 									>
 										<FeaturedIcon
 											spinIcon={
-												leaderboardIsLoading ||
-												nodesIsLoading
+												leaderboardIsLoading || 
+												nodesIsLoading ||
+												totalPoints == ''
 											}
 											iconUrl={
 												leaderboardIsLoading ||
-												nodesIsLoading
+												nodesIsLoading ||
+												totalPoints == ''
 													? generalLoading01
 													: leaderboardIsError ||
 													  nodesIsError
@@ -326,7 +349,7 @@ export default function Leaderboard() {
 												walletAddress
 													? d.Wallet.toLowerCase().includes(
 															walletAddress.toLowerCase()
-													  )
+													)
 													: true
 											)
 											.map((row, rowIndex) => (
@@ -487,7 +510,7 @@ export default function Leaderboard() {
 																													"Wallet"
 																												],
 																											timeoutId,
-																									  }
+																									}
 																									: item
 																						);
 																					} else {
@@ -588,7 +611,8 @@ export default function Leaderboard() {
 													</td>
 												</tr>
 											))}
-									</tbody>
+									</tbody>									
+
 								</>
 							),
 							// Todo add in pagination after we receive the paginated API
