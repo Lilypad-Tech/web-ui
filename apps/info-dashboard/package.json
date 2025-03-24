@@ -8,7 +8,8 @@
 		"start": "next start",
 		"lint": "next lint",
 		"test": "vitest",
-		"preview": "pnpm dlx http-server out"
+		"preview": "pnpm dlx http-server out",
+		"boot": "doppler run --preserve-env --command=\"pnpm i && pnpm -r build\""
 	},
 	"dependencies": {
 		"@floating-ui/react": "^0.26.17",
