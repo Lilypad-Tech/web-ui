@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button, InputField } from "@lilypad/shared-components";
 import { sendEmail } from "@/utils/sendEmail"; // Assuming the utility function exists
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer, toast } from "react-toastify";
 
 export function NewsletterForm() {
   const [email, setEmail] = useState<string>("");
@@ -18,21 +18,23 @@ export function NewsletterForm() {
 
     setLoading(true);
     try {
-		const successMessage = await sendEmail(email, "subscribe");
-		toast.success(successMessage || "Successfully subscribed to the newsletter!");
-		setEmail("");
-	} catch (error: any) {
-		toast.error(error.message || "Failed to subscribe. Please try again.");
-	} finally {
-		setLoading(false);
-	}
+      const successMessage = await sendEmail(email, "subscribe");
+      toast.success(
+        successMessage || "Successfully subscribed to the newsletter!"
+      );
+      setEmail("");
+    } catch (error: any) {
+      toast.error(error.message || "Failed to subscribe. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <div className="lg:col-span-2 mb-uui-xl h-full text-left rounded-2xl bg-uui-bg-secondary gap-uui-2xl lg:gap-uui-4xl p-uui-6xl lg:p-uui-7xl flex flex-col lg:flex-row items-start justify-start">
       <div className="lg:w-1/2">
         <h3 className="text-uui-text-primary-900 mb-uui-xl uui-display-xs md:uui-display-sm font-semibold antialiased">
-          Newsletter 
+          Newsletter
         </h3>
         <div className="text-uui-text-tertiary-600 flex flex-col antialiased font-regular text-uui-lg md:uui-text-xl">
           <span>
@@ -80,7 +82,7 @@ export function NewsletterForm() {
       {message && (
         <p className="text-uui-text-primary-800 mt-uui-xl text-sm">{message}</p>
       )}
-	  <ToastContainer />
+      <ToastContainer />
     </div>
   );
 }

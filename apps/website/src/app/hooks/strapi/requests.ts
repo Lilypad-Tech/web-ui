@@ -26,7 +26,9 @@ export async function getHomepageInfo() {
     return {
       ...info,
       header_image_url: info.header_image?.url || null,
-      header_lottie: info.header_lottie ? { url: info.header_lottie.url } : null,
+      header_lottie: info.header_lottie
+        ? { url: info.header_lottie.url }
+        : null,
     };
   } catch (err) {
     console.error("Error fetching homepage info:", err);
@@ -43,7 +45,7 @@ export async function getTrustedBy() {
     return infos.map((info: TrustedByInfo) => ({
       alt: info.alt,
       src: cms_home_url + info.image?.url,
-	  href: info.href
+      href: info.href,
     }));
   } catch (err) {
     console.error("Error fetching trusted by info:", err);
@@ -63,7 +65,7 @@ export async function getTeamAdvisors() {
       Name: advisor.Name,
       Title: advisor.Title,
       blurb: advisor.blurb,
-	  experience: advisor.experience,
+      experience: advisor.experience,
       twitter: advisor.twitter,
       linkedin: advisor.linkedin,
       website: advisor.website,
@@ -110,12 +112,12 @@ export async function getTeamCore() {
       Name: member.Name,
       Title: member.Title,
       blurb: member.blurb,
-	  experience: member.experience,
+      experience: member.experience,
       twitter: member.twitter,
       linkedin: member.linkedin,
       website: member.website,
       Image: member.Image?.url || null,
-	  order: member.order
+      order: member.order,
     }));
   } catch (err) {
     console.error("Error fetching team core members:", err);

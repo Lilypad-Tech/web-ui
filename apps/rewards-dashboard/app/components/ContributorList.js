@@ -8,14 +8,18 @@ const ContributionList = ({ contributions }) => {
 
     const fetchTitles = async () => {
       const GITHUB_TOKEN = ""; // Optional: Add your GitHub token if rate-limited
-      const headers = GITHUB_TOKEN ? { Authorization: `token ${GITHUB_TOKEN}` } : {};
+      const headers = GITHUB_TOKEN
+        ? { Authorization: `token ${GITHUB_TOKEN}` }
+        : {};
 
       const fetchedTitles = await Promise.all(
         contributions.split(";").map(async (contribution) => {
           if (!contribution.trim()) return "Invalid URL";
 
           try {
-            let apiUrl, isPullRequest = false, isIssue = false;
+            let apiUrl,
+              isPullRequest = false,
+              isIssue = false;
 
             if (contribution.includes("/pull/")) {
               // Handle Pull Requests
@@ -25,8 +29,10 @@ const ContributionList = ({ contributions }) => {
               isPullRequest = true;
             } else if (contribution.includes("/issues/")) {
               // Handle Issues
-              apiUrl = contribution
-                .replace("https://github.com/", "https://api.github.com/repos/");
+              apiUrl = contribution.replace(
+                "https://github.com/",
+                "https://api.github.com/repos/"
+              );
               isIssue = true;
             } else {
               // Handle Repositories (remove "/tree/..." if present)
@@ -46,10 +52,10 @@ const ContributionList = ({ contributions }) => {
             const data = await res.json();
 
             return isPullRequest
-				? data.title || "Unknown PR Title"
-				: isIssue
-				? data.title || "Unknown Issue Title"
-				: data.full_name.split("/")[1] || "Unknown Repo Name"; // Extracts only the repo name
+              ? data.title || "Unknown PR Title"
+              : isIssue
+              ? data.title || "Unknown Issue Title"
+              : data.full_name.split("/")[1] || "Unknown Repo Name"; // Extracts only the repo name
           } catch (error) {
             console.error(`Error fetching title for ${contribution}:`, error);
             return `Error (${error.message})`;
@@ -69,7 +75,9 @@ const ContributionList = ({ contributions }) => {
         contributions.split(";").map((contribution, index) => (
           <li key={index}>
             <a href={contribution} target="_blank" rel="noopener noreferrer">
-              {titles[index] !== undefined ? `${index + 1}. ${titles[index]}` : "Loading..."}
+              {titles[index] !== undefined
+                ? `${index + 1}. ${titles[index]}`
+                : "Loading..."}
             </a>
           </li>
         ))}

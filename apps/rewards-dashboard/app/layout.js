@@ -21,32 +21,24 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-		<Head>
-			<title>
-				Lilypad Community Rewards
-			</title>
-			<link rel="icon" href="/LilypadIcon.svg" type="image/svg+xml" />
-			<meta
-				name="description"
-				content="Check out the rewards tables for open-source contributors and Lilypad advocates!"
-			/>
-			<meta name="robots" content="index, follow" />
-			<meta
-				name="viewport"
-				content="width=device-width, initial-scale=1"
-			/>
-			<link rel="canonical" href="/" />
-			<meta
-				property="og:title"
-				content="Lilypad Community Rewards"
-			/>
-			<meta
-				property="og:description"
-				content="Check out the rewards tables for open-source contributors and Lilypad advocates!"
-			/>
-			<meta property="og:url" content="/" />
-			<meta property="og:type" content="website" />
-		</Head>
+      <Head>
+        <title>Lilypad Community Rewards</title>
+        <link rel="icon" href="/LilypadIcon.svg" type="image/svg+xml" />
+        <meta
+          name="description"
+          content="Check out the rewards tables for open-source contributors and Lilypad advocates!"
+        />
+        <meta name="robots" content="index, follow" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="canonical" href="/" />
+        <meta property="og:title" content="Lilypad Community Rewards" />
+        <meta
+          property="og:description"
+          content="Check out the rewards tables for open-source contributors and Lilypad advocates!"
+        />
+        <meta property="og:url" content="/" />
+        <meta property="og:type" content="website" />
+      </Head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

@@ -60,17 +60,17 @@ const TeamMember = ({
       {socialIcons && socialIcons.length > 0 && (
         <div className="flex items-center justify-center space-x-uui-xl mt-uui-xl">
           {socialIcons.map((icon, index) =>
-			icon.iconUrl ? (
-				<a
-				key={index}
-				href={icon.href}
-				target="_blank"
-				rel="noopener noreferrer"
-				>
-				<SocialIcon iconUrl={icon.iconUrl} />
-				</a>
-			) : null
-			)}
+            icon.iconUrl ? (
+              <a
+                key={index}
+                href={icon.href}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <SocialIcon iconUrl={icon.iconUrl} />
+              </a>
+            ) : null
+          )}
         </div>
       )}
     </div>

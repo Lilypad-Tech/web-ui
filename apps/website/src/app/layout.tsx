@@ -7,18 +7,18 @@ const INTER = Inter({ subsets: ["latin"] });
 
 // metadata isn't allowed on a client layout
 export const metadata: Metadata = {
-	title: "Lilypad Network",
-	description:
-		"Lilypad Network: Experience the Power of Decentralized Computing",
-	icons: {
-		icon: "/lilypad-icon.svg", // Path to the favicon
-	},
+  title: "Lilypad Network",
+  description:
+    "Lilypad Network: Experience the Power of Decentralized Computing",
+  icons: {
+    icon: "/lilypad-icon.svg", // Path to the favicon
+  },
 };
 
 export default function RootLayout({
-	children,
+  children,
 }: {
-	children: React.ReactNode;
+  children: React.ReactNode;
 }) {
-	return <ClientLayout>{children}</ClientLayout>;
+  return <ClientLayout>{children}</ClientLayout>;
 }

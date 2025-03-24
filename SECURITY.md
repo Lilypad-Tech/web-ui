@@ -7,10 +7,12 @@ At Lilypad Network, we take security very seriously. If you believe you have fou
 ### How to Report
 
 1. **Contact Information**:
+
    - Please email your findings to our security team at [security@lilypad.tech](mailto:security@lilypad.tech).
    - Include the phrase "Lilypad Network Security Vulnerability" in the subject line.
 
 2. **Information to Include**:
+
    - Detailed description of the vulnerability.
    - Steps to reproduce the vulnerability.
    - Potential impact of the vulnerability.

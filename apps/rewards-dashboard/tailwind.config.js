@@ -12,9 +12,9 @@ module.exports = {
         foreground: "var(--foreground)",
       },
       animation: {
-        'spin-slow': 'spin 3s linear infinite',
-      }
+        "spin-slow": "spin 3s linear infinite",
+      },
     },
   },
-  plugins: [require('daisyui')],
+  plugins: [require("daisyui")],
 };

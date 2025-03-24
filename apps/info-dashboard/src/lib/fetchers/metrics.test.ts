@@ -1,48 +1,48 @@
 import { describe, expect, test } from "vitest";
 import {
-	parseUtcYearAndMonth,
-	enrichMetricsTimeSeriesData,
-	toChartData,
+  parseUtcYearAndMonth,
+  enrichMetricsTimeSeriesData,
+  toChartData,
 } from "./metrics";
 
 const TEST_DATA = {
-	TotalJobs: 2000,
-	TotalNodes: 10000,
-	TotalModules: 17,
-	JobsCompleted: [
-		{ Year: "2024", Month: "January", Count: 300 },
-		{ Year: "2024", Month: "February", Count: 450 },
-		{ Year: "2024", Month: "March", Count: 441 },
-		{ Year: "2024", Month: "April", Count: 410 },
-		{ Year: "2024", Month: "May", Count: 530 },
-		{ Year: "2024", Month: "June", Count: 612 },
-		{ Year: "2024", Month: "July", Count: 714 },
-		{ Year: "2024", Month: "August", Count: 765 },
-		{ Year: "2024", Month: "September", Count: 701 },
-		{ Year: "2024", Month: "October", Count: 890 },
-		{ Year: "2024", Month: "November", Count: 866 },
-		{ Year: "2024", Month: "December", Count: 944 },
-	],
-	Nodes: [
-		{ Year: "2024", Month: "January", Count: 244 },
-		{ Year: "2024", Month: "February", Count: 333 },
-		{ Year: "2024", Month: "March", Count: 476 },
-		{ Year: "2024", Month: "April", Count: 434 },
-		{ Year: "2024", Month: "May", Count: 531 },
-		{ Year: "2024", Month: "June", Count: 621 },
-		{ Year: "2024", Month: "July", Count: 741 },
-		{ Year: "2024", Month: "August", Count: 765 },
-		{ Year: "2024", Month: "September", Count: 771 },
-		{ Year: "2024", Month: "October", Count: 801 },
-		{ Year: "2024", Month: "November", Count: 826 },
-		{ Year: "2024", Month: "December", Count: 924 },
-	],
+  TotalJobs: 2000,
+  TotalNodes: 10000,
+  TotalModules: 17,
+  JobsCompleted: [
+    { Year: "2024", Month: "January", Count: 300 },
+    { Year: "2024", Month: "February", Count: 450 },
+    { Year: "2024", Month: "March", Count: 441 },
+    { Year: "2024", Month: "April", Count: 410 },
+    { Year: "2024", Month: "May", Count: 530 },
+    { Year: "2024", Month: "June", Count: 612 },
+    { Year: "2024", Month: "July", Count: 714 },
+    { Year: "2024", Month: "August", Count: 765 },
+    { Year: "2024", Month: "September", Count: 701 },
+    { Year: "2024", Month: "October", Count: 890 },
+    { Year: "2024", Month: "November", Count: 866 },
+    { Year: "2024", Month: "December", Count: 944 },
+  ],
+  Nodes: [
+    { Year: "2024", Month: "January", Count: 244 },
+    { Year: "2024", Month: "February", Count: 333 },
+    { Year: "2024", Month: "March", Count: 476 },
+    { Year: "2024", Month: "April", Count: 434 },
+    { Year: "2024", Month: "May", Count: 531 },
+    { Year: "2024", Month: "June", Count: 621 },
+    { Year: "2024", Month: "July", Count: 741 },
+    { Year: "2024", Month: "August", Count: 765 },
+    { Year: "2024", Month: "September", Count: 771 },
+    { Year: "2024", Month: "October", Count: 801 },
+    { Year: "2024", Month: "November", Count: 826 },
+    { Year: "2024", Month: "December", Count: 924 },
+  ],
 };
 
 describe("parseUtcYearAndMonth", () => {
-	test("sample 01", () => {
-		const result = TEST_DATA.Nodes.map((td) => parseUtcYearAndMonth(td));
-		expect(result).toMatchInlineSnapshot(`
+  test("sample 01", () => {
+    const result = TEST_DATA.Nodes.map((td) => parseUtcYearAndMonth(td));
+    expect(result).toMatchInlineSnapshot(`
 			[
 			  "2024-01-01T00:00:00.000Z",
 			  "2024-02-01T00:00:00.000Z",
@@ -58,13 +58,13 @@ describe("parseUtcYearAndMonth", () => {
 			  "2024-12-01T00:00:00.000Z",
 			]
 		`);
-	});
+  });
 });
 
 describe("enrichMetricsTimeSeriesData", () => {
-	test("sample 01", () => {
-		const result = enrichMetricsTimeSeriesData(TEST_DATA.Nodes);
-		expect(result).toMatchInlineSnapshot(`
+  test("sample 01", () => {
+    const result = enrichMetricsTimeSeriesData(TEST_DATA.Nodes);
+    expect(result).toMatchInlineSnapshot(`
 			[
 			  {
 			    "Count": 244,
@@ -152,16 +152,16 @@ describe("enrichMetricsTimeSeriesData", () => {
 			  },
 			]
 		`);
-	});
+  });
 });
 
 describe("toChartData", () => {
-	test("empty array", () => {
-		expect(toChartData([])).toEqual([]);
-	});
-	test("sample 01", () => {
-		const result = toChartData(TEST_DATA.Nodes);
-		expect(result).toMatchInlineSnapshot(`
+  test("empty array", () => {
+    expect(toChartData([])).toEqual([]);
+  });
+  test("sample 01", () => {
+    const result = toChartData(TEST_DATA.Nodes);
+    expect(result).toMatchInlineSnapshot(`
 			[
 			  {
 			    "Count": 244,
@@ -249,5 +249,5 @@ describe("toChartData", () => {
 			  },
 			]
 		`);
-	});
+  });
 });
