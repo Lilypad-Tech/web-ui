@@ -270,13 +270,9 @@ export default function Home() {
 
 							<AnimateSpring>
 								<div className="pt-uui-xl antialiased pb-uui-xl md:pb-uui-3xl flex flex-wrap gap-uui-md lg:flex-nowrap md:gap-uui-xl uui-display-md md:uui-display-xl font-semibold text-uui-text-primary-900 ">
-									<h1 className="sm:whitespace-nowrap">
-										AI that&apos;s
+									<h1>
+										The <span className="text-uui-text-quarterary-500">Open Access</span> AI Innovation Economy
 									</h1>
-									<h1 className="text-uui-text-quarterary-500">
-										truly
-									</h1>
-									<h1>open</h1>
 								</div>
 								<h5 className="pb-uui-4xl md:pb-uui-6xl uui-text-lg md:uui-text-xl font-regular text-uui-text-tertiary-600">
 								Unlocking the possible. One job at a time
