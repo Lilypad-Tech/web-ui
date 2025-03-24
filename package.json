@@ -8,7 +8,8 @@
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"boot": "doppler run --preserve-env --command=\"pnpm i && pnpm -r --filter=!website-cms --filter=!info-dashboard build\"",
 		"dev": "fun() { doppler run --preserve-env -- pnpm --filter $@ dev; }; fun",
-		"preview": "fun() { doppler run --preserve-env -- pnpm --filter $@ preview; }; fun"
+		"preview": "fun() { doppler run --preserve-env -- pnpm --filter $@ preview; }; fun",
+        "prettier": "prettier . --write"
 	},
 	"keywords": [],
 	"author": "",
