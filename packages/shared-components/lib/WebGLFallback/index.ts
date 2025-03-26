@@ -1,1 +1,1 @@
-export { default as WebGLFallback } from "./WebGLFallback";
+export { default as WebGLFallback } from './WebGLFallback'

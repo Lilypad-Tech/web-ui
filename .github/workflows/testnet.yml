@@ -1,54 +1,54 @@
 name: Deploy Testnet
 on:
-  push:
-    branches:
-      - main
-  workflow_dispatch:
+    push:
+        branches:
+            - main
+    workflow_dispatch:
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    environment: testnet
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-        
-      - name: Setup Bun
-        uses: oven-sh/setup-bun@v1
-        
-      - name: Set up Node.js and pnpm
-        uses: actions/setup-node@v3
-        with:
-          node-version: "20"
-          
-      - run: npm install -g pnpm
-      
-      - name: Install Doppler CLI
-        run: |
-          (curl -Ls --tlsv1.2 --proto "=https" --retry 3 https://cli.doppler.com/install.sh || wget -t 3 -qO- https://cli.doppler.com/install.sh) | sudo sh
-          
-      - name: Set up Doppler and build
-        run: |
-          doppler configure set token ${{ secrets.TESTNET_DOPPLER_TOKEN }}
-          doppler run -- npm run boot
-        env:
-          DOPPLER_TOKEN: ${{ secrets.TESTNET_DOPPLER_TOKEN }}
-          
-      - name: Verify build output
-        run: |
-          if [ ! -d "./apps/info-dashboard/out" ]; then
-            echo "Build output directory not found! Building info-dashboard..."
-            cd apps/info-dashboard
-            pnpm build
-            cd ../..
-          fi
-          ls -la ./apps/info-dashboard/out || echo "Output directory not found"
-          
-      - name: Deploy to Cloudflare Pages
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.TESTNET_CLOUDFLARE_API_TOKEN }}
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.TESTNET_CLOUDFLARE_ACCOUNT_ID }}
-          CLOUDFLARE_PROJECT_NAME: ${{ secrets.TESTNET_CLOUDFLARE_PROJECT_NAME }}
-        working-directory: ./apps/info-dashboard
-        run: |
-          npx wrangler pages deploy out --project-name=$CLOUDFLARE_PROJECT_NAME --branch=main
+    build:
+        runs-on: ubuntu-latest
+        environment: testnet
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v3
+
+            - name: Setup Bun
+              uses: oven-sh/setup-bun@v1
+
+            - name: Set up Node.js and pnpm
+              uses: actions/setup-node@v3
+              with:
+                  node-version: '20'
+
+            - run: npm install -g pnpm
+
+            - name: Install Doppler CLI
+              run: |
+                  (curl -Ls --tlsv1.2 --proto "=https" --retry 3 https://cli.doppler.com/install.sh || wget -t 3 -qO- https://cli.doppler.com/install.sh) | sudo sh
+
+            - name: Set up Doppler and build
+              run: |
+                  doppler configure set token ${{ secrets.TESTNET_DOPPLER_TOKEN }}
+                  doppler run -- npm run boot
+              env:
+                  DOPPLER_TOKEN: ${{ secrets.TESTNET_DOPPLER_TOKEN }}
+
+            - name: Verify build output
+              run: |
+                  if [ ! -d "./apps/info-dashboard/out" ]; then
+                    echo "Build output directory not found! Building info-dashboard..."
+                    cd apps/info-dashboard
+                    pnpm build
+                    cd ../..
+                  fi
+                  ls -la ./apps/info-dashboard/out || echo "Output directory not found"
+
+            - name: Deploy to Cloudflare Pages
+              env:
+                  CLOUDFLARE_API_TOKEN: ${{ secrets.TESTNET_CLOUDFLARE_API_TOKEN }}
+                  CLOUDFLARE_ACCOUNT_ID: ${{ secrets.TESTNET_CLOUDFLARE_ACCOUNT_ID }}
+                  CLOUDFLARE_PROJECT_NAME: ${{ secrets.TESTNET_CLOUDFLARE_PROJECT_NAME }}
+              working-directory: ./apps/info-dashboard
+              run: |
+                  npx wrangler pages deploy out --project-name=$CLOUDFLARE_PROJECT_NAME --branch=main

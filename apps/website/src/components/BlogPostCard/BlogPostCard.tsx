@@ -1,58 +1,58 @@
-import { AnchorHTMLAttributes } from "react";
-import Image from "next/image";
-import IconAtom from "../IconAtom/IconAtom";
-import { arrowsArrowUpRight } from "@frontline-hq/untitledui-icons";
+import { AnchorHTMLAttributes } from 'react'
+import Image from 'next/image'
+import IconAtom from '../IconAtom/IconAtom'
+import { arrowsArrowUpRight } from '@frontline-hq/untitledui-icons'
 
 interface BlogPostCardProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
-	title: string;
-	subtitle: string;
-	imageSrc: string;
+    title: string
+    subtitle: string
+    imageSrc: string
 }
 
 const BlogPostCard = ({
-	title,
-	subtitle,
-	imageSrc,
-	children,
-	...props
+    title,
+    subtitle,
+    imageSrc,
+    children,
+    ...props
 }: BlogPostCardProps) => {
-	return (
-		<a
-			{...props}
-			href={props.href}
-			className="group w-full rounded-uui-2xl border-uui-1 border-uui-border-secondary bg-uui-bg-primary"
-		>
-			<div className="relative w-full h-[12.5rem] lg:h-[15rem] rounded-uui-2xl overflow-hidden">
-				<Image
-					className="w-full h-full object-cover transition-transform duration-300 transform group-hover:scale-110 rounded-uui-2xl"
-					alt="dummy"
-					src={imageSrc}
-					fill
-				/>
-			</div>
-			<div className="flex flex-col space-y-uui-lg md:space-y-uui-md p-uui-3xl ">
-				{/* title */}
-				<div className="flex justify-between w-full items-start">
-					{title && (
-						<h3 className="font-semibold uui-text-xl md:uui-display-xs text-uui-text-primary-900 antialiased flex-grow">
-							{title}
-						</h3>
-					)}
-					<IconAtom
-						className="flex-shrink-0 duration-100 transition-transform group-hover:-translate-y-1/4 group-hover:translate-x-1/4"
-						iconUrl={arrowsArrowUpRight}
-					></IconAtom>
-				</div>
-				{/* subtitle */}
-				{subtitle && (
-					<span className="antialiased text-uui-text-tertiary-600 font-regular uui-text-md">
-						{subtitle}
-					</span>
-				)}
-			</div>
-			{children}
-		</a>
-	);
-};
+    return (
+        <a
+            {...props}
+            href={props.href}
+            className="rounded-uui-2xl border-uui-1 border-uui-border-secondary bg-uui-bg-primary group w-full"
+        >
+            <div className="rounded-uui-2xl relative h-[12.5rem] w-full overflow-hidden lg:h-[15rem]">
+                <Image
+                    className="rounded-uui-2xl h-full w-full transform object-cover transition-transform duration-300 group-hover:scale-110"
+                    alt="dummy"
+                    src={imageSrc}
+                    fill
+                />
+            </div>
+            <div className="space-y-uui-lg md:space-y-uui-md p-uui-3xl flex flex-col">
+                {/* title */}
+                <div className="flex w-full items-start justify-between">
+                    {title && (
+                        <h3 className="uui-text-xl md:uui-display-xs text-uui-text-primary-900 flex-grow font-semibold antialiased">
+                            {title}
+                        </h3>
+                    )}
+                    <IconAtom
+                        className="flex-shrink-0 transition-transform duration-100 group-hover:-translate-y-1/4 group-hover:translate-x-1/4"
+                        iconUrl={arrowsArrowUpRight}
+                    ></IconAtom>
+                </div>
+                {/* subtitle */}
+                {subtitle && (
+                    <span className="text-uui-text-tertiary-600 font-regular uui-text-md antialiased">
+                        {subtitle}
+                    </span>
+                )}
+            </div>
+            {children}
+        </a>
+    )
+}
 
-export default BlogPostCard;
+export default BlogPostCard

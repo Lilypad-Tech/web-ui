@@ -1,64 +1,64 @@
 name: Rewards Site
 
 on:
-  push:
-    branches:
-      - main
-  workflow_dispatch:
+    push:
+        branches:
+            - main
+    workflow_dispatch:
 
 jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
+    build-and-deploy:
+        runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v2
 
-      - name: Authenticate with Google Cloud
-        uses: google-github-actions/auth@v1
-        with:
-          credentials_json: ${{ secrets.GCP_SA_KEY }}
+            - name: Authenticate with Google Cloud
+              uses: google-github-actions/auth@v1
+              with:
+                  credentials_json: ${{ secrets.GCP_SA_KEY }}
 
-      - name: Set up Google Cloud SDK
-        uses: google-github-actions/setup-gcloud@v1
-        with:
-          project_id: ${{ secrets.GCP_PROJECT_ID }}
+            - name: Set up Google Cloud SDK
+              uses: google-github-actions/setup-gcloud@v1
+              with:
+                  project_id: ${{ secrets.GCP_PROJECT_ID }}
 
-      - name: Install bun
-        uses: oven-sh/setup-bun@v1
+            - name: Install bun
+              uses: oven-sh/setup-bun@v1
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: "22" 
+            - name: Set up Node.js
+              uses: actions/setup-node@v2
+              with:
+                  node-version: '22'
 
-      - name: Install pnpm
-        run: npm install -g pnpm
+            - name: Install pnpm
+              run: npm install -g pnpm
 
-      - name: Install Doppler CLI
-        run: |
-          (curl -Ls --tlsv1.2 --proto "=https" --retry 3 https://cli.doppler.com/install.sh || wget -t 3 -qO- https://cli.doppler.com/install.sh) | sudo sh
+            - name: Install Doppler CLI
+              run: |
+                  (curl -Ls --tlsv1.2 --proto "=https" --retry 3 https://cli.doppler.com/install.sh || wget -t 3 -qO- https://cli.doppler.com/install.sh) | sudo sh
 
-      - name: Set up Doppler
-        run: doppler configure set token ${{ secrets.DEVDEPLOY_DOPPLER_TOKEN }}
+            - name: Set up Doppler
+              run: doppler configure set token ${{ secrets.DEVDEPLOY_DOPPLER_TOKEN }}
 
-      - name: Fetch secrets from Doppler and boot
-        run: doppler run -- npm run boot
-        env:
-          DOPPLER_TOKEN: ${{ secrets.DEVDEPLOY_DOPPLER_TOKEN }}
+            - name: Fetch secrets from Doppler and boot
+              run: doppler run -- npm run boot
+              env:
+                  DOPPLER_TOKEN: ${{ secrets.DEVDEPLOY_DOPPLER_TOKEN }}
 
-      - name: Build Next.js app
-        working-directory: ./apps/rewards-dashboard
-        run: pnpm run build
-        env:
-          DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
+            - name: Build Next.js app
+              working-directory: ./apps/rewards-dashboard
+              run: pnpm run build
+              env:
+                  DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
 
-      # Step 11: Upload build output to GCS
-      - name: Upload build output to GCS
-        run: |
-          gsutil -m rsync -r -x "^\..*|README.md|gha-creds-.*\.json" ./apps/rewards-dashboard/out gs://${{ secrets.GCS_BUCKET_NAME }}
+            # Step 11: Upload build output to GCS
+            - name: Upload build output to GCS
+              run: |
+                  gsutil -m rsync -r -x "^\..*|README.md|gha-creds-.*\.json" ./apps/rewards-dashboard/out gs://${{ secrets.GCS_BUCKET_NAME }}
 
-      # Step 12: Set public read access to files
-      - name: Set public read access to files
-        run: |
-          gsutil iam ch allUsers:objectViewer gs://${{ secrets.GCS_BUCKET_NAME }}
+            # Step 12: Set public read access to files
+            - name: Set public read access to files
+              run: |
+                  gsutil iam ch allUsers:objectViewer gs://${{ secrets.GCS_BUCKET_NAME }}
