@@ -7,7 +7,7 @@ const config = {
     tabWidth: 4,
     semi: false,
     singleQuote: true,
-    plugins: ['prettier-plugin-tailwindcss'],
+    plugins: process.env.CI ? [] : ['prettier-plugin-tailwindcss'],
 }
 
 module.exports = config
