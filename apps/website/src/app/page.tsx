@@ -27,13 +27,6 @@ import { ToastContainer, toast } from "react-toastify";
 import dynamic from "next/dynamic";
 import ContentItem from "@/components/ContentItem/ContentItem";
 
-const Player = dynamic(
-  () => import("@lottiefiles/react-lottie-player").then((mod) => mod.Player),
-  {
-    ssr: false,
-    loading: () => <div>Loading...</div>,
-  }
-);
 export default function Home() {
   const [loading, setLoading] = useState<boolean>(false);
   const [email, setEmail] = useState("");
@@ -239,18 +232,20 @@ export default function Home() {
       <main className="overflow-hidden ">
         <ToastContainer position="top-right" autoClose={3000} theme={"dark"} />
         <SectionContainer>
-          <div className="bg-uui-bg-primary flex flex-col lg:flex-row justify-between items-end px-uui-sm space-y-uui-7xl lg:space-y-uui-none lg:gap-uui-9xl lg:pl-uui-4xl pt-uui-7xl lg:pb-uui-9xl ">
+          <div className="bg-uui-bg-primary flex flex-col lg:flex-row justify-between px-uui-sm lg:gap-uui-9xl lg:pl-uui-4xl pt-uui-7xl lg:pb-uui-9xl">
             <div className="items-start w-full lg:w-fit justify-start flex flex-col lg:flex-grow mr-auto">
               <animated.div style={fade}>
                 <GroupBadge
-                  onClick={() => window.open(strapi?.badge_url, "_blank")}
+                  onClick={() =>
+                    window.open("https://lilypad.tech/incentiveNet", "_blank")
+                  }
                   badge="leading"
                   icon={{
                     url: arrowsArrowRight,
                   }}
                   color="brand"
-                  message={strapi?.badge_message}
-                  text={strapi?.badge_text}
+                  message="We've recently launched IncentiveNet"
+                  text="News"
                   size={
                     screenSize === "xl" || screenSize === "2xl" ? "lg" : "md"
                   }
@@ -259,7 +254,7 @@ export default function Home() {
               </animated.div>
 
               <AnimateSpring>
-                <div className="pt-uui-xl antialiased pb-uui-xl md:pb-uui-3xl flex flex-wrap gap-uui-md lg:flex-nowrap md:gap-uui-xl uui-display-md md:uui-display-xl font-semibold text-uui-text-primary-900 ">
+                <div className="pt-uui-xl antialiased pb-uui-xl md:pb-uui-3xl flex flex-wrap gap-uui-md lg:flex-nowrap md:gap-uui-xl uui-display-md md:uui-display-xl font-semibold text-uui-text-primary-900">
                   <h1>
                     The{" "}
                     <span className="text-uui-text-quarterary-500">
@@ -319,30 +314,13 @@ export default function Home() {
                 </div>
               </animated.div>
             </div>
-            <animated.div
+            <animated.video
               style={fade}
-              className="relative w-full lg:w-1/2 lg:h-full max-w-2xl mr-auto pb-uui-7xl lg:pb-uui-none"
-            >
-              {strapi?.header_lottie?.url ? (
-                <Player
-                  autoplay
-                  loop
-                  src={`https://webadmin.lilypad.team${strapi.header_lottie.url}`}
-                  style={{ width: "100%", height: "100%" }}
-                />
-              ) : (
-                <Image
-                  width={500}
-                  height={500}
-                  alt={strapi?.header_image_alt || "Default Image"}
-                  src={
-                    strapi?.header_image_url
-                      ? `https://webadmin.lilypad.team${strapi.header_image_url}`
-                      : "/lilypad-fill.png" // Default image if none exists
-                  }
-                />
-              )}
-            </animated.div>
+              autoPlay
+              loop
+              src="https://cdn.lilypad.tech/lilypad-globe-720.mov"
+              className="h-full w-full my-16"
+            />
           </div>
         </SectionContainer>
         <SectionContainer className="pb-uui-3xl lg:pb-uui-8xl">
