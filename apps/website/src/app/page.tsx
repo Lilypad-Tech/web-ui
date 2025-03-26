@@ -232,7 +232,7 @@ export default function Home() {
       <main className="overflow-hidden ">
         <ToastContainer position="top-right" autoClose={3000} theme={"dark"} />
         <SectionContainer>
-          <div className="bg-uui-bg-primary flex flex-col lg:flex-row justify-between px-uui-sm lg:gap-uui-9xl lg:pl-uui-4xl pt-uui-7xl lg:pb-uui-9xl">
+          <div className="bg-uui-bg-primary flex flex-col lg:flex-row justify-between lg:gap-uui-9xl py-16">
             <div className="items-start w-full lg:w-fit justify-start flex flex-col lg:flex-grow mr-auto">
               <animated.div style={fade}>
                 <GroupBadge
@@ -254,7 +254,7 @@ export default function Home() {
               </animated.div>
 
               <AnimateSpring>
-                <div className="pt-uui-xl antialiased pb-uui-xl md:pb-uui-3xl flex flex-wrap gap-uui-md lg:flex-nowrap md:gap-uui-xl uui-display-md md:uui-display-xl font-semibold text-uui-text-primary-900">
+                <div className="py-4 antialiased md:pb-uui-3xl flex flex-wrap gap-12 lg:flex-nowrap md:gap-24 uui-display-md md:uui-display-xl font-semibold text-uui-text-primary-900">
                   <h1>
                     The{" "}
                     <span className="text-uui-text-quarterary-500">
@@ -263,9 +263,11 @@ export default function Home() {
                     AI Innovation Economy
                   </h1>
                 </div>
-                <h5 className="pb-uui-4xl md:pb-uui-6xl uui-text-lg md:uui-text-xl font-regular text-uui-text-tertiary-600">
+
+                <h2 className="pb-uui-4xl md:pb-uui-6xl uui-text-lg md:uui-text-xl font-regular text-uui-text-tertiary-600">
                   Deploy, run, and monetize any AI model
-                </h5>
+                </h2>
+
                 <div className="flex flex-row gap-4">
                   <Anchor
                     target="_blank"
@@ -297,7 +299,7 @@ export default function Home() {
               </AnimateSpring>
 
               <animated.div style={fade}>
-                <div className="flex space-x-uui-xl pt-uui-7xl lg:pt-uui-9xl">
+                <div className="flex space-x-uui-xl pt-12">
                   {socialLinks.map((link) => (
                     <a
                       key={link.href}
