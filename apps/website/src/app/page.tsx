@@ -5,31 +5,30 @@ import { Anchor, SectionContainer } from "@lilypad/shared-components";
 import { SocialIcon } from "@lilypad/shared-components";
 import {
   arrowsArrowRight,
-  generalCopy06,
-  mapsAndTravelRocket02,
+  //   mapsAndTravelRocket02,
 } from "@frontline-hq/untitledui-icons";
 import Head from "next/head";
 import Image from "next/image";
 import { useContext, useEffect, useState } from "react";
 import CenterHeadingSection from "@/components/CenterHeadingSection/CenterHeadingSection";
 import SocialProofSection from "@/components/SocialProofSection/SocialProofSection";
-import BlogPostCard from "@/components/BlogPostCard/BlogPostCard";
+// import BlogPostCard from "@/components/BlogPostCard/BlogPostCard";
 import AnimateSpring from "@/components/AnimateSpring";
 import { animated } from "@react-spring/web";
 import useFade from "./hooks/UseFade";
-import useFadeInView from "./hooks/UseFadeInView";
+// import useFadeInView from "./hooks/UseFadeInView";
 import { PageContext } from "./clientLayout";
 import { HomePageCmsInfo } from "./hooks/strapi/types";
 import RoadmapFull from "@/components/Roadmap/RoadmapFull";
 import { CallToActions } from "@/components/FooterBlock/CallToActions";
 // import { sendEmail } from "@/utils/sendEmail";
 import { ToastContainer, toast } from "react-toastify";
-import dynamic from "next/dynamic";
-import ContentItem from "@/components/ContentItem/ContentItem";
+// import dynamic from "next/dynamic";
+// import ContentItem from "@/components/ContentItem/ContentItem";
 
 export default function Home() {
-  const [loading, setLoading] = useState<boolean>(false);
-  const [email, setEmail] = useState("");
+  //   const [loading, setLoading] = useState<boolean>(false);
+  //   const [email, setEmail] = useState("");
 
   const { strapi } = useContext(PageContext) as { strapi: HomePageCmsInfo };
   const socialLinks = [
@@ -92,51 +91,51 @@ export default function Home() {
     },
   ];
 
-  const blogPostCardData = [
-    {
-      title: "DeSci",
-      subtitle:
-        "Empower decentralized science using Lilypad to process complex data and run AI-driven models to accelerate scientific breakthroughs.",
-      anchorHref: "/desci",
-      anchorText: "Learn more",
-    },
-    {
-      title: "Gaming",
-      subtitle:
-        "Level up your gaming visions with Lilypad's decentralized compute, enabling developers to seamlessly run demanding game logic and AI at scale.",
-      anchorHref: "/gaming",
-      anchorText: "Learn more",
-    },
-    // TODO: Replace with AI agents. Enabling decentralized AI agents and agent workflows with verifiable compute
-    {
-      title: "Social Networks",
-      subtitle:
-        "Build next-generation social platforms with advanced AI features like content moderation, recommendation engines, and fraud detection.",
-      anchorHref: "/social-networks",
-      anchorText: "Learn more",
-    },
-    {
-      title: "Marketing",
-      subtitle:
-        "Drive hyper-personalized marketing campaigns and unlock real-time customer insights with AI-powered analytics.",
-      anchorHref: "/marketing",
-      anchorText: "Learn more",
-    },
-    {
-      title: "IoT",
-      subtitle:
-        "Securely process and analyze massive amounts of IoT data at the edge, enabling real-time decision-making and intelligent automation.",
-      anchorHref: "/iot",
-      anchorText: "Learn more",
-    },
-    {
-      title: "AI x Crypto",
-      subtitle:
-        "Unleash the power of cutting-edge AI and cryptography on Lilypad's decentralized network, delivering secure, scalable solutions that push the boundaries of innovation.",
-      anchorHref: "/ai-crypto",
-      anchorText: "Learn more",
-    },
-  ];
+  //   const blogPostCardData = [
+  //     {
+  //       title: "DeSci",
+  //       subtitle:
+  //         "Empower decentralized science using Lilypad to process complex data and run AI-driven models to accelerate scientific breakthroughs.",
+  //       anchorHref: "/desci",
+  //       anchorText: "Learn more",
+  //     },
+  //     {
+  //       title: "Gaming",
+  //       subtitle:
+  //         "Level up your gaming visions with Lilypad's decentralized compute, enabling developers to seamlessly run demanding game logic and AI at scale.",
+  //       anchorHref: "/gaming",
+  //       anchorText: "Learn more",
+  //     },
+  //     // TODO: Replace with AI agents. Enabling decentralized AI agents and agent workflows with verifiable compute
+  //     {
+  //       title: "Social Networks",
+  //       subtitle:
+  //         "Build next-generation social platforms with advanced AI features like content moderation, recommendation engines, and fraud detection.",
+  //       anchorHref: "/social-networks",
+  //       anchorText: "Learn more",
+  //     },
+  //     {
+  //       title: "Marketing",
+  //       subtitle:
+  //         "Drive hyper-personalized marketing campaigns and unlock real-time customer insights with AI-powered analytics.",
+  //       anchorHref: "/marketing",
+  //       anchorText: "Learn more",
+  //     },
+  //     {
+  //       title: "IoT",
+  //       subtitle:
+  //         "Securely process and analyze massive amounts of IoT data at the edge, enabling real-time decision-making and intelligent automation.",
+  //       anchorHref: "/iot",
+  //       anchorText: "Learn more",
+  //     },
+  //     {
+  //       title: "AI x Crypto",
+  //       subtitle:
+  //         "Unleash the power of cutting-edge AI and cryptography on Lilypad's decentralized network, delivering secure, scalable solutions that push the boundaries of innovation.",
+  //       anchorHref: "/ai-crypto",
+  //       anchorText: "Learn more",
+  //     },
+  //   ];
 
   const capabilityCardData = [
     {
@@ -190,16 +189,7 @@ export default function Home() {
     }
   }, []);
 
-  const copyEmail = "contact@lilypad.tech";
-
-  const [copyState, setCopyState] = useState({
-    iconUrl: generalCopy06,
-    timeoutId: null,
-  });
-
   const fade = useFade();
-
-  const [missionStatementRef, missionStatementSprings] = useFadeInView();
 
   return (
     <>
@@ -229,8 +219,9 @@ export default function Home() {
         {/* TODO add twitter image and google image tag twitter:image & og:image */}
       </Head>
 
-      <main className="overflow-hidden ">
-        <ToastContainer position="top-right" autoClose={3000} theme={"dark"} />
+      <main className="overflow-hidden">
+        <ToastContainer position="top-right" autoClose={3000} theme="dark" />
+
         <SectionContainer>
           <div className="bg-uui-bg-primary flex flex-col lg:flex-row justify-between lg:gap-uui-9xl py-16">
             <div className="items-start w-full lg:w-fit justify-start flex flex-col lg:flex-grow mr-auto">
@@ -321,7 +312,7 @@ export default function Home() {
               autoPlay
               loop
               src="https://cdn.lilypad.tech/lilypad-globe-720.mov"
-              className="h-full w-full my-16"
+              className="h-full w-full my-16 rounded-lg drop-shadow-lg"
             />
           </div>
         </SectionContainer>
