@@ -260,7 +260,7 @@ export default function Teams() {
 							</animated.h5>
 						</div>
 					</SectionContainer> */}
-          <SectionContainer className="">
+          <SectionContainer>
             {/* <div className="max-w-[45rem] md:py-uui-9xl mx-auto"> */}
             <div className="max-w-[45rem] mx-auto">
               <ContentItem
@@ -302,8 +302,6 @@ export default function Teams() {
               />
             </div>
           </SectionContainer>
-          <br />
-          <br />
         </div>
         <SectionContainer>
           <div className="grid grid-cols-1 lg:grid-cols-2 py-uui-6xl gap-uui-3xl">
