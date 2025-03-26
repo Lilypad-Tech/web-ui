@@ -1,24 +1,24 @@
 {
-	"name": "lilypad-web-ui",
-	"version": "1.0.0",
-	"private": "true",
-	"description": "",
-	"main": "index.js",
-	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1",
-		"boot": "doppler run --preserve-env --command=\"pnpm i && pnpm -r --filter=!website-cms --filter=!info-dashboard build\"",
-		"dev": "fun() { doppler run --preserve-env -- pnpm --filter $@ dev; }; fun",
-		"preview": "fun() { doppler run --preserve-env -- pnpm --filter $@ preview; }; fun",
-		"prettier": "prettier . --write"
-	},
-	"keywords": [],
-	"author": "",
-	"license": "ISC",
-	"dependencies": {
-		"@lottiefiles/dotlottie-react": "^0.9.3",
-		"@lottiefiles/react-lottie-player": "^3.5.4"
-	},
-	"devDependencies": {
-		"prettier-plugin-tailwindcss": "^0.6.11"
-	}
+    "name": "lilypad-web-ui",
+    "version": "1.0.0",
+    "private": "true",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "boot": "doppler run --preserve-env --command=\"pnpm i && pnpm -r --filter=!website-cms --filter=!info-dashboard build\"",
+        "dev": "fun() { doppler run --preserve-env -- pnpm --filter $@ dev; }; fun",
+        "preview": "fun() { doppler run --preserve-env -- pnpm --filter $@ preview; }; fun",
+        "prettier": "prettier . --write"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "@lottiefiles/dotlottie-react": "^0.9.3",
+        "@lottiefiles/react-lottie-player": "^3.5.4"
+    },
+    "devDependencies": {
+        "prettier-plugin-tailwindcss": "^0.6.11"
+    }
 }

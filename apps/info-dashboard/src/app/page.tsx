@@ -1,97 +1,98 @@
-"use client";
-import React from "react";
-import * as m from "@/paraglide/messages.js";
-import Head from "next/head";
+'use client'
+import React from 'react'
+import * as m from '@/paraglide/messages.js'
+import Head from 'next/head'
+import { Badge, ErrorBoundary, WebGLFallback } from '@lilypad/shared-components'
+import MetricsCard from '@/components/MetricsCard/MetricsCard'
+import HeadingSection from '@/components/HeadingSection'
+import { SectionContainer } from '@lilypad/shared-components'
 import {
-  Badge,
-  ErrorBoundary,
-  WebGLFallback,
-} from "@lilypad/shared-components";
-import MetricsCard from "@/components/MetricsCard/MetricsCard";
-import HeadingSection from "@/components/HeadingSection";
-import { SectionContainer } from "@lilypad/shared-components";
+    alertAndFeedbackAlertCircle,
+    arrowsArrowDown,
+    arrowsArrowUp,
+    arrowsSwitchVertical01,
+    generalLoading01,
+    generalSearchLg,
+} from '@frontline-hq/untitledui-icons'
+import CardWithBorder from '@/components/CardWithBorder/CardWithBorder'
 import {
-  alertAndFeedbackAlertCircle,
-  arrowsArrowDown,
-  arrowsArrowUp,
-  arrowsSwitchVertical01,
-  generalLoading01,
-  generalSearchLg,
-} from "@frontline-hq/untitledui-icons";
-import CardWithBorder from "@/components/CardWithBorder/CardWithBorder";
+    Area,
+    AreaChart,
+    CartesianGrid,
+    ResponsiveContainer,
+    XAxis,
+    YAxis,
+} from 'recharts'
+import { useQuery } from '@tanstack/react-query'
 import {
-  Area,
-  AreaChart,
-  CartesianGrid,
-  ResponsiveContainer,
-  XAxis,
-  YAxis,
-} from "recharts";
-import { useQuery } from "@tanstack/react-query";
-import {
-  fetchMetrics,
-  toChartData,
-  toFrontendData,
-} from "@/lib/fetchers/metrics";
-import RandomHexSpan from "@/components/Random/RandomHexSpan";
-import FeaturedIcon from "@/components/FeaturedIcon";
-import { DateTime } from "luxon";
-import EmptyState from "@/components/EmptyState/EmptyState";
-import ActiveNodesWorldMap from "@/components/ActiveNodesWorldMap/ActiveNodesWorldMap";
-import { fetchNodes, toGeoJson } from "@/lib/fetchers/nodes";
+    fetchMetrics,
+    toChartData,
+    toFrontendData,
+} from '@/lib/fetchers/metrics'
+import RandomHexSpan from '@/components/Random/RandomHexSpan'
+import FeaturedIcon from '@/components/FeaturedIcon'
+import { DateTime } from 'luxon'
+import EmptyState from '@/components/EmptyState/EmptyState'
+import ActiveNodesWorldMap from '@/components/ActiveNodesWorldMap/ActiveNodesWorldMap'
+import { fetchNodes, toGeoJson } from '@/lib/fetchers/nodes'
 export default function Home() {
-  const {
-    data: metricsData,
-    isLoading: metricsIsLoading,
-    isError: metricsIsError,
-  } = useQuery({
-    queryFn: fetchMetrics,
-    queryKey: ["metrics"], //Array according to Documentation
-  });
-  const {
-    data: nodesData,
-    isLoading: nodesIsLoading,
-    isError: nodesIsError,
-  } = useQuery({
-    queryFn: fetchNodes,
-    queryKey: ["nodes"],
-  });
-  const metricsTransformedData = toFrontendData(metricsData);
-  return (
-    <>
-      <Head>
-        <title>Lilypad Metrics Dashboard - Monitor the Lilypad Network!</title>
-        <meta
-          name="description"
-          content="Explore the metrics dashboard for the Lilypad network. Gain insights into the decentralized world of compute."
-        />
-        <meta name="robots" content="index, follow" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="canonical" href="/" />
-        <meta
-          property="og:title"
-          content="Node Provider Metrics Dashboard - Monitor the Lilypad Network!"
-        />
-        <meta
-          property="og:description"
-          content="Explore the metrics dashboard for the Lilypad network. Gain insights into the decentralized world of compute."
-        />
-        <meta property="og:url" content="/" />
-        <meta property="og:type" content="website" />
-      </Head>
-      {/* <Helmet encodeSpecialCharacters={true}>
+    const {
+        data: metricsData,
+        isLoading: metricsIsLoading,
+        isError: metricsIsError,
+    } = useQuery({
+        queryFn: fetchMetrics,
+        queryKey: ['metrics'], //Array according to Documentation
+    })
+    const {
+        data: nodesData,
+        isLoading: nodesIsLoading,
+        isError: nodesIsError,
+    } = useQuery({
+        queryFn: fetchNodes,
+        queryKey: ['nodes'],
+    })
+    const metricsTransformedData = toFrontendData(metricsData)
+    return (
+        <>
+            <Head>
+                <title>
+                    Lilypad Metrics Dashboard - Monitor the Lilypad Network!
+                </title>
+                <meta
+                    name="description"
+                    content="Explore the metrics dashboard for the Lilypad network. Gain insights into the decentralized world of compute."
+                />
+                <meta name="robots" content="index, follow" />
+                <meta
+                    name="viewport"
+                    content="width=device-width, initial-scale=1"
+                />
+                <link rel="canonical" href="/" />
+                <meta
+                    property="og:title"
+                    content="Node Provider Metrics Dashboard - Monitor the Lilypad Network!"
+                />
+                <meta
+                    property="og:description"
+                    content="Explore the metrics dashboard for the Lilypad network. Gain insights into the decentralized world of compute."
+                />
+                <meta property="og:url" content="/" />
+                <meta property="og:type" content="website" />
+            </Head>
+            {/* <Helmet encodeSpecialCharacters={true}>
 				<script type="application/ld+json">
 					{JSON.stringify(jsonLd)}
 				</script>
 			</Helmet> */}
 
-      <div className="min-h-[55vh] ">
-        <HeadingSection
-          className="pt-uui-4xl uui-desktop:pt-uui-6xl"
-          title={m.metrics_heading_title()}
-          subtitle={m.metrics_heading_subtitle()}
-        />
-        {/* <SectionContainer className=" mx-auto pt-uui-4xl w-full justify-between flex uui-desktop:gap-uui-3xl gap-uui-2xl sm:flex-row flex-col  snap-x overflow-x-auto no-scrollbar">
+            <div className="min-h-[55vh]">
+                <HeadingSection
+                    className="pt-uui-4xl uui-desktop:pt-uui-6xl"
+                    title={m.metrics_heading_title()}
+                    subtitle={m.metrics_heading_subtitle()}
+                />
+                {/* <SectionContainer className=" mx-auto pt-uui-4xl w-full justify-between flex uui-desktop:gap-uui-3xl gap-uui-2xl sm:flex-row flex-col  snap-x overflow-x-auto no-scrollbar">
 					{(
 						[
 							metricsTransformedData.jobsCompletedScalar,
@@ -297,66 +298,73 @@ export default function Home() {
 						);
 					})}
 				</SectionContainer> */}
-        <SectionContainer className=" mx-auto pt-uui-4xl w-full justify-between flex uui-desktop:gap-uui-3xl gap-uui-2xl sm:flex-row flex-col  snap-x overflow-x-auto no-scrollbar">
-          <CardWithBorder title={m.metrics_active_nodes_world_map_title()}>
-            {nodesIsLoading || nodesIsError || nodesData?.length === 0 ? (
-              <EmptyState
-                header={
-                  nodesIsLoading
-                    ? m.leaderboard_node_provider_table_loadingState_loadingText()
-                    : nodesIsError
-                    ? m.leaderboard_node_provider_table_errorState_errorText()
-                    : m.leaderboard_node_provider_table_emptyState_emptyText()
-                }
-                description={
-                  nodesIsLoading
-                    ? m.leaderboard_node_provider_table_loadingState_loadingHint()
-                    : nodesIsError
-                    ? m.leaderboard_node_provider_table_errorState_errorHint()
-                    : m.leaderboard_node_provider_table_emptyState_emptyHint()
-                }
-              >
-                <FeaturedIcon
-                  spinIcon={nodesIsLoading}
-                  iconUrl={
-                    nodesIsLoading
-                      ? generalLoading01
-                      : nodesIsError
-                      ? alertAndFeedbackAlertCircle
-                      : generalSearchLg
-                  }
-                />
-              </EmptyState>
-            ) : (
-              <WebGLFallback
-                fallback={
-                  <EmptyState
-                    header={m.good_patient_spider_amuse()}
-                    description={
-                      <span>
-                        {m.tangy_stout_guppy_loop()}
-                        <a>https://get.webgl.org/</a>
-                      </span>
-                    }
-                  >
-                    <FeaturedIcon
-                      spinIcon={false}
-                      iconUrl={alertAndFeedbackAlertCircle}
-                    />
-                  </EmptyState>
-                }
-              >
-                <ActiveNodesWorldMap
-                  geojson={toGeoJson(nodesData ?? [])}
-                  protomapsApiKey={
-                    process.env.NEXT_PUBLIC_PROTOMAPS_API_KEY as string
-                  }
-                />
-              </WebGLFallback>
-            )}
-          </CardWithBorder>
-        </SectionContainer>
-      </div>
-    </>
-  );
+                <SectionContainer className="pt-uui-4xl uui-desktop:gap-uui-3xl gap-uui-2xl no-scrollbar mx-auto flex w-full snap-x flex-col justify-between overflow-x-auto sm:flex-row">
+                    <CardWithBorder
+                        title={m.metrics_active_nodes_world_map_title()}
+                    >
+                        {nodesIsLoading ||
+                        nodesIsError ||
+                        nodesData?.length === 0 ? (
+                            <EmptyState
+                                header={
+                                    nodesIsLoading
+                                        ? m.leaderboard_node_provider_table_loadingState_loadingText()
+                                        : nodesIsError
+                                          ? m.leaderboard_node_provider_table_errorState_errorText()
+                                          : m.leaderboard_node_provider_table_emptyState_emptyText()
+                                }
+                                description={
+                                    nodesIsLoading
+                                        ? m.leaderboard_node_provider_table_loadingState_loadingHint()
+                                        : nodesIsError
+                                          ? m.leaderboard_node_provider_table_errorState_errorHint()
+                                          : m.leaderboard_node_provider_table_emptyState_emptyHint()
+                                }
+                            >
+                                <FeaturedIcon
+                                    spinIcon={nodesIsLoading}
+                                    iconUrl={
+                                        nodesIsLoading
+                                            ? generalLoading01
+                                            : nodesIsError
+                                              ? alertAndFeedbackAlertCircle
+                                              : generalSearchLg
+                                    }
+                                />
+                            </EmptyState>
+                        ) : (
+                            <WebGLFallback
+                                fallback={
+                                    <EmptyState
+                                        header={m.good_patient_spider_amuse()}
+                                        description={
+                                            <span>
+                                                {m.tangy_stout_guppy_loop()}
+                                                <a>https://get.webgl.org/</a>
+                                            </span>
+                                        }
+                                    >
+                                        <FeaturedIcon
+                                            spinIcon={false}
+                                            iconUrl={
+                                                alertAndFeedbackAlertCircle
+                                            }
+                                        />
+                                    </EmptyState>
+                                }
+                            >
+                                <ActiveNodesWorldMap
+                                    geojson={toGeoJson(nodesData ?? [])}
+                                    protomapsApiKey={
+                                        process.env
+                                            .NEXT_PUBLIC_PROTOMAPS_API_KEY as string
+                                    }
+                                />
+                            </WebGLFallback>
+                        )}
+                    </CardWithBorder>
+                </SectionContainer>
+            </div>
+        </>
+    )
 }

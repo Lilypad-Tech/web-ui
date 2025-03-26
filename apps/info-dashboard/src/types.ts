@@ -1,5 +1,5 @@
-import { CSSProperties } from "react";
+import { CSSProperties } from 'react'
 
 export type CustomCSSProperties = CSSProperties & {
-  "--icon-url"?: string;
-};
+    '--icon-url'?: string
+}

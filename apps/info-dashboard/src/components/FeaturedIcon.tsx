@@ -1,28 +1,28 @@
-import React from "react";
-import { CustomCSSProperties } from "@/types";
+import React from 'react'
+import { CustomCSSProperties } from '@/types'
 
 interface FeaturedIconProps {
-  iconUrl: string;
-  spinIcon: boolean;
+    iconUrl: string
+    spinIcon: boolean
 }
 
 const FeaturedIcon = ({ iconUrl, spinIcon }: FeaturedIconProps) => {
-  // Define a type for CSS properties including custom properties
+    // Define a type for CSS properties including custom properties
 
-  const spanStyle: CustomCSSProperties = {
-    "--icon-url": `url(${iconUrl})`,
-  };
+    const spanStyle: CustomCSSProperties = {
+        '--icon-url': `url(${iconUrl})`,
+    }
 
-  return (
-    <div className="border-uui-1 rounded-uui-lg shadow-uui-md border-uui-featured-icon-modern-border bg-uui-bg-primary w-[3rem] h-[3rem] flex items-center justify-center">
-      <span
-        style={spanStyle}
-        className={`${
-          spinIcon ? "animate-spin" : ""
-        } h-[1.5rem] w-[1.5rem] bg-uui-fg-secondary-700 group-hover:text-uui-button-primary-fg_hover hover:bg-uui-error-800 pointer-events-none [mask-position:center] [mask-size:contain] [mask-repeat:no-repeat] [mask-image:var(--icon-url)] group-[.disabled]:bg-uui-fg-disabled block`}
-      />
-    </div>
-  );
-};
+    return (
+        <div className="border-uui-1 rounded-uui-lg shadow-uui-md border-uui-featured-icon-modern-border bg-uui-bg-primary flex h-[3rem] w-[3rem] items-center justify-center">
+            <span
+                style={spanStyle}
+                className={`${
+                    spinIcon ? 'animate-spin' : ''
+                } bg-uui-fg-secondary-700 group-hover:text-uui-button-primary-fg_hover hover:bg-uui-error-800 group-[.disabled]:bg-uui-fg-disabled pointer-events-none block h-[1.5rem] w-[1.5rem] [mask-image:var(--icon-url)] [mask-position:center] [mask-repeat:no-repeat] [mask-size:contain]`}
+            />
+        </div>
+    )
+}
 
-export default FeaturedIcon;
+export default FeaturedIcon

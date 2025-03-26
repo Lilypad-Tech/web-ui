@@ -1,33 +1,33 @@
-version: "3"
+version: '3'
 
 services:
-  payload:
-    build:
-      context: .
-      dockerfile: node18-alpine-with-pnpm.dockerfile
-    ports:
-      - "3001:3000"
-    volumes:
-      - .:/home/node/app
-      - node_modules:/home/node/app/node_modules
-    working_dir: /home/node/app/
-    command: sh -c "pnpm install && pnpm dev"
-    depends_on:
-      - mongo
-    env_file:
-      - .env
+    payload:
+        build:
+            context: .
+            dockerfile: node18-alpine-with-pnpm.dockerfile
+        ports:
+            - '3001:3000'
+        volumes:
+            - .:/home/node/app
+            - node_modules:/home/node/app/node_modules
+        working_dir: /home/node/app/
+        command: sh -c "pnpm install && pnpm dev"
+        depends_on:
+            - mongo
+        env_file:
+            - .env
 
-  mongo:
-    image: mongo:latest
-    ports:
-      - "27017:27017"
-    command:
-      - --storageEngine=wiredTiger
-    volumes:
-      - data:/data/db
-    logging:
-      driver: none
+    mongo:
+        image: mongo:latest
+        ports:
+            - '27017:27017'
+        command:
+            - --storageEngine=wiredTiger
+        volumes:
+            - data:/data/db
+        logging:
+            driver: none
 
 volumes:
-  data:
-  node_modules:
+    data:
+    node_modules:

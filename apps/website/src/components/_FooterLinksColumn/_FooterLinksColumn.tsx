@@ -1,16 +1,16 @@
-import { HTMLAttributes, LiHTMLAttributes } from "react";
+import { HTMLAttributes, LiHTMLAttributes } from 'react'
 
 interface _FooterLinksColumnProps extends HTMLAttributes<HTMLUListElement> {}
 
 const _FooterLinksColumn = ({
-  children,
-  ...props
+    children,
+    ...props
 }: _FooterLinksColumnProps) => {
-  return (
-    <nav {...props}>
-      <ul className="flex flex-col space-y-uui-lg ">{children} </ul>{" "}
-    </nav>
-  );
-};
+    return (
+        <nav {...props}>
+            <ul className="space-y-uui-lg flex flex-col">{children} </ul>{' '}
+        </nav>
+    )
+}
 
-export default _FooterLinksColumn;
+export default _FooterLinksColumn
