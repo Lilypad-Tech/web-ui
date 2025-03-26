@@ -1,8 +1,8 @@
-import { useContext } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { HomePageCmsInfo } from "../../app/hooks/strapi/types";
+import Image from "next/image";
 
 interface SocialProofProps {
   strapi: HomePageCmsInfo;
@@ -46,7 +46,9 @@ const SocialProofSection = ({ strapi }: SocialProofProps) => {
         {trustedByArray?.map(({ src, alt, href }, index) => (
           <div key={index} className="single-partner-item px-4 md:px-0">
             <a href={href} target="_blank" rel="noopener noreferrer">
-              <img
+              <Image
+                width={128}
+                height={80}
                 src={src}
                 alt={`${alt} Partner Logo` || "Partner Logo"}
                 className="w-32 h-20 md:w-36 md:h-24 object-contain mx-auto"
