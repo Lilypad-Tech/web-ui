@@ -328,11 +328,9 @@ export default function Home() {
                                 </div>
                             </animated.div>
                         </div>
-                        <animated.video
+                        <animated.img
                             style={fade}
-                            autoPlay
-                            loop
-                            src="https://cdn.lilypad.tech/lilypad-globe-720.mov"
+                            src="https://cdn.lilypad.tech/lilypad-globe.gif"
                             className="my-16 h-full w-full rounded-lg drop-shadow-lg"
                         />
                     </div>
