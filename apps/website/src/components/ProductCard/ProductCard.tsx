@@ -6,11 +6,7 @@ interface ProductCardProps extends HTMLAttributes<HTMLDivElement> {
     header?: string
 }
 
-const ProductCard = ({
-    title,
-    subtitle,
-    children,
-}: ProductCardProps) => {
+const ProductCard = ({ title, subtitle, children }: ProductCardProps) => {
     return (
         <div className="p-uui-4xl space-y-uui-3xl md:space-y-uui-4xl rounded-uui-2xl border-uui-1 border-uui-border-secondary bg-uui-bg-primary flex w-full flex-col justify-between">
             <div className="space-y-uui-lg md:space-y-uui-xl flex h-full flex-col">
