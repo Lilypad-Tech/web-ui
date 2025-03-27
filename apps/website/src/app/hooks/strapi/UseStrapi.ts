@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import {
     getHomepageInfo,
     getTrustedBy,
@@ -19,7 +19,7 @@ function useStrapi({ pathname }: StrapiProps): StrapiResponse {
         HomePageCmsInfo | TeamPageCmsInfo | Object
     >({})
 
-    const getData = () => {
+    const getData = useCallback(() => {
         switch (pathname) {
             case '/':
                 Promise.allSettled([getHomepageInfo(), getTrustedBy()])
@@ -78,11 +78,11 @@ function useStrapi({ pathname }: StrapiProps): StrapiResponse {
             default:
                 setIsLoading(false)
         }
-    }
+    }, [pathname])
 
     useEffect(() => {
         getData()
-    }, [pathname])
+    }, [getData])
 
     return { strapi, isLoading }
 }
