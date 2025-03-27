@@ -7,6 +7,8 @@ import { sortByRewards, sortByContributions, sortByRanking } from './utils/sort'
 
 export default function Home() {
     const [contributors, setContributors] = useState([])
+    const [filteredContributors, setFilteredContributors] = useState([])
+    const [searchTerm, setSearchTerm] = useState('')
     const [currentView, setCurrentView] = useState('openSource')
     const [sortOption, setSortOption] = useState('')
     const [loading, setLoading] = useState(true)
@@ -14,6 +16,7 @@ export default function Home() {
 
     const fetchContributors = async (view) => {
         setContributors([])
+        setFilteredContributors([])
         setLoading(true)
         try {
             const res = await fetch(`/api/${view}`)
@@ -21,6 +24,7 @@ export default function Home() {
 
             setTimeout(() => {
                 setContributors(data)
+                setFilteredContributors(data)
                 setLoading(false)
             }, 250)
         } catch (error) {
@@ -31,7 +35,32 @@ export default function Home() {
 
     useEffect(() => {
         fetchContributors(currentView)
+        setSearchTerm('')
     }, [currentView])
+
+    useEffect(() => {
+        if (searchTerm.trim() === '') {
+            setFilteredContributors(contributors)
+        } else {
+            const filtered = contributors.filter(contributor => {
+                // For Frog Army, search by wallet address
+                if (currentView === 'frogArmy') {
+                    return contributor.wallet_address?.toLowerCase().includes(searchTerm.toLowerCase())
+                }
+                
+                // For other tabs, search by username and wallet address
+                return (
+                    contributor.username?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                    contributor.wallet_address?.toLowerCase().includes(searchTerm.toLowerCase())
+                )
+            })
+            setFilteredContributors(filtered)
+        }
+    }, [searchTerm, contributors, currentView])
+
+    const handleSearchChange = (event) => {
+        setSearchTerm(event.target.value)
+    }
 
     const handleSortChange = (event) => {
         const selectedOption = event.target.value
@@ -53,7 +82,7 @@ export default function Home() {
             setExpandedRow((prev) => (prev === rowId ? null : rowId))
         }
 
-        return contributors.map((contributor, index) => {
+        return filteredContributors.map((contributor, index) => {
             const isAmbassador = currentView === 'ambassador'
             const isFrogArmy = currentView === 'frogArmy'
             const isExpanded =
@@ -68,8 +97,11 @@ export default function Home() {
             return (
                 <Fragment key={rowKey}>
                     <tr
-                        className={`cursor-pointer border-b border-gray-700 hover:bg-gray-800 ${
+                        style={{ backgroundColor: '#181c21' }}
+                        className={`border-b border-gray-700 hover:bg-gray-800 ${
                             isExpanded ? 'bg-gray-900' : ''
+                        } ${
+                            (!isAmbassador && !isFrogArmy && contributor?.contributions) ? 'cursor-pointer' : ''
                         }`}
                         onClick={() => {
                             if (!isAmbassador && !isFrogArmy && contributor?.contributions) {
@@ -77,9 +109,15 @@ export default function Home() {
                             }
                         }}
                     >
+                        {/* First column - Ranking for Frog Army, Contributor info for others */}
                         <td className="px-4 py-2">
-                            <div className="flex items-center gap-2">
-                                {!isFrogArmy && (
+                            {isFrogArmy ? (
+                                // Match exact spacing/structure of other tabs
+                                <span>
+                                    {contributor.ranking || 'N/A'}
+                                </span>
+                            ) : (
+                                <div className="flex items-center gap-2">
                                     <img
                                         className="contributor-avatar h-8 w-8 rounded-full"
                                         src={
@@ -89,41 +127,52 @@ export default function Home() {
                                         alt={`Avatar of ${contributor.username}`}
                                         loading="lazy"
                                     />
-                                )}
-                                <div>
-                                    <div className="contributor-name text-sm font-semibold">
-                                        {isFrogArmy ? 
-                                            `Frog #${contributor.ranking}` : 
-                                            contributor.username}
+                                    <div>
+                                        <div className="contributor-name text-sm font-semibold">
+                                            {contributor.username}
+                                        </div>
+                                        {!isAmbassador && (
+                                            <a
+                                                href={`https://github.com/${contributor?.username}`}
+                                                target="_blank"
+                                                rel="noreferrer"
+                                                className="text-xs text-blue-500 underline"
+                                                aria-label={`Visit ${contributor?.username}'s GitHub profile`}
+                                            >
+                                                GitHub Profile
+                                            </a>
+                                        )}
                                     </div>
-                                    {!isAmbassador && !isFrogArmy && (
-                                        <a
-                                            href={`https://github.com/${contributor?.username}`}
-                                            target="_blank"
-                                            rel="noreferrer"
-                                            className="text-xs text-blue-500 underline"
-                                            aria-label={`Visit ${contributor?.username}'s GitHub profile`}
-                                        >
-                                            GitHub Profile
-                                        </a>
-                                    )}
-                                    {isFrogArmy && contributor.twitter && (
-                                        <a
-                                            href={`https://twitter.com/${contributor?.twitter}`}
-                                            target="_blank"
-                                            rel="noreferrer"
-                                            className="text-xs text-blue-500 underline"
-                                            aria-label={`Visit Twitter profile`}
-                                        >
-                                            Twitter Profile
-                                        </a>
-                                    )}
                                 </div>
-                            </div>
+                            )}
                         </td>
+                        
+                        {/* Frog Army only - Frog label */}
+                        {isFrogArmy && (
+                            <td className="px-4 py-2">
+                                <span>
+                                    Frog
+                                </span>
+                                {contributor.twitter && (
+                                    <a
+                                        href={`https://twitter.com/${contributor?.twitter}`}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        className="text-xs text-blue-500 underline ml-2"
+                                        aria-label={`Visit Twitter profile`}
+                                    >
+                                        Twitter Profile
+                                    </a>
+                                )}
+                            </td>
+                        )}
+                        
+                        {/* Rewards/Points column */}
                         <td className="px-4 py-2 text-center">
                             {contributor.rewards || '0'}
                         </td>
+                        
+                        {/* Contributions column (non-Frog Army, non-Ambassador only) */}
                         {!isAmbassador && !isFrogArmy && (
                             <td className="px-4 py-2 text-center">
                                 {contributor.contributions
@@ -131,11 +180,8 @@ export default function Home() {
                                     .filter((item) => item).length || '0'}
                             </td>
                         )}
-                        {isFrogArmy && (
-                            <td className="px-4 py-2 text-center">
-                                {contributor.ranking || 'N/A'}
-                            </td>
-                        )}
+                        
+                        {/* Wallet Address column */}
                         <td className="px-4 py-2 text-center">
                             {contributor.wallet_address || 'N/A'}
                         </td>
@@ -236,7 +282,7 @@ export default function Home() {
                             ) : currentView === 'frogArmy' ? (
                                 <span>{`Total Frogs: ${
                                     contributors?.length || 0
-                                }`}</span>
+                                } ${searchTerm ? `(${filteredContributors.length} found)` : ''}`}</span>
                             ) : currentView !== 'ambassador' ? (
                                 <span>
                                     {`Total Contributions: ${contributors.reduce(
@@ -276,11 +322,23 @@ export default function Home() {
                                 </select>
                             </label>
                         )}
+                        {currentView === 'frogArmy' && (
+                            <div className="w-full max-w-xs">
+                                <input
+                                    type="text"
+                                    placeholder="Search by wallet address"
+                                    value={searchTerm}
+                                    onChange={handleSearchChange}
+                                    className="font-inter text-text-color w-full rounded border border-[#0c7471] bg-[#181c21] p-1 text-sm"
+                                    aria-label="Search frogs by wallet address"
+                                />
+                            </div>
+                        )}
                     </div>
                 </nav>
 
                 <section
-                    className={`my-auto flex w-full flex-col overflow-x-auto bg-[#181c21] transition-opacity duration-300 md:min-h-[60vh]`}
+                    className="my-auto flex w-full flex-col overflow-x-auto bg-[#181c21] transition-opacity duration-300 md:min-h-[60vh]"
                 >
                     {loading ? (
                         <span className="my-auto flex flex-col items-center text-center">
@@ -293,24 +351,24 @@ export default function Home() {
                             </p>
                         </span>
                     ) : (
-                        <div className="table-container w-full overflow-x-auto">
+                        <div className="table-container w-full overflow-x-auto bg-[#181c21]">
                             <table className="contributors-table w-full text-sm">
                                 <thead>
                                     <tr className="border-b border-gray-600">
                                         <th className="px-4 py-2 text-left">
-                                            {currentView === 'frogArmy' ? 'Frog' : 'Contributor'}
+                                            {currentView === 'frogArmy' ? 'Ranking' : 'Contributor'}
                                         </th>
+                                        {currentView === 'frogArmy' && (
+                                            <th className="px-4 py-2 text-left">
+                                                Frog
+                                            </th>
+                                        )}
                                         <th className="px-4 py-2 text-center">
-                                            {currentView === 'frogArmy' ? 'Points' : 'Lilybit Rewards'}
+                                            Lilybit Rewards
                                         </th>
                                         {currentView !== 'ambassador' && currentView !== 'frogArmy' && (
                                             <th className="px-4 py-2 text-center">
                                                 Contributions
-                                            </th>
-                                        )}
-                                        {currentView === 'frogArmy' && (
-                                            <th className="px-4 py-2 text-center">
-                                                Ranking
                                             </th>
                                         )}
                                         <th className="px-4 py-2 text-center">
