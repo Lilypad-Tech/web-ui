@@ -68,8 +68,8 @@ export default function Teams() {
                                 titleClassName="uui-display-lg [&&]:md:uui-display-2xl "
                                 className="pt-uui-7xl lg:pt-uui-9xl [&&]:pb-uui-7xl relative [&&]:bg-transparent"
                                 header="About Lilypad"
-                                title="Lilypad Network: Experience the Power of Decentralized Computing."
-                                subtitle="A passionate team leveraging decentralized compute to make AI accessible and empowering for everyone."
+                                title="The AI Platform for Builders"
+                                subtitle="Create, deploy, monetize"
                             ></CenterHeadingSection>
                         </animated.div>
                     </SectionContainer>
@@ -85,28 +85,23 @@ export default function Teams() {
                     />
                     <SectionContainer>
                         <div className="md:py-uui-9xl mx-auto max-w-[45rem]">
-                            <div className="max-w-uui-width-2xl mx-auto text-center">
-                                <br />
-                                <br />
-                                <br />
+                            <div className="mx-auto my-14 max-w-prose">
                                 <animated.h3
-                                    className="text-uui-text-brand-secondary-700 uui-text-md md:uui-text-lg font-semibold antialiased"
+                                    className="text-uui-text-brand-secondary-700 uui-text-md md:uui-text-lg text-center font-semibold antialiased"
                                     style={missionStatementSprings}
                                     ref={missionStatementRef}
                                 >
-                                    Mission Statement
+                                    Vision
                                 </animated.h3>
 
                                 <ContentItem
                                     size="lg"
-                                    paragraph="We are building the most accessible GPU network for AI innovators, providing the distributed compute resources needed to push the boundaries of what's possible."
+                                    paragraph="Open infrastructure & AI is essential to ensuring AI remains a community-owned resource,but open-source still struggles to monetize."
                                 />
                                 <ContentItem
                                     size="lg"
-                                    paragraph="We are democratizing access to AI and Agentic computing resources by fostering an open, equitable, and accessible ecosystem for running AI & Agentic compute jobs."
+                                    paragraph="Lilypad unlocks the future of AI by turning your custom models into revenue engines — deploy, monetize, and scale with zero friction on our global distribution & compute network. From DeSci breakthroughs to agent pipelines and AI-driven apps, Lilypad fuels an explosion of downstream innovation, unlocking limitless possibilities for solopreneurs and serious businesses."
                                 />
-                                <br />
-                                <br />
                                 {/* <animated.h5
 								className="text-uui-text-tertiary-600 uui-text-lg md:uui-text-xl font-normal pt-uui-lg"
 								style={missionStatementSprings}
@@ -158,49 +153,54 @@ export default function Teams() {
                         <div className="space-y-uui-7xl md:space-y-uui-none md:space-x-uui-9xl flex flex-col md:flex-row">
                             <div className="space-y-uui-xl md:space-y-uui-2xl flex flex-col">
                                 <h3 className="uui-display-sm md:uui-display-md text-uui-text-primary-900 font-semibold">
-                                    What we stand for
+                                    How It Works
                                 </h3>
-                                <p className="text-uui-text-tertiary-600 font-regular uui-text-lg md:uui-text-xl antialiased">
-                                    Powerful, self-serve product and growth
-                                    analytics to help you convert, engage, and
-                                    retain more users. Trusted by over 4,000
-                                    startups.
+                                <p className="text-uui-text-tertiary-600 font-regular uui-text-lg md:uui-text-xl max-w-prose antialiased">
+                                    AI Developers earn directly for their
+                                    contributions, with a platform for AI model
+                                    distribution on a decentralized network with
+                                    blockchain payment rails.
                                 </p>
                             </div>
                             <div className="space-y-uui-4xl md:space-y-uui-6xl flex flex-col">
                                 <div className="space-x-uui-xl flex">
-                                    <FeaturedIcon iconUrl={generalEye} />
+                                    {/* <FeaturedIcon iconUrl={generalEye} /> */}
                                     <div className="spacing-y-uui-md flex flex-col items-start justify-center">
                                         <span className="text-uui-text-primary-900 uui-text-lg md:uui-text-xl font-semibold antialiased">
-                                            Vision
+                                            Deploy Your Model & Monetize AI
+                                            Innovation
                                         </span>
                                         <p className="uui-text-sm md:uui-text-md font-regular text-uui-text-tertiary-600 antialiased">
-                                            To empower individuals and
-                                            communities through decentralized AI
-                                            and computing, fostering an open,
-                                            equitable, and accessible
-                                            technological ecosystem.
+                                            Upload and configure your AI model
+                                            in minutes, earn revenue each time a
+                                            model is utilized
                                         </p>
                                     </div>
                                 </div>
                                 <div className="space-x-uui-xl flex">
-                                    <FeaturedIcon
+                                    {/* <FeaturedIcon
                                         iconUrl={mapsAndTravelFlag02}
-                                    />
+                                    /> */}
                                     <div className="spacing-y-uui-md flex flex-col items-start justify-center">
                                         <span className="text-uui-text-primary-900 uui-text-lg md:uui-text-xl font-semibold antialiased">
-                                            Mission
+                                            Run AI Jobs
                                         </span>
                                         <p className="uui-text-sm md:uui-text-md font-regular text-uui-text-tertiary-600 antialiased">
-                                            To democratize access to
-                                            cutting-edge AI and computing
-                                            resources by leveraging web3
-                                            technologies, fostering an
-                                            inclusive, transparent, and
-                                            decentralized ecosystem that
-                                            empowers individuals and communities
-                                            to innovate, collaborate, and drive
-                                            positive change in the world.
+                                            Execute workloads seamlessly on
+                                            decentralized compute, with
+                                            Lilypad's extensive library of
+                                            community-built models
+                                        </p>
+                                    </div>
+                                </div>
+                                <div className="space-x-uui-xl flex">
+                                    <div className="spacing-y-uui-md flex flex-col items-start justify-center">
+                                        <span className="text-uui-text-primary-900 uui-text-lg md:uui-text-xl font-semibold antialiased">
+                                            Scale AI Workflows
+                                        </span>
+                                        <p className="uui-text-sm md:uui-text-md font-regular text-uui-text-tertiary-600 antialiased">
+                                            Tap into a global network of GPUs as
+                                            needed as your applications scale.
                                         </p>
                                     </div>
                                 </div>
@@ -224,32 +224,34 @@ export default function Teams() {
                     <SectionContainer className="bg-uui-bg-primary">
                         <CenterHeadingSection
                             className="[&&]:bg-uui-bg-primary"
-                            title="Lilypad's Ethos"
-                            subtitle="Decentralized. Accessible. Collaborative."
+                            title="Ethos"
+                            subtitle="An Accessible Marketplace of AI Deployment and Monetization"
                         >
                             <p className="uui-text-md text-uui-text-primary-900 mx-auto w-1/2 py-4 text-center antialiased">
-                                Lilypad is built on the pillars of
-                                decentralization, accessibility, and
-                                collaboration, empowering a community-driven
-                                approach to AI innovation.
+                                Lilypad is a business model for all — deploy,
+                                monetize, and scale your custom AI models with
+                                zero friction on our global compute network.
+                                Every model earns, every creator gets paid, and
+                                the AI economy finally works for the innovators
+                                driving it forward.
                             </p>
                         </CenterHeadingSection>
 
                         <div className="space-y-uui-3xl md:space-y-uui-none md:space-x-uui-4xl flex flex-col items-center justify-center md:flex-row">
                             <_FeatureText
                                 featuredIconUrl={mediaAndDevicesLightbulb05}
-                                title="Decentralized and Unstoppable"
-                                description="Lilypad is built on the bedrock of decentralization. Our network operates across a distributed array of GPUs, ensuring no single point of failure or control. This resilience safeguards against outages and censorship and fosters a permissionless environment where innovation can flourish without boundaries."
+                                title="AI Compute Without Bottlenecks"
+                                description="Open, global access to a competitively priced network of GPUs. Scalable AI for all with blockchain-powered payment rails."
                             />
                             <_FeatureText
                                 featuredIconUrl={generalCheckHeart}
-                                title="Accessible and Empowering"
-                                description="We believe that the power of AI should be accessible to all, not just a select few. Lilypad breaks down barriers to entry by providing affordable and scalable compute resources, enabling individuals, startups, and researchers alike to harness the potential of artificial intelligence."
+                                title="Nodes Earn Per Task"
+                                description="Every AI model on Lilypad runs on a per-job basis. Compute providers can monetize idle compute, when and how they wish, picking up jobs on the network."
                             />
                             <_FeatureText
                                 featuredIconUrl={developmentPuzzlePiece01}
-                                title="Collaborative and Community Driven"
-                                description="Lilypad is more than just a platform; it's a thriving community. We embrace open-source principles and believe in the power of collective intelligence. By fostering collaboration and knowledge sharing, we're building a more inclusive and dynamic AI ecosystem where everyone can contribute and benefit."
+                                title="Easily Deploy Any Model"
+                                description="No MLOPs, no pay per GPU-hour. Containterize, configure, run as a serverless function."
                             />
                         </div>
                     </SectionContainer>
