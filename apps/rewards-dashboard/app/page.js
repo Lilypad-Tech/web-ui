@@ -3,7 +3,7 @@ import { useState, useEffect, Fragment } from 'react'
 import SocialLinks from './components/SocialLinks'
 import { LoadingIcon } from './components/loadingIcon'
 import ContributionList from './components/ContributorList'
-import { sortByRewards, sortByContributions } from './utils/sort'
+import { sortByRewards, sortByContributions, sortByRanking } from './utils/sort'
 
 export default function Home() {
     const [contributors, setContributors] = useState([])
@@ -43,6 +43,8 @@ export default function Home() {
             sortByContributions(contributors, setContributors)
         } else if (selectedOption === 'modules') {
             sortByContributions(contributors, setContributors)
+        } else if (selectedOption === 'ranking') {
+            sortByRanking(contributors, setContributors)
         }
     }
 
@@ -51,39 +53,50 @@ export default function Home() {
             setExpandedRow((prev) => (prev === rowId ? null : rowId))
         }
 
-        return contributors.map((contributor) => {
+        return contributors.map((contributor, index) => {
             const isAmbassador = currentView === 'ambassador'
+            const isFrogArmy = currentView === 'frogArmy'
             const isExpanded =
                 expandedRow === contributor?.id ||
                 expandedRow === contributor?.username
 
+            // Generate a unique key for each row
+            const rowKey = contributor?.id || 
+                           contributor?.username || 
+                           `contributor-${index}`;
+
             return (
-                <Fragment key={contributor?.id || contributor?.username}>
+                <Fragment key={rowKey}>
                     <tr
                         className={`cursor-pointer border-b border-gray-700 hover:bg-gray-800 ${
                             isExpanded ? 'bg-gray-900' : ''
                         }`}
-                        onClick={() =>
-                            !isAmbassador &&
-                            toggleRow(contributor?.id || contributor?.username)
-                        }
+                        onClick={() => {
+                            if (!isAmbassador && !isFrogArmy && contributor?.contributions) {
+                                toggleRow(contributor?.id || contributor?.username)
+                            }
+                        }}
                     >
                         <td className="px-4 py-2">
                             <div className="flex items-center gap-2">
-                                <img
-                                    className="contributor-avatar h-8 w-8 rounded-full"
-                                    src={
-                                        contributor.avatar ||
-                                        `https://github.com/${contributor.username}.png`
-                                    }
-                                    alt={`Avatar of ${contributor.username}`}
-                                    loading="lazy"
-                                />
+                                {!isFrogArmy && (
+                                    <img
+                                        className="contributor-avatar h-8 w-8 rounded-full"
+                                        src={
+                                            contributor.avatar ||
+                                            `https://github.com/${contributor.username}.png`
+                                        }
+                                        alt={`Avatar of ${contributor.username}`}
+                                        loading="lazy"
+                                    />
+                                )}
                                 <div>
                                     <div className="contributor-name text-sm font-semibold">
-                                        {contributor.username}
+                                        {isFrogArmy ? 
+                                            `Frog #${contributor.ranking}` : 
+                                            contributor.username}
                                     </div>
-                                    {!isAmbassador && (
+                                    {!isAmbassador && !isFrogArmy && (
                                         <a
                                             href={`https://github.com/${contributor?.username}`}
                                             target="_blank"
@@ -94,17 +107,33 @@ export default function Home() {
                                             GitHub Profile
                                         </a>
                                     )}
+                                    {isFrogArmy && contributor.twitter && (
+                                        <a
+                                            href={`https://twitter.com/${contributor?.twitter}`}
+                                            target="_blank"
+                                            rel="noreferrer"
+                                            className="text-xs text-blue-500 underline"
+                                            aria-label={`Visit Twitter profile`}
+                                        >
+                                            Twitter Profile
+                                        </a>
+                                    )}
                                 </div>
                             </div>
                         </td>
                         <td className="px-4 py-2 text-center">
                             {contributor.rewards || '0'}
                         </td>
-                        {!isAmbassador && (
+                        {!isAmbassador && !isFrogArmy && (
                             <td className="px-4 py-2 text-center">
                                 {contributor.contributions
                                     ?.split(';')
                                     .filter((item) => item).length || '0'}
+                            </td>
+                        )}
+                        {isFrogArmy && (
+                            <td className="px-4 py-2 text-center">
+                                {contributor.ranking || 'N/A'}
                             </td>
                         )}
                         <td className="px-4 py-2 text-center">
@@ -112,7 +141,7 @@ export default function Home() {
                         </td>
                     </tr>
 
-                    {!isAmbassador && isExpanded && (
+                    {!isAmbassador && !isFrogArmy && isExpanded && (
                         <tr>
                             <td colSpan="4" className="px-4 py-4">
                                 <div className="rounded-lg p-4">
@@ -138,6 +167,7 @@ export default function Home() {
         openSource: 'Open Sourcerors',
         ambassador: 'Ambassadors',
         modules: 'Module Creators',
+        frogArmy: 'Frog Army'
     }
 
     return (
@@ -154,7 +184,7 @@ export default function Home() {
                             {viewTitles[currentView] || 'Default Title'}
                         </h1>
                     </div>
-                    <div className="flex items-center gap-2 md:gap-4">
+                    <div className="flex flex-wrap items-center gap-2 md:gap-4">
                         <button
                             className={`cursor-pointer rounded p-1 text-center text-sm hover:bg-[#272d35] md:px-4 md:py-2 md:text-lg ${
                                 currentView === 'openSource'
@@ -185,6 +215,16 @@ export default function Home() {
                         >
                             Module Creators
                         </button>
+                        <button
+                            className={`cursor-pointer rounded p-1 text-center text-sm hover:bg-[#272d35] md:px-4 md:py-2 md:text-lg ${
+                                currentView === 'frogArmy'
+                                    ? 'border bg-[#272D35] text-[#e0fff9]'
+                                    : 'text-text-color bg-[#181c21]'
+                            }`}
+                            onClick={() => setCurrentView('frogArmy')}
+                        >
+                            Frog Army
+                        </button>
                     </div>
                     <div className="flex flex-col items-center gap-2">
                         <div
@@ -193,6 +233,10 @@ export default function Home() {
                         >
                             {loading ? (
                                 <span aria-live="polite">Loading...</span>
+                            ) : currentView === 'frogArmy' ? (
+                                <span>{`Total Frogs: ${
+                                    contributors?.length || 0
+                                }`}</span>
                             ) : currentView !== 'ambassador' ? (
                                 <span>
                                     {`Total Contributions: ${contributors.reduce(
@@ -212,7 +256,7 @@ export default function Home() {
                                 }`}</span>
                             )}
                         </div>
-                        {currentView !== 'ambassador' && (
+                        {currentView !== 'ambassador' && currentView !== 'frogArmy' && (
                             <label className="block">
                                 <span className="sr-only">
                                     Sort contributions
@@ -254,14 +298,19 @@ export default function Home() {
                                 <thead>
                                     <tr className="border-b border-gray-600">
                                         <th className="px-4 py-2 text-left">
-                                            Contributor
+                                            {currentView === 'frogArmy' ? 'Frog' : 'Contributor'}
                                         </th>
                                         <th className="px-4 py-2 text-center">
-                                            Lilybit Rewards
+                                            {currentView === 'frogArmy' ? 'Points' : 'Lilybit Rewards'}
                                         </th>
-                                        {currentView !== 'ambassador' && (
+                                        {currentView !== 'ambassador' && currentView !== 'frogArmy' && (
                                             <th className="px-4 py-2 text-center">
                                                 Contributions
+                                            </th>
+                                        )}
+                                        {currentView === 'frogArmy' && (
+                                            <th className="px-4 py-2 text-center">
+                                                Ranking
                                             </th>
                                         )}
                                         <th className="px-4 py-2 text-center">
