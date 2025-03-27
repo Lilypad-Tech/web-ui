@@ -237,7 +237,7 @@ export default function Teams() {
                             </p>
                         </CenterHeadingSection>
 
-                        <div className="my-14 flex flex-col flex-wrap justify-center gap-8 md:flex-row">
+                        <div className="my-14 flex flex-col flex-wrap items-center justify-center gap-8 md:flex-row md:items-start">
                             <_FeatureText
                                 // featuredIconUrl={mediaAndDevicesLightbulb05}
                                 title="AI Compute Without Bottlenecks"
