@@ -3,26 +3,17 @@ import GroupBadge from '@/components/GroupBadge/GroupBadge'
 import ProductCard from '@/components/ProductCard/ProductCard'
 import { Anchor, SectionContainer } from '@lilypad/shared-components'
 import { SocialIcon } from '@lilypad/shared-components'
-import {
-    arrowsArrowRight,
-    //   mapsAndTravelRocket02,
-} from '@frontline-hq/untitledui-icons'
+import { arrowsArrowRight } from '@frontline-hq/untitledui-icons'
 import Head from 'next/head'
-import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import CenterHeadingSection from '@/components/CenterHeadingSection/CenterHeadingSection'
 import SocialProofSection from '@/components/SocialProofSection/SocialProofSection'
-// import BlogPostCard from "@/components/BlogPostCard/BlogPostCard";
 import AnimateSpring from '@/components/AnimateSpring'
 import { animated } from '@react-spring/web'
 import useFade from './hooks/UseFade'
-// import useFadeInView from "./hooks/UseFadeInView";
 import RoadmapFull from '@/components/Roadmap/RoadmapFull'
 import { CallToActions } from '@/components/FooterBlock/CallToActions'
-// import { sendEmail } from "@/utils/sendEmail";
-import { ToastContainer, toast } from 'react-toastify'
-// import dynamic from "next/dynamic";
-// import ContentItem from "@/components/ContentItem/ContentItem";
+import { ToastContainer } from 'react-toastify'
 
 export default function Home() {
     //   const [loading, setLoading] = useState<boolean>(false);
@@ -62,29 +53,27 @@ export default function Home() {
 
     const productCardsData = [
         {
-            header: 'Resource Providers',
-            title: 'Monetize Your Idle GPU',
+            title: 'Build and Deploy Modules',
             subtitle:
-                'Contribute your idle GPU power and earn rewards by helping power decentralized AI and compute jobs on Lilypad.',
+                'Containerize any AI or compute job, create the Lilypad config, and deploy the module to the Lilypad network',
             anchorHref:
-                'https://docs.lilypad.tech/lilypad/hardware-providers/run-a-node',
-            anchorText: 'Become a Resource Provider',
+                'https://docs.lilypad.tech/lilypad/developer-resources/lilypad-modules',
+            anchorText: 'Build a Module',
         },
         {
-            header: 'AI Module Builders',
-            title: 'Build and Monetize Your AI',
+            title: 'Run AI Inference Jobs',
             subtitle:
-                'Create and monetize your own AI modules and data sets, harness cost-effective and scalable compute.',
-            anchorHref: 'https://docs.lilypad.tech/lilypad',
-            anchorText: 'Start building',
+                'Use our inference API or install our CLI to start running jobs.',
+            anchorHref: 'https://docs.lilypad.tech/lilypad/quickstart',
+            anchorText: 'Quickstart',
         },
         {
-            header: 'Creator Community',
-            title: 'Build Faster, Together',
+            title: 'Become a Resource Provider',
             subtitle:
-                'Accelerate your AI projects. Train and deploy models faster and cheaper, plus connect with a thriving community of AI innovators.',
-            anchorHref: 'https://discord.gg/ywSEGd3d84',
-            anchorText: 'Join our community',
+                'Run a compute node on the Lilypad Network and earn for every job run. Set competitive prices to win deals, and choose which modules to run',
+            anchorHref:
+                'https://docs.google.com/forms/d/e/1FAIpQLSeF7xIHuCpwY0X44dqnl4u3weuvmtd5MkZKY0IPlGck4kHx3w/viewform',
+            anchorText: 'RP Beta Program',
         },
     ]
 
@@ -340,16 +329,14 @@ export default function Home() {
                 <SectionContainer id="products">
                     <CenterHeadingSection
                         className="[&&]:bg-uui-bg-primary"
-                        title="How to use Lilypad"
-                        subtitle="Connecting those with idle compute to those who need it, creating a decentralized marketplace for AI compute."
-                        header="Decentralized. Accessible. Collaborative."
+                        title="Contribute and Earn"
+                        subtitle="Participate in the Lilypad ecosystem and earn rewards"
                     >
                         <br />
                         <div className="mt-uui-7xl space-y-uui-4xl lg:space-y-uui-none lg:space-x-uui-4xl flex flex-col lg:flex-row">
                             {productCardsData.map((card, index) => (
                                 <ProductCard
                                     key={index}
-                                    header={card.header}
                                     title={card.title}
                                     subtitle={card.subtitle}
                                 >
@@ -368,23 +355,6 @@ export default function Home() {
                         </div>
                         <br />
                         <br />
-                    </CenterHeadingSection>
-                </SectionContainer>
-                <SectionContainer id="our-network">
-                    <CenterHeadingSection
-                        className="[&&]:bg-uui-bg-primary"
-                        title="Lilypad Network"
-                        subtitle="Lilypad offers a seamless and efficient way to access the computing power you need for AI and other demanding tasks—no need to invest in expensive hardware or navigate complex cloud setups. Simply submit your job; our decentralized network connects you with the best available resources. Benefit from competitive pricing, secure transactions, and a transparent process, all powered by blockchain technology."
-                        header="Our network explained"
-                    >
-                        <Image
-                            alt="Lilypad how it works"
-                            className="py-uui-4xl lg:py-uui-5xl hidden w-full rounded-lg md:block"
-                            layout="responsive"
-                            width={1216}
-                            height={304}
-                            src="/infographic.jpeg"
-                        />
                     </CenterHeadingSection>
                 </SectionContainer>
                 {/* TODO: Remove comment */}
@@ -425,24 +395,6 @@ export default function Home() {
 						</div>
 					</SectionContainer>
 				</CenterHeadingSection> */}
-                <SectionContainer id="capabilities">
-                    <CenterHeadingSection
-                        className="[&&]:bg-uui-bg-primary"
-                        title="Unlocking the possible. One job at a time."
-                        subtitle="Accelerate your AI development with Lilypad. Execute generative AI, fine-tune models with privacy, and train on powerful GPU clusters, all on one decentralized platform."
-                        header="Our Capabilities"
-                    >
-                        <div className="mt-uui-7xl space-y-uui-4xl lg:space-y-uui-none lg:space-x-uui-4xl flex flex-col lg:flex-row">
-                            {capabilityCardData.map((card, index) => (
-                                <ProductCard
-                                    key={index}
-                                    header={card.header}
-                                    subtitle={card.subtitle}
-                                ></ProductCard>
-                            ))}
-                        </div>
-                    </CenterHeadingSection>
-                </SectionContainer>
                 {/* TODO: Add blog posts */}
                 {/* <SectionContainer id="early-access">
 					<CenterHeadingSection
