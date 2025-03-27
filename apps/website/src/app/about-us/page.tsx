@@ -237,19 +237,39 @@ export default function Teams() {
                             </p>
                         </CenterHeadingSection>
 
-                        <div className="space-y-uui-3xl md:space-y-uui-none md:space-x-uui-4xl flex flex-col items-center justify-center md:flex-row">
+                        <div className="my-14 flex flex-col flex-wrap justify-center gap-8 md:flex-row">
                             <_FeatureText
-                                featuredIconUrl={mediaAndDevicesLightbulb05}
+                                // featuredIconUrl={mediaAndDevicesLightbulb05}
                                 title="AI Compute Without Bottlenecks"
                                 description="Open, global access to a competitively priced network of GPUs. Scalable AI for all with blockchain-powered payment rails."
                             />
+
                             <_FeatureText
-                                featuredIconUrl={generalCheckHeart}
+                                // featuredIconUrl={generalCheckHeart}
                                 title="Nodes Earn Per Task"
                                 description="Every AI model on Lilypad runs on a per-job basis. Compute providers can monetize idle compute, when and how they wish, picking up jobs on the network."
                             />
+
                             <_FeatureText
-                                featuredIconUrl={developmentPuzzlePiece01}
+                                // featuredIconUrl={developmentPuzzlePiece01}
+                                title="Easily Deploy Any Model"
+                                description="No MLOPs, no pay per GPU-hour. Containterize, configure, run as a serverless function."
+                            />
+
+                            <_FeatureText
+                                // featuredIconUrl={mediaAndDevicesLightbulb05}
+                                title="AI Compute Without Bottlenecks"
+                                description="Open, global access to a competitively priced network of GPUs. Scalable AI for all with blockchain-powered payment rails."
+                            />
+
+                            <_FeatureText
+                                // featuredIconUrl={generalCheckHeart}
+                                title="Nodes Earn Per Task"
+                                description="Every AI model on Lilypad runs on a per-job basis. Compute providers can monetize idle compute, when and how they wish, picking up jobs on the network."
+                            />
+
+                            <_FeatureText
+                                // featuredIconUrl={developmentPuzzlePiece01}
                                 title="Easily Deploy Any Model"
                                 description="No MLOPs, no pay per GPU-hour. Containterize, configure, run as a serverless function."
                             />
