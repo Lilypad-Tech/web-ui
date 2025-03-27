@@ -1,14 +1,14 @@
+import { useContext } from 'react'
+import Image from 'next/image'
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
+import { PageContext } from '../../app/clientLayout'
 import { HomePageCmsInfo } from '../../app/hooks/strapi/types'
-import Image from 'next/image'
 
-interface SocialProofProps {
-    strapi: HomePageCmsInfo
-}
+const SocialProofSection = () => {
+    const { strapi } = useContext(PageContext) as { strapi: HomePageCmsInfo }
 
-const SocialProofSection = ({ strapi }: SocialProofProps) => {
     const trustedByArray = strapi?.trusted_bies || []
 
     const settings = {
