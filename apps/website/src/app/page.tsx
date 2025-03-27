@@ -9,7 +9,7 @@ import {
 } from '@frontline-hq/untitledui-icons'
 import Head from 'next/head'
 import Image from 'next/image'
-import { useContext, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import CenterHeadingSection from '@/components/CenterHeadingSection/CenterHeadingSection'
 import SocialProofSection from '@/components/SocialProofSection/SocialProofSection'
 // import BlogPostCard from "@/components/BlogPostCard/BlogPostCard";
@@ -17,8 +17,6 @@ import AnimateSpring from '@/components/AnimateSpring'
 import { animated } from '@react-spring/web'
 import useFade from './hooks/UseFade'
 // import useFadeInView from "./hooks/UseFadeInView";
-import { PageContext } from './clientLayout'
-import { HomePageCmsInfo } from './hooks/strapi/types'
 import RoadmapFull from '@/components/Roadmap/RoadmapFull'
 import { CallToActions } from '@/components/FooterBlock/CallToActions'
 // import { sendEmail } from "@/utils/sendEmail";
@@ -27,11 +25,9 @@ import { ToastContainer, toast } from 'react-toastify'
 // import ContentItem from "@/components/ContentItem/ContentItem";
 
 export default function Home() {
-    const lol = 'no'
     //   const [loading, setLoading] = useState<boolean>(false);
     //   const [email, setEmail] = useState("");
 
-    const { strapi } = useContext(PageContext) as { strapi: HomePageCmsInfo }
     const socialLinks = [
         { href: 'https://twitter.com/lilypad_tech', iconUrl: '/x.svg' },
         {
@@ -337,7 +333,7 @@ export default function Home() {
                 </SectionContainer>
                 <SectionContainer className="pb-uui-3xl lg:pb-uui-8xl">
                     <animated.div style={fade}>
-                        <SocialProofSection strapi={strapi} />
+                        <SocialProofSection />
                     </animated.div>
                 </SectionContainer>
 
