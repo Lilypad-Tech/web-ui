@@ -276,7 +276,7 @@ export default function Teams() {
                         </div>
                     </SectionContainer>
                 </div>
-                <div className="bg-uui-bg-secondary p-uui-7xl lg:py-uui-9xl">
+                <div className="bg-uui-bg-secondary py-uui-7xl lg:py-uui-9xl">
                     {/* <SectionContainer>
 						<div className="text-center mx-auto max-w-uui-width-2xl">
 							<animated.h3
