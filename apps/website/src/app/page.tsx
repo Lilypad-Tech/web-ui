@@ -217,8 +217,8 @@ export default function Home() {
                 />
 
                 <SectionContainer>
-                    <div className="bg-uui-bg-primary lg:gap-uui-9xl flex flex-col justify-between py-16 lg:flex-row">
-                        <div className="mr-auto flex w-full flex-col items-start justify-start lg:w-fit lg:flex-grow">
+                    <div className="bg-uui-bg-primary flex flex-col justify-between gap-10 py-16 lg:flex-row xl:gap-20">
+                        <div className="mr-auto flex w-full flex-col">
                             <animated.div style={fade}>
                                 <GroupBadge
                                     onClick={() =>
@@ -316,7 +316,7 @@ export default function Home() {
                         <animated.img
                             style={fade}
                             src="https://cdn.lilypad.tech/lilypad-globe.gif"
-                            className="my-16 h-full w-full rounded-lg drop-shadow-lg"
+                            className="h-full w-full rounded-lg drop-shadow-lg lg:mt-16 lg:w-3/4 xl:w-full"
                         />
                     </div>
                 </SectionContainer>
