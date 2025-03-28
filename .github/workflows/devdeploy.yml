@@ -39,10 +39,6 @@ jobs:
               env:
                   DOPPLER_TOKEN: ${{ secrets.DEVDEPLOY_DOPPLER_TOKEN }}
 
-            - name: Build Dashboard
-              working-directory: ./apps/info-dashboard/
-              run: npm run build
-
             - name: Clean up build output
               working-directory: ./apps/info-dashboard/.next
               run: rm -rf cache
