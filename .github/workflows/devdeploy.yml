@@ -34,11 +34,14 @@ jobs:
             - name: Set up Doppler
               run: doppler configure set token ${{ secrets.DEVDEPLOY_DOPPLER_TOKEN }}
 
-            - name: Fetch secrets from Doppler and Build Dashboard
-              working-directory: ./apps/info-dashboard/
+            - name: Fetch secrets from Doppler and Boot
               run: doppler run -- npm run boot && npm run build
               env:
                   DOPPLER_TOKEN: ${{ secrets.DEVDEPLOY_DOPPLER_TOKEN }}
+
+            - name: Build Dashboard
+              working-directory: ./apps/info-dashboard/
+              run: npm run build
 
             - name: Clean up build output
               working-directory: ./apps/info-dashboard/.next
