@@ -175,7 +175,7 @@ export default function Teams() {
                             title="Ethos"
                             subtitle="An Accessible Marketplace of AI Deployment and Monetization"
                         >
-                            <p className="uui-text-md text-uui-text-primary-900 mx-auto max-w-prose py-4 text-center antialiased">
+                            <p className="uui-text-md text-uui-text-primary-900 mx-auto max-w-prose py-4 antialiased">
                                 Lilypad is a business model for all — deploy,
                                 monetize, and scale your custom AI models with
                                 zero friction on our global compute network.
@@ -185,7 +185,7 @@ export default function Teams() {
                             </p>
                         </CenterHeadingSection>
 
-                        <div className="my-14 flex flex-col flex-wrap items-center justify-center gap-8 md:flex-row md:items-start">
+                        <div className="my-14 flex flex-col flex-wrap items-center justify-center gap-x-8 gap-y-16 md:flex-row md:items-start">
                             <_FeatureText
                                 // featuredIconUrl={mediaAndDevicesLightbulb05}
                                 title="AI Compute Without Bottlenecks"
@@ -206,20 +206,20 @@ export default function Teams() {
 
                             <_FeatureText
                                 // featuredIconUrl={mediaAndDevicesLightbulb05}
-                                title="AI Compute Without Bottlenecks"
-                                description="Open, global access to a competitively priced network of GPUs. Scalable AI for all with blockchain-powered payment rails."
+                                title="Model Monetization"
+                                description="Those who publish custom models earn per job run. Network effect growth at the rate of AI innovation."
                             />
 
                             <_FeatureText
                                 // featuredIconUrl={generalCheckHeart}
-                                title="Nodes Earn Per Task"
-                                description="Every AI model on Lilypad runs on a per-job basis. Compute providers can monetize idle compute, when and how they wish, picking up jobs on the network."
+                                title="Decentralized Supercloud"
+                                description="A dynamically scalable, fault-tolerant mesh network. Aggregate GPUs from anywhere with blockchain payment rails and smart contract automation."
                             />
 
                             <_FeatureText
                                 // featuredIconUrl={developmentPuzzlePiece01}
-                                title="Easily Deploy Any Model"
-                                description="No MLOPs, no pay per GPU-hour. Containterize, configure, run as a serverless function."
+                                title="Modular and Composable"
+                                description="Integrate any model directly into an application. Pick and choose from models for decentralized science, autonomous agents, or specialized AI applications"
                             />
                         </div>
                     </SectionContainer>
