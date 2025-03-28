@@ -4,7 +4,7 @@ export const team = [
         title: 'CEO & Founder',
         description:
             'Tech leader merging AI, blockchain, and creativity for real-world impact.',
-        experience: 'Filecoin, IBM, and Accenture',
+        experience: 'Protocol Labs, Filecoin, IBM, and Accenture',
         image: '',
         twitter: 'DeveloperAlly',
         linkedin: 'Ally-Haire',
@@ -15,7 +15,8 @@ export const team = [
         title: 'Co-Founder, Chief Scientists',
         description:
             'Mathematician and machine learning scientist specializing in data systems for scientific research.',
-        experience: 'AI & ML Engineer & Researcher, Stanford University',
+        experience:
+            'Google, AI & ML Engineer & Researcher, Stanford University',
         image: '',
         twitter: 'ScienceStanley',
         linkedin: 'ScienceStanley',
@@ -190,7 +191,7 @@ export const team = [
         name: 'Devlin Rocha',
         title: 'Developer Relations Engineer and Content Producer',
         description:
-            'Polyglot senior software engineer crafting robust and scalable web applications. Inspired by music, gaming, and technology.',
+            'Polyglot software engineer specializing in fullstack development, design, and user experience.',
         experience: 'Synctree and Revolution Entertainment Services',
         image: '',
         twitter: 'DevlinRocha',
