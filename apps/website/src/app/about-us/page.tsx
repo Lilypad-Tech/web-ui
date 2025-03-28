@@ -175,7 +175,7 @@ export default function Teams() {
                             title="Ethos"
                             subtitle="An Accessible Marketplace of AI Deployment and Monetization"
                         >
-                            <p className="uui-text-md text-uui-text-primary-900 mx-auto max-w-prose py-4 antialiased">
+                            <p className="uui-text-md text-uui-text-primary-900 mx-auto max-w-prose py-4 text-center antialiased">
                                 Lilypad is a business model for all — deploy,
                                 monetize, and scale your custom AI models with
                                 zero friction on our global compute network.
