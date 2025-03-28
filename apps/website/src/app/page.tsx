@@ -55,7 +55,7 @@ export default function Home() {
         {
             title: 'Build and Deploy Modules',
             subtitle:
-                'Containerize any AI or compute job, create the Lilypad config, and deploy the module to the Lilypad network',
+                'Containerize any AI or compute job, create the Lilypad config, and deploy the module to the Lilypad network.',
             anchorHref:
                 'https://docs.lilypad.tech/lilypad/developer-resources/lilypad-modules',
             anchorText: 'Build a Module',
@@ -63,14 +63,14 @@ export default function Home() {
         {
             title: 'Run AI Inference Jobs',
             subtitle:
-                'Use our inference API or install our CLI to start running jobs.',
+                'Use our inference API or install our CLI to start running AI inference jobs.',
             anchorHref: 'https://docs.lilypad.tech/lilypad/quickstart',
             anchorText: 'Quickstart',
         },
         {
             title: 'Become a Resource Provider',
             subtitle:
-                'Run a compute node on the Lilypad Network and earn for every job run. Set competitive prices to win deals, and choose which modules to run',
+                'Run a compute node on the Lilypad Network and earn for every job run. Set competitive prices to win deals, and choose which modules to run.',
             anchorHref:
                 'https://docs.google.com/forms/d/e/1FAIpQLSeF7xIHuCpwY0X44dqnl4u3weuvmtd5MkZKY0IPlGck4kHx3w/viewform',
             anchorText: 'RP Beta Program',
