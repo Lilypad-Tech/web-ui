@@ -3,7 +3,7 @@ name: Deploy Dev
 on:
     push:
         branches:
-            - nadiem/feat-add-metrics-page # or the branch you want to deploy from
+            - main
 
 jobs:
     build:
