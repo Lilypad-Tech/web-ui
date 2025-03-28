@@ -263,7 +263,7 @@ export default function Home() {
                                     <Anchor
                                         target="_blank"
                                         href="https://discord.gg/ywSEGd3d84"
-                                        className="w-full cursor-pointer md:w-fit [&&]:rounded-full"
+                                        className="cursor-pointer md:w-fit [&&]:rounded-full"
                                         color="color"
                                         destructive={false}
                                         hierarchy="primary"
@@ -279,7 +279,7 @@ export default function Home() {
                                     <Anchor
                                         target="_blank"
                                         href="https://docs.lilypad.tech/lilypad"
-                                        className="w-full cursor-pointer md:w-fit [&&]:rounded-full"
+                                        className="cursor-pointer md:w-fit [&&]:rounded-full"
                                         color="color"
                                         destructive={false}
                                         hierarchy="primary"
