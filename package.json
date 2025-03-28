@@ -6,7 +6,7 @@
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "boot": "doppler run --preserve-env --command=\"pnpm i --no-frozen-lockfile && pnpm -r --filter=!website-cms --filter=!info-dashboard build\"",
+        "boot": "doppler run --preserve-env --command=\"pnpm i --no-frozen-lockfile && pnpm -r build\"",
         "dev": "fun() { doppler run --preserve-env -- pnpm --filter $@ dev; }; fun",
         "preview": "fun() { doppler run --preserve-env -- pnpm --filter $@ preview; }; fun",
         "prettier": "prettier . --write"
