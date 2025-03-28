@@ -460,12 +460,12 @@ export default function Home() {
                 >
                     <CenterHeadingSection
                         className="[&&]:bg-uui-bg-primary mx-auto text-center"
-                        title="Lilypad IncentiveNet"
-                        subtitle="Earn rewards for powering the future of decentralized AI with Lilypad's IncentiveNet."
+                        title="Lilypad Builderverse"
+                        subtitle="Earn rewards for contributing to the future of decentralized AI"
                     >
                         <Anchor
                             target="_blank"
-                            href="https://docs.lilypad.tech/lilypad"
+                            href="https://lilypadnetwork.notion.site/bounty-board"
                             className="mx-auto my-4 w-full cursor-pointer md:w-fit [&&]:rounded-full"
                             color="color"
                             destructive={false}
@@ -476,7 +476,7 @@ export default function Home() {
                                     : 'xl'
                             }
                         >
-                            Get started
+                            View Available Bounties
                         </Anchor>
                         <animated.div
                             style={fade}
