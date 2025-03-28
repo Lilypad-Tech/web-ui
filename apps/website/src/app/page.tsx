@@ -218,7 +218,7 @@ export default function Home() {
 
                 <SectionContainer>
                     <div className="bg-uui-bg-primary flex flex-col justify-between gap-10 py-16 lg:flex-row xl:gap-20">
-                        <div className="mr-auto flex w-full flex-col">
+                        <div className="mr-auto flex w-full flex-col items-center text-center lg:items-start lg:text-start">
                             <animated.div style={fade}>
                                 <GroupBadge
                                     onClick={() =>
@@ -259,7 +259,7 @@ export default function Home() {
                                     Host, run, and monetize <i>any</i> AI model
                                 </h2>
 
-                                <div className="flex flex-row gap-4">
+                                <div className="flex flex-row justify-center gap-4 lg:justify-start">
                                     <Anchor
                                         target="_blank"
                                         href="https://discord.gg/ywSEGd3d84"
