@@ -296,7 +296,7 @@ export default function Home() {
                             </AnimateSpring>
 
                             <animated.div style={fade}>
-                                <div className="space-x-uui-xl flex pt-12">
+                                <div className="mt-12 flex gap-4">
                                     {socialLinks.map((link) => (
                                         <a
                                             key={link.href}
