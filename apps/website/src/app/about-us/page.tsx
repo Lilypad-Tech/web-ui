@@ -1,32 +1,14 @@
 'use client'
-import {
-    Button,
-    InputField,
-    SectionContainer,
-} from '@lilypad/shared-components'
+import { SectionContainer } from '@lilypad/shared-components'
 import Head from 'next/head'
 import CenterHeadingSection from '@/components/CenterHeadingSection/CenterHeadingSection'
 import _TeamMember from '@/components/_TeamMember/_TeamMember'
-import {
-    developmentPuzzlePiece01,
-    educationBookOpen01,
-    generalCheckHeart,
-    generalEye,
-    mapsAndTravelFlag02,
-    mediaAndDevicesLightbulb05,
-    usersUsers01,
-} from '@frontline-hq/untitledui-icons'
-import IconAtom from '@/components/IconAtom/IconAtom'
 import ContentItem from '@/components/ContentItem/ContentItem'
 import Image from 'next/image'
-import FeaturedIcon from '@/components/FeaturedIcon/FeaturedIcon'
 import _FeatureText from '@/components/_FeatureText/_FeatureText'
 import useFade from '../hooks/UseFade'
-import { useSpring, animated } from '@react-spring/web'
-import { NewsletterForm } from '@/components/Forms/NewsletterForm'
+import { animated } from '@react-spring/web'
 import { CallToActions } from '@/components/FooterBlock/CallToActions'
-import React, { useEffect, useState, useRef } from 'react'
-import AnimateSpring from '@/components/AnimateSpring'
 import useFadeInView from '../hooks/UseFadeInView'
 
 export default function Teams() {
@@ -112,40 +94,6 @@ export default function Teams() {
                             </div>
                         </div>
                     </SectionContainer>
-
-                    {/* <SectionContainer className="pt-uui-7xl">
-						<div className="max-w-[45rem] md:py-uui-9xl mx-auto">
-							<ContentItem
-								size="xl"
-								heading="Our story"
-								paragraph="A Story of Empowering AI for All, Fueled by Two Trailblazers"
-							/>
-							<ContentItem
-								size="md"
-								paragraph="Lilypad's journey began with Ally, a software engineer with a diverse background spanning cafes and cutting-edge tech, and Stanley, a bioinformatician driven by a passion for open science and accessible research. Together, they were frustrated by a common obstacle: brilliant minds with groundbreaking AI ideas, held back by the lack of access to powerful computing resources."
-							/>
-							<ContentItem
-								size="md"
-								paragraph="Ally, with her experience at IBM and Protocol Labs, and Stanley, with his decade of expertise in high-performance computing for medical research, knew there had to be a better way. They saw a world where innovation was bottlenecked, not by a lack of talent, but by the scarcity of affordable compute."
-							/>
-							<ContentItem
-								size="md"
-								paragraph="Their solution? Harness the untapped potential of billions of idle personal computers. Lilypad was born from this vision – a decentralized network democratizing access to AI compute. By leveraging blockchain technology and smart contracts, Lilypad connects those with spare compute to those who need it, ensuring transparency, security, and fair compensation for all."
-							/>
-							<ContentItem
-								size="md"
-								paragraph={`"We're creating a protocol where compute jobs are matched dynamically with nodes," explains Ally, "ensuring optimized resource allocation without middlemen overheads." This peer-to-peer marketplace for computational tasks significantly lowers the computing cost compared to traditional services.`}
-							/>
-							<ContentItem
-								size="md"
-								paragraph="For Stanley, Lilypad is a platform to advance his mission of applying machine learning to biological research. He envisions a future where Lilypad's computing power accelerates personalized medicine and genetic research breakthroughs, like drastically reducing the cost of genome sequencing."
-							/>
-							<ContentItem
-								size="md"
-								paragraph="Lilypad is a testament to Ally and Stanley's shared belief: the future of AI should be open, accessible, and community-driven. With their combined vision and expertise, they're making that future a reality, one hop at a time."
-							/>
-						</div>
-					</SectionContainer> */}
                 </div>
 
                 <div className="bg-uui-bg-secondary pt-uui-9xl pb-uui-11xl">
