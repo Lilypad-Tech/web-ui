@@ -9,11 +9,9 @@ import _FeatureText from '@/components/_FeatureText/_FeatureText'
 import useFade from '../hooks/UseFade'
 import { animated } from '@react-spring/web'
 import { CallToActions } from '@/components/FooterBlock/CallToActions'
-import useFadeInView from '../hooks/UseFadeInView'
 
 export default function Teams() {
     const fadeLandingspage = useFade()
-    const [missionStatementRef, missionStatementSprings] = useFadeInView()
     return (
         <>
             <Head>
@@ -68,17 +66,15 @@ export default function Teams() {
                     <SectionContainer>
                         <div className="md:py-uui-9xl mx-auto max-w-[45rem]">
                             <div className="mx-auto my-14 max-w-prose">
-                                <animated.h3
-                                    className="text-uui-text-brand-secondary-700 uui-text-md md:uui-text-lg text-center font-semibold antialiased"
-                                    style={missionStatementSprings}
-                                    ref={missionStatementRef}
-                                >
-                                    Vision
-                                </animated.h3>
+                                <CenterHeadingSection
+                                    className="[&&]:bg-uui-bg-primary"
+                                    title="Vision"
+                                    subtitle="Open AI Infrastructure and Open Source Monetization"
+                                />
 
                                 <ContentItem
                                     size="lg"
-                                    paragraph="Open infrastructure & AI is essential to ensuring AI remains a community-owned resource,but open-source still struggles to monetize."
+                                    paragraph="Open AI infrastructure is essential to ensuring AI remains a community-owned resource, but open-source still struggles to monetize."
                                 />
                                 <ContentItem
                                     size="lg"
