@@ -34,8 +34,8 @@ jobs:
             - name: Set up Doppler
               run: doppler configure set token ${{ secrets.DEVDEPLOY_DOPPLER_TOKEN }}
 
-            - name: Fetch secrets from Doppler and Boot
-              run: doppler run -- npm run boot && npm run build
+            - name: Fetch secrets from Doppler and boot
+              run: doppler run -- npm run boot
               env:
                   DOPPLER_TOKEN: ${{ secrets.DEVDEPLOY_DOPPLER_TOKEN }}
 
