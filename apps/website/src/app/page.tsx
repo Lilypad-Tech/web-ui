@@ -223,7 +223,7 @@ export default function Home() {
                                 <GroupBadge
                                     onClick={() =>
                                         window.open(
-                                            'https://lilypad.tech/incentiveNet',
+                                            'https://lilypadnetwork.notion.site/bounty-board',
                                             '_blank'
                                         )
                                     }
@@ -232,8 +232,8 @@ export default function Home() {
                                         url: arrowsArrowRight,
                                     }}
                                     color="brand"
-                                    message="We've recently launched IncentiveNet"
-                                    text="News"
+                                    message="View our available bounties"
+                                    text="Bounty Board"
                                     size={
                                         screenSize === 'xl' ||
                                         screenSize === '2xl'
