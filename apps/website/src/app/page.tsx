@@ -316,7 +316,7 @@ export default function Home() {
                         <animated.img
                             style={fade}
                             src="https://cdn.lilypad.tech/lilypad-globe.gif"
-                            className="h-full w-full rounded-lg drop-shadow-lg lg:mt-16 lg:w-3/4 xl:w-full"
+                            className="mt-4 h-full w-full rounded-lg drop-shadow-lg lg:mt-16 lg:w-3/4 xl:w-full"
                         />
                     </div>
                 </SectionContainer>
