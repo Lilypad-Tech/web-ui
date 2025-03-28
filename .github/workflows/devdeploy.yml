@@ -2,8 +2,8 @@ name: Deploy Dev
 
 on:
     push:
-        branches:
-            - main
+        paths:
+            - '/apps/info-dashboard/**'
 
 jobs:
     build:
