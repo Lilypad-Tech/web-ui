@@ -19,11 +19,11 @@ const CenterHeadingSection = ({
             className={` ${props.className} bg-uui-bg-secondary py-uui-4xl lg:py-uui-5xl`}
         >
             <div className="max-w-uui-width-xl mx-auto text-center">
-                {header && (
+                {/* {header && (
                     <h5 className="text-uui-text-brand-secondary-700 uui-text-sm md:uui-text-md font-semibold antialiased">
                         {header}
                     </h5>
-                )}
+                )} */}
                 {title && (
                     <h2
                         className={` ${titleClassName} text-uui-text-primary-900 pb-uui-2xl pt-uui-lg uui-display-sm md:uui-display-md font-semibold`}
