@@ -16,12 +16,11 @@ import {
 import { NodesEndpointReturnType } from './nodes'
 
 export async function fetchLeaderboard() {
-    // Add default value and trim any trailing slashes
-    const API_HOST = (process.env.NEXT_PUBLIC_API_HOST || '').replace(/\/$/, '')
-    // Add error handling and logging
+    const API_HOST = process.env.NEXT_PUBLIC_API_HOST
+    
+	// error handling
     try {
         const leaderboard_url = `${API_HOST}/metrics-dashboard/leaderboard`
-        console.log('Fetching from:', leaderboard_url) // Debug log
         const raw = await fetch(leaderboard_url)
         if (!raw.ok) {
             throw new Error(`HTTP error! status: ${raw.status}`)

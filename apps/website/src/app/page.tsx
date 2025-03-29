@@ -245,7 +245,7 @@ export default function Home() {
                             </animated.div>
 
                             <AnimateSpring>
-                                <div className="md:pb-uui-3xl uui-display-md md:uui-display-xl text-uui-text-primary-900 flex flex-wrap gap-12 py-4 font-semibold antialiased md:gap-24 lg:flex-nowrap">
+                                <div className="md:pb-uui-3xl uui-display-md md:uui-display-xl text-uui-text-primary-900 flex gap-12 py-4 font-semibold antialiased md:gap-24">
                                     <h1>
                                         The{' '}
                                         <span className="text-uui-text-quarterary-500">
@@ -313,11 +313,13 @@ export default function Home() {
                                 </div>
                             </animated.div>
                         </div>
-                        <animated.img
-                            style={fade}
-                            src="https://cdn.lilypad.tech/lilypad-globe.gif"
-                            className="mt-4 h-full w-full rounded-lg drop-shadow-lg lg:mt-16 lg:w-3/4 xl:w-full"
-                        />
+                        <div className="h-full w-full">
+                            <animated.img
+                                style={fade}
+                                src="https://cdn.lilypad.tech/lilypad-globe.gif"
+                                className="mt-4 rounded-lg object-contain drop-shadow-lg lg:mt-16"
+                            />
+                        </div>
                     </div>
                 </SectionContainer>
                 <SectionContainer className="pb-uui-3xl lg:pb-uui-8xl">

@@ -17,10 +17,11 @@ export type NodesEndpointReturnElement = {
 export type NodesEndpointReturnType = NodesEndpointReturnElement[]
 
 export async function fetchNodes() {
-    const API_HOST = (process.env.NEXT_PUBLIC_API_HOST || '').replace(/\/$/, '')
+    const API_HOST = process.env.NEXT_PUBLIC_API_HOST
+
+	// error handling
     try {
         const URL = `${API_HOST}/metrics-dashboard/nodes`
-        console.log('Fetching nodes from:', URL) // Debug log
         const raw = await fetch(URL)
         if (!raw.ok) {
             throw new Error(`HTTP error! status: ${raw.status}`)
