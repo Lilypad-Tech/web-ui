@@ -9,11 +9,9 @@ import _FeatureText from '@/components/_FeatureText/_FeatureText'
 import useFade from '../hooks/UseFade'
 import { animated } from '@react-spring/web'
 import { CallToActions } from '@/components/FooterBlock/CallToActions'
-import useFadeInView from '../hooks/UseFadeInView'
 
 export default function Teams() {
     const fadeLandingspage = useFade()
-    const [missionStatementRef, missionStatementSprings] = useFadeInView()
     return (
         <>
             <Head>
@@ -50,8 +48,8 @@ export default function Teams() {
                                 titleClassName="uui-display-lg [&&]:md:uui-display-2xl "
                                 className="pt-uui-7xl lg:pt-uui-9xl [&&]:pb-uui-7xl relative [&&]:bg-transparent"
                                 header="About Lilypad"
-                                title="The AI Platform for Builders"
-                                subtitle="Create, deploy, monetize"
+                                title="About"
+                                subtitle="Our mission and vision"
                             ></CenterHeadingSection>
                         </animated.div>
                     </SectionContainer>
@@ -68,17 +66,15 @@ export default function Teams() {
                     <SectionContainer>
                         <div className="md:py-uui-9xl mx-auto max-w-[45rem]">
                             <div className="mx-auto my-14 max-w-prose">
-                                <animated.h3
-                                    className="text-uui-text-brand-secondary-700 uui-text-md md:uui-text-lg text-center font-semibold antialiased"
-                                    style={missionStatementSprings}
-                                    ref={missionStatementRef}
-                                >
-                                    Vision
-                                </animated.h3>
+                                <CenterHeadingSection
+                                    className="[&&]:bg-uui-bg-primary"
+                                    title="Vision"
+                                    subtitle="Open AI Infrastructure and Open Source Monetization"
+                                />
 
                                 <ContentItem
                                     size="lg"
-                                    paragraph="Open infrastructure & AI is essential to ensuring AI remains a community-owned resource,but open-source still struggles to monetize."
+                                    paragraph="Open AI infrastructure is essential to ensuring AI remains a community-owned resource, but open-source still struggles to monetize."
                                 />
                                 <ContentItem
                                     size="lg"
@@ -96,66 +92,6 @@ export default function Teams() {
                     </SectionContainer>
                 </div>
 
-                <div className="bg-uui-bg-secondary pt-uui-9xl pb-uui-11xl">
-                    <SectionContainer>
-                        <div className="space-y-uui-7xl md:space-y-uui-none md:space-x-uui-9xl flex flex-col md:flex-row">
-                            <div className="space-y-uui-xl md:space-y-uui-2xl flex flex-col">
-                                <h3 className="uui-display-sm md:uui-display-md text-uui-text-primary-900 font-semibold">
-                                    How It Works
-                                </h3>
-                                <p className="text-uui-text-tertiary-600 font-regular uui-text-lg md:uui-text-xl max-w-prose antialiased">
-                                    AI Developers earn directly for their
-                                    contributions, with a platform for AI model
-                                    distribution on a decentralized network with
-                                    blockchain payment rails.
-                                </p>
-                            </div>
-                            <div className="space-y-uui-4xl md:space-y-uui-6xl flex flex-col">
-                                <div className="space-x-uui-xl flex">
-                                    {/* <FeaturedIcon iconUrl={generalEye} /> */}
-                                    <div className="spacing-y-uui-md flex flex-col items-start justify-center">
-                                        <span className="text-uui-text-primary-900 uui-text-lg md:uui-text-xl font-semibold antialiased">
-                                            Deploy Your Model & Monetize AI
-                                            Innovation
-                                        </span>
-                                        <p className="uui-text-sm md:uui-text-md font-regular text-uui-text-tertiary-600 antialiased">
-                                            Upload and configure your AI model
-                                            in minutes, earn revenue each time a
-                                            model is utilized
-                                        </p>
-                                    </div>
-                                </div>
-                                <div className="space-x-uui-xl flex">
-                                    {/* <FeaturedIcon
-                                        iconUrl={mapsAndTravelFlag02}
-                                    /> */}
-                                    <div className="spacing-y-uui-md flex flex-col items-start justify-center">
-                                        <span className="text-uui-text-primary-900 uui-text-lg md:uui-text-xl font-semibold antialiased">
-                                            Run AI Jobs
-                                        </span>
-                                        <p className="uui-text-sm md:uui-text-md font-regular text-uui-text-tertiary-600 antialiased">
-                                            Execute workloads seamlessly on
-                                            decentralized compute, with
-                                            Lilypad's extensive library of
-                                            community-built models
-                                        </p>
-                                    </div>
-                                </div>
-                                <div className="space-x-uui-xl flex">
-                                    <div className="spacing-y-uui-md flex flex-col items-start justify-center">
-                                        <span className="text-uui-text-primary-900 uui-text-lg md:uui-text-xl font-semibold antialiased">
-                                            Scale AI Workflows
-                                        </span>
-                                        <p className="uui-text-sm md:uui-text-md font-regular text-uui-text-tertiary-600 antialiased">
-                                            Tap into a global network of GPUs as
-                                            needed as your applications scale.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </SectionContainer>
-                </div>
                 <div className="-mt-uui-9xl relative mx-auto flex w-full items-center justify-center">
                     <SectionContainer>
                         {/* TODO: Add pic for middle section */}
