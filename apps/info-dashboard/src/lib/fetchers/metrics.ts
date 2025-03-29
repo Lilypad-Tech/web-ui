@@ -23,7 +23,7 @@ export type MetricsEndpointReturnType = {
 
 export async function fetchMetrics() {
     const API_HOST = process.env.NEXT_PUBLIC_API_HOST
-    const METRICS_URL = `${API_HOST}metrics-dashboard/metrics`
+    const METRICS_URL = `${API_HOST}/metrics-dashboard/metrics`
     const raw = await fetch(METRICS_URL)
     const res = (await raw.json()) as MetricsEndpointReturnType
     return res
