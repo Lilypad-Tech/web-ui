@@ -17,6 +17,7 @@
     },
     "devDependencies": {
         "@types/node": "22.7.5",
+        "@types/react": "19.0.12",
         "eslint": "^8",
         "eslint-config-next": "14.2.14",
         "postcss": "^8",
