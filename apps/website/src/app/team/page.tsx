@@ -3,7 +3,7 @@ import { Anchor, SectionContainer } from '@lilypad/shared-components'
 import Head from 'next/head'
 import CenterHeadingSection from '@/components/CenterHeadingSection/CenterHeadingSection'
 import _TeamMember from '@/components/_TeamMember/_TeamMember'
-import { mapsAndTravelGlobe02 } from '@frontline-hq/untitledui-icons'
+import globe02 from '/globe-02.svg'
 import SocialProofSection from '@/components/SocialProofSection/SocialProofSection'
 import Image from 'next/image'
 import useFadeInView from '../hooks/UseFadeInView'
@@ -215,7 +215,7 @@ export default function Teams() {
                                         socialIcons={[
                                             {
                                                 href: partner.website,
-                                                iconUrl: mapsAndTravelGlobe02,
+                                                iconUrl: globe02,
                                             },
                                         ]}
                                     />
