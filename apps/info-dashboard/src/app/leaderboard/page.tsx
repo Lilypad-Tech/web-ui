@@ -3,15 +3,13 @@ import React, { useEffect, useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import Table from '@/components/Table/Table'
 import FeaturedIcon from '@/components/FeaturedIcon'
-import {
-    generalLoading01,
-    alertAndFeedbackAlertCircle,
-    generalSearchLg,
-    generalSearchMd,
-    generalCopy07,
-    generalLinkExternal02,
-    generalCheck,
-} from '@frontline-hq/untitledui-icons'
+import searchMd from 'search-md.svg'
+import loading01 from 'loading-01.svg'
+import alertCircle from 'alert-circle.svg'
+import searchLg from 'search-lg.svg'
+import linkExternal02 from 'link-external-02.svg'
+import check from 'check.svg'
+import copy07 from 'copy-07.svg'
 import CardHeader from '@/components/CardHeader'
 import { InputField } from '@lilypad/shared-components'
 import { SectionContainer } from '@lilypad/shared-components'
@@ -219,7 +217,7 @@ export default function Leaderboard() {
                                                 }
                                                 inputSize="sm"
                                                 placeholder={m.leaderboard_node_provider_table_inputField_placeholder()}
-                                                iconUrl={generalSearchMd}
+                                                iconUrl={searchMd}
                                             />
                                         </div>
                                     }
@@ -265,11 +263,11 @@ export default function Leaderboard() {
                                             iconUrl={
                                                 leaderboardIsLoading ||
                                                 nodesIsLoading
-                                                    ? generalLoading01
+                                                    ? loading01
                                                     : leaderboardIsError ||
                                                         nodesIsError
-                                                      ? alertAndFeedbackAlertCircle
-                                                      : generalSearchLg
+                                                      ? alertCircle
+                                                      : searchLg
                                             }
                                         />
                                     </EmptyState>
@@ -389,7 +387,7 @@ export default function Leaderboard() {
                                                                         icon={{
                                                                             type: 'icon',
                                                                             trailing:
-                                                                                generalLinkExternal02,
+                                                                                linkExternal02,
                                                                         }}
                                                                     >
                                                                         {`${row['Wallet'].slice(0, 6)}...${row[
@@ -414,8 +412,8 @@ export default function Leaderboard() {
                                                                                             'Wallet'
                                                                                         ]
                                                                                 )
-                                                                                    ? generalCheck
-                                                                                    : generalCopy07,
+                                                                                    ? check
+                                                                                    : copy07,
                                                                         }}
                                                                         onClick={() => {
                                                                             setCopiedArray(
