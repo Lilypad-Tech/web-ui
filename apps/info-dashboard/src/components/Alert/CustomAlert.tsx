@@ -6,7 +6,7 @@ import {
     SetStateAction,
 } from 'react'
 import { SectionContainer } from '@lilypad/shared-components'
-import { mapsAndTravelRocket01 } from '@frontline-hq/untitledui-icons'
+import rocket01 from 'rocket-01.svg'
 import { twMerge } from 'tailwind-merge'
 
 export default function CustomAlert({
@@ -37,7 +37,7 @@ export default function CustomAlert({
                     <span
                         style={
                             {
-                                '--icon-url': `url(${mapsAndTravelRocket01})`,
+                                '--icon-url': `url(${rocket01})`,
                             } as CSSProperties
                         }
                         className="w-uui-2xl h-uui-2xl bg-uui-fg-white block [mask-image:var(--icon-url)] [mask-position:center] [mask-repeat:no-repeat] [mask-size:contain]"

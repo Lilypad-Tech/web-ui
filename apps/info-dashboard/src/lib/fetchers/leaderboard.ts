@@ -7,18 +7,16 @@ export type LeaderboardReturnType = {
     Wallet: string
 }[]
 import * as m from '../../paraglide/messages'
-import {
-    developmentCpuChip02,
-    editorMagicWand02,
-    financeAndEcommerceDiamond01,
-    weatherLightning02,
-} from '@frontline-hq/untitledui-icons'
+import lightning02 from 'lightning-2.svg'
+import diamond01 from 'diamond-01.svg'
+import magicWand02 from 'magic-wand-02.svg'
+import cpuChip02 from 'cpu-chip-02.svg'
 import { NodesEndpointReturnType } from './nodes'
 
 export async function fetchLeaderboard() {
     const API_HOST = process.env.NEXT_PUBLIC_API_HOST
-    
-	// error handling
+
+    // error handling
     try {
         const leaderboard_url = `${API_HOST}/metrics-dashboard/leaderboard`
         const raw = await fetch(leaderboard_url)
@@ -53,24 +51,24 @@ export function toTableData({
                     rankNumber < 6
                         ? ({
                               color: 'warning',
-                              icon: weatherLightning02,
+                              icon: lightning02,
                               text: m.leaderboard_node_provider_table_first_level(),
                           } as const)
                         : rankNumber < 16
                           ? ({
                                 color: 'pink',
-                                icon: financeAndEcommerceDiamond01,
+                                icon: diamond01,
                                 text: m.leaderboard_node_provider_table_second_level(),
                             } as const)
                           : rankNumber < 36
                             ? ({
                                   color: 'brand',
-                                  icon: editorMagicWand02,
+                                  icon: magicWand02,
                                   text: m.leaderboard_node_provider_table_third_level(),
                               } as const)
                             : ({
                                   color: 'gray',
-                                  icon: developmentCpuChip02,
+                                  icon: cpuChip02,
                                   text: m.leaderboard_node_provider_table_last_level(),
                               } as const)
                 return result
