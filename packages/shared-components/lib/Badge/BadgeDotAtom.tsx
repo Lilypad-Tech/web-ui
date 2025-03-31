@@ -1,4 +1,3 @@
-import { generalDot } from '@frontline-hq/untitledui-icons'
 import type { BadgeColor, BadgeSize, BadgeType } from './BadgeTypes.js'
 import BadgeIconAtom from './BadgeIconAtom'
 import type { HTMLAttributes } from 'react'
@@ -12,7 +11,7 @@ interface BadgeDotAtomProps extends HTMLAttributes<HTMLSpanElement> {
 }
 
 const BadgeDotAtom = ({
-    dotUrl = generalDot,
+    dotUrl = 'generalDot',
     color,
     badgeType,
     size,
