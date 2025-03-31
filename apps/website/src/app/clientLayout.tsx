@@ -10,17 +10,14 @@ import { Context, useState } from 'react'
 import { usePathname } from 'next/navigation'
 import _NavItemDropdown from '@/components/_NavItemDropdown/_NavItemDropdown'
 import _NavMenuItem from '@/components/_NavMenuItem/_NavMenuItem'
-import {
-    chartsBarChart05,
-    educationBookClosed,
-    generalHelpCircle,
-    imagesCamera01,
-    mapsAndTravelRoute,
-    mediaAndDevicesLightbulb05,
-    mediaAndDevicesTv03,
-    usersUsers03,
-    weatherLightning01,
-} from '@frontline-hq/untitledui-icons'
+import bookClosed from '/book-closed.svg'
+import barChart05 from '/bar-chart-05.svg'
+import camera01 from '/camera-01.svg'
+import helpCircle from '/help-circle.svg'
+import users03 from '/users-03.svg'
+import route from '/route.svg'
+import lightbulb05 from '/lightbulb-05.svg'
+import lightning01 from '/lightning-01.svg'
 import { Anchor } from '@lilypad/shared-components'
 import Footer from '@/components/Footer'
 import { animated, useSpring } from '@react-spring/web'
@@ -55,7 +52,7 @@ export default function ClientLayout({
         },
         {
             title: 'Blog',
-            iconUrl: educationBookClosed,
+            iconUrl: bookClosed,
             href: 'https://blog.lilypadnetwork.org/',
             target: '_self',
         },
@@ -67,20 +64,20 @@ export default function ClientLayout({
         },
         {
             title: 'Metrics Dashboard',
-            iconUrl: chartsBarChart05,
+            iconUrl: barChart05,
             // href: 'https://info.lilypad.tech',
             href: 'http://rp-points.lilypad.tech/',
             target: '_blank',
         },
         {
             title: 'Media Kit',
-            iconUrl: imagesCamera01,
+            iconUrl: camera01,
             href: 'https://lilypadnetwork.notion.site/Press-Kit-d1d4e16d558d419c9bc502ade1404e17',
             target: '_self',
         },
         {
             title: 'FAQ',
-            iconUrl: generalHelpCircle,
+            iconUrl: helpCircle,
             href: 'https://docs.lilypad.tech/lilypad/faqs',
             target: '_self',
         },
@@ -95,13 +92,13 @@ export default function ClientLayout({
         },
         {
             title: 'Our team',
-            iconUrl: usersUsers03,
+            iconUrl: users03,
             href: '/team',
             target: '_self',
         },
         {
             title: 'Roadmap',
-            iconUrl: mapsAndTravelRoute,
+            iconUrl: route,
             href: '/#roadmap',
             target: '_self',
         },
@@ -114,7 +111,7 @@ export default function ClientLayout({
         // },
         {
             title: 'Use Cases',
-            iconUrl: mediaAndDevicesLightbulb05,
+            iconUrl: lightbulb05,
             href: 'https://docs.lilypad.tech/lilypad/use-cases/extra-labs-x-lilypad',
             target: '_self',
         },
@@ -188,7 +185,7 @@ export default function ClientLayout({
                                         size="md"
                                         icon={{
                                             type: 'icon',
-                                            leading: weatherLightning01,
+                                            leading: lightning01,
                                         }}
                                     >
                                         Get Started
