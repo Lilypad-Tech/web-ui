@@ -6,14 +6,9 @@ import { Badge, ErrorBoundary, WebGLFallback } from '@lilypad/shared-components'
 import MetricsCard from '@/components/MetricsCard/MetricsCard'
 import HeadingSection from '@/components/HeadingSection'
 import { SectionContainer } from '@lilypad/shared-components'
-import {
-    alertAndFeedbackAlertCircle,
-    arrowsArrowDown,
-    arrowsArrowUp,
-    arrowsSwitchVertical01,
-    generalLoading01,
-    generalSearchLg,
-} from '@frontline-hq/untitledui-icons'
+import loading01 from 'loading-01.svg'
+import alertCircle from 'alert-circle.svg'
+import searchLg from 'search-lg.svg'
 import CardWithBorder from '@/components/CardWithBorder/CardWithBorder'
 import {
     Area,
@@ -325,10 +320,10 @@ export default function Home() {
                                     spinIcon={nodesIsLoading}
                                     iconUrl={
                                         nodesIsLoading
-                                            ? generalLoading01
+                                            ? loading01
                                             : nodesIsError
-                                              ? alertAndFeedbackAlertCircle
-                                              : generalSearchLg
+                                              ? alertCircle
+                                              : searchLg
                                     }
                                 />
                             </EmptyState>
@@ -346,9 +341,7 @@ export default function Home() {
                                     >
                                         <FeaturedIcon
                                             spinIcon={false}
-                                            iconUrl={
-                                                alertAndFeedbackAlertCircle
-                                            }
+                                            iconUrl={alertCircle}
                                         />
                                     </EmptyState>
                                 }
