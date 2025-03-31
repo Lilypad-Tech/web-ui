@@ -10,7 +10,7 @@ import {
 } from './types'
 import GroupBadgeWrapper from './GroupBadgeWrapper'
 import { Badge } from '@lilypad/shared-components'
-import { arrowsArrowRight } from '@frontline-hq/untitledui-icons'
+import arrowRight from 'arrow-right.svg'
 import GroupBadgeIconAtom from './GroupBadgeIconAtom'
 import GroupBadgeTextAtom from './GroupBadgeTextAtom'
 
@@ -128,7 +128,7 @@ const GroupBadge = ({
                 color={color}
                 theme={theme}
                 className="[&&]:h-[1rem] [&&]:w-[1rem]"
-                iconUrl={icon?.url ?? arrowsArrowRight}
+                iconUrl={icon?.url ?? arrowRight}
                 size={size}
             />
         </GroupBadgeWrapper>
