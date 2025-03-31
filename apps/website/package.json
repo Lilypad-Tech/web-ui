@@ -11,7 +11,6 @@
         "preview": "pnpm dlx http-server out"
     },
     "dependencies": {
-        "@frontline-hq/untitledui-icons": "^0.0.4",
         "@lilypad/shared-components": "workspace:~",
         "@react-spring/web": "^9.7.4",
         "next": "14.2.4",
