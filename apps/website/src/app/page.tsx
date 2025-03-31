@@ -3,7 +3,7 @@ import GroupBadge from '@/components/GroupBadge/GroupBadge'
 import ProductCard from '@/components/ProductCard/ProductCard'
 import { Anchor, SectionContainer } from '@lilypad/shared-components'
 import { SocialIcon } from '@lilypad/shared-components'
-import { arrowsArrowRight } from '@frontline-hq/untitledui-icons'
+import arrowRight from '/arrow-right.svg'
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
 import CenterHeadingSection from '@/components/CenterHeadingSection/CenterHeadingSection'
@@ -229,7 +229,7 @@ export default function Home() {
                                     }
                                     badge="leading"
                                     icon={{
-                                        url: arrowsArrowRight,
+                                        url: arrowRight,
                                     }}
                                     color="brand"
                                     message="View our available bounties"
