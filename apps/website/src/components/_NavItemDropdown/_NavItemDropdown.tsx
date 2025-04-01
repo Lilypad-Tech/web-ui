@@ -47,7 +47,7 @@ export default function _NavItemDropdown({
             </span>
             <IconAtom
                 className="bg-uui-fg-quarterary-500 [&&]:h-[1.25rem] [&&]:w-[1.25rem]"
-                iconUrl="/chevrown-down.svg"
+                iconUrl="/chevron-down.svg"
             ></IconAtom>
 
             <ul
