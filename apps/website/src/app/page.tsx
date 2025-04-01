@@ -56,7 +56,7 @@ export default function Home() {
             subtitle:
                 'Containerize any AI or compute job, create the Lilypad config, and deploy the module to the Lilypad network.',
             anchorHref:
-                'https://docs.lilypad.tech/lilypad/developer-resources/lilypad-modules',
+                'https://docs.lilypad.tech/lilypad/developer-resources/ai-model-marketplace',
             anchorText: 'Build a Module',
         },
         {
