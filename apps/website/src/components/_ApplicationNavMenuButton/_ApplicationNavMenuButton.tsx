@@ -4,7 +4,7 @@ import { twMerge } from 'tailwind-merge'
 import { NavBarContext } from '../NavBar'
 
 export default function _ApplicationNavMenuButton({
-    openIcon = '/men-u02.svg',
+    openIcon = '/menu-02.svg',
     closeIcon = '/x-close.svg',
 }: PropsWithChildren<{
     openIcon?: string
