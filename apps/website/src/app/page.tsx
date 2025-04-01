@@ -334,7 +334,7 @@ export default function Home() {
                         subtitle="Participate in the Lilypad ecosystem and earn rewards"
                     >
                         <br />
-                        <div className="mt-uui-7xl space-y-uui-4xl lg:space-y-uui-none lg:space-x-uui-4xl flex flex-col items-center lg:flex-row">
+                        <div className="mt-uui-7xl space-y-uui-4xl lg:space-y-uui-none lg:space-x-uui-4xl flex flex-col items-center md: lg:items-stretch lg:flex-row">
                             {productCardsData.map((card, index) => (
                                 <ProductCard
                                     key={index}
