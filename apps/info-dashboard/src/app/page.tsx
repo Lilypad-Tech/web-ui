@@ -320,7 +320,7 @@ export default function Home() {
                                             ? '/loading-01.svg'
                                             : nodesIsError
                                               ? '/alert-circle.svg'
-                                              : '/search-lg.vg'
+                                              : '/search-lg.svg'
                                     }
                                 />
                             </EmptyState>
