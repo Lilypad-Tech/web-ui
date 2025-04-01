@@ -190,7 +190,7 @@ export default function ClientLayout({
                                         onClick={() => setNestedMenu(null)}
                                     >
                                         <_NavItemBase current={true}>
-                                            {'Back'}
+                                            Back
                                         </_NavItemBase>
                                     </button>
                                 ) : null}
@@ -210,7 +210,7 @@ export default function ClientLayout({
                                                             '/about'
                                                         }
                                                     >
-                                                        {'About'}
+                                                        About
                                                     </_NavItemBase>
                                                 </button>
                                                 <Link
@@ -229,7 +229,7 @@ export default function ClientLayout({
                                                                 '#products'
                                                         }
                                                     >
-                                                        {'Products'}
+                                                        Products
                                                     </_NavItemBase>
                                                 </Link>
                                                 <button
@@ -246,7 +246,7 @@ export default function ClientLayout({
                                                             '/resources'
                                                         }
                                                     >
-                                                        {'Resources'}
+                                                        Resources
                                                     </_NavItemBase>
                                                 </button>
 
@@ -263,7 +263,7 @@ export default function ClientLayout({
                                                             pathname === '/docs'
                                                         }
                                                     >
-                                                        {'Docs'}
+                                                        Docs
                                                     </_NavItemBase>
                                                 </Link>
                                             </>
