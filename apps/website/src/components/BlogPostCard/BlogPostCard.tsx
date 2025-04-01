@@ -39,7 +39,7 @@ const BlogPostCard = ({
                     )}
                     <IconAtom
                         className="flex-shrink-0 transition-transform duration-100 group-hover:-translate-y-1/4 group-hover:translate-x-1/4"
-                        iconUrl={'/arrow-up-right.svg'}
+                        iconUrl="/arrow-up-right.svg"
                     ></IconAtom>
                 </div>
                 {/* subtitle */}

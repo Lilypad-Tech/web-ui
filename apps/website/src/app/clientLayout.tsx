@@ -155,7 +155,7 @@ export default function ClientLayout({
                                             src="lilypad-logo.svg"
                                             width={155}
                                             height={32}
-                                            alt={'alt'}
+                                            alt="alt"
                                         />
                                     </a>
                                 }

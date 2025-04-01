@@ -37,7 +37,7 @@ export function CallToActions() {
                     </span>
                 </div>
                 <div className="m-uui-3xl bg-uui-bg-tertiary p-uui-lg absolute right-0 top-0 w-fit rounded-full">
-                    <IconAtom iconUrl={'/book-open-01.svg'}></IconAtom>
+                    <IconAtom iconUrl="/book-open-01.svg"></IconAtom>
                 </div>
             </a>
             <NewsletterForm />
