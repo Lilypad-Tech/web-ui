@@ -43,12 +43,6 @@ export default function ClientLayout({
             href: 'https://discord.gg/ywSEGd3d84',
         },
         {
-            title: 'Blog',
-            iconUrl: '/book-closed.svg',
-            href: 'https://blog.lilypadnetwork.org/',
-            target: '_self',
-        },
-        {
             title: 'Github',
             iconUrl: '/github.svg',
             href: 'https://github.com/Lilypad-Tech',
@@ -251,7 +245,7 @@ export default function ClientLayout({
                                                 </button>
 
                                                 <Link
-                                                    href="https://docs.lilypad.tech/lilypad"
+                                                    href="https://docs.lilypad.tech"
                                                     onClick={() => {
                                                         setMenuOpened(
                                                             () => false
@@ -264,6 +258,23 @@ export default function ClientLayout({
                                                         }
                                                     >
                                                         Docs
+                                                    </_NavItemBase>
+                                                </Link>
+
+                                                <Link
+                                                    href="https://blog.lilypad.tech"
+                                                    onClick={() => {
+                                                        setMenuOpened(
+                                                            () => false
+                                                        )
+                                                    }}
+                                                >
+                                                    <_NavItemBase
+                                                        current={
+                                                            pathname === '/blog'
+                                                        }
+                                                    >
+                                                        Blog
                                                     </_NavItemBase>
                                                 </Link>
                                             </>
@@ -342,7 +353,7 @@ export default function ClientLayout({
                                                         '#products'
                                                 }
                                             >
-                                                {'Products'}
+                                                Products
                                             </_NavItemBase>
                                         </Link>
                                         <_NavItemDropdown
@@ -374,7 +385,7 @@ export default function ClientLayout({
                                         </_NavItemDropdown>
 
                                         <Link
-                                            href="https://docs.lilypad.tech/lilypad"
+                                            href="https://docs.lilypad.tech"
                                             onClick={() => {
                                                 setMenuOpened(() => false)
                                             }}
@@ -382,7 +393,20 @@ export default function ClientLayout({
                                             <_NavItemBase
                                                 current={pathname === '/docs'}
                                             >
-                                                {'Docs'}
+                                                Docs
+                                            </_NavItemBase>
+                                        </Link>
+
+                                        <Link
+                                            href="https://blog.lilypad.tech"
+                                            onClick={() => {
+                                                setMenuOpened(() => false)
+                                            }}
+                                        >
+                                            <_NavItemBase
+                                                current={pathname === '/blog'}
+                                            >
+                                                Blog
                                             </_NavItemBase>
                                         </Link>
                                     </>
