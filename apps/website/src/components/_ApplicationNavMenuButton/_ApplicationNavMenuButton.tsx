@@ -1,13 +1,11 @@
 import { CustomCSSProperties } from '@lilypad/shared-components'
-import menu02 from 'menu-02.svg'
-import xClose from 'x-close.svg'
 import { PropsWithChildren, useContext } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { NavBarContext } from '../NavBar'
 
 export default function _ApplicationNavMenuButton({
-    openIcon = menu02,
-    closeIcon = xClose,
+    openIcon = '/men-u02.svg',
+    closeIcon = '/x-close.svg',
 }: PropsWithChildren<{
     openIcon?: string
     closeIcon?: string

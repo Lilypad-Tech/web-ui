@@ -1,7 +1,6 @@
 import { AnchorHTMLAttributes } from 'react'
 import Image from 'next/image'
 import IconAtom from '../IconAtom/IconAtom'
-import arrowUpRight from 'arrow-up-right.svg'
 
 interface BlogPostCardProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
     title: string
@@ -40,7 +39,7 @@ const BlogPostCard = ({
                     )}
                     <IconAtom
                         className="flex-shrink-0 transition-transform duration-100 group-hover:-translate-y-1/4 group-hover:translate-x-1/4"
-                        iconUrl={arrowUpRight}
+                        iconUrl={'/arrow-up-right.svg'}
                     ></IconAtom>
                 </div>
                 {/* subtitle */}

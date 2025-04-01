@@ -10,14 +10,6 @@ import { Context, useState } from 'react'
 import { usePathname } from 'next/navigation'
 import _NavItemDropdown from '@/components/_NavItemDropdown/_NavItemDropdown'
 import _NavMenuItem from '@/components/_NavMenuItem/_NavMenuItem'
-import bookClosed from 'book-closed.svg'
-import barChart05 from 'bar-chart-05.svg'
-import camera01 from 'camera-01.svg'
-import helpCircle from 'help-circle.svg'
-import users03 from 'users-03.svg'
-import route from 'route.svg'
-import lightbulb05 from 'lightbulb-05.svg'
-import lightning01 from 'lightning-01.svg'
 import { Anchor } from '@lilypad/shared-components'
 import Footer from '@/components/Footer'
 import { animated, useSpring } from '@react-spring/web'
@@ -52,7 +44,7 @@ export default function ClientLayout({
         },
         {
             title: 'Blog',
-            iconUrl: bookClosed,
+            iconUrl: '/book-closed.svg',
             href: 'https://blog.lilypadnetwork.org/',
             target: '_self',
         },
@@ -64,20 +56,20 @@ export default function ClientLayout({
         },
         {
             title: 'Metrics Dashboard',
-            iconUrl: barChart05,
+            iconUrl: '/bar-chart-05.svg',
             // href: 'https://info.lilypad.tech',
             href: 'http://rp-points.lilypad.tech/',
             target: '_blank',
         },
         {
             title: 'Media Kit',
-            iconUrl: camera01,
+            iconUrl: '/camera-01.svg',
             href: 'https://lilypadnetwork.notion.site/Press-Kit-d1d4e16d558d419c9bc502ade1404e17',
             target: '_self',
         },
         {
             title: 'FAQ',
-            iconUrl: helpCircle,
+            iconUrl: '/help-circle.svg',
             href: 'https://docs.lilypad.tech/lilypad/faqs',
             target: '_self',
         },
@@ -92,13 +84,13 @@ export default function ClientLayout({
         },
         {
             title: 'Our team',
-            iconUrl: users03,
+            iconUrl: '/users-03.svg',
             href: '/team',
             target: '_self',
         },
         {
             title: 'Roadmap',
-            iconUrl: route,
+            iconUrl: '/route.svg',
             href: '/#roadmap',
             target: '_self',
         },
@@ -111,7 +103,7 @@ export default function ClientLayout({
         // },
         {
             title: 'Use Cases',
-            iconUrl: lightbulb05,
+            iconUrl: '/lightbulb-05.svg',
             href: 'https://docs.lilypad.tech/lilypad/use-cases/extra-labs-x-lilypad',
             target: '_self',
         },
@@ -185,7 +177,7 @@ export default function ClientLayout({
                                         size="md"
                                         icon={{
                                             type: 'icon',
-                                            leading: lightning01,
+                                            leading: '/lightning-01.svg',
                                         }}
                                     >
                                         Get Started

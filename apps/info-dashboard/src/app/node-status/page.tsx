@@ -10,13 +10,6 @@ import { Anchor, SectionContainer } from '@lilypad/shared-components'
 import Table from '@/components/Table/Table'
 import CardHeader from '@/components/CardHeader'
 import { InputField } from '@lilypad/shared-components'
-import searchMd from 'search-md.svg'
-import loading01 from 'loading-01.svg'
-import alertCircle from 'alert-circle.svg'
-import searchLg from 'search-lg.svg'
-import linkExternal02 from 'link-external-02.svg'
-import check from 'check.svg'
-import copy07 from 'copy-07.svg'
 import EmptyState from '@/components/EmptyState/EmptyState'
 import FeaturedIcon from '@/components/FeaturedIcon'
 import TableHeaderCell from '@/components/Table/TableHeaderCell'
@@ -246,7 +239,7 @@ export default function NodeStatus() {
                                                 }
                                                 inputSize="sm"
                                                 placeholder={m.node_status_node_overview_table_inputField_placeholder()}
-                                                iconUrl={searchMd}
+                                                iconUrl="/search-md.svg"
                                             />
                                         </div>
                                     }
@@ -316,14 +309,14 @@ export default function NodeStatus() {
                                                 nodesEthBalancesIsLoading ||
                                                 nodesLPBalancesIsLoading ||
                                                 nodesPowSubmissionsIsLoading
-                                                    ? loading01
+                                                    ? '/loading-01.svg'
                                                     : nodeStatusIsError ||
                                                         nodesIsError ||
                                                         nodesEthBalancesIsError ||
                                                         nodesLPBalancesIsError ||
                                                         nodesPowSubmissionsIsError
-                                                      ? alertCircle
-                                                      : searchLg
+                                                      ? '/alert-circle.svg'
+                                                      : '/search-lg.svg'
                                             }
                                         />
                                     </EmptyState>
@@ -416,7 +409,7 @@ export default function NodeStatus() {
                                                                         icon={{
                                                                             type: 'icon',
                                                                             trailing:
-                                                                                linkExternal02,
+                                                                                '/link-external-02.svg',
                                                                         }}
                                                                     >
                                                                         {`${row['Wallet'].slice(0, 6)}...${row[
@@ -441,8 +434,8 @@ export default function NodeStatus() {
                                                                                             'Wallet'
                                                                                         ]
                                                                                 )
-                                                                                    ? check
-                                                                                    : copy07,
+                                                                                    ? '/check.svg'
+                                                                                    : '/copy-07.svg',
                                                                         }}
                                                                         onClick={() => {
                                                                             setCopiedArray(

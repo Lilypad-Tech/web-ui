@@ -2,7 +2,6 @@ import { HTMLAttributes, HtmlHTMLAttributes, PropsWithChildren } from 'react'
 import { twMerge } from 'tailwind-merge'
 import _NavMenuItem from '../_NavMenuItem/_NavMenuItem'
 import IconAtom from '../IconAtom/IconAtom'
-import chevrownDown from 'chevron-down.svg'
 
 interface _NavItemDropdownProps
     extends Omit<HTMLAttributes<HTMLDivElement>, 'children'> {
@@ -48,7 +47,7 @@ export default function _NavItemDropdown({
             </span>
             <IconAtom
                 className="bg-uui-fg-quarterary-500 [&&]:h-[1.25rem] [&&]:w-[1.25rem]"
-                iconUrl={chevrownDown}
+                iconUrl="/chevrown-down.svg"
             ></IconAtom>
 
             <ul

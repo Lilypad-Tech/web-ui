@@ -3,13 +3,6 @@ import React, { useEffect, useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import Table from '@/components/Table/Table'
 import FeaturedIcon from '@/components/FeaturedIcon'
-import searchMd from 'search-md.svg'
-import loading01 from 'loading-01.svg'
-import alertCircle from 'alert-circle.svg'
-import searchLg from 'search-lg.svg'
-import linkExternal02 from 'link-external-02.svg'
-import check from 'check.svg'
-import copy07 from 'copy-07.svg'
 import CardHeader from '@/components/CardHeader'
 import { InputField } from '@lilypad/shared-components'
 import { SectionContainer } from '@lilypad/shared-components'
@@ -217,7 +210,7 @@ export default function Leaderboard() {
                                                 }
                                                 inputSize="sm"
                                                 placeholder={m.leaderboard_node_provider_table_inputField_placeholder()}
-                                                iconUrl={searchMd}
+                                                iconUrl="/search-md.svg"
                                             />
                                         </div>
                                     }
@@ -263,11 +256,11 @@ export default function Leaderboard() {
                                             iconUrl={
                                                 leaderboardIsLoading ||
                                                 nodesIsLoading
-                                                    ? loading01
+                                                    ? '/loading-01.svg'
                                                     : leaderboardIsError ||
                                                         nodesIsError
-                                                      ? alertCircle
-                                                      : searchLg
+                                                      ? '/alert-circle.svg'
+                                                      : '/search-lg.svg'
                                             }
                                         />
                                     </EmptyState>
@@ -387,7 +380,7 @@ export default function Leaderboard() {
                                                                         icon={{
                                                                             type: 'icon',
                                                                             trailing:
-                                                                                linkExternal02,
+                                                                                '/link-external-02.svg',
                                                                         }}
                                                                     >
                                                                         {`${row['Wallet'].slice(0, 6)}...${row[
@@ -412,8 +405,8 @@ export default function Leaderboard() {
                                                                                             'Wallet'
                                                                                         ]
                                                                                 )
-                                                                                    ? check
-                                                                                    : copy07,
+                                                                                    ? '/check.svg'
+                                                                                    : '/copy-07.svg',
                                                                         }}
                                                                         onClick={() => {
                                                                             setCopiedArray(

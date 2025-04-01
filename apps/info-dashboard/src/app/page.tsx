@@ -6,9 +6,6 @@ import { Badge, ErrorBoundary, WebGLFallback } from '@lilypad/shared-components'
 import MetricsCard from '@/components/MetricsCard/MetricsCard'
 import HeadingSection from '@/components/HeadingSection'
 import { SectionContainer } from '@lilypad/shared-components'
-import loading01 from 'loading-01.svg'
-import alertCircle from 'alert-circle.svg'
-import searchLg from 'search-lg.svg'
 import CardWithBorder from '@/components/CardWithBorder/CardWithBorder'
 import {
     Area,
@@ -320,10 +317,10 @@ export default function Home() {
                                     spinIcon={nodesIsLoading}
                                     iconUrl={
                                         nodesIsLoading
-                                            ? loading01
+                                            ? '/loading-01.svg'
                                             : nodesIsError
-                                              ? alertCircle
-                                              : searchLg
+                                              ? '/alert-circle.svg'
+                                              : '/search-lg.vg'
                                     }
                                 />
                             </EmptyState>
@@ -341,7 +338,7 @@ export default function Home() {
                                     >
                                         <FeaturedIcon
                                             spinIcon={false}
-                                            iconUrl={alertCircle}
+                                            iconUrl="/alert-circle.svg"
                                         />
                                     </EmptyState>
                                 }

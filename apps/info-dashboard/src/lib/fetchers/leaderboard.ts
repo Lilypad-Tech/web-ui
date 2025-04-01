@@ -7,10 +7,6 @@ export type LeaderboardReturnType = {
     Wallet: string
 }[]
 import * as m from '../../paraglide/messages'
-import lightning02 from 'lightning-2.svg'
-import diamond01 from 'diamond-01.svg'
-import magicWand02 from 'magic-wand-02.svg'
-import cpuChip02 from 'cpu-chip-02.svg'
 import { NodesEndpointReturnType } from './nodes'
 
 export async function fetchLeaderboard() {
@@ -51,24 +47,24 @@ export function toTableData({
                     rankNumber < 6
                         ? ({
                               color: 'warning',
-                              icon: lightning02,
+                              icon: '/lightning-02.svg',
                               text: m.leaderboard_node_provider_table_first_level(),
                           } as const)
                         : rankNumber < 16
                           ? ({
                                 color: 'pink',
-                                icon: diamond01,
+                                icon: '/diamond-01.svg',
                                 text: m.leaderboard_node_provider_table_second_level(),
                             } as const)
                           : rankNumber < 36
                             ? ({
                                   color: 'brand',
-                                  icon: magicWand02,
+                                  icon: '/magic-wand-02.svg',
                                   text: m.leaderboard_node_provider_table_third_level(),
                               } as const)
                             : ({
                                   color: 'gray',
-                                  icon: cpuChip02,
+                                  icon: '/cpu-chip-02.svg',
                                   text: m.leaderboard_node_provider_table_last_level(),
                               } as const)
                 return result
