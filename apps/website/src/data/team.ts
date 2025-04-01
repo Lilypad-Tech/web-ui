@@ -5,7 +5,7 @@ export const team = [
         description:
             'Tech leader merging AI, blockchain, and creativity for real-world impact.',
         experience: 'Protocol Labs, Filecoin, IBM, and Accenture',
-        image: '',
+        image: 'Alison Haire.png',
         twitter: 'DeveloperAlly',
         linkedin: 'Ally-Haire',
         order: 1,
@@ -17,7 +17,7 @@ export const team = [
             'Mathematician and machine learning scientist specializing in data systems for scientific research.',
         experience:
             'Google, AI & ML Engineer & Researcher, Stanford University',
-        image: '',
+        image: 'Stanley_Bishop.png',
         twitter: 'ScienceStanley',
         linkedin: 'ScienceStanley',
         order: 2,
@@ -28,7 +28,7 @@ export const team = [
         description:
             'Tokenomics expert specializing in crypto-economic system development. PhD in Systems Engineering.',
         experience: 'University of Florida and Tempest Labs',
-        image: '',
+        image: 'Clint_Snider.png',
         twitter: 'dr_clint_gm',
         linkedin: 'ClintonSnider',
         order: 3,
@@ -39,7 +39,7 @@ export const team = [
         description:
             'Fullstack engineer and serial entrepreneur, passionate about building software for positive impact.',
         experience: 'Expedia',
-        image: '',
+        image: 'Narbeh_Shahnazarian.png',
         twitter: 'narb_s',
         linkedin: 'narbeh-shahnazarian-214a68a0',
         order: 4,
@@ -50,7 +50,7 @@ export const team = [
         description:
             'Driving product growth through technical expertise and strategic leadership.',
         experience: 'Protocol Labs, Starling Lab Stanford & USC',
-        image: '',
+        image: 'Lindsay_Walker.png',
         twitter: '',
         linkedin: 'LindsayJoWalker',
         order: 5,
@@ -61,7 +61,7 @@ export const team = [
         description:
             'Software developer advocating for a decentralized, open web.',
         experience: 'Fission VP of Engineering',
-        image: '',
+        image: 'James_Walker.png',
         twitter: 'walkah',
         linkedin: 'walkah',
         order: 6,
@@ -72,7 +72,7 @@ export const team = [
         description:
             'Seasoned veteran in startups and Web3, blending enterprise software expertise with decentralized technology.',
         experience: 'Gitcoin and Algovera',
-        image: '',
+        image: 'Holly_Grimm.png',
         twitter: '',
         linkedin: 'HollyGrimm',
         order: 7,
@@ -83,7 +83,7 @@ export const team = [
         description:
             'AI scholar and engineer bridging the gap between technical expertise and business acumen, shaping the future of Web3. PhD in ML Research.',
         experience: 'Scholar - Mathematical Engineering',
-        image: '',
+        image: 'Eric_Boniardi.png',
         twitter: '',
         linkedin: 'Eric-Boniardi',
         order: 8,
@@ -94,7 +94,7 @@ export const team = [
         description:
             'Startup veteran and Web3 enthusiast, bridging enterprise software and decentralized technologies.',
         experience: 'Willis Towers Watson, Disrupt, and Eze Software',
-        image: '',
+        image: 'Alex_Mirran.png',
         twitter: 'Alex_Mirran',
         linkedin: 'Alex-Mirran',
         order: 9,
@@ -105,7 +105,7 @@ export const team = [
         description:
             'Forging strategic partnerships to drive business growth and ecosystem expansion.',
         experience: 'GameStop and Godwoken',
-        image: '',
+        image: 'Nate_Smith.png',
         twitter: 'NatronSmith',
         linkedin: 'NateSmith12',
         order: 10,
@@ -116,7 +116,7 @@ export const team = [
         description:
             'Fullstack developer crafting user-centric applications for a decentralized future.',
         experience: 'Protocol Labs, Moveable Ink, and Apybara Founder',
-        image: '',
+        image: 'Ayush_Kumar.png',
         twitter: '_Kelindi',
         linkedin: 'Kelindi',
         order: 11,
@@ -127,7 +127,7 @@ export const team = [
         description:
             'Fullstack developer with expertise in smart contracts, AI, and machine learning.',
         experience: 'TypherAL CTO',
-        image: '',
+        image: 'Arsen_Yeremin.png',
         twitter: 'Arsen3D',
         linkedin: 'ArsenYeremin',
         order: 12,
@@ -138,7 +138,7 @@ export const team = [
         description:
             'Web and decentralized systems expert, fueled by research papers, cycling trails, and Flamenco melodies.',
         experience: 'Fission',
-        image: '',
+        image: 'Brian_Ginsburg.png',
         twitter: '',
         linkedin: 'Brian-Ginsburg',
         order: 13,
@@ -149,7 +149,7 @@ export const team = [
         description:
             'Software engineer championing Web3 privacy and security, fostering a vibrant developer community.',
         experience: 'AWS and Leto.gg Founder',
-        image: '',
+        image: 'Logan_Lentz.png',
         twitter: 'ZaphodB17',
         linkedin: 'Logan-Lentz',
         order: 14,
@@ -160,7 +160,7 @@ export const team = [
         description:
             'Advocate for developer empowerment, lowering the barrier to entry through education and tools.',
         experience: 'Unboxed, Arweave, Roostify, and FilmFreeway',
-        image: '',
+        image: 'Phil_Billingsby.png',
         twitter: 'pbillingsby_',
         linkedin: 'Phil-Billingsby-68a103303',
         order: 15,
@@ -171,7 +171,7 @@ export const team = [
         description:
             'Blockchain enthusiast and experienced community builder, fostering collaboration and growth.',
         experience: 'Filecoin and Nokia',
-        image: '',
+        image: 'Taosheng_Shi.png',
         twitter: 'TaoshengShi',
         linkedin: 'TaoshengShi',
         order: 16,
@@ -182,7 +182,7 @@ export const team = [
         description:
             'Experienced community builder cultivating engagement and positive web3 spaces. Passionate about education, gaming, and coding.',
         experience: 'Godwoken and Developer DAO',
-        image: '',
+        image: 'Sam_Ceja.png',
         twitter: 'iamsamcodes',
         linkedin: 'iamsamcodes',
         order: 17,
@@ -193,7 +193,7 @@ export const team = [
         description:
             'Polyglot software engineer specializing in fullstack development, design, and user experience.',
         experience: 'Synctree and Revolution Entertainment Services',
-        image: '',
+        image: 'Devlin_Rocha.png',
         twitter: 'DevlinRocha',
         linkedin: 'DevlinRocha',
         order: 18,
@@ -211,3 +211,4 @@ export const advisors = [
         order: 1,
     },
 ]
+
