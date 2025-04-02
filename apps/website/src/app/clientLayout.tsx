@@ -98,7 +98,7 @@ export default function ClientLayout({
         {
             title: 'Use Cases',
             iconUrl: '/lightbulb-05.svg',
-            href: 'https://docs.lilypad.tech/lilypad/use-cases-agents-and-projects/ecosystem-projects',
+            href: 'https://docs.lilypad.tech/lilypad/use-cases-agents-and-projects/agents',
             target: '_self',
         },
     ]
