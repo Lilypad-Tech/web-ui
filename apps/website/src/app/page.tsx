@@ -327,7 +327,7 @@ export default function Home() {
                     </animated.div>
                 </SectionContainer>
 
-                <SectionContainer id="products">
+                <SectionContainer>
                     <CenterHeadingSection
                         className="[&&]:bg-uui-bg-primary"
                         title="Contribute and Earn"

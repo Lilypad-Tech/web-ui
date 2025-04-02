@@ -207,25 +207,7 @@ export default function ClientLayout({
                                                         About
                                                     </_NavItemBase>
                                                 </button>
-                                                <Link
-                                                    href="/#products"
-                                                    onClick={() => {
-                                                        setMenuOpened(
-                                                            () => false
-                                                        )
-                                                    }}
-                                                >
-                                                    <_NavItemBase
-                                                        current={
-                                                            pathname === '/' &&
-                                                            window.location
-                                                                .hash ===
-                                                                '#products'
-                                                        }
-                                                    >
-                                                        Products
-                                                    </_NavItemBase>
-                                                </Link>
+
                                                 <button
                                                     onClick={() => {
                                                         setNestedMenu(
@@ -340,22 +322,7 @@ export default function ClientLayout({
                                                 ),
                                             }}
                                         </_NavItemDropdown>
-                                        <Link
-                                            href="/#products"
-                                            onClick={() => {
-                                                setMenuOpened(() => false)
-                                            }}
-                                        >
-                                            <_NavItemBase
-                                                current={
-                                                    pathname === '/' &&
-                                                    window.location.hash ===
-                                                        '#products'
-                                                }
-                                            >
-                                                Products
-                                            </_NavItemBase>
-                                        </Link>
+
                                         <_NavItemDropdown
                                             current={pathname === '/Resources'}
                                         >
