@@ -1,10 +1,7 @@
-import { useContext } from 'react'
 import Image from 'next/image'
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
-import { PageContext } from '../../app/clientLayout'
-import { HomePageCmsInfo } from '../../app/hooks/strapi/types'
 import { supporters } from '@/data/team'
 
 const SocialProofSection = () => {
