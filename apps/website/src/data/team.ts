@@ -5,7 +5,7 @@ export const team = [
         description:
             'Tech leader merging AI, blockchain, and creativity for real-world impact.',
         experience: 'Protocol Labs, Filecoin, IBM, and Accenture',
-        image: 'Alison Haire.png',
+        image: 'Alison_Haire.png',
         twitter: 'DeveloperAlly',
         linkedin: 'Ally-Haire',
         order: 1,
@@ -229,22 +229,13 @@ export const advisors = [
         order: 3,
     },
     {
-        name: 'Jonathon Victor',
-        title: 'Web3 Landscape and Business Advisor',
-        experience: 'Ansa Research and Protocol Labs',
-        image: 'Jonathon_Victor.png',
-        // twitter: '',
-        linkedin: 'Jonathan-Victor-69a44255',
-        order: 4,
-    },
-    {
         name: 'Paul Wagner',
         title: 'Technical and Business Advisor',
         experience: 'Filecoin, Oracle and Founder',
         image: 'Paul_Wagner.png',
         // twitter: '',
         linkedin: 'ThPaulWagner',
-        order: 5,
+        order: 4,
     },
     {
         name: 'Brooklyn Zelenka',
@@ -253,7 +244,7 @@ export const advisors = [
         image: 'Brooklyn_Zelenka.png',
         twitter: 'expede',
         linkedin: 'BrooklynZelenka',
-        order: 6,
+        order: 5,
     },
     {
         name: 'Eric Vander Wal',
@@ -262,7 +253,7 @@ export const advisors = [
         image: 'Eric_Vander_Wal.png',
         twitter: 'TheVanderWal',
         linkedin: 'Eric-Vander-Wal',
-        order: 7,
+        order: 6,
     },
     {
         name: 'Jay Logelin',
@@ -271,7 +262,6 @@ export const advisors = [
         image: 'Jay_Logelin.png',
         twitter: '0x10d9e',
         linkedin: 'JLogelin',
-        order: 8,
+        order: 7,
     },
 ]
-
