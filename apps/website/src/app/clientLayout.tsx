@@ -6,22 +6,15 @@ import _NavItemBase from '@/components/_NavItemBase/_NavItemBase'
 import _ApplicationNavMenuButton from '@/components/_ApplicationNavMenuButton/_ApplicationNavMenuButton'
 import NavBar from '@/components/NavBar'
 import Image from 'next/image'
-import { Context, useState } from 'react'
+import { useState } from 'react'
 import { usePathname } from 'next/navigation'
 import _NavItemDropdown from '@/components/_NavItemDropdown/_NavItemDropdown'
 import _NavMenuItem from '@/components/_NavMenuItem/_NavMenuItem'
 import { Anchor } from '@lilypad/shared-components'
 import Footer from '@/components/Footer'
 import { animated, useSpring } from '@react-spring/web'
-import { createContext } from 'react'
-import useStrapi from './hooks/strapi/UseStrapi'
-import { StrapiContext } from './hooks/strapi/types'
 
 const INTER = Inter({ subsets: ['latin'] })
-
-export const PageContext: Context<StrapiContext> = createContext({
-    strapi: {},
-})
 
 export default function ClientLayout({
     children,
@@ -33,7 +26,6 @@ export default function ClientLayout({
         null
     )
     const pathname = usePathname()
-    const { strapi, isLoading: isCmsLoading } = useStrapi({ pathname })
 
     const resourcesArray = [
         {
@@ -136,8 +128,6 @@ export default function ClientLayout({
     return (
         <html lang="en" className="uui-dark">
             <body className={INTER.className}>
-                {!isCmsLoading && (
-                    <PageContext.Provider value={{ strapi }}>
                         <animated.div
                             style={fade}
                             className="sticky top-0 z-40 w-full"
@@ -385,8 +375,6 @@ export default function ClientLayout({
                             }}
                             socialLinks={footerSocialLinks}
                         />
-                    </PageContext.Provider>
-                )}
             </body>
         </html>
     )
