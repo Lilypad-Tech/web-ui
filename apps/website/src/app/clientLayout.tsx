@@ -208,6 +208,40 @@ export default function ClientLayout({
                                                     </_NavItemBase>
                                                 </button>
 
+												<Link
+                                                    href="https://blog.lilypad.tech"
+                                                    onClick={() => {
+                                                        setMenuOpened(
+                                                            () => false
+                                                        )
+                                                    }}
+                                                >
+                                                    <_NavItemBase
+                                                        current={
+                                                            pathname === '/blog'
+                                                        }
+                                                    >
+                                                        Blog
+                                                    </_NavItemBase>
+                                                </Link>
+
+												<Link
+                                                    href="https://docs.lilypad.tech"
+                                                    onClick={() => {
+                                                        setMenuOpened(
+                                                            () => false
+                                                        )
+                                                    }}
+                                                >
+                                                    <_NavItemBase
+                                                        current={
+                                                            pathname === '/docs'
+                                                        }
+                                                    >
+                                                        Docs
+                                                    </_NavItemBase>
+                                                </Link>
+
                                                 <button
                                                     onClick={() => {
                                                         setNestedMenu(
@@ -226,39 +260,9 @@ export default function ClientLayout({
                                                     </_NavItemBase>
                                                 </button>
 
-                                                <Link
-                                                    href="https://docs.lilypad.tech"
-                                                    onClick={() => {
-                                                        setMenuOpened(
-                                                            () => false
-                                                        )
-                                                    }}
-                                                >
-                                                    <_NavItemBase
-                                                        current={
-                                                            pathname === '/docs'
-                                                        }
-                                                    >
-                                                        Docs
-                                                    </_NavItemBase>
-                                                </Link>
 
-                                                <Link
-                                                    href="https://blog.lilypad.tech"
-                                                    onClick={() => {
-                                                        setMenuOpened(
-                                                            () => false
-                                                        )
-                                                    }}
-                                                >
-                                                    <_NavItemBase
-                                                        current={
-                                                            pathname === '/blog'
-                                                        }
-                                                    >
-                                                        Blog
-                                                    </_NavItemBase>
-                                                </Link>
+
+
                                             </>
                                         )}
                                         {nestedMenu === 'About' ? (
@@ -323,7 +327,33 @@ export default function ClientLayout({
                                             }}
                                         </_NavItemDropdown>
 
-                                        <_NavItemDropdown
+                                        <Link
+                                            href="https://blog.lilypad.tech"
+                                            onClick={() => {
+                                                setMenuOpened(() => false)
+                                            }}
+                                        >
+                                            <_NavItemBase
+                                                current={pathname === '/blog'}
+                                            >
+                                                Blog
+                                            </_NavItemBase>
+                                        </Link>
+
+										<Link
+                                            href="https://docs.lilypad.tech"
+                                            onClick={() => {
+                                                setMenuOpened(() => false)
+                                            }}
+                                        >
+                                            <_NavItemBase
+                                                current={pathname === '/docs'}
+                                            >
+                                                Docs
+                                            </_NavItemBase>
+                                        </Link>
+
+										<_NavItemDropdown
                                             current={pathname === '/Resources'}
                                         >
                                             {{
@@ -350,32 +380,6 @@ export default function ClientLayout({
                                                 ),
                                             }}
                                         </_NavItemDropdown>
-
-                                        <Link
-                                            href="https://docs.lilypad.tech"
-                                            onClick={() => {
-                                                setMenuOpened(() => false)
-                                            }}
-                                        >
-                                            <_NavItemBase
-                                                current={pathname === '/docs'}
-                                            >
-                                                Docs
-                                            </_NavItemBase>
-                                        </Link>
-
-                                        <Link
-                                            href="https://blog.lilypad.tech"
-                                            onClick={() => {
-                                                setMenuOpened(() => false)
-                                            }}
-                                        >
-                                            <_NavItemBase
-                                                current={pathname === '/blog'}
-                                            >
-                                                Blog
-                                            </_NavItemBase>
-                                        </Link>
                                     </>
                                 )}
                             </NavBar>
