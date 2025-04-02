@@ -39,8 +39,9 @@ const Footer = ({ socialLinks, footerIcon }: FooterProps) => {
                         <_FooterLinksColumn>
                             <_FooterLinksHeader title="Quick Links" />
                             <_FooterLink
-                                href="https://docs.lilypad.tech/lilypad/lilypad-testnet/architecture"
-                                title="Architecture"
+                                href="https://lilypadnetwork.notion.site/bounty-board"
+                                title="Bounty Board"
+								target='_blank'
                             />
                             {/* TODO: Uncomment when litepaper is ready */}
                             {/* <_FooterLink
