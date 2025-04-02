@@ -7,13 +7,6 @@ settings:
 importers:
 
   .:
-    dependencies:
-      '@lottiefiles/dotlottie-react':
-        specifier: ^0.9.3
-        version: 0.9.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@lottiefiles/react-lottie-player':
-        specifier: ^3.5.4
-        version: 3.5.4(react@18.3.1)
     devDependencies:
       prettier-plugin-tailwindcss:
         specifier: ^0.6.11
@@ -126,7 +119,7 @@ importers:
     dependencies:
       daisyui:
         specifier: ^4.12.13
-        version: 4.12.13(postcss@8.4.41)
+        version: 4.12.24(postcss@8.4.41)
       next:
         specifier: 14.2.14
         version: 14.2.14(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.69.4)
@@ -1197,20 +1190,6 @@ packages:
 
   '@juggle/resize-observer@3.4.0':
     resolution: {integrity: sha512-dfLbk+PwWvFzSxwk3n5ySL0hfBog779o8h68wK/7/APo/7cgyWp5jcXockbxdk5kFRkbeXWm4Fbi9FrdN381sA==}
-
-  '@lottiefiles/dotlottie-react@0.9.3':
-    resolution: {integrity: sha512-x4xQlFFulAF/nG044VNMwaXWk8ehg/KEHXpMxGB+L5gv3qohjxv/I7/erHyfhWY9y6C/VMl+PiWZbT54W8+lUQ==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
-      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
-
-  '@lottiefiles/dotlottie-web@0.36.1':
-    resolution: {integrity: sha512-KvxOH5Msk0Ivqpgq4p1DGo1IG2XPX4kEVkhssTaOUEvoeCxDLru+DlbUzwG8b5JcJwEBmrAMzCNzCTmn+uMFxQ==}
-
-  '@lottiefiles/react-lottie-player@3.5.4':
-    resolution: {integrity: sha512-2FptWtHQ+o7MzdsMKSvNZ1Mz7xtKSYI0WL9HjZ1r+CvsXR3lbLQUDp7Pwx6qhg0Akm4VluQ+8/D1S1fcr1Ao4w==}
-    peerDependencies:
-      react: 16 - 18
 
   '@mapbox/geojson-rewind@0.5.2':
     resolution: {integrity: sha512-tJaT+RbYGJYStt7wI3cq4Nl4SXxG8W7JDG5DMJu97V25RnbNg3QtQtf+KD+VLjNpWKYsRvXDNmNrBgEETr1ifA==}
@@ -3176,8 +3155,8 @@ packages:
     resolution: {integrity: sha512-MOqHvMWF9/9MX6nza0KgvFH4HpMU0EF5uUDXqX/BtxtU8NfB0QzRtJ8Oe/6SuS4kbhyzVJwjd97EA4PKrzJ8bw==}
     engines: {node: '>=0.12'}
 
-  daisyui@4.12.13:
-    resolution: {integrity: sha512-BnXyQoOByUF/7wSdIKubyhXxbtL8gxwY3u2cNMkxGP39TSVJqMmlItqtpY903fQnLI/NokC+bc+ZV+PEPsppPw==}
+  daisyui@4.12.24:
+    resolution: {integrity: sha512-JYg9fhQHOfXyLadrBrEqCDM6D5dWCSSiM6eTNCRrBRzx/VlOCrLS8eDfIw9RVvs64v2mJdLooKXY8EwQzoszAA==}
     engines: {node: '>=16.9.0'}
 
   damerau-levenshtein@1.0.8:
@@ -4681,9 +4660,6 @@ packages:
   loose-envify@1.4.0:
     resolution: {integrity: sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==}
     hasBin: true
-
-  lottie-web@5.12.2:
-    resolution: {integrity: sha512-uvhvYPC8kGPjXT3MyKMrL3JitEAmDMp30lVkuq/590Mw9ok6pWcFCwXJveo0t5uqYw1UREQHofD+jVpdjBv8wg==}
 
   loupe@2.3.7:
     resolution: {integrity: sha512-zSMINGVYkdpYSOBmLi0D1Uo7JU9nVdQKrHxC8eYlV+9YKK9WePqAlL7lSlorG/U2Fw1w0hTBmaa/jrQ3UbPHtA==}
@@ -8488,19 +8464,6 @@ snapshots:
 
   '@juggle/resize-observer@3.4.0': {}
 
-  '@lottiefiles/dotlottie-react@0.9.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
-    dependencies:
-      '@lottiefiles/dotlottie-web': 0.36.1
-      react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
-
-  '@lottiefiles/dotlottie-web@0.36.1': {}
-
-  '@lottiefiles/react-lottie-player@3.5.4(react@18.3.1)':
-    dependencies:
-      lottie-web: 5.12.2
-      react: 18.3.1
-
   '@mapbox/geojson-rewind@0.5.2':
     dependencies:
       get-stream: 6.0.1
@@ -10843,7 +10806,7 @@ snapshots:
       es5-ext: 0.10.64
       type: 2.7.3
 
-  daisyui@4.12.13(postcss@8.4.41):
+  daisyui@4.12.24(postcss@8.4.41):
     dependencies:
       css-selector-tokenizer: 0.8.0
       culori: 3.3.0
@@ -12674,8 +12637,6 @@ snapshots:
   loose-envify@1.4.0:
     dependencies:
       js-tokens: 4.0.0
-
-  lottie-web@5.12.2: {}
 
   loupe@2.3.7:
     dependencies:
