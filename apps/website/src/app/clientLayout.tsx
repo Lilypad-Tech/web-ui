@@ -59,13 +59,13 @@ export default function ClientLayout({
             title: 'Media Kit',
             iconUrl: '/camera-01.svg',
             href: 'https://lilypadnetwork.notion.site/Press-Kit-d1d4e16d558d419c9bc502ade1404e17',
-            target: '_self',
+            target: '_blank',
         },
         {
             title: 'FAQ',
             iconUrl: '/help-circle.svg',
             href: 'https://docs.lilypad.tech/lilypad/faqs',
-            target: '_self',
+            target: '_blank',
         },
     ]
 
@@ -99,7 +99,7 @@ export default function ClientLayout({
             title: 'Use Cases',
             iconUrl: '/lightbulb-05.svg',
             href: 'https://docs.lilypad.tech/lilypad/use-cases-agents-and-projects/agents',
-            target: '_self',
+            target: '_blank',
         },
     ]
 
@@ -276,6 +276,7 @@ export default function ClientLayout({
                                                                 item.iconUrl
                                                             }
                                                             href={item.href}
+															target={item.target}
                                                         />
                                                     )
                                                 )}
@@ -291,6 +292,7 @@ export default function ClientLayout({
                                                                 item.iconUrl
                                                             }
                                                             href={item.href}
+															target={item.target}
                                                         />
                                                     )
                                                 )}
@@ -310,15 +312,10 @@ export default function ClientLayout({
                                                             (item, index) => (
                                                                 <_NavMenuItem
                                                                     key={index}
-                                                                    title={
-                                                                        item.title
-                                                                    }
-                                                                    iconUrl={
-                                                                        item.iconUrl
-                                                                    }
-                                                                    href={
-                                                                        item.href
-                                                                    }
+                                                                    title={item.title}
+                                                                    iconUrl={item.iconUrl}
+                                                                    href={item.href}
+																	target={item.target}
                                                                 />
                                                             )
                                                         )}
@@ -364,15 +361,10 @@ export default function ClientLayout({
                                                             (item, index) => (
                                                                 <_NavMenuItem
                                                                     key={index}
-                                                                    title={
-                                                                        item.title
-                                                                    }
-                                                                    iconUrl={
-                                                                        item.iconUrl
-                                                                    }
-                                                                    href={
-                                                                        item.href
-                                                                    }
+                                                                    title={item.title}
+                                                                    iconUrl={item.iconUrl}
+                                                                    href={item.href}
+																	target={item.target}
                                                                 />
                                                             )
                                                         )}
