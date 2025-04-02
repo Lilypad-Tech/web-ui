@@ -11,7 +11,7 @@ import AnimateSpring from '@/components/AnimateSpring'
 import useFade from '../hooks/UseFade'
 import { useContext } from 'react'
 import { PageContext } from '../clientLayout'
-import { team, advisors, partners } from '@/data/team'
+import { team, advisors } from '@/data/team'
 import _Advisor from '@/components/_TeamMember/_Advisor'
 import { CallToActions } from '@/components/FooterBlock/CallToActions'
 export default function Teams() {
