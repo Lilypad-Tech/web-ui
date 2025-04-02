@@ -255,7 +255,7 @@ export default function Home() {
                                 </div>
 
                                 <h2 className="pb-uui-4xl md:pb-uui-6xl uui-text-lg md:uui-text-xl font-regular text-uui-text-tertiary-600">
-                                    Host, run, and monetize <i>any</i> AI model
+                                    Host, Run, and Monetize <i>any</i> AI model
                                 </h2>
 
                                 <div className="flex flex-row justify-center gap-4 lg:justify-start">
