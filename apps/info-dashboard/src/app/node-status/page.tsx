@@ -10,15 +10,6 @@ import { Anchor, SectionContainer } from '@lilypad/shared-components'
 import Table from '@/components/Table/Table'
 import CardHeader from '@/components/CardHeader'
 import { InputField } from '@lilypad/shared-components'
-import {
-    alertAndFeedbackAlertCircle,
-    generalCheck,
-    generalCopy07,
-    generalLinkExternal02,
-    generalLoading01,
-    generalSearchLg,
-    generalSearchMd,
-} from '@frontline-hq/untitledui-icons'
 import EmptyState from '@/components/EmptyState/EmptyState'
 import FeaturedIcon from '@/components/FeaturedIcon'
 import TableHeaderCell from '@/components/Table/TableHeaderCell'
@@ -248,7 +239,7 @@ export default function NodeStatus() {
                                                 }
                                                 inputSize="sm"
                                                 placeholder={m.node_status_node_overview_table_inputField_placeholder()}
-                                                iconUrl={generalSearchMd}
+                                                iconUrl="/search-md.svg"
                                             />
                                         </div>
                                     }
@@ -318,14 +309,14 @@ export default function NodeStatus() {
                                                 nodesEthBalancesIsLoading ||
                                                 nodesLPBalancesIsLoading ||
                                                 nodesPowSubmissionsIsLoading
-                                                    ? generalLoading01
+                                                    ? '/loading-01.svg'
                                                     : nodeStatusIsError ||
                                                         nodesIsError ||
                                                         nodesEthBalancesIsError ||
                                                         nodesLPBalancesIsError ||
                                                         nodesPowSubmissionsIsError
-                                                      ? alertAndFeedbackAlertCircle
-                                                      : generalSearchLg
+                                                      ? '/alert-circle.svg'
+                                                      : '/search-lg.svg'
                                             }
                                         />
                                     </EmptyState>
@@ -418,7 +409,7 @@ export default function NodeStatus() {
                                                                         icon={{
                                                                             type: 'icon',
                                                                             trailing:
-                                                                                generalLinkExternal02,
+                                                                                '/link-external-02.svg',
                                                                         }}
                                                                     >
                                                                         {`${row['Wallet'].slice(0, 6)}...${row[
@@ -443,8 +434,8 @@ export default function NodeStatus() {
                                                                                             'Wallet'
                                                                                         ]
                                                                                 )
-                                                                                    ? generalCheck
-                                                                                    : generalCopy07,
+                                                                                    ? '/check.svg'
+                                                                                    : '/copy-07.svg',
                                                                         }}
                                                                         onClick={() => {
                                                                             setCopiedArray(

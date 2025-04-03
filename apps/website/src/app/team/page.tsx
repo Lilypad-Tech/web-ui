@@ -3,7 +3,6 @@ import { Anchor, SectionContainer } from '@lilypad/shared-components'
 import Head from 'next/head'
 import CenterHeadingSection from '@/components/CenterHeadingSection/CenterHeadingSection'
 import _TeamMember from '@/components/_TeamMember/_TeamMember'
-import { mapsAndTravelGlobe02 } from '@frontline-hq/untitledui-icons'
 import SocialProofSection from '@/components/SocialProofSection/SocialProofSection'
 import Image from 'next/image'
 import useFadeInView from '../hooks/UseFadeInView'
@@ -11,18 +10,10 @@ import { animated } from '@react-spring/web'
 import AnimateSpring from '@/components/AnimateSpring'
 import useFade from '../hooks/UseFade'
 import { useContext } from 'react'
-import { PageContext } from '../clientLayout'
-import { TeamPageCmsInfo, HomePageCmsInfo } from '../hooks/strapi/types'
+import { team, advisors } from '@/data/team'
 import _Advisor from '@/components/_TeamMember/_Advisor'
 import { CallToActions } from '@/components/FooterBlock/CallToActions'
 export default function Teams() {
-    const { strapi: teamPageStrapi } = useContext(PageContext) as {
-        strapi: TeamPageCmsInfo
-    }
-    const context = useContext(PageContext)
-    const teamMembers = teamPageStrapi?.teamMembers || []
-    const advisors = teamPageStrapi?.advisors || []
-    const partners = teamPageStrapi?.partners || []
     const [teamSection2Ref, teamSection2Springs] = useFadeInView()
     const [teamSection3Ref, teamSection3Springs] = useFadeInView()
     const fadeLandingspage = useFade()
@@ -80,20 +71,20 @@ export default function Teams() {
                 <div className="bg-uui-bg-primary w-full">
                     <SectionContainer>
                         <div className="py-uui-2xl lg:pt-uui-9xl gap-x-uui-4xl gap-y-uui-2xl grid grid-cols-1 justify-items-center md:grid-cols-2 lg:grid-cols-4">
-                            {teamMembers.length > 0 ? (
-                                teamMembers
+                            {team.length > 0 ? (
+                                team
                                     .sort((a, b) => a.order - b.order)
                                     .map((member, index) => (
                                         <AnimateSpring key={index}>
                                             <_TeamMember
                                                 src={
-                                                    member.Image
-                                                        ? `https://webadmin.lilypad.team${member.Image}`
+                                                    member.image
+                                                        ? `https://cdn.lilypad.tech/team-headshots/${member.image}`
                                                         : '/default-image.png'
                                                 }
-                                                name={member.Name}
-                                                position={member.Title}
-                                                description={member.blurb}
+                                                name={member.name}
+                                                position={member.title}
+                                                description={member.description}
                                                 experience={member.experience}
                                                 socialIcons={[
                                                     member.twitter
@@ -162,12 +153,12 @@ export default function Teams() {
                                             <_Advisor
                                                 key={index}
                                                 src={
-                                                    advisor.Image
-                                                        ? `https://webadmin.lilypad.team${advisor.Image}`
+                                                    advisor.image
+                                                        ? `https://cdn.lilypad.tech/team-headshots/${advisor.image}`
                                                         : '/default-image.png'
                                                 }
-                                                name={advisor.Name}
-                                                position={advisor.Title}
+                                                name={advisor.name}
+                                                position={advisor.title}
                                                 experience={advisor.experience}
                                                 socialIcons={[
                                                     {
@@ -189,7 +180,7 @@ export default function Teams() {
                         </animated.div>
                     </SectionContainer>
                 </div>
-                <SectionContainer>
+                {/* <SectionContainer>
                     <CenterHeadingSection
                         className="[&&]:bg-uui-bg-primary pt-uui-7xl lg:pt-uui-9xl"
                         title="Partners"
@@ -205,17 +196,17 @@ export default function Teams() {
                                     <_Advisor
                                         key={index}
                                         src={
-                                            partner.Image
-                                                ? `https://webadmin.lilypad.team${partner.Image}`
+                                            partner.image
+                                                ? `https://cdn.lilypad.tech/team-headshots/${partner.image}`
                                                 : '/default-image.png'
                                         }
-                                        name={partner.Name}
-                                        position={partner.Title}
-                                        description={partner.blurb}
+                                        name={partner.name}
+                                        position={partner.title}
+                                        // description={partner.description}
                                         socialIcons={[
                                             {
                                                 href: partner.website,
-                                                iconUrl: mapsAndTravelGlobe02,
+                                                iconUrl: '/globe-02.svg',
                                             },
                                         ]}
                                     />
@@ -225,13 +216,13 @@ export default function Teams() {
                             )}
                         </animated.div>
                     </CenterHeadingSection>
-                    {/* TODO: Fix render bug */}
-                    {/* <SectionContainer className="pb-uui-7xl lg:pb-uui-8xl">
-						<animated.div>
-							<SocialProofSection />
-						</animated.div>
-					</SectionContainer> */}
-                </SectionContainer>
+                    // TODO: Fix render bug
+                    // <SectionContainer className="pb-uui-7xl lg:pb-uui-8xl">
+					// 	<animated.div>
+					// 		<SocialProofSection />
+					// 	</animated.div>
+					// </SectionContainer>
+                </SectionContainer> */}
                 <SectionContainer>
                     <div className="py-uui-6xl gap-uui-3xl grid grid-cols-1 lg:grid-cols-2">
                         <CallToActions />

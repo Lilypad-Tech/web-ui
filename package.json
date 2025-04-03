@@ -14,10 +14,6 @@
     "keywords": [],
     "author": "",
     "license": "ISC",
-    "dependencies": {
-        "@lottiefiles/dotlottie-react": "^0.9.3",
-        "@lottiefiles/react-lottie-player": "^3.5.4"
-    },
     "devDependencies": {
         "prettier-plugin-tailwindcss": "^0.6.11"
     }

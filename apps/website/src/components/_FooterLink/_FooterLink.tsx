@@ -23,9 +23,9 @@ const _FooterLink = ({ title, children, ...props }: FooterLinkProps) => {
         <li className="">
             <a
                 className="uui-text-md hover:text-uui-button-tertiary-fg_hover text-uui-button-tertiary-fg h-fit w-fit font-semibold antialiased"
-                href={props.href || ''}
+                href={props.href}
+				target={props.target}
             >
-                {' '}
                 {title}
             </a>
         </li>

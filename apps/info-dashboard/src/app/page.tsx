@@ -6,14 +6,6 @@ import { Badge, ErrorBoundary, WebGLFallback } from '@lilypad/shared-components'
 import MetricsCard from '@/components/MetricsCard/MetricsCard'
 import HeadingSection from '@/components/HeadingSection'
 import { SectionContainer } from '@lilypad/shared-components'
-import {
-    alertAndFeedbackAlertCircle,
-    arrowsArrowDown,
-    arrowsArrowUp,
-    arrowsSwitchVertical01,
-    generalLoading01,
-    generalSearchLg,
-} from '@frontline-hq/untitledui-icons'
 import CardWithBorder from '@/components/CardWithBorder/CardWithBorder'
 import {
     Area,
@@ -325,10 +317,10 @@ export default function Home() {
                                     spinIcon={nodesIsLoading}
                                     iconUrl={
                                         nodesIsLoading
-                                            ? generalLoading01
+                                            ? '/loading-01.svg'
                                             : nodesIsError
-                                              ? alertAndFeedbackAlertCircle
-                                              : generalSearchLg
+                                              ? '/alert-circle.svg'
+                                              : '/search-lg.svg'
                                     }
                                 />
                             </EmptyState>
@@ -346,9 +338,7 @@ export default function Home() {
                                     >
                                         <FeaturedIcon
                                             spinIcon={false}
-                                            iconUrl={
-                                                alertAndFeedbackAlertCircle
-                                            }
+                                            iconUrl="/alert-circle.svg"
                                         />
                                     </EmptyState>
                                 }

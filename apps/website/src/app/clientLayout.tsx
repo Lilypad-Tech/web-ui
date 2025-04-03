@@ -6,33 +6,15 @@ import _NavItemBase from '@/components/_NavItemBase/_NavItemBase'
 import _ApplicationNavMenuButton from '@/components/_ApplicationNavMenuButton/_ApplicationNavMenuButton'
 import NavBar from '@/components/NavBar'
 import Image from 'next/image'
-import { Context, useState } from 'react'
+import { useState } from 'react'
 import { usePathname } from 'next/navigation'
 import _NavItemDropdown from '@/components/_NavItemDropdown/_NavItemDropdown'
 import _NavMenuItem from '@/components/_NavMenuItem/_NavMenuItem'
-import {
-    chartsBarChart05,
-    educationBookClosed,
-    generalHelpCircle,
-    imagesCamera01,
-    mapsAndTravelRoute,
-    mediaAndDevicesLightbulb05,
-    mediaAndDevicesTv03,
-    usersUsers03,
-    weatherLightning01,
-} from '@frontline-hq/untitledui-icons'
 import { Anchor } from '@lilypad/shared-components'
 import Footer from '@/components/Footer'
 import { animated, useSpring } from '@react-spring/web'
-import { createContext } from 'react'
-import useStrapi from './hooks/strapi/UseStrapi'
-import { StrapiContext } from './hooks/strapi/types'
 
 const INTER = Inter({ subsets: ['latin'] })
-
-export const PageContext: Context<StrapiContext> = createContext({
-    strapi: {},
-})
 
 export default function ClientLayout({
     children,
@@ -44,7 +26,6 @@ export default function ClientLayout({
         null
     )
     const pathname = usePathname()
-    const { strapi, isLoading: isCmsLoading } = useStrapi({ pathname })
 
     const resourcesArray = [
         {
@@ -54,12 +35,6 @@ export default function ClientLayout({
             href: 'https://discord.gg/ywSEGd3d84',
         },
         {
-            title: 'Blog',
-            iconUrl: educationBookClosed,
-            href: 'https://blog.lilypadnetwork.org/',
-            target: '_self',
-        },
-        {
             title: 'Github',
             iconUrl: '/github.svg',
             href: 'https://github.com/Lilypad-Tech',
@@ -67,22 +42,22 @@ export default function ClientLayout({
         },
         {
             title: 'Metrics Dashboard',
-            iconUrl: chartsBarChart05,
+            iconUrl: '/bar-chart-05.svg',
             // href: 'https://info.lilypad.tech',
             href: 'http://rp-points.lilypad.tech/',
             target: '_blank',
         },
         {
             title: 'Media Kit',
-            iconUrl: imagesCamera01,
+            iconUrl: '/camera-01.svg',
             href: 'https://lilypadnetwork.notion.site/Press-Kit-d1d4e16d558d419c9bc502ade1404e17',
-            target: '_self',
+            target: '_blank',
         },
         {
             title: 'FAQ',
-            iconUrl: generalHelpCircle,
+            iconUrl: '/help-circle.svg',
             href: 'https://docs.lilypad.tech/lilypad/faqs',
-            target: '_self',
+            target: '_blank',
         },
     ]
 
@@ -95,13 +70,13 @@ export default function ClientLayout({
         },
         {
             title: 'Our team',
-            iconUrl: usersUsers03,
+            iconUrl: '/users-03.svg',
             href: '/team',
             target: '_self',
         },
         {
             title: 'Roadmap',
-            iconUrl: mapsAndTravelRoute,
+            iconUrl: '/route.svg',
             href: '/#roadmap',
             target: '_self',
         },
@@ -114,9 +89,9 @@ export default function ClientLayout({
         // },
         {
             title: 'Use Cases',
-            iconUrl: mediaAndDevicesLightbulb05,
-            href: 'https://docs.lilypad.tech/lilypad/use-cases/extra-labs-x-lilypad',
-            target: '_self',
+            iconUrl: '/lightbulb-05.svg',
+            href: 'https://docs.lilypad.tech/lilypad/use-cases-agents-and-projects/agents',
+            target: '_blank',
         },
     ]
 
@@ -153,8 +128,6 @@ export default function ClientLayout({
     return (
         <html lang="en" className="uui-dark">
             <body className={INTER.className}>
-                {!isCmsLoading && (
-                    <PageContext.Provider value={{ strapi }}>
                         <animated.div
                             style={fade}
                             className="sticky top-0 z-40 w-full"
@@ -166,7 +139,7 @@ export default function ClientLayout({
                                             src="lilypad-logo.svg"
                                             width={155}
                                             height={32}
-                                            alt={'alt'}
+                                            alt="alt"
                                         />
                                     </a>
                                 }
@@ -188,7 +161,7 @@ export default function ClientLayout({
                                         size="md"
                                         icon={{
                                             type: 'icon',
-                                            leading: weatherLightning01,
+                                            leading: '/lightning-01.svg',
                                         }}
                                     >
                                         Get Started
@@ -201,7 +174,7 @@ export default function ClientLayout({
                                         onClick={() => setNestedMenu(null)}
                                     >
                                         <_NavItemBase current={true}>
-                                            {'Back'}
+                                            Back
                                         </_NavItemBase>
                                     </button>
                                 ) : null}
@@ -221,11 +194,12 @@ export default function ClientLayout({
                                                             '/about'
                                                         }
                                                     >
-                                                        {'About'}
+                                                        About
                                                     </_NavItemBase>
                                                 </button>
-                                                <Link
-                                                    href="/#products"
+
+												<Link
+                                                    href="https://blog.lilypad.tech"
                                                     onClick={() => {
                                                         setMenuOpened(
                                                             () => false
@@ -234,15 +208,30 @@ export default function ClientLayout({
                                                 >
                                                     <_NavItemBase
                                                         current={
-                                                            pathname === '/' &&
-                                                            window.location
-                                                                .hash ===
-                                                                '#products'
+                                                            pathname === '/blog'
                                                         }
                                                     >
-                                                        {'Products'}
+                                                        Blog
                                                     </_NavItemBase>
                                                 </Link>
+
+												<Link
+                                                    href="https://docs.lilypad.tech"
+                                                    onClick={() => {
+                                                        setMenuOpened(
+                                                            () => false
+                                                        )
+                                                    }}
+                                                >
+                                                    <_NavItemBase
+                                                        current={
+                                                            pathname === '/docs'
+                                                        }
+                                                    >
+                                                        Docs
+                                                    </_NavItemBase>
+                                                </Link>
+
                                                 <button
                                                     onClick={() => {
                                                         setNestedMenu(
@@ -257,26 +246,13 @@ export default function ClientLayout({
                                                             '/resources'
                                                         }
                                                     >
-                                                        {'Resources'}
+                                                        Resources
                                                     </_NavItemBase>
                                                 </button>
 
-                                                <Link
-                                                    href="https://docs.lilypad.tech/lilypad"
-                                                    onClick={() => {
-                                                        setMenuOpened(
-                                                            () => false
-                                                        )
-                                                    }}
-                                                >
-                                                    <_NavItemBase
-                                                        current={
-                                                            pathname === '/docs'
-                                                        }
-                                                    >
-                                                        {'Docs'}
-                                                    </_NavItemBase>
-                                                </Link>
+
+
+
                                             </>
                                         )}
                                         {nestedMenu === 'About' ? (
@@ -290,6 +266,7 @@ export default function ClientLayout({
                                                                 item.iconUrl
                                                             }
                                                             href={item.href}
+															target={item.target}
                                                         />
                                                     )
                                                 )}
@@ -305,6 +282,7 @@ export default function ClientLayout({
                                                                 item.iconUrl
                                                             }
                                                             href={item.href}
+															target={item.target}
                                                         />
                                                     )
                                                 )}
@@ -324,15 +302,10 @@ export default function ClientLayout({
                                                             (item, index) => (
                                                                 <_NavMenuItem
                                                                     key={index}
-                                                                    title={
-                                                                        item.title
-                                                                    }
-                                                                    iconUrl={
-                                                                        item.iconUrl
-                                                                    }
-                                                                    href={
-                                                                        item.href
-                                                                    }
+                                                                    title={item.title}
+                                                                    iconUrl={item.iconUrl}
+                                                                    href={item.href}
+																	target={item.target}
                                                                 />
                                                             )
                                                         )}
@@ -340,23 +313,34 @@ export default function ClientLayout({
                                                 ),
                                             }}
                                         </_NavItemDropdown>
+
                                         <Link
-                                            href="/#products"
+                                            href="https://blog.lilypad.tech"
                                             onClick={() => {
                                                 setMenuOpened(() => false)
                                             }}
                                         >
                                             <_NavItemBase
-                                                current={
-                                                    pathname === '/' &&
-                                                    window.location.hash ===
-                                                        '#products'
-                                                }
+                                                current={pathname === '/blog'}
                                             >
-                                                {'Products'}
+                                                Blog
                                             </_NavItemBase>
                                         </Link>
-                                        <_NavItemDropdown
+
+										<Link
+                                            href="https://docs.lilypad.tech"
+                                            onClick={() => {
+                                                setMenuOpened(() => false)
+                                            }}
+                                        >
+                                            <_NavItemBase
+                                                current={pathname === '/docs'}
+                                            >
+                                                Docs
+                                            </_NavItemBase>
+                                        </Link>
+
+										<_NavItemDropdown
                                             current={pathname === '/Resources'}
                                         >
                                             {{
@@ -367,15 +351,10 @@ export default function ClientLayout({
                                                             (item, index) => (
                                                                 <_NavMenuItem
                                                                     key={index}
-                                                                    title={
-                                                                        item.title
-                                                                    }
-                                                                    iconUrl={
-                                                                        item.iconUrl
-                                                                    }
-                                                                    href={
-                                                                        item.href
-                                                                    }
+                                                                    title={item.title}
+                                                                    iconUrl={item.iconUrl}
+                                                                    href={item.href}
+																	target={item.target}
                                                                 />
                                                             )
                                                         )}
@@ -383,19 +362,6 @@ export default function ClientLayout({
                                                 ),
                                             }}
                                         </_NavItemDropdown>
-
-                                        <Link
-                                            href="https://docs.lilypad.tech/lilypad"
-                                            onClick={() => {
-                                                setMenuOpened(() => false)
-                                            }}
-                                        >
-                                            <_NavItemBase
-                                                current={pathname === '/docs'}
-                                            >
-                                                {'Docs'}
-                                            </_NavItemBase>
-                                        </Link>
                                     </>
                                 )}
                             </NavBar>
@@ -409,8 +375,6 @@ export default function ClientLayout({
                             }}
                             socialLinks={footerSocialLinks}
                         />
-                    </PageContext.Provider>
-                )}
             </body>
         </html>
     )

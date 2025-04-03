@@ -3,7 +3,6 @@ import GroupBadge from '@/components/GroupBadge/GroupBadge'
 import ProductCard from '@/components/ProductCard/ProductCard'
 import { Anchor, SectionContainer } from '@lilypad/shared-components'
 import { SocialIcon } from '@lilypad/shared-components'
-import { arrowsArrowRight } from '@frontline-hq/untitledui-icons'
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
 import CenterHeadingSection from '@/components/CenterHeadingSection/CenterHeadingSection'
@@ -57,7 +56,7 @@ export default function Home() {
             subtitle:
                 'Containerize any AI or compute job, create the Lilypad config, and deploy the module to the Lilypad network.',
             anchorHref:
-                'https://docs.lilypad.tech/lilypad/developer-resources/lilypad-modules',
+                'https://docs.lilypad.tech/lilypad/developer-resources/ai-model-marketplace',
             anchorText: 'Build a Module',
         },
         {
@@ -229,7 +228,7 @@ export default function Home() {
                                     }
                                     badge="leading"
                                     icon={{
-                                        url: arrowsArrowRight,
+                                        url: '/arrow-right.svg',
                                     }}
                                     color="brand"
                                     message="View our available bounties"
@@ -256,7 +255,7 @@ export default function Home() {
                                 </div>
 
                                 <h2 className="pb-uui-4xl md:pb-uui-6xl uui-text-lg md:uui-text-xl font-regular text-uui-text-tertiary-600">
-                                    Host, run, and monetize <i>any</i> AI model
+                                    Host, Run, and Monetize <i>any</i> AI model
                                 </h2>
 
                                 <div className="flex flex-row justify-center gap-4 lg:justify-start">
@@ -328,14 +327,14 @@ export default function Home() {
                     </animated.div>
                 </SectionContainer>
 
-                <SectionContainer id="products">
+                <SectionContainer>
                     <CenterHeadingSection
                         className="[&&]:bg-uui-bg-primary"
                         title="Contribute and Earn"
                         subtitle="Participate in the Lilypad ecosystem and earn rewards"
                     >
                         <br />
-                        <div className="mt-uui-7xl space-y-uui-4xl lg:space-y-uui-none lg:space-x-uui-4xl flex flex-col lg:flex-row">
+                        <div className="mt-uui-7xl space-y-uui-4xl lg:space-y-uui-none lg:space-x-uui-4xl flex flex-col items-center md: lg:items-stretch lg:flex-row">
                             {productCardsData.map((card, index) => (
                                 <ProductCard
                                     key={index}
@@ -349,6 +348,7 @@ export default function Home() {
                                         size="xl"
                                         href={card.anchorHref}
                                         target="_blank"
+                                        className="w-full max-w-48 place-self-center"
                                     >
                                         {card.anchorText}
                                     </Anchor>
