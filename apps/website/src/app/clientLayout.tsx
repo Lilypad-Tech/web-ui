@@ -68,7 +68,8 @@ export default function ClientLayout({
         {
             title: 'Metrics Dashboard',
             iconUrl: chartsBarChart05,
-            href: 'https://info.lilypad.tech',
+            // href: 'https://info.lilypad.tech',
+            href: 'http://rp-points.lilypad.tech/',
             target: '_blank',
         },
         {
