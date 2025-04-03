@@ -1,12 +1,11 @@
 import { CustomCSSProperties } from '@/types'
-import { generalMenu02, generalXClose } from '@frontline-hq/untitledui-icons'
 import { PropsWithChildren, useContext } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { NavBarContext } from '../NavBar'
 
 export default function _ApplicationNavMenuButton({
-    openIcon = generalMenu02,
-    closeIcon = generalXClose,
+    openIcon = '/menu-02.svg',
+    closeIcon = '/x-close.svg',
 }: PropsWithChildren<{
     openIcon?: string
     closeIcon?: string
