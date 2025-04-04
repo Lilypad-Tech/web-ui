@@ -34,14 +34,14 @@ const ContentItem = ({
         <div {...props}>
             {heading && (
                 <h2
-                    className={`${contentSizing[size].header} text-uui-text-primary-900 font-semibold`}
+                    className={`${contentSizing[size].header} text-center text-uui-text-primary-900 font-semibold`}
                 >
                     {heading}
                 </h2>
             )}
             {paragraph && (
                 <p
-                    className={`${contentSizing[size].paragraph} text-uui-text-tertiary-600 font-regular antialiased`}
+                    className={`${contentSizing[size].paragraph} text-center text-uui-text-tertiary-600 txt font-regular antialiased`}
                 >
                     {paragraph}
                 </p>
