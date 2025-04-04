@@ -39,8 +39,13 @@ const Footer = ({ socialLinks, footerIcon }: FooterProps) => {
                         <_FooterLinksColumn>
                             <_FooterLinksHeader title="Quick Links" />
                             <_FooterLink
-                                href="https://lilypadnetwork.notion.site/bounty-board"
                                 title="Bounty Board"
+                                href="https://lilypadnetwork.notion.site/bounty-board"
+								target='_blank'
+                            />
+							<_FooterLink
+                                title="Press Kit"
+                                href="https://lilypadnetwork.notion.site/press-kit"
 								target='_blank'
                             />
                             {/* TODO: Uncomment when litepaper is ready */}
