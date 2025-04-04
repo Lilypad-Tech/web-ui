@@ -34,7 +34,7 @@ const ContentItem = ({
         <div {...props}>
             {heading && (
                 <h2
-                    className={` ${contentSizing[size].header} text-uui-text-primary-900 font-semibold`}
+                    className={`${contentSizing[size].header} text-uui-text-primary-900 font-semibold`}
                 >
                     {heading}
                 </h2>
