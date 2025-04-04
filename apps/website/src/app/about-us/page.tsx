@@ -122,40 +122,40 @@ export default function Teams() {
                         </CenterHeadingSection>
 
                         <div className="my-14 flex flex-col flex-wrap items-center justify-center gap-x-8 gap-y-12 md:flex-row md:items-start md:gap-y-16">
+							<_FeatureText
+								featuredIconUrl='/dataflow-01.svg'
+                                title="Easily Deploy Any Model"
+                                description="No MLOPs, no pay per GPU-hour. Containterize, configure, run as a serverless function."
+                            />
+
+							<_FeatureText
+								featuredIconUrl='/coins-01.svg'
+                                title="Model Monetization"
+                                description="Those who publish custom models earn per job run. Network effect growth at the rate of AI innovation."
+                            />
+
+							<_FeatureText
+								featuredIconUrl='/package.svg'
+                                title="Modular and Composable"
+                                description="Integrate any model directly into an application. Pick and choose from models for decentralized science, autonomous agents, or specialized AI applications"
+                            />
+
                             <_FeatureText
 								featuredIconUrl='/lightning-01.svg'
                                 title="AI Compute Without Bottlenecks"
                                 description="Open, global access to a competitively priced network of GPUs. Scalable AI for all with blockchain-powered payment rails."
                             />
 
-                            <_FeatureText
-								featuredIconUrl='/check.svg'
-                                title="Nodes Earn Per Task"
-                                description="Every AI model on Lilypad runs on a per-job basis. Compute providers can monetize idle compute, when and how they wish, picking up jobs on the network."
-                            />
-
-                            <_FeatureText
-								featuredIconUrl='/dataflow-01.svg'
-                                title="Easily Deploy Any Model"
-                                description="No MLOPs, no pay per GPU-hour. Containterize, configure, run as a serverless function."
-                            />
-
-                            <_FeatureText
-								featuredIconUrl='/coins-01.svg'
-                                title="Model Monetization"
-                                description="Those who publish custom models earn per job run. Network effect growth at the rate of AI innovation."
-                            />
-
-                            <_FeatureText
+							<_FeatureText
 								featuredIconUrl='/server-06.svg'
                                 title="Decentralized Supercloud"
                                 description="A dynamically scalable, fault-tolerant mesh network. Aggregate GPUs from anywhere with blockchain payment rails and smart contract automation."
                             />
 
                             <_FeatureText
-								featuredIconUrl='/package.svg'
-                                title="Modular and Composable"
-                                description="Integrate any model directly into an application. Pick and choose from models for decentralized science, autonomous agents, or specialized AI applications"
+								featuredIconUrl='/check.svg'
+                                title="Nodes Earn Per Task"
+                                description="Every AI model on Lilypad runs on a per-job basis. Compute providers can monetize idle compute, when and how they wish, picking up jobs on the network."
                             />
                         </div>
                     </SectionContainer>
