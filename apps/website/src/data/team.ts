@@ -266,6 +266,16 @@ export const advisors = [
     },
 ]
 
+// TODO: add partners data, upload partners logos to Cloudflare Bucket
+export const partners = [{
+	name: 'Crypto Econ Lab',
+	title: 'Tokenomics Design Team',
+	// description: '',
+	website: 'https://www.cryptoeconlab.com',
+	image: '',
+}]
+
+// TODO: upload and replace Strapi image URLs with Cloudflare Bucket
 export const supporters = [
 	{
 		name: 'Bacalhau',
