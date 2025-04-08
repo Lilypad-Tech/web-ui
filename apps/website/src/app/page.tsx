@@ -321,6 +321,7 @@ export default function Home() {
                         </div>
                     </div>
                 </SectionContainer>
+				
                 <SectionContainer className="pb-uui-3xl lg:pb-uui-8xl">
                     <animated.div style={fade}>
                         <SocialProofSection />

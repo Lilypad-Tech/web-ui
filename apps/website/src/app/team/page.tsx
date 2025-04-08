@@ -63,6 +63,7 @@ export default function Teams() {
                             />
                         </animated.div>
                     </div>
+
                     <SectionContainer>
                         <CenterHeadingSection
                             titleClassName="[&&]:uui-display-md [&&]:md:uui-display-lg "
@@ -73,6 +74,7 @@ export default function Teams() {
                         ></CenterHeadingSection>
                     </SectionContainer>
                 </div>
+
                 <div className="bg-uui-bg-primary w-full">
                     <SectionContainer>
                         <div className="py-uui-2xl lg:pt-uui-9xl gap-x-uui-4xl gap-y-uui-2xl grid grid-cols-1 justify-items-center md:grid-cols-2 lg:grid-cols-4">
@@ -138,6 +140,7 @@ export default function Teams() {
                         </div>
                     </SectionContainer>
                 </div>
+
                 <div className="bg-uui-bg-secondary">
                     <SectionContainer>
                         <CenterHeadingSection
@@ -185,6 +188,7 @@ export default function Teams() {
                         </animated.div>
                     </SectionContainer>
                 </div>
+
                 <SectionContainer>
                     {/* TODO: add back partners section */}
                     {/* <CenterHeadingSection
