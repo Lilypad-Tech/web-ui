@@ -222,11 +222,13 @@ export default function Teams() {
                             )}
                         </animated.div>
                     </CenterHeadingSection> */}
-                    <SectionContainer className="pb-uui-7xl lg:pb-uui-8xl">
-                        <animated.div>
-                            <SocialProofSection />
-                        </animated.div>
-                    </SectionContainer>
+
+                <SectionContainer className="mt-12 pb-uui-3xl lg:pb-uui-8xl">
+                    <animated.div>
+                        <SocialProofSection />
+                    </animated.div>
+                </SectionContainer>
+
                 </SectionContainer>
                 <SectionContainer>
                     <div className="py-uui-6xl gap-uui-3xl grid grid-cols-1 lg:grid-cols-2">
