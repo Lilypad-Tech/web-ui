@@ -10,7 +10,12 @@ import { animated } from '@react-spring/web'
 import AnimateSpring from '@/components/AnimateSpring'
 import useFade from '../hooks/UseFade'
 import { useContext } from 'react'
-import { team, advisors } from '@/data/team'
+import {
+    team,
+    advisors,
+    // TODO: add partners data
+    // partners
+} from '@/data/team'
 import _Advisor from '@/components/_TeamMember/_Advisor'
 import { CallToActions } from '@/components/FooterBlock/CallToActions'
 export default function Teams() {
@@ -58,6 +63,7 @@ export default function Teams() {
                             />
                         </animated.div>
                     </div>
+
                     <SectionContainer>
                         <CenterHeadingSection
                             titleClassName="[&&]:uui-display-md [&&]:md:uui-display-lg "
@@ -68,6 +74,7 @@ export default function Teams() {
                         ></CenterHeadingSection>
                     </SectionContainer>
                 </div>
+
                 <div className="bg-uui-bg-primary w-full">
                     <SectionContainer>
                         <div className="py-uui-2xl lg:pt-uui-9xl gap-x-uui-4xl gap-y-uui-2xl grid grid-cols-1 justify-items-center md:grid-cols-2 lg:grid-cols-4">
@@ -133,7 +140,8 @@ export default function Teams() {
                         </div>
                     </SectionContainer>
                 </div>
-                <div className="bg-uui-bg-secondary">
+
+                <div className="pb-12 bg-uui-bg-secondary">
                     <SectionContainer>
                         <CenterHeadingSection
                             className="pt-uui-7xl lg:pt-uui-9xl"
@@ -180,8 +188,10 @@ export default function Teams() {
                         </animated.div>
                     </SectionContainer>
                 </div>
-                {/* <SectionContainer>
-                    <CenterHeadingSection
+
+                <SectionContainer>
+                    {/* TODO: add back partners section */}
+                    {/* <CenterHeadingSection
                         className="[&&]:bg-uui-bg-primary pt-uui-7xl lg:pt-uui-9xl"
                         title="Partners"
                         subtitle="Meet the skilled front-end engineers and tokenomics experts who are instrumental in building Lilypad's future."
@@ -215,14 +225,15 @@ export default function Teams() {
                                 <p>No partners found.</p>
                             )}
                         </animated.div>
-                    </CenterHeadingSection>
-                    // TODO: Fix render bug
-                    // <SectionContainer className="pb-uui-7xl lg:pb-uui-8xl">
-					// 	<animated.div>
-					// 		<SocialProofSection />
-					// 	</animated.div>
-					// </SectionContainer>
-                </SectionContainer> */}
+                    </CenterHeadingSection> */}
+
+                <SectionContainer className="mt-12 pb-uui-3xl lg:pb-uui-8xl">
+                    <animated.div>
+                        <SocialProofSection />
+                    </animated.div>
+                </SectionContainer>
+
+                </SectionContainer>
                 <SectionContainer>
                     <div className="py-uui-6xl gap-uui-3xl grid grid-cols-1 lg:grid-cols-2">
                         <CallToActions />

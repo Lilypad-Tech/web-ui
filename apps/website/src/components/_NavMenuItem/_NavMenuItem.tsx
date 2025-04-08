@@ -20,7 +20,7 @@ const _NavMenuItem = ({
             <a
                 onClick={onClick}
                 href={props.href}
-				target={props.target}
+                target={props.target}
                 className="rounded-uui-sm text-uui-fg-secondary-700 uui-hover-all:text-uui-fg-secondary_hover uui-hover-all:bg-uui-bg-primary_hover uui-focus-all:text-uui-fg-secondary_hover uui-focus-all:bg-uui-bg-primary_hover disabled:text-uui-text-disabled p-uui-lg gap-uui-xl relative flex outline-none"
                 {...props}
             >

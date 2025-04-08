@@ -266,50 +266,62 @@ export const advisors = [
     },
 ]
 
+// TODO: add partners data, upload partners logos to Cloudflare Bucket
+export const partners = [
+    {
+        name: 'Crypto Econ Lab',
+        title: 'Tokenomics Design Team',
+        // description: '',
+        website: 'https://www.cryptoeconlab.com',
+        image: '',
+    },
+]
+
+// TODO: upload and replace Strapi image URLs with Cloudflare Bucket
 export const supporters = [
-	{
-		name: 'Bacalhau',
-		website: 'https://www.bacalhau.org',
-		image: 'https://webadmin.lilypad.team/uploads/bacalhau_998e90644c.png',
-	},
-	{
-		name: 'Filecoin',
-		website: 'https://filecoin.io',
-		image: 'https://webadmin.lilypad.team/uploads/robotfrog_8d34520fa7.png',
-	},
-	{
-		name: 'Rare Compute',
-		website: 'https://www.rarecompute.io',
-		image: 'https://webadmin.lilypad.team/uploads/rare_compute_bab2581a53.png',
-	},
-	{
-		name: 'Spheron',
-		website: 'https://www.spheron.network',
-		image: 'https://webadmin.lilypad.team/uploads/spheron_3ed30af20a.png',
-	},
-	{
-		name: 'Swan Chain',
-		website: 'https://swanchain.io',
-		image: 'https://webadmin.lilypad.team/uploads/swanchain_75498cbd98.png',
-	},
-	{
-		name: 'Titan Network',
-		website: 'https://www.titannet.io',
-		image: 'https://webadmin.lilypad.team/uploads/titannet_2fd9f3f540.png',
-	},
-	{
-		name: 'Parasail Network',
-		website: 'https://www.parasail.network',
-		image: 'https://webadmin.lilypad.team/uploads/parasail_b8777ec626.png',
-	},
-	{
-		name: 'Holon Investments',
-		website: 'https://holon.investments',
-		image: 'https://webadmin.lilypad.team/uploads/holon_23ed4ca846.webp',
-	},
-	{
-		name: 'Protocol Labs',
-		website: 'https://www.protocol.ai/',
-		image: 'https://webadmin.lilypad.team/uploads/protocollabs_8374a58eee.png',
-	},
+    {
+        name: 'Bacalhau',
+        website: 'https://www.bacalhau.org',
+        image: 'https://webadmin.lilypad.team/uploads/bacalhau_998e90644c.png',
+    },
+    {
+        name: 'Filecoin',
+        website: 'https://filecoin.io',
+        image: 'https://webadmin.lilypad.team/uploads/robotfrog_8d34520fa7.png',
+    },
+    {
+        name: 'Rare Compute',
+        website: 'https://www.rarecompute.io',
+        image: 'https://webadmin.lilypad.team/uploads/rare_compute_bab2581a53.png',
+    },
+    {
+        name: 'Spheron',
+        website: 'https://www.spheron.network',
+        image: 'https://webadmin.lilypad.team/uploads/spheron_3ed30af20a.png',
+    },
+    {
+        name: 'Swan Chain',
+        website: 'https://swanchain.io',
+        image: 'https://webadmin.lilypad.team/uploads/swanchain_75498cbd98.png',
+    },
+    {
+        name: 'Titan Network',
+        website: 'https://www.titannet.io',
+        image: 'https://webadmin.lilypad.team/uploads/titannet_2fd9f3f540.png',
+    },
+    {
+        name: 'Parasail Network',
+        website: 'https://www.parasail.network',
+        image: 'https://webadmin.lilypad.team/uploads/parasail_b8777ec626.png',
+    },
+    {
+        name: 'Holon Investments',
+        website: 'https://holon.investments',
+        image: 'https://webadmin.lilypad.team/uploads/holon_23ed4ca846.webp',
+    },
+    {
+        name: 'Protocol Labs',
+        website: 'https://www.protocol.ai/',
+        image: 'https://webadmin.lilypad.team/uploads/protocollabs_8374a58eee.png',
+    },
 ]

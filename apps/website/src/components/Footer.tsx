@@ -41,12 +41,12 @@ const Footer = ({ socialLinks, footerIcon }: FooterProps) => {
                             <_FooterLink
                                 title="Bounty Board"
                                 href="https://lilypadnetwork.notion.site/bounty-board"
-								target='_blank'
+                                target="_blank"
                             />
-							<_FooterLink
+                            <_FooterLink
                                 title="Press Kit"
                                 href="https://lilypadnetwork.notion.site/press-kit"
-								target='_blank'
+                                target="_blank"
                             />
                             {/* TODO: Uncomment when litepaper is ready */}
                             {/* <_FooterLink

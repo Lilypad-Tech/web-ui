@@ -20,11 +20,11 @@ Each UI is seperated into it's own pnpm workspace, see details in `## Project st
 **Apps**
 
 - `/apps/info-dashboard`: The Lilypad network metrics UI hosted at http://rp-points.lilypad.tech/
-      <!-- https://info.lilypad.tech -->
+  <!-- https://info.lilypad.tech -->
 - `/apps/website`: The Lilypad main site
 - `/apps/website-cms`: (WIP!) Payload CMS that will potentially power the info-dashboard and website
 -     `/apps/rewards-dashboard`: Community Rewards and Recognition site hosted at http://rp-points.lilypad.tech/
-    <!-- https://oss.lilypad.tech -->
+      <!-- https://oss.lilypad.tech -->
 
 **Packages**
 
