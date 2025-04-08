@@ -13,7 +13,7 @@ const _FeatureText = ({
     featuredIconUrl,
 }: FeatureTextProps) => {
     return (
-        <div className="space-y-uui-2xl flex max-w-[32rem] items-center flex-col text-center md:max-w-96">
+        <div className="space-y-uui-2xl flex max-w-[32rem] flex-col items-center text-center md:max-w-96">
             {featuredIconUrl && <FeaturedIcon iconUrl={featuredIconUrl} />}
             <div className="space-y-uui-md flex flex-col">
                 {title && (

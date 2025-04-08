@@ -10,9 +10,11 @@ import { animated } from '@react-spring/web'
 import AnimateSpring from '@/components/AnimateSpring'
 import useFade from '../hooks/UseFade'
 import { useContext } from 'react'
-import { team, advisors,
-	// TODO: add partners data
-	// partners
+import {
+    team,
+    advisors,
+    // TODO: add partners data
+    // partners
 } from '@/data/team'
 import _Advisor from '@/components/_TeamMember/_Advisor'
 import { CallToActions } from '@/components/FooterBlock/CallToActions'
@@ -184,7 +186,7 @@ export default function Teams() {
                     </SectionContainer>
                 </div>
                 <SectionContainer>
-					{/* TODO: add back partners section */}
+                    {/* TODO: add back partners section */}
                     {/* <CenterHeadingSection
                         className="[&&]:bg-uui-bg-primary pt-uui-7xl lg:pt-uui-9xl"
                         title="Partners"
@@ -220,11 +222,11 @@ export default function Teams() {
                             )}
                         </animated.div>
                     </CenterHeadingSection> */}
-                     <SectionContainer className="pb-uui-7xl lg:pb-uui-8xl">
-					 	<animated.div>
-					 		<SocialProofSection />
-					 	</animated.div>
-					 </SectionContainer>
+                    <SectionContainer className="pb-uui-7xl lg:pb-uui-8xl">
+                        <animated.div>
+                            <SocialProofSection />
+                        </animated.div>
+                    </SectionContainer>
                 </SectionContainer>
                 <SectionContainer>
                     <div className="py-uui-6xl gap-uui-3xl grid grid-cols-1 lg:grid-cols-2">
