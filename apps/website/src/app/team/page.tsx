@@ -141,7 +141,7 @@ export default function Teams() {
                     </SectionContainer>
                 </div>
 
-                <div className="bg-uui-bg-secondary">
+                <div className="pb-12 bg-uui-bg-secondary">
                     <SectionContainer>
                         <CenterHeadingSection
                             className="pt-uui-7xl lg:pt-uui-9xl"
