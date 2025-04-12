@@ -176,28 +176,6 @@ export const team = [
         linkedin: 'TaoshengShi',
         order: 16,
     },
-    {
-        name: 'Sam Ceja',
-        title: 'Marketing, Events and Community Manager',
-        description:
-            'Experienced community builder cultivating engagement and positive web3 spaces. Passionate about education, gaming, and coding.',
-        experience: 'Godwoken and Developer DAO',
-        image: 'Sam_Ceja.png',
-        twitter: 'iamsamcodes',
-        linkedin: 'iamsamcodes',
-        order: 17,
-    },
-    {
-        name: 'Devlin Rocha',
-        title: 'Developer Relations Engineer and Content Producer',
-        description:
-            'Polyglot software engineer specializing in fullstack development, design, and user experience.',
-        experience: 'Synctree and Revolution Entertainment Services',
-        image: 'Devlin_Rocha.png',
-        twitter: 'DevlinRocha',
-        linkedin: 'DevlinRocha',
-        order: 18,
-    },
 ]
 
 export const advisors = [
