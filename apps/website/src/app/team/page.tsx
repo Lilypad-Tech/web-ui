@@ -227,11 +227,11 @@ export default function Teams() {
                         </animated.div>
                     </CenterHeadingSection> */}
 
-                <SectionContainer className="mt-12 pb-uui-3xl lg:pb-uui-8xl">
+                {/* <SectionContainer className="mt-12 pb-uui-3xl lg:pb-uui-8xl">
                     <animated.div>
                         <SocialProofSection />
                     </animated.div>
-                </SectionContainer>
+                </SectionContainer> */}
 
                 </SectionContainer>
                 <SectionContainer>

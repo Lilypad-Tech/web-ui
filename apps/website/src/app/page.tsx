@@ -322,11 +322,11 @@ export default function Home() {
                     </div>
                 </SectionContainer>
 				
-                <SectionContainer className="pb-uui-3xl lg:pb-uui-8xl">
+                {/* <SectionContainer className="pb-uui-3xl lg:pb-uui-8xl">
                     <animated.div style={fade}>
                         <SocialProofSection />
                     </animated.div>
-                </SectionContainer>
+                </SectionContainer> */}
 
                 <SectionContainer>
                     <CenterHeadingSection
